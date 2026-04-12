@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why I Don't Use WordPress For Anyone Who Wants Leads — Shipside</title>
+<meta name="description" content="WordPress still runs 40% of the internet. It's also the wrong tool for 90% of local business lead sites. Here's the honest breakdown of why, and what I ship instead.">
+<meta property="og:title" content="Why I Don't Use WordPress For Anyone Who Wants Leads">
+<meta property="og:description" content="WordPress still runs 40% of the internet. It's also the wrong tool for 90% of local business lead sites. Here's the honest breakdown of why, and what I ship instead.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  main { position: relative; z-index: 5; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+  .brand span { color: var(--rust); }
+  .nav-links { display: flex; gap: 32px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ---------- ARTICLE ---------- */
+  .article-header {
+    padding: 80px var(--gutter) 40px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    font-weight: 500;
+  }
+  .article-meta .divider { color: var(--steel); }
+  .article-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 20px;
+  }
+  .article-summary {
+    font-size: 16px;
+    color: var(--bone-dim);
+    max-width: 640px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border: 1px solid var(--steel);
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(212, 77, 28, 0.05);
+  }
+
+  /* ---------- ARTICLE BODY ---------- */
+  .article-body {
+    padding: 40px var(--gutter) 80px;
+    max-width: 780px;
+    margin: 0 auto;
+    border-top: 1px dashed var(--steel);
+  }
+  .article-body h1 { display: none; /* title already in header */ }
+  .article-body h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--bone);
+    margin: 48px 0 20px;
+    line-height: 1.1;
+  }
+  .article-body h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bone);
+    margin: 36px 0 14px;
+    letter-spacing: 0.02em;
+  }
+  .article-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+  .article-body ul, .article-body ol {
+    margin: 16px 0 24px 24px;
+    max-width: 640px;
+  }
+  .article-body li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+  .article-body code {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--rust);
+  }
+  .article-body pre {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+  .article-body pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--bone);
+  }
+  .article-body strong { color: var(--bone); font-weight: 700; }
+  .article-body em { color: var(--bone-dim); font-style: italic; }
+  .article-body hr {
+    border: none;
+    border-top: 1px dashed var(--steel);
+    margin: 40px 0;
+  }
+  .article-body a {
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .article-body a:hover { border-bottom-color: var(--rust); }
+
+  /* ---------- BACK LINK ---------- */
+  .back-link {
+    display: inline-block;
+    margin: 0 0 0 var(--gutter);
+    padding: 20px 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--rust); }
+  .back-link::before { content: '← '; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner {
+    max-width: 780px;
+    margin: 0 auto 80px;
+    padding: 40px var(--gutter);
+    border: 1px solid var(--steel);
+    border-left: 3px solid var(--rust);
+    background: var(--iron-light);
+  }
+  .cta-banner h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+  .cta-banner p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .cta-banner a {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--rust);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .cta-banner a:hover { color: var(--rust-bright); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid var(--steel);
+    padding: 40px var(--gutter);
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--bone); text-decoration: none; }
+  footer a:hover { color: var(--rust); }
+
+  @media (max-width: 600px) {
+    .article-title { font-size: 28px; }
+    .article-meta { flex-wrap: wrap; gap: 10px; }
+    .nav-links { gap: 18px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand">SHIP<span>SIDE</span></a>
+  <div class="nav-links">
+    <a href="../../index.html">HOME</a>
+    <a href="../../services.html">SERVICES</a>
+    <a href="../../work.html">WORK</a>
+    <a href="../index.html">FIELD NOTES</a>
+    <a href="../../about.html">ABOUT</a>
+    <a href="mailto:shipside.labs@gmail.com">INQUIRIES</a>
+  </div>
+</nav>
+
+<a href="../index.html" class="back-link">All Field Notes</a>
+
+<main>
+  <header class="article-header">
+    <div class="article-meta">
+      <span>2026 · 01 · 27</span>
+      <span class="divider">|</span>
+      <span>4 min read</span>
+    </div>
+    <h1 class="article-title">Why I Don't Use WordPress For Anyone Who Wants Leads</h1>
+    <p class="article-summary">WordPress still runs 40% of the internet. It's also the wrong tool for 90% of local business lead sites. Here's the honest breakdown of why, and what I ship instead.</p>
+    <div class="article-tags"><span class="tag">wordpress</span><span class="tag">nextjs</span><span class="tag">local-service</span><span class="tag">methodology</span></div>
+  </header>
+
+  <article class="article-body">
+    <h1>Why I Don&rsquo;t Use WordPress For Anyone Who Wants Leads</h1>
+<p>I&rsquo;m going to upset people with this one. Fine.</p>
+<p>WordPress is the wrong tool for local service business websites whose only job is to capture leads from Google. I build Shipside sites in Next.js instead. Here&rsquo;s the actual breakdown of why, without the &ldquo;modern stack&rdquo; marketing nonsense.</p>
+<h2>What WordPress is good for</h2>
+<p>Let me be fair up front. WordPress is great for:</p>
+<ul>
+<li>Blogs with lots of content and multiple authors</li>
+<li>Sites with heavy editorial workflows (a newsroom, a magazine)</li>
+<li>Sites that need a plugin ecosystem for niche use cases (membership sites, real estate IDX, forum communities)</li>
+<li>Sites where a non-technical person needs to add and edit content daily</li>
+</ul>
+<p>For any of those, WordPress is a reasonable choice. This post is not about those.</p>
+<h2>What WordPress is bad for</h2>
+<p>Lead-capture sites for small businesses. HVAC, law, med spas, dental, real estate, plumbing, contractors. The sites where the entire job is: show up in Google, load fast, get someone to call or fill out a form, stop. Maybe 5-10 pages total. Edited twice a year.</p>
+<p>For those, WordPress is the wrong tool and the proof is in the numbers.</p>
+<h2>The four real problems</h2>
+<p><strong>Problem 1: Mobile speed.</strong></p>
+<p>Stock WordPress + a stock theme + 5-15 plugins loads at around 2-4 seconds to interactive on a mid-range phone. Google&rsquo;s mobile speed threshold for local pack ranking is around 2.5 seconds for &ldquo;good&rdquo; and 4 seconds for &ldquo;poor.&rdquo; Most WordPress sites I audit are in the &ldquo;poor&rdquo; range, which is where Google actively penalizes local rankings.</p>
+<p>A Next.js static export of the same content loads in 0.4-0.8 seconds. Not because Next.js is magic — because it&rsquo;s compiling the site ahead of time and serving plain HTML. Which is what WordPress used to do before plugins ate the world.</p>
+<p><strong>Problem 2: The plugin hell tax.</strong></p>
+<p>Every plugin is a third-party script, a database query, and a security surface. The average WordPress site I audit has 12 plugins. Four of them haven&rsquo;t been updated in 18 months. Two of them are doing things the site owner doesn&rsquo;t know about (tracking, ads, &ldquo;upgrade to premium&rdquo; upsells injected into the admin panel).</p>
+<p>Every one of those is either a performance hit, a security hole, or a maintenance cost.</p>
+<p><strong>Problem 3: Hosting reality.</strong></p>
+<p>Small business WordPress sites run on $8/month shared hosting from GoDaddy or Bluehost, which is the right price for the customer and the wrong place for the site. Shared hosting means the site sits on a server with 200 other sites competing for CPU, and every time one of them gets a traffic spike, yours gets slower.</p>
+<p>Next.js on Vercel is free for small sites. Yes, free. The free tier covers roughly 100,000 visits a month. Most local service sites never touch the paid tier.</p>
+<p>The customer who was paying $96/year for GoDaddy hosting is now paying zero and getting a 5x faster site. The only reason they&rsquo;re not already doing it is nobody told them.</p>
+<p><strong>Problem 4: Maintenance cost.</strong></p>
+<p>WordPress requires updates. Core updates, theme updates, plugin updates. If you don&rsquo;t do them, you get hacked (not a theory — check how many WordPress sites are running compromised versions; the number is terrifying). If you do do them, sometimes an update breaks the site and you have to pay someone to fix it.</p>
+<p>A static Next.js site has none of this. There&rsquo;s nothing to update. The HTML is just sitting there. It will still work in 2030.</p>
+<h2>The one legitimate WordPress argument</h2>
+<p>&ldquo;But the customer needs to be able to edit the site themselves without calling a developer.&rdquo;</p>
+<p>Fair point. Except in practice, 90% of small business owners never edit their website. They call their web guy twice a year to update the phone number and add a testimonial. That&rsquo;s it.</p>
+<p>For the 10% who genuinely want to edit themselves, I recommend a headless CMS (Sanity, Contentful, Decap) pointed at the Next.js site. The editor gets a clean interface, the site stays fast, the business owner doesn&rsquo;t need to touch WordPress admin. Best of both worlds. Costs $0-$10/month for most use cases.</p>
+<h2>When a rebuild makes sense</h2>
+<p>Not every WordPress site needs to be rebuilt. Here&rsquo;s the rule I use:</p>
+<ul>
+<li><strong>Mobile pagespeed score under 50</strong> → rebuild, it&rsquo;s an emergency</li>
+<li><strong>More than 8 active plugins</strong> → rebuild</li>
+<li><strong>More than 12 contact form fields</strong> → rebuild (it&rsquo;s a funnel problem, not a tech problem, but the rebuild is the cheapest time to fix both)</li>
+<li><strong>Everything else</strong> → leave it alone, the WordPress site is fine</li>
+</ul>
+<h2>What I ship instead</h2>
+<p>Next.js + Tailwind for styling + Vercel for hosting + Sanity for the CMS if the customer wants self-edit. Flat price, 7-day turnaround on rebuilds, full content migration included.</p>
+<p>That stack isn&rsquo;t novel and I didn&rsquo;t invent it. It&rsquo;s the same stack half of Silicon Valley ships marketing sites on. What&rsquo;s novel is offering it at a flat $499-$1,200 price point for local service businesses who&rsquo;ve been quoted $5,000 for a &ldquo;modern redesign&rdquo; by someone trying to resell the same WordPress theme with a different header image.</p>
+<hr />
+<p><em>Shipside rebuilds slow WordPress lead sites on Next.js + Vercel. Flat price. 7 days. You own the code.</em></p>
+  </article>
+
+  <div class="cta-banner">
+    <h3>Need this fixed?</h3>
+    <p>Shipside builds fast, flat-price websites and teardowns for local service businesses. Audits from $149, rebuilds from $499. No retainer. No bloat.</p>
+    <a href="mailto:shipside.labs@gmail.com">Get a teardown →</a>
+  </div>
+</main>
+
+<footer>
+  <span>Shipside © 2026</span>
+  <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a>
+  <a href="../../index.html">Home</a>
+</footer>
+
+</body>
+</html>

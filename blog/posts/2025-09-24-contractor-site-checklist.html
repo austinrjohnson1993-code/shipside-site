@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seven Things Your Old Web Guy Forgot To Set Up On Your Contractor Site — Shipside</title>
+<meta name="description" content="Plumbers, electricians, roofers — the seven things that were almost certainly skipped when your site went live, and that are costing you leads every week.">
+<meta property="og:title" content="Seven Things Your Old Web Guy Forgot To Set Up On Your Contractor Site">
+<meta property="og:description" content="Plumbers, electricians, roofers — the seven things that were almost certainly skipped when your site went live, and that are costing you leads every week.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  main { position: relative; z-index: 5; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+  .brand span { color: var(--rust); }
+  .nav-links { display: flex; gap: 32px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ---------- ARTICLE ---------- */
+  .article-header {
+    padding: 80px var(--gutter) 40px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    font-weight: 500;
+  }
+  .article-meta .divider { color: var(--steel); }
+  .article-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 20px;
+  }
+  .article-summary {
+    font-size: 16px;
+    color: var(--bone-dim);
+    max-width: 640px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border: 1px solid var(--steel);
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(212, 77, 28, 0.05);
+  }
+
+  /* ---------- ARTICLE BODY ---------- */
+  .article-body {
+    padding: 40px var(--gutter) 80px;
+    max-width: 780px;
+    margin: 0 auto;
+    border-top: 1px dashed var(--steel);
+  }
+  .article-body h1 { display: none; /* title already in header */ }
+  .article-body h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--bone);
+    margin: 48px 0 20px;
+    line-height: 1.1;
+  }
+  .article-body h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bone);
+    margin: 36px 0 14px;
+    letter-spacing: 0.02em;
+  }
+  .article-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+  .article-body ul, .article-body ol {
+    margin: 16px 0 24px 24px;
+    max-width: 640px;
+  }
+  .article-body li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+  .article-body code {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--rust);
+  }
+  .article-body pre {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+  .article-body pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--bone);
+  }
+  .article-body strong { color: var(--bone); font-weight: 700; }
+  .article-body em { color: var(--bone-dim); font-style: italic; }
+  .article-body hr {
+    border: none;
+    border-top: 1px dashed var(--steel);
+    margin: 40px 0;
+  }
+  .article-body a {
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .article-body a:hover { border-bottom-color: var(--rust); }
+
+  /* ---------- BACK LINK ---------- */
+  .back-link {
+    display: inline-block;
+    margin: 0 0 0 var(--gutter);
+    padding: 20px 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--rust); }
+  .back-link::before { content: '← '; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner {
+    max-width: 780px;
+    margin: 0 auto 80px;
+    padding: 40px var(--gutter);
+    border: 1px solid var(--steel);
+    border-left: 3px solid var(--rust);
+    background: var(--iron-light);
+  }
+  .cta-banner h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+  .cta-banner p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .cta-banner a {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--rust);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .cta-banner a:hover { color: var(--rust-bright); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid var(--steel);
+    padding: 40px var(--gutter);
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--bone); text-decoration: none; }
+  footer a:hover { color: var(--rust); }
+
+  @media (max-width: 600px) {
+    .article-title { font-size: 28px; }
+    .article-meta { flex-wrap: wrap; gap: 10px; }
+    .nav-links { gap: 18px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand">SHIP<span>SIDE</span></a>
+  <div class="nav-links">
+    <a href="../../index.html">HOME</a>
+    <a href="../../services.html">SERVICES</a>
+    <a href="../../work.html">WORK</a>
+    <a href="../index.html">FIELD NOTES</a>
+    <a href="../../about.html">ABOUT</a>
+    <a href="mailto:shipside.labs@gmail.com">INQUIRIES</a>
+  </div>
+</nav>
+
+<a href="../index.html" class="back-link">All Field Notes</a>
+
+<main>
+  <header class="article-header">
+    <div class="article-meta">
+      <span>2025 · 09 · 24</span>
+      <span class="divider">|</span>
+      <span>4 min read</span>
+    </div>
+    <h1 class="article-title">Seven Things Your Old Web Guy Forgot To Set Up On Your Contractor Site</h1>
+    <p class="article-summary">Plumbers, electricians, roofers — the seven things that were almost certainly skipped when your site went live, and that are costing you leads every week.</p>
+    <div class="article-tags"><span class="tag">plumbing</span><span class="tag">electrical</span><span class="tag">roofing</span><span class="tag">contractors</span><span class="tag">local-service</span></div>
+  </header>
+
+  <article class="article-body">
+    <h1>Seven Things Your Old Web Guy Forgot To Set Up On Your Contractor Site</h1>
+<p>Not accusing anyone. The guy who built your site in 2019 did a fine job for 2019. These things just weren&rsquo;t standard back then, or they weren&rsquo;t a priority, or the budget ran out and this is where the project stopped.</p>
+<p>Here&rsquo;s the checklist. Go open your site and check each one honestly. If you&rsquo;re missing more than three, your site is leaking money every week.</p>
+<h2>1. The phone number isn&rsquo;t a <code>tel:</code> link</h2>
+<p>On your phone, go to your homepage. Tap the phone number in the header. Did it dial?</p>
+<p>If not, it&rsquo;s a static piece of text. Every mobile visitor who wants to call you has to copy the number, switch to the phone app, paste it, and dial. Most don&rsquo;t. They close the tab.</p>
+<p>Fix: one line of HTML. <code>&lt;a href="tel:5125551234"&gt;(512) 555-1234&lt;/a&gt;</code>. Costs nothing. Takes 30 seconds. Nobody does it.</p>
+<h2>2. No click-to-text</h2>
+<p>Same deal for SMS. On mobile, a click-to-text link opens the phone&rsquo;s messaging app pre-filled with your number. For emergency trades (plumbing at 11pm, electrical outage at dinnertime), this often converts <em>better</em> than a call because the customer doesn&rsquo;t have to talk out loud in their house full of problems.</p>
+<p><code>&lt;a href="sms:5125551234"&gt;Text us&lt;/a&gt;</code>. Same 30 seconds.</p>
+<h2>3. Service area pages</h2>
+<p>Google&rsquo;s local pack ranks service area pages separately from your homepage. If you serve Georgetown, Round Rock, Hutto, Leander, and Cedar Park, you should have a page for each one — <code>/georgetown-plumber</code>, <code>/round-rock-plumber</code>, etc. Each page has the exact same services, just with the city name in the H1, the meta description, and a sentence or two about the area.</p>
+<p>This is not spammy. This is how Google expects local service content to be structured. Without it, you&rsquo;re invisible for 4 out of your 5 service areas.</p>
+<h2>4. Google Business Profile linked to the site</h2>
+<p>Open your Google Business Profile (formerly Google My Business). Is there a URL to your website set? Is that URL using the same protocol (https://) and the same domain (with or without www) as everything else you do?</p>
+<p>If there&rsquo;s a mismatch — <code>www.yoursite.com</code> on GBP but your actual site redirects to <code>yoursite.com</code> — Google counts it as two different sites and splits your ranking signal in half.</p>
+<p>Fix: log in, fix the URL, wait 2 weeks.</p>
+<h2>5. Schema markup (<code>LocalBusiness</code> and <code>Service</code>)</h2>
+<p>This is JSON that tells Google specifically: &ldquo;I am a plumber. My service area is this zip code list. I am open these hours. My phone is this. My services are these.&rdquo;</p>
+<p>Without it, Google has to guess. With it, you get rich results in the local pack: hours, service list, ratings, phone number — all directly in the search result without the user even clicking your site.</p>
+<p>This takes an hour to set up. Most sites don&rsquo;t have it because nobody thinks about it unless they&rsquo;re an SEO person.</p>
+<h2>6. Form with exactly three fields</h2>
+<p>Name, phone, &ldquo;what&rsquo;s the problem.&rdquo; That&rsquo;s it. Everything else you ask on the call.</p>
+<p>Twelve-field forms convert at 10% of three-field forms. This is not a preference, it&rsquo;s a measurement.</p>
+<h2>7. A thank-you page that actually does something</h2>
+<p>After someone submits the form, do they see a thank-you page that (a) confirms you got it, (b) tells them when to expect a call, (c) gives them the phone number as a backup, and (d) fires a Google Analytics / Meta Pixel conversion event?</p>
+<p>If it just says &ldquo;Thanks&rdquo; and redirects to the homepage, you can&rsquo;t measure your own funnel. You&rsquo;re flying blind.</p>
+<hr />
+<h2>The pattern</h2>
+<p>Each of the seven is free, except the schema markup which takes an hour. None of them require redesigning the site. All of them are things the web guy in 2019 wasn&rsquo;t expected to know.</p>
+<p>Together, they&rsquo;ll do more for your lead volume this quarter than anything an ad agency could sell you for $2,000/month.</p>
+<hr />
+<p><em>Shipside audits contractor sites for these seven and more. $149 gets the Loom walkthrough and a 1-page fix plan ranked by dollar impact.</em></p>
+  </article>
+
+  <div class="cta-banner">
+    <h3>Need this fixed?</h3>
+    <p>Shipside builds fast, flat-price websites and teardowns for local service businesses. Audits from $149, rebuilds from $499. No retainer. No bloat.</p>
+    <a href="mailto:shipside.labs@gmail.com">Get a teardown →</a>
+  </div>
+</main>
+
+<footer>
+  <span>Shipside © 2025</span>
+  <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a>
+  <a href="../../index.html">Home</a>
+</footer>
+
+</body>
+</html>

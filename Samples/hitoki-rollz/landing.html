@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HITOKI ROLLZ — Glass Tips, For The Culture</title>
+<meta name="description" content="A Florida glass-tip collector's bench. Hand-picked, quality-checked, single-piece — for the ones who take the session seriously.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #120f0d;
+  --ink: #1a1612;
+  --ink-2: #221c16;
+  --paper: #f2e9d8;
+  --paper-dim: #a59883;
+  --amber: #d49a3b;
+  --amber-bright: #f0b14a;
+  --rust: #b54219;
+  --glass: #a8bec3;
+  --line: rgba(242, 233, 216, 0.1);
+  --line-bold: rgba(242, 233, 216, 0.22);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--paper);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-weight: 400;
+}
+
+/* Paper grain texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0.75 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+  z-index: 100;
+}
+
+/* Vignette */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 80% at 50% 50%, transparent 35%, var(--void) 100%);
+  pointer-events: none;
+  z-index: 99;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+}
+
+.mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.serif-italic {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ===== NAV ===== */
+nav {
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 50;
+}
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.brand .est {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--paper-dim);
+  letter-spacing: 0.2em;
+}
+.nav-links {
+  display: flex;
+  gap: 44px;
+}
+.nav-links a {
+  color: var(--paper);
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.72;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--amber);
+}
+
+/* ===== TICKER ===== */
+.ticker {
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--ink);
+  padding: 16px 0;
+  position: relative;
+  z-index: 40;
+}
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: tickerScroll 50s linear infinite;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.ticker-track span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 40px;
+}
+.ticker-track span::before {
+  content: '◆';
+  color: var(--paper-dim);
+  margin-right: 40px;
+}
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 120px 0 180px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: 'H';
+  position: absolute;
+  top: -120px;
+  right: -160px;
+  font-family: 'Instrument Serif', serif;
+  font-size: 900px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1;
+  z-index: 0;
+  opacity: 0.55;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 80px;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-label {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 56px;
+}
+.hero-label .mono.amber { color: var(--amber); }
+.hero-label .mono.dim { color: var(--paper-dim); }
+.hero-label .dash {
+  width: 44px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.hero h1 {
+  font-size: clamp(68px, 9.5vw, 148px);
+  margin-bottom: 44px;
+}
+.hero h1 .line {
+  display: block;
+  animation: fadeUp 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero h1 .line:nth-child(1) { animation-delay: 0.05s; }
+.hero h1 .line:nth-child(2) { animation-delay: 0.2s; padding-left: 7vw; }
+.hero h1 .line:nth-child(3) { animation-delay: 0.35s; padding-left: 1.5vw; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-body {
+  max-width: 480px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--paper-dim);
+  margin-bottom: 52px;
+  animation: fadeUp 1.2s 0.5s both;
+}
+.hero-body em {
+  font-style: italic;
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding: 22px 42px 22px 44px;
+  border: 1px solid var(--paper);
+  color: var(--paper);
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.35s;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--amber);
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.7, 0, 0.3, 1);
+  z-index: -1;
+}
+.cta:hover {
+  color: var(--void);
+  border-color: var(--amber);
+}
+.cta:hover::before { transform: translateX(0); }
+.cta .arrow {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  font-style: italic;
+  transition: transform 0.35s;
+}
+.cta:hover .arrow { transform: translateX(8px); }
+
+.hero-cta-wrap { animation: fadeUp 1.2s 0.7s both; }
+.hero-meta {
+  margin-top: 28px;
+  display: flex;
+  gap: 28px;
+  color: var(--paper-dim);
+  animation: fadeUp 1.2s 0.9s both;
+}
+
+/* ===== SPECIMEN ===== */
+.specimen {
+  position: relative;
+  aspect-ratio: 3/4.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeUp 1.4s 0.4s both;
+}
+
+.specimen-frame {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--line-bold);
+  border-radius: 48% 48% 48% 48% / 50% 50% 50% 50%;
+  background:
+    radial-gradient(ellipse 55% 65% at 50% 50%, rgba(212, 154, 59, 0.14), transparent 70%),
+    linear-gradient(180deg, var(--ink) 0%, var(--void) 100%);
+}
+.specimen-frame::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid var(--line);
+  border-radius: 48% 48% 48% 48% / 50% 50% 50% 50%;
+}
+
+.specimen svg {
+  position: relative;
+  z-index: 2;
+  width: 70%;
+  height: 82%;
+  animation: float 7s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-14px) rotate(-4deg); }
+}
+
+.specimen-mark {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--amber);
+  z-index: 3;
+}
+.specimen-mark.tl { top: 10px; left: 48px; border-right: none; border-bottom: none; }
+.specimen-mark.tr { top: 10px; right: 48px; border-left: none; border-bottom: none; }
+.specimen-mark.bl { bottom: 10px; left: 48px; border-right: none; border-top: none; }
+.specimen-mark.br { bottom: 10px; right: 48px; border-left: none; border-top: none; }
+
+.specimen-caption {
+  position: absolute;
+  bottom: -64px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max-content;
+  z-index: 3;
+}
+.specimen-caption .fig {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: block;
+  margin-bottom: 6px;
+}
+.specimen-caption .desc {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--paper-dim);
+}
+
+/* ===== SECTION COMMON ===== */
+section { position: relative; z-index: 2; }
+.section-pad { padding: 140px 0; }
+
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 80px;
+  margin-bottom: 96px;
+  align-items: end;
+}
+.section-header .mono.amber { color: var(--amber); display: block; margin-bottom: 22px; }
+.section-header h2 {
+  font-size: clamp(48px, 6vw, 92px);
+  line-height: 0.94;
+}
+.section-header .section-note {
+  color: var(--paper-dim);
+  max-width: 440px;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  padding-bottom: 12px;
+}
+
+/* ===== FIELD NOTES ===== */
+.field-notes {
+  border-top: 1px solid var(--line-bold);
+}
+.note {
+  display: grid;
+  grid-template-columns: 140px 1fr 1.8fr;
+  gap: 60px;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--line-bold);
+  align-items: start;
+  transition: background 0.5s;
+}
+.note:hover {
+  background: linear-gradient(90deg, rgba(212, 154, 59, 0.06), transparent 80%);
+}
+.note-num {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 84px;
+  color: var(--amber);
+  line-height: 0.8;
+}
+.note h3 {
+  font-size: 42px;
+  line-height: 1;
+}
+.note-body {
+  color: var(--paper-dim);
+  font-size: 17px;
+  line-height: 1.7;
+  padding-top: 14px;
+}
+.note-body em {
+  color: var(--paper);
+  font-style: italic;
+}
+
+/* ===== PROCESS ===== */
+.process {
+  background: var(--ink);
+  position: relative;
+  border-top: 1px solid var(--line-bold);
+  border-bottom: 1px solid var(--line-bold);
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.step {
+  padding: 64px 52px;
+  border-right: 1px solid var(--line);
+  position: relative;
+}
+.step:last-child { border-right: none; }
+.step-num {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 132px;
+  line-height: 0.75;
+  color: var(--amber);
+  opacity: 0.92;
+  margin-bottom: 36px;
+  display: block;
+}
+.step h3 {
+  font-size: 34px;
+  margin-bottom: 18px;
+}
+.step p {
+  color: var(--paper-dim);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* ===== PACKS ===== */
+.packs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line-bold);
+  border-bottom: 1px solid var(--line-bold);
+}
+.pack {
+  padding: 80px 48px 60px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  transition: background 0.5s;
+}
+.pack:last-child { border-right: none; }
+.pack:hover { background: var(--ink); }
+
+.pack.featured {
+  background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+}
+.pack.featured::before {
+  content: '— Most Coveted —';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: var(--void);
+  color: var(--amber);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid var(--amber);
+}
+
+.pack-roman {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--amber);
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+.pack-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.pack-tagline {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  color: var(--paper-dim);
+  font-size: 16px;
+  margin-bottom: 44px;
+}
+.pack-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 32px 0;
+}
+.pack-price {
+  font-family: 'Instrument Serif', serif;
+  font-size: 84px;
+  line-height: 0.88;
+  margin-bottom: 10px;
+}
+.pack-price .curr {
+  font-size: 36px;
+  vertical-align: top;
+  color: var(--paper-dim);
+  margin-right: 4px;
+  line-height: 1;
+}
+.pack-per {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin-bottom: 40px;
+}
+.pack-features {
+  list-style: none;
+  margin-bottom: 44px;
+}
+.pack-features li {
+  font-family: 'Newsreader', serif;
+  font-size: 15px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+}
+.pack-features li::before {
+  content: '—';
+  color: var(--amber);
+  margin-right: 14px;
+  font-weight: 600;
+}
+.pack-btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  text-align: center;
+  color: var(--paper);
+  text-decoration: none;
+  border: 1px solid var(--paper);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.pack-btn:hover {
+  background: var(--paper);
+  color: var(--void);
+}
+.pack.featured .pack-btn {
+  background: var(--amber);
+  color: var(--void);
+  border-color: var(--amber);
+}
+.pack.featured .pack-btn:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--void);
+}
+
+/* ===== FAQ ===== */
+.faq-grid {
+  max-width: 920px;
+  margin: 0 auto;
+}
+.faq {
+  border-bottom: 1px solid var(--line-bold);
+  padding: 44px 0;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.faq-num {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--amber);
+  font-size: 28px;
+  line-height: 1;
+  padding-top: 4px;
+}
+.faq h4 {
+  font-size: 30px;
+  margin-bottom: 16px;
+  line-height: 1.05;
+}
+.faq p {
+  color: var(--paper-dim);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 640px;
+}
+
+/* ===== FINAL CTA ===== */
+.final {
+  text-align: center;
+  padding: 200px 0;
+  position: relative;
+  overflow: hidden;
+}
+.final::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 1000px;
+  height: 1000px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(212, 154, 59, 0.1), transparent 60%);
+  pointer-events: none;
+}
+.final .mono {
+  color: var(--amber);
+  display: block;
+  margin-bottom: 40px;
+}
+.final h2 {
+  font-size: clamp(60px, 9vw, 148px);
+  line-height: 0.9;
+  margin-bottom: 52px;
+  position: relative;
+}
+.final h2 .serif-italic {
+  color: var(--amber);
+  font-style: italic;
+}
+.final > .container > p {
+  color: var(--paper-dim);
+  font-size: 21px;
+  max-width: 520px;
+  margin: 0 auto 56px;
+  font-style: italic;
+  position: relative;
+}
+.final .cta { position: relative; }
+
+.guarantees {
+  display: flex;
+  justify-content: center;
+  gap: 52px;
+  margin-top: 88px;
+  flex-wrap: wrap;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  position: relative;
+}
+.guarantees span { display: flex; align-items: center; gap: 12px; }
+.guarantees span::before {
+  content: '◆';
+  color: var(--amber);
+  font-size: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--line-bold);
+  padding: 64px 0 44px;
+  background: var(--ink);
+  position: relative;
+  z-index: 2;
+}
+footer .container {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 56px;
+}
+.footer-brand .brand { margin-bottom: 24px; }
+.footer-brand p {
+  color: var(--paper-dim);
+  font-size: 15px;
+  font-style: italic;
+  max-width: 340px;
+  line-height: 1.6;
+}
+.footer-col h5 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { padding: 7px 0; }
+.footer-col a {
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 15px;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.footer-col a:hover { opacity: 1; }
+
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+}
+.footer-bottom a { color: var(--amber); text-decoration: none; }
+
+/* ===== REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 920px) {
+  .container { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 0 120px; }
+  .hero::before { font-size: 520px; top: -40px; right: -100px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 80px; }
+  .hero h1 .line:nth-child(2) { padding-left: 0; }
+  .hero h1 .line:nth-child(3) { padding-left: 0; }
+  .hero-meta { flex-wrap: wrap; gap: 16px; }
+  .specimen { max-width: 340px; margin: 40px auto 0; }
+  .section-pad { padding: 90px 0; }
+  .section-header { grid-template-columns: 1fr; gap: 28px; margin-bottom: 64px; align-items: start; }
+  .note { grid-template-columns: 70px 1fr; gap: 24px; padding: 44px 0; }
+  .note-num { font-size: 56px; }
+  .note h3 { font-size: 28px; }
+  .note-body { grid-column: 1 / -1; padding-top: 0; }
+  .process-steps { grid-template-columns: 1fr; }
+  .step { border-right: none; border-bottom: 1px solid var(--line); padding: 48px 36px; }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-size: 96px; }
+  .packs { grid-template-columns: 1fr; }
+  .pack { border-right: none; border-bottom: 1px solid var(--line); padding: 60px 36px 48px; }
+  .pack:last-child { border-bottom: none; }
+  .faq { grid-template-columns: 50px 1fr; gap: 20px; padding: 36px 0; }
+  .faq h4 { font-size: 24px; }
+  .final { padding: 120px 0; }
+  .guarantees { gap: 24px; margin-top: 60px; }
+  footer .container { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="brand">HITOKI ROLLZ <span class="est">FL · MMXXVI</span></div>
+    <div class="nav-links">
+      <a href="#method">The Bench</a>
+      <a href="#packs">The Pieces</a>
+      <a href="#faq">Inquiries</a>
+    </div>
+    <a href="#packs" class="nav-cta">Browse →</a>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>For The Culture</span>
+    <span>FL Glass Tip Collector</span>
+    <span>Quality Checked · Hand-Picked</span>
+    <span>One Piece At A Time</span>
+    <span>Tracked &amp; Insured</span>
+    <span>For The Culture</span>
+    <span>FL Glass Tip Collector</span>
+    <span>Quality Checked · Hand-Picked</span>
+    <span>One Piece At A Time</span>
+    <span>Tracked &amp; Insured</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-label">
+          <span class="mono amber">Piece №. 001</span>
+          <span class="dash"></span>
+          <span class="mono dim">FL Glass Tip Collector</span>
+        </div>
+        <h1>
+          <span class="line">The glass tip,</span>
+          <span class="line serif-italic">for the</span>
+          <span class="line">culture.</span>
+        </h1>
+        <p class="hero-body">
+          A working collector's bench out of Florida. Every piece on this page is one <em>hitoki</em> would smoke himself — hand-picked, quality-checked, single-piece. No cardboard, no fillers, no mass runs. <em>Just the pieces worth keeping.</em>
+        </p>
+        <div class="hero-cta-wrap">
+          <a href="#packs" class="cta">
+            See The Pieces
+            <span class="arrow">→</span>
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span class="mono">Curated · FL</span>
+          <span class="mono">Tracked &amp; Insured</span>
+          <span class="mono">Quality Checked</span>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <span class="specimen-mark tl"></span>
+        <span class="specimen-mark tr"></span>
+        <span class="specimen-mark bl"></span>
+        <span class="specimen-mark br"></span>
+        <div class="specimen-frame"></div>
+        <svg viewBox="0 0 260 520" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0e0c0a" stop-opacity="1"/>
+              <stop offset="8%" stop-color="#2c3a3f" stop-opacity="0.85"/>
+              <stop offset="22%" stop-color="#6a8088" stop-opacity="0.75"/>
+              <stop offset="42%" stop-color="#cfe0e6" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.95"/>
+              <stop offset="58%" stop-color="#cfe0e6" stop-opacity="0.9"/>
+              <stop offset="78%" stop-color="#6a8088" stop-opacity="0.75"/>
+              <stop offset="92%" stop-color="#2c3a3f" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#0e0c0a" stop-opacity="1"/>
+            </linearGradient>
+            <linearGradient id="topRim" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#3a4a50" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#cfe0e6" stop-opacity="0.9"/>
+            </linearGradient>
+            <radialGradient id="amberHalo" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f0b14a" stop-opacity="0.35"/>
+              <stop offset="60%" stop-color="#d49a3b" stop-opacity="0.1"/>
+              <stop offset="100%" stop-color="#d49a3b" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="blur1">
+              <feGaussianBlur stdDeviation="2"/>
+            </filter>
+          </defs>
+
+          <!-- Ambient amber halo behind the glass -->
+          <ellipse cx="130" cy="260" rx="110" ry="230" fill="url(#amberHalo)"/>
+
+          <!-- Glass tip main body -->
+          <rect x="70" y="80" width="120" height="380" rx="3" fill="url(#glass)"/>
+
+          <!-- Subtle inner-shadow on the sides to give depth -->
+          <rect x="70" y="80" width="18" height="380" fill="url(#glass)" opacity="0.6"/>
+          <rect x="172" y="80" width="18" height="380" fill="url(#glass)" opacity="0.6"/>
+
+          <!-- Top rim (elliptical opening) -->
+          <ellipse cx="130" cy="80" rx="60" ry="12" fill="url(#topRim)" stroke="#f5f2ea" stroke-width="0.8" opacity="0.95"/>
+          <ellipse cx="130" cy="80" rx="48" ry="8" fill="#0d0e10" opacity="0.92"/>
+          <ellipse cx="130" cy="78" rx="46" ry="6" fill="none" stroke="#ffffff" stroke-width="0.4" opacity="0.5"/>
+
+          <!-- Bottom edge (rim) -->
+          <ellipse cx="130" cy="460" rx="60" ry="10" fill="#2c3a3f" opacity="0.85"/>
+          <ellipse cx="130" cy="460" rx="60" ry="10" fill="none" stroke="#cfe0e6" stroke-width="0.6" opacity="0.5"/>
+
+          <!-- Vertical light streaks (glass highlights) -->
+          <rect x="82" y="90" width="3.5" height="360" fill="#ffffff" opacity="0.7"/>
+          <rect x="90" y="90" width="1.8" height="360" fill="#ffffff" opacity="0.45"/>
+          <rect x="96" y="90" width="0.8" height="360" fill="#ffffff" opacity="0.3"/>
+
+          <rect x="168" y="90" width="2.5" height="360" fill="#ffffff" opacity="0.55"/>
+          <rect x="174" y="90" width="1" height="360" fill="#ffffff" opacity="0.3"/>
+
+          <!-- Center refraction line -->
+          <rect x="130" y="90" width="0.6" height="360" fill="#ffffff" opacity="0.18"/>
+
+          <!-- Outer left and right edge (crisp highlight) -->
+          <rect x="69" y="80" width="1.5" height="380" fill="#ffffff" opacity="0.75"/>
+          <rect x="189" y="80" width="1.5" height="380" fill="#0d0e10" opacity="0.9"/>
+
+          <!-- Subtle horizontal light band across the middle -->
+          <rect x="70" y="240" width="120" height="30" fill="#ffffff" opacity="0.05" filter="url(#blur1)"/>
+        </svg>
+        <div class="specimen-caption">
+          <span class="fig">Fig. 001</span>
+          <span class="desc">Handblown borosilicate · ≈12mm bore</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIELD NOTES -->
+<section class="section-pad" id="method">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <span class="mono amber">— The Bench</span>
+        <h2>Why glass.<br>Why curated.</h2>
+      </div>
+      <p class="section-note">Four things hitoki cares about, gathered from a whole lot of sessions and an unreasonable amount of care.</p>
+    </div>
+    <div class="field-notes">
+      <div class="note reveal">
+        <div class="note-num">i.</div>
+        <h3>Cooler draws,<br>cleaner taste.</h3>
+        <p class="note-body">Glass doesn't burn, doesn't flake, and doesn't absorb flavor. Every pull comes through <em>cleaner</em> than paper or cardboard — the way the flower was supposed to hit in the first place.</p>
+      </div>
+      <div class="note reveal">
+        <div class="note-num">ii.</div>
+        <h3>Rinse. Reuse.<br>Repeat.</h3>
+        <p class="note-body">One tip, a hundred sessions. Warm water between rolls, a quick isopropyl soak when it wants a deep clean. Each piece on this bench retires a <em>lifetime</em> of throwaway crutches.</p>
+      </div>
+      <div class="note reveal">
+        <div class="note-num">iii.</div>
+        <h3>Built for<br>the fat ones.</h3>
+        <p class="note-body">Standard filters pinch down on a thick roll. These are shaped to hold a wide joint in place <em>without</em> crushing the airflow — end to end, first hit to the last, the way it should pull.</p>
+      </div>
+      <div class="note reveal">
+        <div class="note-num">iv.</div>
+        <h3>For the<br>culture.</h3>
+        <p class="note-body">Heavy in the hand, smooth on the lip, crystal clear. Cardboard is fine for a Tuesday. A real glass tip is how you show up and let everyone at the table know <em>this one's different</em>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process section-pad">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <span class="mono amber">— The Method</span>
+        <h2>Three steps.<br>That's it.</h2>
+      </div>
+      <p class="section-note">No learning curve. If you can roll, you already know how to use one of these.</p>
+    </div>
+    <div class="process-steps reveal">
+      <div class="step">
+        <span class="step-num">i.</span>
+        <h3>Pick your piece</h3>
+        <p>Browse the current bench. Each one is hand-blown, quality-checked by hitoki himself — some limited, some one-of-one, none mass-produced.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">ii.</span>
+        <h3>Roll it up</h3>
+        <p>Drop the tip in, pack it around, twist it up. Works with any paper — king-size, hemp, rice, whatever you prefer.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">iii.</span>
+        <h3>Rinse &amp; repeat</h3>
+        <p>Warm water after a session, a quick iso soak when it wants a deep clean. One piece, a lifetime of rolls.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="section-pad" id="packs">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <span class="mono amber">— The Pieces</span>
+        <h2>Pick your<br>piece.</h2>
+      </div>
+      <p class="section-note">Every piece on the bench is hand-blown and individually quality-checked. Quantities are limited by what's actually worth passing on. If the glass breaks in the first thirty days, hitoki makes it right.</p>
+    </div>
+    <div class="packs reveal">
+      <div class="pack">
+        <div class="pack-roman">No. I</div>
+        <h3 class="pack-name">The Working Piece</h3>
+        <p class="pack-tagline">Daily driver. Built right.</p>
+        <div class="pack-price"><span class="curr">$</span>75</div>
+        <div class="pack-per">Single Piece · Small Batch</div>
+        <div class="pack-divider"></div>
+        <ul class="pack-features">
+          <li>Hand-blown borosilicate</li>
+          <li>King-size bore</li>
+          <li>Quality-checked by hitoki</li>
+          <li>Ready to roll</li>
+        </ul>
+        <a href="#" class="pack-btn">Claim This One</a>
+      </div>
+      <div class="pack featured">
+        <div class="pack-roman">No. II</div>
+        <h3 class="pack-name">The Statement</h3>
+        <p class="pack-tagline">Limited. Numbered. Hand-pulled color.</p>
+        <div class="pack-price"><span class="curr">$</span>185</div>
+        <div class="pack-per">Single Piece · Limited Run</div>
+        <div class="pack-divider"></div>
+        <ul class="pack-features">
+          <li>Hand-pulled color work</li>
+          <li>Numbered limited run</li>
+          <li>Hitoki-verified</li>
+          <li>Presentation box</li>
+          <li>Tracked &amp; insured</li>
+        </ul>
+        <a href="#" class="pack-btn">Claim This One</a>
+      </div>
+      <div class="pack">
+        <div class="pack-roman">No. III</div>
+        <h3 class="pack-name">The Grail</h3>
+        <p class="pack-tagline">One of one. Never made again.</p>
+        <div class="pack-price"><span class="curr">$</span>385</div>
+        <div class="pack-per">Single Piece · One of One</div>
+        <div class="pack-divider"></div>
+        <ul class="pack-features">
+          <li>Sculpted &amp; color-worked</li>
+          <li>One-of-one — no duplicates</li>
+          <li>Signed &amp; photographed</li>
+          <li>Wooden presentation case</li>
+          <li>White-glove shipping</li>
+        </ul>
+        <a href="#" class="pack-btn">Claim This One</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" id="faq">
+  <div class="container">
+    <div class="section-header reveal" style="grid-template-columns: 1fr; gap: 20px; text-align: left; margin-bottom: 80px;">
+      <div>
+        <span class="mono amber">— Inquiries</span>
+        <h2>The common<br><span class="serif-italic">questions</span>.</h2>
+      </div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq reveal">
+        <span class="faq-num">i.</span>
+        <div>
+          <h4>How do I clean the tips?</h4>
+          <p>Warm water handles most of it. For stubborn buildup, drop them in isopropyl alcohol for an hour, rinse, and they're back to factory clear. Dishwasher-safe on the top rack, if you're feeling lazy.</p>
+        </div>
+      </div>
+      <div class="faq reveal">
+        <span class="faq-num">ii.</span>
+        <div>
+          <h4>Are these legal to buy?</h4>
+          <p>Yes. Sold as reusable glass rolling tips for legal herb and tobacco use. Same category as any other tip or filter you'd find in a shop — no license, no ID, no special paperwork.</p>
+        </div>
+      </div>
+      <div class="faq reveal">
+        <span class="faq-num">iii.</span>
+        <div>
+          <h4>How many times can I reuse them?</h4>
+          <p>Hundreds. The glass itself doesn't wear out — it only breaks if you drop it. One tip replaces thousands of cardboard crutches over its useful life.</p>
+        </div>
+      </div>
+      <div class="faq reveal">
+        <span class="faq-num">iv.</span>
+        <div>
+          <h4>What size joints are they best for?</h4>
+          <p>Designed for fat rolls — anywhere from a king-size up to whatever you feel like packing. Standard joints also fit fine, you'll just have a slightly roomier draw.</p>
+        </div>
+      </div>
+      <div class="faq reveal">
+        <span class="faq-num">v.</span>
+        <div>
+          <h4>How long does shipping take?</h4>
+          <p>Every piece ships tracked and insured within one to two business days. Most US orders arrive within three to five days after that. Grail pieces ship white-glove, double-boxed, signature-required.</p>
+        </div>
+      </div>
+      <div class="faq reveal">
+        <span class="faq-num">vi.</span>
+        <div>
+          <h4>Why does a glass tip cost this much?</h4>
+          <p>A five-dollar glass tip is machine-pulled by the thousand in a factory you've never heard of. These are hand-blown by real glassworkers, then hitoki personally checks each one before it goes on the bench. You're paying for the hand that made it, the eye that approved it, and a piece that holds its value instead of ending up in a landfill.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="container">
+    <span class="mono">—— For The Culture ——</span>
+    <h2>One piece. One<br><span class="serif-italic">lifetime of rolls.</span></h2>
+    <p>Every piece on the bench is one hitoki would keep himself.</p>
+    <a href="#packs" class="cta">
+      See The Pieces
+      <span class="arrow">→</span>
+    </a>
+    <div class="guarantees">
+      <span>Secure Checkout</span>
+      <span>Ships 1–2 Days</span>
+      <span>No-BS Support</span>
+      <span>30-Day Breakage</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">
+      <div class="brand">HITOKI ROLLZ <span class="est">FL · MMXXVI</span></div>
+      <p>A working collector's bench out of Florida. Hand-picked glass tips, quality-checked one by one, for the ones who take the session seriously.</p>
+    </div>
+    <div class="footer-col">
+      <h5>The Pieces</h5>
+      <ul>
+        <li><a href="#packs">The Working Piece</a></li>
+        <li><a href="#packs">The Statement</a></li>
+        <li><a href="#packs">The Grail</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>The Bench</h5>
+      <ul>
+        <li><a href="#method">Why Glass</a></li>
+        <li><a href="#method">Care &amp; Cleaning</a></li>
+        <li><a href="#faq">Inquiries</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>For The Culture</h5>
+      <ul>
+        <li><a href="https://instagram.com/hitoki_rollz" target="_blank" rel="noopener">@hitoki_rollz</a></li>
+        <li><a href="https://instagram.com/hitoki_rollz" target="_blank" rel="noopener">DM for Collabs</a></li>
+        <li><a href="#">Drop List</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© MMXXVI Hitoki Rollz · FL — For legal herb &amp; tobacco use only.</span>
+    <span>Site by <a href="mailto:shipside.labs@gmail.com">Shipside</a></span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

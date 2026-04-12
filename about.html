@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Shipside</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Bungee:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --iron: #0b0b0d;
+      --iron-light: #141418;
+      --steel: #1f1f24;
+      --grid: rgba(37,37,44,0.35);
+      --bone: #f2ede0;
+      --bone-dim: #a8a398;
+      --rust: #d44d1c;
+      --rust-bright: #ff5c25;
+      --caution: #e8b220;
+      --red-stamp: #b8321a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background-color: var(--iron);
+      color: var(--bone);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Grid background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 48px 48px;
+      background-attachment: fixed;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    /* Noise overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" fill="%23000" filter="url(%23noise)" opacity="0.02"/></svg>');
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(11, 11, 13, 0.95);
+      border-bottom: 1px solid var(--grid);
+      padding: 24px 0;
+      position: relative;
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .brand {
+      font-family: 'Bungee', display;
+      font-size: clamp(18px, 5vw, 24px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .brand-ship {
+      color: var(--bone);
+    }
+
+    .brand-side {
+      color: var(--rust);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex: 1;
+    }
+
+    .nav-links a {
+      color: var(--bone-dim);
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: var(--bone);
+    }
+
+    .nav-links a.active {
+      color: var(--rust);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      position: relative;
+    }
+
+    /* Stamp */
+    .stamp {
+      position: absolute;
+      top: 40px;
+      right: 60px;
+      font-family: 'Bungee', display;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--red-stamp);
+      border: 2px solid var(--red-stamp);
+      padding: 8px 16px;
+      transform: rotate(-2deg);
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .stamp {
+        top: 20px;
+        right: 20px;
+        font-size: 14px;
+      }
+    }
+
+    h1 {
+      font-family: 'Bungee', display;
+      font-size: clamp(28px, 8vw, 52px);
+      line-height: 1.2;
+      margin-bottom: 64px;
+      color: var(--bone);
+      letter-spacing: -1px;
+      font-weight: 700;
+    }
+
+    section {
+      margin-bottom: 80px;
+    }
+
+    section h2 {
+      font-family: 'Bungee', display;
+      font-size: clamp(24px, 6vw, 36px);
+      margin-bottom: 32px;
+      color: var(--rust);
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+
+    section p {
+      max-width: 720px;
+      margin-bottom: 16px;
+      line-height: 1.8;
+      color: var(--bone);
+    }
+
+    section p + p {
+      margin-top: 16px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    .process-item {
+      border-left: 3px solid var(--rust);
+      padding-left: 16px;
+    }
+
+    .process-item strong {
+      color: var(--rust-bright);
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .process-item p {
+      font-size: 14px;
+      color: var(--bone-dim);
+    }
+
+    .dont-list {
+      max-width: 720px;
+    }
+
+    .dont-list li {
+      list-style: none;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      position: relative;
+      color: var(--bone);
+    }
+
+    .dont-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rust);
+    }
+
+    .tech-stack {
+      max-width: 720px;
+    }
+
+    .tech-stack p + p {
+      margin-top: 12px;
+    }
+
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(212, 77, 28, 0.1), rgba(255, 92, 37, 0.05));
+      border: 1px solid var(--rust);
+      padding: 48px;
+      margin-top: 80px;
+      text-align: center;
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .cta-banner h3 {
+      font-family: 'Bungee', display;
+      font-size: clamp(20px, 5vw, 28px);
+      margin-bottom: 24px;
+      color: var(--rust-bright);
+      letter-spacing: 0.5px;
+    }
+
+    .cta-banner a {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 32px;
+      background-color: var(--rust);
+      color: var(--bone);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      border-radius: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .cta-banner a:hover {
+      background-color: var(--rust-bright);
+    }
+
+    footer {
+      background-color: rgba(11, 11, 13, 0.95);
+      border-top: 1px solid var(--grid);
+      padding: 48px 24px;
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--bone-dim);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--bone);
+    }
+
+    footer-divider {
+      display: inline-block;
+      color: var(--grid);
+      margin: 0 16px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-banner {
+        padding: 32px 24px;
+      }
+
+      footer-content {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      footer-divider {
+        display: block;
+        margin: 8px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">
+        <span class="brand-ship">SHIP</span><span class="brand-side">SIDE</span>
+      </div>
+      <div class="nav-links">
+        <a href="./index.html">HOME</a>
+        <a href="./blog/index.html">FIELD NOTES</a>
+        <a href="./about.html" class="active">ABOUT</a>
+        <a href="mailto:shipside.labs@gmail.com">INQUIRIES</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="stamp">THE BENCH</div>
+
+    <h1>One person. Flat price. Ship in seven days.</h1>
+
+    <section>
+      <h2>How I Got Here</h2>
+      <p>
+        I spent years in home services—roofing, mostly. Saw the same problem every day: small business owners getting skinned by agencies. A $3,000 WordPress site that scores 30 on mobile. A 5-second load time on a 100 Mbps connection. Sites that bleed leads because they were built by someone who'd never had to sell anything.
+      </p>
+      <p>
+        So I started building. No team. No retainer. No "strategy workshops" or monthly fees. Just flat-price rebuilds in Next.js, shipped in seven days. Georgetown, then Austin. That's still how I work.
+      </p>
+    </section>
+
+    <section>
+      <h2>How I Work</h2>
+      <div class="process-grid">
+        <div class="process-item">
+          <strong>Teardown</strong>
+          <p>I audit your site. Speed, mobile, conversions. No fluff report.</p>
+        </div>
+        <div class="process-item">
+          <strong>Quote</strong>
+          <p>$149 teardown. Rebuild is $499 flat. You decide.</p>
+        </div>
+        <div class="process-item">
+          <strong>Build</strong>
+          <p>Seven days. One revision round. Static HTML or edge-rendered.</p>
+        </div>
+        <div class="process-item">
+          <strong>Ship</strong>
+          <p>Live on Vercel. You own the code. No vendor lock-in.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What I Don't Do</h2>
+      <ul class="dont-list">
+        <li>SEO retainers</li>
+        <li>Social media management</li>
+        <li>Brand strategy workshops</li>
+        <li>Logo design</li>
+        <li>Ongoing maintenance contracts</li>
+      </ul>
+      <p style="margin-top: 24px;">
+        If you need a site that loads fast and converts, that's the job. Everything else is noise.
+      </p>
+    </section>
+
+    <section>
+      <h2>The Stack</h2>
+      <div class="tech-stack">
+        <p>
+          <strong>Next.js</strong> for the framework. <strong>Vercel</strong> for hosting. <strong>Supabase</strong> if you need a database. No WordPress. No page builders. No plugins. Code ships clean.
+        </p>
+      </div>
+    </section>
+
+    <div class="cta-banner">
+      <h3>Got a site that's bleeding leads?</h3>
+      <p style="color: var(--bone-dim);">Let's tear it down and build something that actually converts.</p>
+      <a href="mailto:shipside.labs@gmail.com">Start a teardown</a>
+    </div>
+  </main>
+
+  <footer>
+    <footer-content>
+      <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a>
+      <footer-divider>|</footer-divider>
+      <a href="./index.html">Home</a>
+    </footer-content>
+  </footer>
+</body>
+</html>

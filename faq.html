@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Shipside</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Bungee:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --iron: #0b0b0d;
+      --iron-light: #141418;
+      --steel: #1f1f24;
+      --grid: rgba(37,37,44,0.35);
+      --bone: #f2ede0;
+      --bone-dim: #a8a398;
+      --rust: #d44d1c;
+      --rust-bright: #ff5c25;
+      --red-stamp: #b8321a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--iron);
+      color: var(--bone);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+    }
+
+    /* Grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(0deg, transparent 23px, var(--grid) 23px, var(--grid) 24px),
+        linear-gradient(90deg, transparent 23px, var(--grid) 23px, var(--grid) 24px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Noise overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2"/><feColorMatrix type="saturate" values="0.3"/></filter><rect width="100" height="100" fill="%23000000" opacity="0.08" filter="url(%23noise)"/></svg>');
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Rust radial gradient accents */
+    body {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(212, 77, 28, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(255, 92, 37, 0.1) 0%, transparent 50%),
+        var(--iron);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* Navigation */
+    nav {
+      position: relative;
+      z-index: 2;
+      background-color: rgba(11, 11, 13, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--grid);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    nav div {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    nav .brand {
+      font-family: 'Bungee', sans-serif;
+      font-size: 16px;
+      color: var(--rust-bright);
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: var(--bone-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--bone);
+    }
+
+    nav a.active {
+      color: var(--rust-bright);
+    }
+
+    /* Stamp */
+    .stamp {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 32px;
+      font-family: 'Bungee', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--red-stamp);
+      border: 2px solid var(--red-stamp);
+      padding: 8px 16px;
+      transform: rotate(-3deg);
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Bungee', sans-serif;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 48px;
+      color: var(--bone);
+      letter-spacing: -0.5px;
+    }
+
+    /* FAQ Grid */
+    .faq-grid {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .faq-item {
+      background-color: var(--iron-light);
+      border-left: 4px solid var(--rust);
+      padding: 24px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(212, 77, 28, 0.05) 0%, transparent 100%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .faq-item:hover {
+      background-color: var(--steel);
+      transform: translateX(4px);
+    }
+
+    .faq-item:hover::before {
+      opacity: 1;
+    }
+
+    .faq-question {
+      font-family: 'Bungee', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--rust-bright);
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .faq-answer {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--bone-dim);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background-color: var(--iron-light);
+      border: 1px solid var(--grid);
+      padding: 40px 24px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cta-question {
+      font-family: 'Bungee', sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--bone);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .cta-link {
+      display: inline-block;
+      color: var(--rust-bright);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .cta-link:hover {
+      border-bottom-color: var(--rust-bright);
+      color: #ff6d3a;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--grid);
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--bone-dim);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 32px;
+        margin-bottom: 32px;
+      }
+
+      main {
+        padding: 40px 16px;
+      }
+
+      nav div {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      nav .brand {
+        flex: 0 0 100%;
+      }
+
+      .cta-question {
+        font-size: 18px;
+      }
+
+      .faq-question {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div>
+      <span class="brand">SHIPSIDE</span>
+      <a href="./index.html">HOME</a>
+      <a href="./blog/index.html">FIELD NOTES</a>
+      <a href="./faq.html" class="active">FAQ</a>
+      <a href="mailto:shipside.labs@gmail.com">INQUIRIES</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="stamp">INTEL</div>
+
+    <h1>Questions I get asked before the first email.</h1>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">Who is behind Shipside?</div>
+        <div class="faq-answer">One person. I've worked in home services and tech. I build websites, not decks about websites. Georgetown/Austin TX based.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Why is it so cheap?</div>
+        <div class="faq-answer">No office, no team, no account managers, no project managers. I build the thing myself. The price reflects the actual cost of the work, not the overhead of an agency.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What's the turnaround?</div>
+        <div class="faq-answer">Teardowns ship in 48 hours. Rebuilds ship in 7 days. MVPs ship in 14 days. All from deposit date.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What tech do you use?</div>
+        <div class="faq-answer">Next.js, Vercel, Supabase when needed. No WordPress. No page builders. No plugin stacks. Everything deploys as static HTML or edge-rendered. Sites score 90+ on Google PageSpeed.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Do you do SEO?</div>
+        <div class="faq-answer">I set up the technical foundation — fast load, mobile-first, proper schema, GBP alignment. I don't do ongoing SEO retainers, keyword campaigns, or monthly reporting. The site ships fast and clean; ranking follows.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What about design?</div>
+        <div class="faq-answer">I build clean, functional layouts. No custom illustration, no brand identity work, no logo design. If you need a creative agency, I'll tell you. If you need a site that converts, that's me.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What happens after the site ships?</div>
+        <div class="faq-answer">You own it. Code lives in a GitHub repo. Hosted on Vercel's free tier (no monthly hosting fee for most sites). If you need changes later, email me — small edits are usually free, bigger changes get a flat quote.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What if I don't like it?</div>
+        <div class="faq-answer">One revision round is included in the Rebuild. Two rounds in the MVP. If we genuinely can't align after that, I'll refund the build cost minus the teardown fee ($149). I'd rather lose a job than ship something I'm not proud of.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Can you do e-commerce?</div>
+        <div class="faq-answer">Basic product pages, yes. Full Shopify-style cart with inventory management, no. If you're selling 3-10 products DTC, I can build that. If you need a catalog of 500 SKUs, you need Shopify.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Do you work with businesses outside Austin?</div>
+        <div class="faq-answer">Yes. Everything is remote. I focus on local service businesses because that's where the conversion leaks are worst, but the geographic reach doesn't matter. Email works.</div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <div class="cta-question">Still have a question?</div>
+      <a href="mailto:shipside.labs@gmail.com" class="cta-link">Ship me an email.</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Shipside. All rights reserved.</p>
+  </footer>
+</body>
+</html>

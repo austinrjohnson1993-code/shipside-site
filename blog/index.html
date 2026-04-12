@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipside — Field Notes From The Bench</title>
+<meta name="description" content="Shipside field notes on small business websites, conversion leaks, and flat-price web builds. Written from the bench.">
+<meta property="og:title" content="Shipside — Field Notes">
+<meta property="og:description" content="Notes on small business websites, conversion leaks, and flat-price web builds.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  main { position: relative; z-index: 5; }
+
+  /* ---------- TICKER ---------- */
+  .ticker {
+    position: relative;
+    z-index: 10;
+    background: var(--rust);
+    color: var(--iron);
+    border-bottom: 2px solid var(--iron);
+    padding: 10px 0;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .ticker-track {
+    display: inline-block;
+    animation: tick 40s linear infinite;
+    padding-left: 100%;
+  }
+  .ticker-track span { margin: 0 2em; }
+  @keyframes tick {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+  .brand span { color: var(--rust); }
+  .nav-links { display: flex; gap: 32px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ---------- HEADER ---------- */
+  .page-header {
+    padding: 80px var(--gutter) 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-bottom: 1px dashed var(--steel);
+  }
+  .page-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .page-label::before {
+    content: '■';
+    margin-right: 8px;
+    color: var(--rust);
+  }
+  .page-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(40px, 7vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 24px;
+  }
+  .page-title span { color: var(--rust); }
+  .page-sub {
+    font-size: 16px;
+    color: var(--bone-dim);
+    max-width: 640px;
+    line-height: 1.6;
+  }
+
+  /* ---------- POST LIST ---------- */
+  .post-list {
+    padding: 60px var(--gutter) 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    margin-bottom: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--steel);
+  }
+
+  .post {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--steel);
+    align-items: baseline;
+    transition: background 0.2s;
+  }
+  .post:hover {
+    background: linear-gradient(90deg, rgba(212, 77, 28, 0.03), transparent);
+  }
+  .post-date {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    font-weight: 500;
+  }
+  .post-body { }
+  .post-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--bone);
+    line-height: 1.35;
+    margin-bottom: 8px;
+    text-decoration: none;
+    display: block;
+  }
+  .post-title:hover { color: var(--rust); }
+  .post-summary {
+    font-size: 13px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    max-width: 640px;
+  }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border: 1px solid var(--steel);
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(212, 77, 28, 0.05);
+  }
+  .post-meta {
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  @media (max-width: 780px) {
+    .post {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 24px 0;
+    }
+    .post-meta { justify-self: start; }
+    .nav-links { gap: 18px; font-size: 11px; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid var(--steel);
+    padding: 40px var(--gutter);
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--bone); text-decoration: none; }
+  footer a:hover { color: var(--rust); }
+
+  /* stamp element */
+  .stamp {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 2px solid var(--red-stamp);
+    color: var(--red-stamp);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+    margin-bottom: 24px;
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker" role="banner">
+  <div class="ticker-track">
+    <span>FIELD NOTES FROM THE BENCH</span>
+    <span>★</span>
+    <span>SMALL BUSINESS WEBSITES, CONVERSION LEAKS, FLAT-PRICE BUILDS</span>
+    <span>★</span>
+    <span>SHIP FIRST. TALK LATER.</span>
+    <span>★</span>
+    <span>FIELD NOTES FROM THE BENCH</span>
+    <span>★</span>
+    <span>SMALL BUSINESS WEBSITES, CONVERSION LEAKS, FLAT-PRICE BUILDS</span>
+    <span>★</span>
+  </div>
+</div>
+
+<nav>
+  <a href="../index.html" class="brand">SHIP<span>SIDE</span></a>
+  <div class="nav-links">
+    <a href="../index.html">HOME</a>
+    <a href="./index.html">FIELD NOTES</a>
+    <a href="../services.html">SERVICES</a>
+    <a href="../work.html">WORK</a>
+    <a href="../about.html">ABOUT</a>
+    <a href="mailto:shipside.labs@gmail.com">INQUIRIES</a>
+  </div>
+</nav>
+
+<main>
+  <header class="page-header">
+    <div class="stamp">BULLETIN № 012</div>
+    <div class="page-label">Field Notes From The Bench</div>
+    <h1 class="page-title">The things most<br>small business sites<br>get <span>wrong</span>.</h1>
+    <p class="page-sub">
+      Shipside field notes — observations from actually auditing small business websites.
+      Mobile speed, form leaks, plugin hell, the plumbing nobody checks.
+      No SEO theory. No 2,000-word introductions. Just the thing, the number, and the fix.
+    </p>
+  </header>
+
+  <section class="post-list">
+    <div class="section-label">Posts · newest first</div>
+
+    <article class="post">
+      <div class="post-date">2026 · 03 · 11</div>
+      <div class="post-body">
+        <a href="./posts/2026-03-11-teardown-explainer.html" class="post-title">The $149 Teardown: What Actually Goes In A Shipside Site Audit</a>
+        <p class="post-summary">Transparency about what a Shipside $149 teardown actually includes — what I check, what the deliverable looks like, and why it's priced so low.</p>
+        <div class="post-tags">
+          <span class="tag">shipside</span>
+          <span class="tag">teardown</span>
+          <span class="tag">audit</span>
+        </div>
+      </div>
+      <div class="post-meta">3 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2026 · 02 · 18</div>
+      <div class="post-body">
+        <a href="./posts/2026-02-18-google-business-profile-signal.html" class="post-title">The Google Business Profile Setting That's Splitting Your Ranking In Half</a>
+        <p class="post-summary">If your GBP URL doesn't exactly match your live URL, Google treats them as two different businesses. Most small businesses have this misconfigured and lose half their local ranking.</p>
+        <div class="post-tags">
+          <span class="tag">google-business-profile</span>
+          <span class="tag">local-seo</span>
+          <span class="tag">ranking</span>
+        </div>
+      </div>
+      <div class="post-meta">3 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2026 · 01 · 27</div>
+      <div class="post-body">
+        <a href="./posts/2026-01-27-wordpress-leads-2026.html" class="post-title">Why I Don't Use WordPress For Anyone Who Wants Leads</a>
+        <p class="post-summary">WordPress still runs 40% of the internet. It's also the wrong tool for 90% of local business lead sites. Here's the honest breakdown of why, and what I ship instead.</p>
+        <div class="post-tags">
+          <span class="tag">wordpress</span>
+          <span class="tag">nextjs</span>
+          <span class="tag">methodology</span>
+        </div>
+      </div>
+      <div class="post-meta">4 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 12 · 19</div>
+      <div class="post-body">
+        <a href="./posts/2025-12-19-seven-day-mvp.html" class="post-title">The Seven-Day MVP: What Ships, What Doesn't, And Why We Say No To Half The Asks</a>
+        <p class="post-summary">A 7-day MVP is not a 7-day negotiation. Here's exactly what fits in the build window, what doesn't, and why saying no to scope is the reason it's possible at all.</p>
+        <div class="post-tags">
+          <span class="tag">mvp</span>
+          <span class="tag">saas</span>
+          <span class="tag">founders</span>
+        </div>
+      </div>
+      <div class="post-meta">4 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 12 · 02</div>
+      <div class="post-body">
+        <a href="./posts/2025-12-02-flat-price-methodology.html" class="post-title">Flat-Price Web Builds: Why We Quote $499 And Hit It Every Time</a>
+        <p class="post-summary">Most agencies quote hourly and land 40% over estimate. Flat pricing fixes the incentives and forces discipline. Here's the math behind how Shipside quotes a fixed price and actually hits it.</p>
+        <div class="post-tags">
+          <span class="tag">methodology</span>
+          <span class="tag">pricing</span>
+          <span class="tag">agency</span>
+        </div>
+      </div>
+      <div class="post-meta">4 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 11 · 05</div>
+      <div class="post-body">
+        <a href="./posts/2025-11-05-dental-new-patient-form.html" class="post-title">Dentists: Your New-Patient Form Is A Funnel, Not A Formality</a>
+        <p class="post-summary">The new-patient form on a dental site is the single biggest conversion lever most practices ignore. Here's why, and what a good one actually looks like.</p>
+        <div class="post-tags">
+          <span class="tag">dental</span>
+          <span class="tag">conversion</span>
+          <span class="tag">forms</span>
+        </div>
+      </div>
+      <div class="post-meta">3 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 10 · 28</div>
+      <div class="post-body">
+        <a href="./posts/2025-10-28-captcha-kills-leads.html" class="post-title">If Your Contact Form Has A reCAPTCHA, You're Losing Half Your Leads</a>
+        <p class="post-summary">Google's reCAPTCHA drops form conversion by 20-40% on mobile. Most local business sites have it turned on by default and nobody notices the leak.</p>
+        <div class="post-tags">
+          <span class="tag">forms</span>
+          <span class="tag">conversion</span>
+          <span class="tag">captcha</span>
+        </div>
+      </div>
+      <div class="post-meta">3 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 10 · 14</div>
+      <div class="post-body">
+        <a href="./posts/2025-10-14-real-estate-idx-plugins.html" class="post-title">IDX Plugins Are Eating Your Real Estate Site's Mobile Ranking</a>
+        <p class="post-summary">IDX plugins load 40+ third-party scripts before your homepage is interactive. Google penalizes that in local rankings. Here's how to keep the listings and stop bleeding mobile speed.</p>
+        <div class="post-tags">
+          <span class="tag">real-estate</span>
+          <span class="tag">idx</span>
+          <span class="tag">wordpress</span>
+        </div>
+      </div>
+      <div class="post-meta">3 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 09 · 24</div>
+      <div class="post-body">
+        <a href="./posts/2025-09-24-contractor-site-checklist.html" class="post-title">Seven Things Your Old Web Guy Forgot To Set Up On Your Contractor Site</a>
+        <p class="post-summary">Plumbers, electricians, roofers — the seven things that were almost certainly skipped when your site went live, and that are costing you leads every week.</p>
+        <div class="post-tags">
+          <span class="tag">plumbing</span>
+          <span class="tag">electrical</span>
+          <span class="tag">contractors</span>
+        </div>
+      </div>
+      <div class="post-meta">4 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 09 · 03</div>
+      <div class="post-body">
+        <a href="./posts/2025-09-03-med-spa-booking-path-math.html" class="post-title">The Med Spa Booking Path Math: How Every Extra Click Costs $300 In Lifetime Value</a>
+        <p class="post-summary">First-visit med spa traffic is 80% mobile and the window from Instagram to booked is 90 seconds. Every extra click is a consultation lost.</p>
+        <div class="post-tags">
+          <span class="tag">med-spa</span>
+          <span class="tag">aesthetics</span>
+          <span class="tag">mobile</span>
+        </div>
+      </div>
+      <div class="post-meta">3 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 08 · 12</div>
+      <div class="post-body">
+        <a href="./posts/2025-08-12-law-firm-contact-form-leaks.html" class="post-title">Why Law Firms With 12-Field Contact Forms Lose The Client Before The Callback</a>
+        <p class="post-summary">Every extra field on a law firm intake form drops conversion. For a practice at $3,000 avg case value, a form that's too long costs real money — and most firms don't realize they're bleeding leads.</p>
+        <div class="post-tags">
+          <span class="tag">law-firm</span>
+          <span class="tag">conversion</span>
+          <span class="tag">intake</span>
+        </div>
+      </div>
+      <div class="post-meta">3 min</div>
+    </article>
+
+    <article class="post">
+      <div class="post-date">2025 · 07 · 22</div>
+      <div class="post-body">
+        <a href="./posts/2025-07-22-mobile-speed-penalty-hvac.html" class="post-title">The Google Penalty Hiding In Your HVAC Site's Mobile Speed Score</a>
+        <p class="post-summary">Google's local pack actively demotes slow mobile sites for HVAC and home service searches. If your score is under 50 you're invisible for the searches that matter.</p>
+        <div class="post-tags">
+          <span class="tag">hvac</span>
+          <span class="tag">local-seo</span>
+          <span class="tag">mobile-speed</span>
+        </div>
+      </div>
+      <div class="post-meta">3 min</div>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  <div>© SHIPSIDE · FIELD NOTES · <a href="../index.html">HOME</a></div>
+  <div>BUILDS FROM $499 · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipside — Ship first. Talk later.</title>
+<meta name="description" content="Shipside builds your Next.js MVP or lead-capture rebuild in 48 hours to 7 days. Flat price. Real code. You keep it.">
+<meta property="og:title" content="Shipside — Ship first. Talk later.">
+<meta property="og:description" content="Flat-price web builds in 48 hours to 7 days. Real code you own. No dev-shop theater.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  /* ---------- TICKER ---------- */
+  .ticker {
+    position: relative;
+    z-index: 10;
+    background: var(--rust);
+    color: var(--iron);
+    border-bottom: 2px solid var(--iron);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .ticker-track {
+    display: inline-block;
+    padding-left: 100%;
+    animation: tick 40s linear infinite;
+  }
+
+  .ticker-track span { margin: 0 28px; }
+  .ticker-track span::before {
+    content: '◆';
+    margin-right: 28px;
+    color: var(--iron);
+  }
+
+  @keyframes tick {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px var(--gutter);
+    border-bottom: 1px dashed var(--grid);
+  }
+
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand::before {
+    content: '▲';
+    color: var(--rust);
+    font-size: 14px;
+  }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--bone);
+    color: var(--bone);
+    padding: 10px 18px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--rust);
+    color: var(--iron);
+    border-color: var(--rust);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    z-index: 5;
+    padding: clamp(60px, 10vw, 140px) var(--gutter) clamp(80px, 12vw, 160px);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-meta span::before { content: '—'; color: var(--rust); }
+
+  .hero h1 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(44px, 9vw, 128px);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    max-width: 14ch;
+    margin-bottom: 40px;
+  }
+
+  .hero h1 .accent {
+    color: var(--rust);
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-sub {
+    font-size: clamp(15px, 1.4vw, 19px);
+    line-height: 1.55;
+    max-width: 58ch;
+    color: var(--bone-dim);
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+
+  .hero-sub strong { color: var(--bone); font-weight: 600; }
+
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary, .btn-secondary {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 20px 32px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    border: 2px solid;
+  }
+
+  .btn-primary {
+    background: var(--rust);
+    color: var(--iron);
+    border-color: var(--rust);
+  }
+
+  .btn-primary:hover {
+    background: var(--rust-bright);
+    border-color: var(--rust-bright);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--bone);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--bone);
+    border-color: var(--bone);
+  }
+
+  .btn-secondary:hover {
+    background: var(--bone);
+    color: var(--iron);
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section { position: relative; z-index: 5; }
+
+  .section {
+    padding: clamp(60px, 9vw, 120px) var(--gutter);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .section-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(32px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.005em;
+    max-width: 16ch;
+    margin-bottom: 64px;
+  }
+
+  /* ---------- PROBLEM ---------- */
+  .problem {
+    border-top: 1px solid var(--grid);
+    background: var(--iron-light);
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--grid);
+    border: 1px solid var(--grid);
+    margin-bottom: 48px;
+  }
+
+  .problem-cell {
+    background: var(--iron-light);
+    padding: 40px 32px;
+    transition: background 0.2s ease;
+  }
+
+  .problem-cell:hover { background: var(--steel); }
+
+  .problem-num {
+    font-family: 'Bungee', sans-serif;
+    font-size: 36px;
+    color: var(--rust);
+    margin-bottom: 12px;
+  }
+
+  .problem-headline {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+
+  .problem-body {
+    color: var(--bone-dim);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .manifesto {
+    border-left: 3px solid var(--rust);
+    padding: 8px 0 8px 28px;
+    font-size: clamp(18px, 2.2vw, 26px);
+    line-height: 1.5;
+    max-width: 52ch;
+    color: var(--bone);
+    font-weight: 500;
+  }
+
+  .manifesto strong { color: var(--rust); }
+
+  /* ---------- WORK ORDERS ---------- */
+  .work-orders {
+    border-top: 1px solid var(--grid);
+  }
+
+  .orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .order {
+    border: 1px solid var(--grid);
+    background: var(--iron-light);
+    padding: 36px 32px 32px;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .order:hover {
+    border-color: var(--rust);
+    transform: translateY(-4px);
+  }
+
+  .order.featured {
+    border-color: var(--rust);
+    background: linear-gradient(180deg, var(--steel), var(--iron-light));
+  }
+
+  .order.featured::before {
+    content: 'MAIN OFFER';
+    position: absolute;
+    top: -10px;
+    right: 24px;
+    background: var(--rust);
+    color: var(--iron);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+  }
+
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--grid);
+  }
+
+  .order-num {
+    font-family: 'Bungee', sans-serif;
+    color: var(--bone-dim);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  .order-turnaround {
+    font-size: 11px;
+    color: var(--caution);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--caution);
+    padding: 4px 8px;
+  }
+
+  .order-name {
+    font-family: 'Bungee', sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+
+  .order-price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .order-price .amount {
+    font-family: 'Bungee', sans-serif;
+    font-size: 40px;
+    color: var(--rust);
+  }
+
+  .order-price .unit {
+    font-size: 12px;
+    color: var(--bone-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .order-desc {
+    color: var(--bone-dim);
+    font-size: 13.5px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .order-list {
+    list-style: none;
+    margin-bottom: 32px;
+    flex-grow: 1;
+  }
+
+  .order-list li {
+    font-size: 13px;
+    color: var(--bone);
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--grid);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .order-list li::before {
+    content: '✓';
+    color: var(--rust);
+    font-weight: 600;
+  }
+
+  .order-cta {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--bone);
+    border: 1px solid var(--bone);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .order.featured .order-cta {
+    background: var(--rust);
+    color: var(--iron);
+    border-color: var(--rust);
+  }
+
+  .order-cta:hover {
+    background: var(--rust-bright);
+    color: var(--iron);
+    border-color: var(--rust-bright);
+  }
+
+  /* ---------- CUSTOM QUOTE ROW ---------- */
+  .custom-quote {
+    margin-top: 24px;
+    border: 1px solid var(--grid);
+    background: var(--iron-light);
+    padding: 44px 40px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .custom-quote::before {
+    content: 'OPEN BOARD';
+    position: absolute;
+    top: -10px;
+    left: 32px;
+    background: var(--caution);
+    color: var(--iron);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+  }
+
+  .custom-quote:hover { border-color: var(--caution); }
+
+  .custom-quote-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .custom-quote-left { flex: 1; min-width: 280px; }
+
+  .custom-quote .cq-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .custom-quote .cq-num {
+    font-family: 'Bungee', sans-serif;
+    color: var(--bone-dim);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
+  .custom-quote .cq-badge {
+    font-size: 11px;
+    color: var(--caution);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--caution);
+    padding: 4px 8px;
+  }
+
+  .custom-quote .cq-name {
+    font-family: 'Bungee', sans-serif;
+    font-size: 30px;
+    line-height: 1;
+    color: var(--bone);
+    margin-bottom: 16px;
+  }
+
+  .cq-desc {
+    color: var(--bone-dim);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 64ch;
+  }
+
+  .cq-desc strong { color: var(--bone); }
+
+  /* ---------- PROCESS ---------- */
+  .process {
+    border-top: 1px solid var(--grid);
+    background: var(--iron-light);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    border: 1px solid var(--grid);
+  }
+
+  .step {
+    padding: 40px 32px;
+    border-right: 1px dashed var(--grid);
+    position: relative;
+  }
+
+  .step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: 'Bungee', sans-serif;
+    font-size: 12px;
+    color: var(--rust);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--bone);
+    margin-bottom: 10px;
+    font-family: 'Bungee', sans-serif;
+    line-height: 1.1;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+  }
+
+  /* ---------- STACK ---------- */
+  .stack {
+    border-top: 1px solid var(--grid);
+  }
+
+  .stack-intro {
+    max-width: 60ch;
+    color: var(--bone-dim);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .stack-intro strong { color: var(--bone); }
+
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--grid);
+  }
+
+  .tool {
+    flex: 1 1 180px;
+    padding: 32px 24px;
+    border-right: 1px dashed var(--grid);
+    border-bottom: 1px dashed var(--grid);
+    text-align: left;
+  }
+
+  .tool:nth-child(n+5) { border-bottom: none; }
+
+  .tool-name {
+    font-family: 'Bungee', sans-serif;
+    font-size: 15px;
+    color: var(--bone);
+    margin-bottom: 6px;
+  }
+
+  .tool-role {
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about {
+    border-top: 1px solid var(--grid);
+    background: var(--iron-light);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  @media (max-width: 780px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  .about-label {
+    font-family: 'Bungee', sans-serif;
+    font-size: 14px;
+    color: var(--rust);
+    letter-spacing: 0.04em;
+  }
+
+  .about-body {
+    font-size: 16px;
+    color: var(--bone);
+    line-height: 1.75;
+  }
+
+  .about-body p { margin-bottom: 18px; }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    border-top: 1px solid var(--grid);
+  }
+
+  details {
+    border-bottom: 1px dashed var(--grid);
+    padding: 24px 0;
+    cursor: pointer;
+  }
+
+  details summary {
+    list-style: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--bone);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  details summary::-webkit-details-marker { display: none; }
+
+  details summary::after {
+    content: '+';
+    font-family: 'Bungee', sans-serif;
+    color: var(--rust);
+    font-size: 24px;
+    transition: transform 0.2s ease;
+  }
+
+  details[open] summary::after { transform: rotate(45deg); }
+
+  details p {
+    margin-top: 16px;
+    color: var(--bone-dim);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 62ch;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta {
+    border-top: 1px solid var(--grid);
+    background: var(--rust);
+    color: var(--iron);
+  }
+
+  .final-cta .section { padding: clamp(80px, 10vw, 140px) var(--gutter); }
+
+  .final-cta h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(36px, 7vw, 88px);
+    line-height: 0.9;
+    color: var(--iron);
+    margin-bottom: 32px;
+    max-width: 14ch;
+  }
+
+  .final-cta p {
+    font-size: 17px;
+    color: var(--iron);
+    max-width: 52ch;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .final-cta .btn-primary {
+    background: var(--iron);
+    color: var(--bone);
+    border-color: var(--iron);
+  }
+
+  .final-cta .btn-primary:hover {
+    background: var(--bone);
+    color: var(--iron);
+    border-color: var(--bone);
+    box-shadow: 4px 4px 0 var(--iron);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid var(--grid);
+    padding: 48px var(--gutter);
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-size: 12px;
+    color: var(--bone-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  footer a { color: var(--bone); text-decoration: none; }
+  footer a:hover { color: var(--rust); }
+
+  .foot-brand {
+    font-family: 'Bungee', sans-serif;
+    color: var(--bone);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- ANIMATIONS ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: reveal 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.30s; }
+  .delay-3 { animation-delay: 0.45s; }
+  .delay-4 { animation-delay: 0.60s; }
+  .delay-5 { animation-delay: 0.75s; }
+
+  /* Scroll reveal */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .scroll-reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 680px) {
+    .hero { padding-top: 60px; padding-bottom: 80px; }
+    .hero h1 { font-size: 48px; }
+    .btn-primary, .btn-secondary { padding: 16px 20px; font-size: 11px; width: 100%; justify-content: center; }
+    .hero-cta-row { flex-direction: column; align-items: stretch; }
+    .nav-cta { font-size: 10px; padding: 8px 12px; }
+    .brand { font-size: 18px; }
+    nav { padding: 20px 24px; }
+    .step { border-right: none; border-bottom: 1px dashed var(--grid); }
+    .step:last-child { border-bottom: none; }
+    .tool { flex: 1 1 100%; border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Shipside Workshop Open</span>
+    <span>Now Booking April 13 through April 20</span>
+    <span>2 Rebuild Slots Available This Week</span>
+    <span>Flat Price. Real Code. You Keep It.</span>
+    <span>Shipside Workshop Open</span>
+    <span>Now Booking April 13 through April 20</span>
+    <span>2 Rebuild Slots Available This Week</span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="brand">SHIPSIDE</div>
+  <div style="display:flex;gap:24px;align-items:center;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;">
+    <a href="./blog/index.html" style="color:#a8a398;text-decoration:none;">Field Notes</a>
+    <a href="./services.html" style="color:#a8a398;text-decoration:none;">Services</a>
+    <a href="./work.html" style="color:#a8a398;text-decoration:none;">Work</a>
+    <a href="./about.html" style="color:#a8a398;text-decoration:none;">About</a>
+    <a href="#orders" class="nav-cta">See Offers →</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-meta reveal">
+    <span>JARRELL, TX</span>
+    <span>EST. 2026</span>
+    <span>ONE PERSON SHOP</span>
+  </div>
+  <h1 class="reveal delay-1">
+    SHIP FIRST.<br>
+    TALK <span class="accent">LATER.</span>
+  </h1>
+  <p class="hero-sub reveal delay-2">
+    Shipside builds your web app, MVP, or lead-capture rebuild in
+    <strong>48 hours to 7 days</strong>. Flat price. Real Next.js code
+    on your GitHub. No account managers, no 3-week silence, no Bubble lock-in.
+    You tell me what's broken — I ship the fix.
+  </p>
+  <div class="hero-cta-row reveal delay-3">
+    <a href="#orders" class="btn-primary">
+      Start with a $149 Teardown
+      <span>→</span>
+    </a>
+    <a href="#orders" class="btn-secondary">
+      Jump to the $499 Rebuild
+    </a>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem">
+  <div class="section">
+    <div class="section-label scroll-reveal">THE PROBLEM</div>
+    <h2 class="section-title scroll-reveal">
+      HIRING A DEV SHOULDN'T FEEL LIKE BUYING A CAR.
+    </h2>
+    <div class="problem-grid scroll-reveal">
+      <div class="problem-cell">
+        <div class="problem-num">01</div>
+        <div class="problem-headline">Dev shops quote $15K–$30K</div>
+        <div class="problem-body">Eight-week timelines. Account managers with pretty decks. You pay for overhead and wait for a "kickoff call."</div>
+      </div>
+      <div class="problem-cell">
+        <div class="problem-num">02</div>
+        <div class="problem-headline">No-code hits a wall at 60%</div>
+        <div class="problem-body">Bubble and Webflow look great until you need real logic, a real database, or a real integration. Then you're stuck.</div>
+      </div>
+      <div class="problem-cell">
+        <div class="problem-num">03</div>
+        <div class="problem-headline">Offshore teams disappear</div>
+        <div class="problem-body">The proposal was sharp. The first week was fine. Then the Slack channel went quiet and you lost a month.</div>
+      </div>
+    </div>
+    <div class="manifesto scroll-reveal">
+      <strong>None of that.</strong> One person. Real code. A flat price taped to the door.
+      If it's not done by the date I promised, you don't pay the balance.
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ORDERS ============ -->
+<section class="work-orders" id="orders">
+  <div class="section">
+    <div class="section-label scroll-reveal">WORK ORDERS · ON THE BOARD</div>
+    <h2 class="section-title scroll-reveal">
+      THREE OFFERS. FIXED PRICE. FIXED DATE.
+    </h2>
+
+    <div class="orders-grid">
+
+      <!-- Order #001 -->
+      <div class="order scroll-reveal">
+        <div class="order-header">
+          <div class="order-num">WORK ORDER · #001</div>
+          <div class="order-turnaround">24 HRS</div>
+        </div>
+        <div class="order-name">TEARDOWN</div>
+        <div class="order-price">
+          <span class="amount">$149</span>
+          <span class="unit">FLAT</span>
+        </div>
+        <p class="order-desc">
+          A 10-minute Loom walkthrough of what's actually broken on your site or app,
+          plus a one-page written fix plan. No selling. No homework. Just answers.
+        </p>
+        <ul class="order-list">
+          <li>Loom video recorded from your live site</li>
+          <li>Written one-pager: what to fix, in what order</li>
+          <li>Estimated value of each fix (in dollars, not vibes)</li>
+          <li>$149 credited if you upgrade to a rebuild</li>
+        </ul>
+        <a href="mailto:shipside.labs@gmail.com?subject=Teardown%20Order%20%23001&body=Hi%20Ryan%2C%20I%27d%20like%20to%20order%20a%20%24149%20Teardown.%20My%20site%20is%3A%20" class="order-cta">Order #001 →</a>
+      </div>
+
+      <!-- Order #002 -->
+      <div class="order featured scroll-reveal">
+        <div class="order-header">
+          <div class="order-num">WORK ORDER · #002</div>
+          <div class="order-turnaround">48 HRS</div>
+        </div>
+        <div class="order-name">REBUILD</div>
+        <div class="order-price">
+          <span class="amount">$499</span>
+          <span class="unit">FLAT</span>
+        </div>
+        <p class="order-desc">
+          Your landing page rebuilt from the ground up with a working lead form,
+          booking or quote flow, and missed-call text-back. Shipped in 48 hours.
+        </p>
+        <ul class="order-list">
+          <li>New Next.js landing page, mobile-first</li>
+          <li>Real contact / booking form that hits your inbox</li>
+          <li>Missed-call text-back so leads don't bounce</li>
+          <li>Deployed to your domain on Vercel</li>
+          <li>50% upfront via Venmo / Zelle / PayPal, 50% on delivery</li>
+        </ul>
+        <a href="mailto:shipside.labs@gmail.com?subject=Rebuild%20Order%20%23002&body=Hi%20Ryan%2C%20I%27d%20like%20to%20order%20a%20%24499%20Rebuild.%20My%20business%2Fsite%20is%3A%20" class="order-cta">Order #002 →</a>
+      </div>
+
+      <!-- Order #003 -->
+      <div class="order scroll-reveal">
+        <div class="order-header">
+          <div class="order-num">WORK ORDER · #003</div>
+          <div class="order-turnaround">7–14 DAYS</div>
+        </div>
+        <div class="order-name">MVP BUILD</div>
+        <div class="order-price">
+          <span class="amount">$1,500</span>
+          <span class="unit">STARTING</span>
+        </div>
+        <p class="order-desc">
+          A working SaaS or tool MVP: auth, database, the core feature you've been
+          describing for six months, deployed and ready for your first user. Scope
+          gets locked on the first call — anything bigger shifts to a custom quote.
+        </p>
+        <ul class="order-list">
+          <li>Next.js + Supabase stack, shipped to your domain</li>
+          <li>User auth, database, and one core feature end-to-end</li>
+          <li>Source on your GitHub — you own every line</li>
+          <li>Loom walkthroughs of every piece so you can extend it</li>
+          <li>50% upfront via Venmo / Zelle / PayPal, 50% on delivery</li>
+        </ul>
+        <a href="mailto:shipside.labs@gmail.com?subject=MVP%20Order%20%23003&body=Hi%20Ryan%2C%20I%27d%20like%20to%20order%20a%20%241%2C500%20MVP.%20My%20idea%20is%3A%20" class="order-cta">Order #003 →</a>
+      </div>
+
+    </div>
+
+    <!-- Custom Quote Row -->
+    <div class="custom-quote scroll-reveal">
+      <div class="custom-quote-inner">
+        <div class="custom-quote-left">
+          <div class="cq-header">
+            <span class="cq-num">WORK ORDER · #004</span>
+            <span class="cq-badge">QUOTED</span>
+          </div>
+          <div class="cq-name">CUSTOM BUILD</div>
+          <p class="cq-desc">
+            Bigger, weirder, or outside the ladder? <strong>WordPress rescue. PHP
+            or Laravel legacy work. A multi-feature app. An integration nobody else
+            wants to touch.</strong> Tell me what you need in one email and I send
+            back a flat-price quote within 24 hours. If I can't ship it, I tell you
+            that in the first reply.
+          </p>
+        </div>
+        <a href="mailto:shipside.labs@gmail.com?subject=Custom%20Quote%20Request%20%23004&body=Hi%20Ryan%2C%20here%27s%20what%20I%27m%20looking%20for%3A%20%0A%0A-%20What%20I%27m%20on%20(stack%2Fplatform)%3A%20%0A-%20What%27s%20broken%20or%20missing%3A%20%0A-%20What%20I%20want%20to%20end%20up%20with%3A%20%0A-%20Deadline%20or%20urgency%3A%20" class="btn-primary">
+          Request a Quote
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process">
+  <div class="section">
+    <div class="section-label scroll-reveal">HOW IT RUNS</div>
+    <h2 class="section-title scroll-reveal">
+      FROM ORDER TO SHIPPED.
+    </h2>
+    <div class="process-steps scroll-reveal">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <div class="step-title">ORDER</div>
+        <div class="step-desc">Email me what you need. I confirm the scope and lock the price in writing the same day.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <div class="step-title">SCOPE CALL</div>
+        <div class="step-desc">15-minute call. I ask the questions that keep the build from drifting. You approve or change course.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <div class="step-title">BUILD</div>
+        <div class="step-desc">Code goes up on GitHub with daily progress Looms. No silence. You see the build happening.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 04</div>
+        <div class="step-title">HANDOFF</div>
+        <div class="step-desc">Deployed, documented, yours. You get the repo, the deploy, and walkthrough videos of every piece.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section class="stack">
+  <div class="section">
+    <div class="section-label scroll-reveal">THE STACK</div>
+    <h2 class="section-title scroll-reveal">
+      BUILT WITH REAL TOOLS.
+    </h2>
+    <p class="stack-intro scroll-reveal">
+      Shipside runs on the same stack that real YC companies ship on. Nothing proprietary,
+      nothing locked. If I get hit by a bus tomorrow, any Next.js developer on earth can
+      pick up your code and keep going. <strong>That's the whole point.</strong>
+    </p>
+    <div class="stack-row scroll-reveal">
+      <div class="tool">
+        <div class="tool-name">Next.js</div>
+        <div class="tool-role">Frontend Framework</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">Supabase</div>
+        <div class="tool-role">Database & Auth</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">Vercel</div>
+        <div class="tool-role">Hosting & Deploy</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">GitHub</div>
+        <div class="tool-role">Source Control</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">Claude Code</div>
+        <div class="tool-role">AI Build Engine</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">Loom</div>
+        <div class="tool-role">Async Handoff</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about">
+  <div class="section">
+    <div class="section-label scroll-reveal">THE PERSON</div>
+    <div class="about-grid">
+      <div class="about-label scroll-reveal">RYAN<br>JOHNSON</div>
+      <div class="about-body scroll-reveal">
+        <p>I'm a solo developer in Jarrell, Texas. Shipside is me, a keyboard, and a workshop full of AI tools I've spent the last year learning to drive fast.</p>
+        <p>Before this I built software the old way — spec docs, sprint planning, four-week timelines. I don't do that anymore. With Claude Code and a deep MCP stack, I ship production-grade Next.js apps in a fraction of the time an agency quotes. The quality is the same. The price isn't.</p>
+        <p>I take one or two jobs a week because that's how I keep the quality high and the deadlines honest. If the slot is there when you reach out, it's yours. If it's not, I'll tell you the next one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq">
+  <div class="section">
+    <div class="section-label scroll-reveal">QUESTIONS WORTH ASKING</div>
+    <h2 class="section-title scroll-reveal">THE USUAL ONES.</h2>
+
+    <details class="scroll-reveal">
+      <summary>Why so fast? What's the catch?</summary>
+      <p>No catch. I'm an AI-directed developer — I orchestrate Claude Code and about thirty connected tools instead of typing every line myself. That cuts the calendar, not the quality. The code you get is the code you'd get from a traditional shop, just without the eight-week waterfall and the account managers in between.</p>
+    </details>
+
+    <details class="scroll-reveal">
+      <summary>Why so cheap? What am I giving up?</summary>
+      <p>Overhead. No office, no sales team, no project managers writing summaries of summaries. I run lean and I pick jobs I know I can ship on time. You're paying for the build, not the org chart.</p>
+    </details>
+
+    <details class="scroll-reveal">
+      <summary>Do I actually own the code?</summary>
+      <p>Yes. Every project lives on your GitHub under your account. You own every line. No proprietary framework. No lock-in. If you want to move to another developer six months from now, they can pick it up the same day.</p>
+    </details>
+
+    <details class="scroll-reveal">
+      <summary>What if it's not done on time?</summary>
+      <p>You don't pay the balance. The 50% upfront covers the work in progress. If I miss the date I promised you in writing, the second half is off the table until it's shipped. I don't take jobs I can't ship, and I don't ship jobs I wouldn't be proud of.</p>
+    </details>
+
+    <details class="scroll-reveal">
+      <summary>How do I pay?</summary>
+      <p>Venmo, Zelle, or PayPal. Simple as that. I invoice under my personal name (Ryan Johnson) until Shipside's LLC paperwork finishes filing. If your accounting needs a 1099, I send one.</p>
+    </details>
+
+    <details class="scroll-reveal">
+      <summary>Can you handle my stack? I'm on [something weird].</summary>
+      <p>Probably, yes. My home turf is Next.js + Supabase + Vercel and that's where the ladder prices apply — but I run Claude Code, which can read and write any language with real competence. WordPress, PHP, Laravel, Rails, Python, Astro, vanilla HTML from 2011 — if it has a reasonable ecosystem, I can work in it. Tell me what you're on in your first email and I'll either price it under Custom Build (#004) or tell you honestly if it's outside my range before you pay a dollar.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="section">
+    <h2>STOP WAITING. SHIP IT.</h2>
+    <p>
+      You've had the idea for six months. You've gotten quotes that felt insulting.
+      You've watched no-code tools hit a wall. Try the teardown — it's $149 and
+      you'll know by tomorrow morning if this is real.
+    </p>
+    <a href="mailto:shipside.labs@gmail.com?subject=Teardown%20Order%20%23001&body=Hi%20Ryan%2C%20I%27d%20like%20to%20order%20a%20%24149%20Teardown.%20My%20site%20is%3A%20" class="btn-primary">
+      Start the Teardown
+      <span>→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-brand">▲ SHIPSIDE</div>
+  <div>Built in Jarrell, TX · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></div>
+  <div>© 2026 Ryan Johnson</div>
+</footer>
+
+<script>
+  // Scroll reveal observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Google Business Profile Setting That's Splitting Your Ranking In Half — Shipside</title>
+<meta name="description" content="If your Google Business Profile URL doesn't exactly match your website's live URL, Google treats them as two different businesses. Most small businesses have this misconfigured and lose half their local ranking.">
+<meta property="og:title" content="The Google Business Profile Setting That's Splitting Your Ranking In Half">
+<meta property="og:description" content="If your Google Business Profile URL doesn't exactly match your website's live URL, Google treats them as two different businesses. Most small businesses have this misconfigured and lose half their local ranking.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  main { position: relative; z-index: 5; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+  .brand span { color: var(--rust); }
+  .nav-links { display: flex; gap: 32px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ---------- ARTICLE ---------- */
+  .article-header {
+    padding: 80px var(--gutter) 40px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    font-weight: 500;
+  }
+  .article-meta .divider { color: var(--steel); }
+  .article-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 20px;
+  }
+  .article-summary {
+    font-size: 16px;
+    color: var(--bone-dim);
+    max-width: 640px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border: 1px solid var(--steel);
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(212, 77, 28, 0.05);
+  }
+
+  /* ---------- ARTICLE BODY ---------- */
+  .article-body {
+    padding: 40px var(--gutter) 80px;
+    max-width: 780px;
+    margin: 0 auto;
+    border-top: 1px dashed var(--steel);
+  }
+  .article-body h1 { display: none; /* title already in header */ }
+  .article-body h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--bone);
+    margin: 48px 0 20px;
+    line-height: 1.1;
+  }
+  .article-body h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bone);
+    margin: 36px 0 14px;
+    letter-spacing: 0.02em;
+  }
+  .article-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+  .article-body ul, .article-body ol {
+    margin: 16px 0 24px 24px;
+    max-width: 640px;
+  }
+  .article-body li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+  .article-body code {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--rust);
+  }
+  .article-body pre {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+  .article-body pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--bone);
+  }
+  .article-body strong { color: var(--bone); font-weight: 700; }
+  .article-body em { color: var(--bone-dim); font-style: italic; }
+  .article-body hr {
+    border: none;
+    border-top: 1px dashed var(--steel);
+    margin: 40px 0;
+  }
+  .article-body a {
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .article-body a:hover { border-bottom-color: var(--rust); }
+
+  /* ---------- BACK LINK ---------- */
+  .back-link {
+    display: inline-block;
+    margin: 0 0 0 var(--gutter);
+    padding: 20px 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--rust); }
+  .back-link::before { content: '← '; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner {
+    max-width: 780px;
+    margin: 0 auto 80px;
+    padding: 40px var(--gutter);
+    border: 1px solid var(--steel);
+    border-left: 3px solid var(--rust);
+    background: var(--iron-light);
+  }
+  .cta-banner h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+  .cta-banner p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .cta-banner a {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--rust);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .cta-banner a:hover { color: var(--rust-bright); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid var(--steel);
+    padding: 40px var(--gutter);
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--bone); text-decoration: none; }
+  footer a:hover { color: var(--rust); }
+
+  @media (max-width: 600px) {
+    .article-title { font-size: 28px; }
+    .article-meta { flex-wrap: wrap; gap: 10px; }
+    .nav-links { gap: 18px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand">SHIP<span>SIDE</span></a>
+  <div class="nav-links">
+    <a href="../../index.html">HOME</a>
+    <a href="../../services.html">SERVICES</a>
+    <a href="../../work.html">WORK</a>
+    <a href="../index.html">FIELD NOTES</a>
+    <a href="../../about.html">ABOUT</a>
+    <a href="mailto:shipside.labs@gmail.com">INQUIRIES</a>
+  </div>
+</nav>
+
+<a href="../index.html" class="back-link">All Field Notes</a>
+
+<main>
+  <header class="article-header">
+    <div class="article-meta">
+      <span>2026 · 02 · 18</span>
+      <span class="divider">|</span>
+      <span>3 min read</span>
+    </div>
+    <h1 class="article-title">The Google Business Profile Setting That's Splitting Your Ranking In Half</h1>
+    <p class="article-summary">If your Google Business Profile URL doesn't exactly match your website's live URL, Google treats them as two different businesses. Most small businesses have this misconfigured and lose half their local ranking.</p>
+    <div class="article-tags"><span class="tag">google-business-profile</span><span class="tag">local-seo</span><span class="tag">gbp</span><span class="tag">ranking</span></div>
+  </header>
+
+  <article class="article-body">
+    <h1>The Google Business Profile Setting That&rsquo;s Splitting Your Ranking In Half</h1>
+<p>Here&rsquo;s a ranking signal that almost nobody talks about, and that I find misconfigured on about 60% of the small business sites I audit.</p>
+<p>Your Google Business Profile (GBP, formerly Google My Business) has a field for your website URL. The URL you put there has to <em>exactly</em> match the URL your actual site lives at. If they don&rsquo;t match, Google&rsquo;s local ranking algorithm treats them as two separate entities and splits your citation signal in half.</p>
+<h2>What &ldquo;exactly match&rdquo; means</h2>
+<p>Let&rsquo;s say your GBP lists your website as:</p>
+<p><code>http://yoursite.com</code></p>
+<p>But when you visit <code>yoursite.com</code>, your site does this:</p>
+<p><code>http://yoursite.com</code> → redirects to → <code>https://www.yoursite.com</code></p>
+<p>You now have two URLs pointing at the same business. Google sees:</p>
+<ul>
+<li><code>http://yoursite.com</code> — one &ldquo;entity&rdquo; with the GBP profile</li>
+<li><code>https://www.yoursite.com</code> — another &ldquo;entity&rdquo; with all your actual content, reviews, backlinks, and citations</li>
+</ul>
+<p>The ranking signal that should go to one unified entity gets divided between them. Your local pack position drops. You don&rsquo;t know why, because nothing changed on your end.</p>
+<h2>The four variations that cause this</h2>
+<p>Any of these mismatches trigger the split:</p>
+<ol>
+<li><code>http://</code> vs <code>https://</code></li>
+<li><code>www.</code> vs no <code>www.</code></li>
+<li>Trailing slash vs no trailing slash</li>
+<li>Uppercase vs lowercase in the domain (rare but I&rsquo;ve seen it)</li>
+</ol>
+<p>The most common one is #1 and #2 combined. Businesses signed up for Google My Business in 2012 before SSL certificates were standard, put <code>http://</code> in the URL, then switched to HTTPS in 2018 and never went back to update the GBP listing.</p>
+<h2>How to check yours in 60 seconds</h2>
+<ol>
+<li>Open your GBP admin at business.google.com</li>
+<li>Click &ldquo;Info&rdquo; or &ldquo;Edit profile&rdquo;</li>
+<li>Note the exact URL listed for your website</li>
+<li>Open a new browser tab, type your domain name</li>
+<li>Watch what URL ends up in the address bar after all the redirects settle</li>
+</ol>
+<p>Does the GBP URL match the final address bar URL, character for character? Including the protocol, the www, and the trailing slash?</p>
+<p>If yes, you&rsquo;re fine. If no, you&rsquo;ve been losing ranking signal, possibly for years.</p>
+<h2>The fix is 2 minutes</h2>
+<ol>
+<li>Back in GBP admin, edit the website URL</li>
+<li>Paste in the exact URL from your address bar</li>
+<li>Save</li>
+</ol>
+<p>Google will re-crawl within a few days. Rankings usually improve in 2-4 weeks. I&rsquo;ve seen businesses recover two or three positions in the local pack just from this fix alone.</p>
+<h2>Why this almost never gets fixed</h2>
+<p>Because nobody in the SEO business knows about it except people who actually audit websites. The agencies selling you &ldquo;local SEO&rdquo; are running citation building and writing blog posts. They&rsquo;re not looking at your GBP URL field. The person who set up your GBP originally isn&rsquo;t checking it anymore. Your web developer isn&rsquo;t thinking about it because it&rsquo;s not on the website — it&rsquo;s on Google&rsquo;s side.</p>
+<p>The field sits there, wrong, for years. Nothing breaks. The site works. The only symptom is that your competitor ranks above you in the local pack, and nobody can explain why.</p>
+<h2>The other GBP things worth checking while you&rsquo;re in there</h2>
+<p>While you have the admin open:</p>
+<ol>
+<li>Are your hours correct?</li>
+<li>Is your primary category the right one? (A plumber should be &ldquo;Plumber,&rdquo; not &ldquo;Contractor.&rdquo;)</li>
+<li>Do you have secondary categories that match the services you actually offer?</li>
+<li>Is your service area set to the full list of cities you serve?</li>
+<li>Are there photos uploaded in the last 90 days?</li>
+<li>Has anyone posted a &ldquo;Google Post&rdquo; in the last 30 days? (GBP rewards recency in posts.)</li>
+</ol>
+<p>None of those are as high-leverage as the URL fix, but all of them are worth 5 minutes while you&rsquo;re logged in.</p>
+<h2>The meta point</h2>
+<p>Most local businesses are losing ranking not because of SEO they haven&rsquo;t done, but because of small configuration errors nobody notices. The URL mismatch on GBP is the most common one I find. The form field count on the website is second. The tap-to-call link is third.</p>
+<p>None of them require a monthly retainer to fix. All of them are things a single audit surfaces in ten minutes and a small business can fix themselves in an afternoon.</p>
+<p>That&rsquo;s the whole Shipside model in one paragraph.</p>
+<hr />
+<p><em>Shipside audits small business websites and GBP configurations together. $149 for the Loom walkthrough.</em></p>
+  </article>
+
+  <div class="cta-banner">
+    <h3>Need this fixed?</h3>
+    <p>Shipside builds fast, flat-price websites and teardowns for local service businesses. Audits from $149, rebuilds from $499. No retainer. No bloat.</p>
+    <a href="mailto:shipside.labs@gmail.com">Get a teardown →</a>
+  </div>
+</main>
+
+<footer>
+  <span>Shipside © 2026</span>
+  <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a>
+  <a href="../../index.html">Home</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDX Plugins Are Eating Your Real Estate Site's Mobile Ranking — Shipside</title>
+<meta name="description" content="IDX plugins load 40+ third-party scripts before your homepage is interactive. Google penalizes that in local rankings. Here's how to keep the listings and stop bleeding mobile speed.">
+<meta property="og:title" content="IDX Plugins Are Eating Your Real Estate Site's Mobile Ranking">
+<meta property="og:description" content="IDX plugins load 40+ third-party scripts before your homepage is interactive. Google penalizes that in local rankings. Here's how to keep the listings and stop bleeding mobile speed.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  main { position: relative; z-index: 5; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+  .brand span { color: var(--rust); }
+  .nav-links { display: flex; gap: 32px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ---------- ARTICLE ---------- */
+  .article-header {
+    padding: 80px var(--gutter) 40px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    font-weight: 500;
+  }
+  .article-meta .divider { color: var(--steel); }
+  .article-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 20px;
+  }
+  .article-summary {
+    font-size: 16px;
+    color: var(--bone-dim);
+    max-width: 640px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border: 1px solid var(--steel);
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(212, 77, 28, 0.05);
+  }
+
+  /* ---------- ARTICLE BODY ---------- */
+  .article-body {
+    padding: 40px var(--gutter) 80px;
+    max-width: 780px;
+    margin: 0 auto;
+    border-top: 1px dashed var(--steel);
+  }
+  .article-body h1 { display: none; /* title already in header */ }
+  .article-body h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--bone);
+    margin: 48px 0 20px;
+    line-height: 1.1;
+  }
+  .article-body h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bone);
+    margin: 36px 0 14px;
+    letter-spacing: 0.02em;
+  }
+  .article-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+  .article-body ul, .article-body ol {
+    margin: 16px 0 24px 24px;
+    max-width: 640px;
+  }
+  .article-body li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+  .article-body code {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--rust);
+  }
+  .article-body pre {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+  .article-body pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--bone);
+  }
+  .article-body strong { color: var(--bone); font-weight: 700; }
+  .article-body em { color: var(--bone-dim); font-style: italic; }
+  .article-body hr {
+    border: none;
+    border-top: 1px dashed var(--steel);
+    margin: 40px 0;
+  }
+  .article-body a {
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .article-body a:hover { border-bottom-color: var(--rust); }
+
+  /* ---------- BACK LINK ---------- */
+  .back-link {
+    display: inline-block;
+    margin: 0 0 0 var(--gutter);
+    padding: 20px 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--rust); }
+  .back-link::before { content: '← '; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner {
+    max-width: 780px;
+    margin: 0 auto 80px;
+    padding: 40px var(--gutter);
+    border: 1px solid var(--steel);
+    border-left: 3px solid var(--rust);
+    background: var(--iron-light);
+  }
+  .cta-banner h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+  .cta-banner p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .cta-banner a {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--rust);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .cta-banner a:hover { color: var(--rust-bright); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid var(--steel);
+    padding: 40px var(--gutter);
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--bone); text-decoration: none; }
+  footer a:hover { color: var(--rust); }
+
+  @media (max-width: 600px) {
+    .article-title { font-size: 28px; }
+    .article-meta { flex-wrap: wrap; gap: 10px; }
+    .nav-links { gap: 18px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand">SHIP<span>SIDE</span></a>
+  <div class="nav-links">
+    <a href="../../index.html">HOME</a>
+    <a href="../../services.html">SERVICES</a>
+    <a href="../../work.html">WORK</a>
+    <a href="../index.html">FIELD NOTES</a>
+    <a href="../../about.html">ABOUT</a>
+    <a href="mailto:shipside.labs@gmail.com">INQUIRIES</a>
+  </div>
+</nav>
+
+<a href="../index.html" class="back-link">All Field Notes</a>
+
+<main>
+  <header class="article-header">
+    <div class="article-meta">
+      <span>2025 · 10 · 14</span>
+      <span class="divider">|</span>
+      <span>3 min read</span>
+    </div>
+    <h1 class="article-title">IDX Plugins Are Eating Your Real Estate Site's Mobile Ranking</h1>
+    <p class="article-summary">IDX plugins load 40+ third-party scripts before your homepage is interactive. Google penalizes that in local rankings. Here's how to keep the listings and stop bleeding mobile speed.</p>
+    <div class="article-tags"><span class="tag">real-estate</span><span class="tag">idx</span><span class="tag">mobile-speed</span><span class="tag">wordpress</span></div>
+  </header>
+
+  <article class="article-body">
+    <h1>IDX Plugins Are Eating Your Real Estate Site&rsquo;s Mobile Ranking</h1>
+<p>Every real estate site in America has the same problem, and nobody in real estate wants to hear about it.</p>
+<p>It&rsquo;s the IDX plugin.</p>
+<p>IDX — Internet Data Exchange — is how MLS listings show up on your site. Without it you&rsquo;re just a business card. With it, you&rsquo;ve got live listings updated daily. The problem: the stock IDX plugin from every major vendor loads 30 to 60 third-party scripts on every single page load, including your homepage, your bio, your blog, pages that don&rsquo;t show a single listing.</p>
+<p>Google&rsquo;s mobile speed test hates this more than almost anything else.</p>
+<h2>What the numbers actually look like</h2>
+<p>Run your site through <code>pagespeed.web.dev</code> on mobile. If it&rsquo;s a WordPress site with an IDX plugin installed, your score is somewhere between 12 and 35. I&rsquo;ve audited dozens. The best one I&rsquo;ve seen was a 42, and that was a broker who paid a developer $3,000 to rewrite the plugin integration.</p>
+<p>A score under 50 means Google&rsquo;s local pack ranks your competitors above you for every &ldquo;Georgetown realtor,&rdquo; &ldquo;Austin homes for sale,&rdquo; and &ldquo;sell my house&rdquo; search in your service area. You&rsquo;re not showing up.</p>
+<h2>Why your SEO guy hasn&rsquo;t fixed this</h2>
+<p>Because fixing IDX performance is technical work, not SEO work.</p>
+<p>The SEO guy is optimizing your meta descriptions and building citations on Yelp. Those don&rsquo;t matter if you&rsquo;re not even in the top 3 because your site takes 9 seconds to be interactive on mobile.</p>
+<h2>The fix — two paths</h2>
+<p><strong>Path 1 (cheap, works):</strong> Lazy-load the IDX plugin. It only runs on the listing pages that actually need it. Your homepage, bio, about page, and testimonials load without touching the plugin at all. Mobile score usually jumps 30-50 points.</p>
+<p>This is a 4-hour job for a developer who knows WordPress performance. Most SEO agencies don&rsquo;t do it because they&rsquo;re not developers.</p>
+<p><strong>Path 2 (better, also works):</strong> Move the static pages of your site to plain HTML or Next.js and only keep the IDX-powered pages on WordPress. Homepage, about, bio, service area pages — all rebuilt as static, loading instantly. Listings stay where they are. When a visitor clicks a listing, they cross over to the IDX pages, and the speed penalty only hits the pages where it&rsquo;s unavoidable.</p>
+<p>This is a 5-day rebuild. Flat price. You keep the code.</p>
+<h2>What I don&rsquo;t recommend</h2>
+<p>Don&rsquo;t hire an SEO retainer to fix a performance problem. Don&rsquo;t buy a &ldquo;premium&rdquo; IDX plugin from the same vendor that sold you the slow one. Don&rsquo;t let anyone sell you a $5,000 redesign of the frontend when the problem is in the plugin stack.</p>
+<p>The fix is technical, it&rsquo;s small, and it&rsquo;s one of the highest-leverage things you can do for lead volume this quarter.</p>
+<hr />
+<p><em>Shipside rebuilds real estate sites to preserve IDX and kill the mobile speed penalty. Flat price, 7-day delivery.</em></p>
+  </article>
+
+  <div class="cta-banner">
+    <h3>Need this fixed?</h3>
+    <p>Shipside builds fast, flat-price websites and teardowns for local service businesses. Audits from $149, rebuilds from $499. No retainer. No bloat.</p>
+    <a href="mailto:shipside.labs@gmail.com">Get a teardown →</a>
+  </div>
+</main>
+
+<footer>
+  <span>Shipside © 2025</span>
+  <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a>
+  <a href="../../index.html">Home</a>
+</footer>
+
+</body>
+</html>

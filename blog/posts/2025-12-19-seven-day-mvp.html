@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Seven-Day MVP: What Ships, What Doesn't, And Why We Say No To Half The Asks — Shipside</title>
+<meta name="description" content="A 7-day MVP is not a 7-day negotiation. Here's exactly what fits in the build window, what doesn't, and why saying no to scope is the reason it's possible at all.">
+<meta property="og:title" content="The Seven-Day MVP: What Ships, What Doesn't, And Why We Say No To Half The Asks">
+<meta property="og:description" content="A 7-day MVP is not a 7-day negotiation. Here's exactly what fits in the build window, what doesn't, and why saying no to scope is the reason it's possible at all.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  main { position: relative; z-index: 5; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+  .brand span { color: var(--rust); }
+  .nav-links { display: flex; gap: 32px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+
+  /* ---------- ARTICLE ---------- */
+  .article-header {
+    padding: 80px var(--gutter) 40px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    font-weight: 500;
+  }
+  .article-meta .divider { color: var(--steel); }
+  .article-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 20px;
+  }
+  .article-summary {
+    font-size: 16px;
+    color: var(--bone-dim);
+    max-width: 640px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border: 1px solid var(--steel);
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(212, 77, 28, 0.05);
+  }
+
+  /* ---------- ARTICLE BODY ---------- */
+  .article-body {
+    padding: 40px var(--gutter) 80px;
+    max-width: 780px;
+    margin: 0 auto;
+    border-top: 1px dashed var(--steel);
+  }
+  .article-body h1 { display: none; /* title already in header */ }
+  .article-body h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--bone);
+    margin: 48px 0 20px;
+    line-height: 1.1;
+  }
+  .article-body h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bone);
+    margin: 36px 0 14px;
+    letter-spacing: 0.02em;
+  }
+  .article-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+  .article-body ul, .article-body ol {
+    margin: 16px 0 24px 24px;
+    max-width: 640px;
+  }
+  .article-body li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+  .article-body code {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--rust);
+  }
+  .article-body pre {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+  .article-body pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--bone);
+  }
+  .article-body strong { color: var(--bone); font-weight: 700; }
+  .article-body em { color: var(--bone-dim); font-style: italic; }
+  .article-body hr {
+    border: none;
+    border-top: 1px dashed var(--steel);
+    margin: 40px 0;
+  }
+  .article-body a {
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .article-body a:hover { border-bottom-color: var(--rust); }
+
+  /* ---------- BACK LINK ---------- */
+  .back-link {
+    display: inline-block;
+    margin: 0 0 0 var(--gutter);
+    padding: 20px 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--rust); }
+  .back-link::before { content: '← '; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner {
+    max-width: 780px;
+    margin: 0 auto 80px;
+    padding: 40px var(--gutter);
+    border: 1px solid var(--steel);
+    border-left: 3px solid var(--rust);
+    background: var(--iron-light);
+  }
+  .cta-banner h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+  .cta-banner p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .cta-banner a {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--rust);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .cta-banner a:hover { color: var(--rust-bright); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid var(--steel);
+    padding: 40px var(--gutter);
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 11px;
+    color: var(--bone-dim);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--bone); text-decoration: none; }
+  footer a:hover { color: var(--rust); }
+
+  @media (max-width: 600px) {
+    .article-title { font-size: 28px; }
+    .article-meta { flex-wrap: wrap; gap: 10px; }
+    .nav-links { gap: 18px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand">SHIP<span>SIDE</span></a>
+  <div class="nav-links">
+    <a href="../../index.html">HOME</a>
+    <a href="../../services.html">SERVICES</a>
+    <a href="../../work.html">WORK</a>
+    <a href="../index.html">FIELD NOTES</a>
+    <a href="../../about.html">ABOUT</a>
+    <a href="mailto:shipside.labs@gmail.com">INQUIRIES</a>
+  </div>
+</nav>
+
+<a href="../index.html" class="back-link">All Field Notes</a>
+
+<main>
+  <header class="article-header">
+    <div class="article-meta">
+      <span>2025 · 12 · 19</span>
+      <span class="divider">|</span>
+      <span>4 min read</span>
+    </div>
+    <h1 class="article-title">The Seven-Day MVP: What Ships, What Doesn't, And Why We Say No To Half The Asks</h1>
+    <p class="article-summary">A 7-day MVP is not a 7-day negotiation. Here's exactly what fits in the build window, what doesn't, and why saying no to scope is the reason it's possible at all.</p>
+    <div class="article-tags"><span class="tag">mvp</span><span class="tag">saas</span><span class="tag">founders</span><span class="tag">shipside</span></div>
+  </header>
+
+  <article class="article-body">
+    <h1>The Seven-Day MVP: What Ships, What Doesn&rsquo;t, And Why We Say No To Half The Asks</h1>
+<p>A founder messaged me last summer asking for a seven-day MVP for a fitness app. Onboarding flow, workout library, progress tracking, social feed, in-app purchases, push notifications, email onboarding sequence, admin dashboard, and analytics.</p>
+<p>I said no.</p>
+<p>Not because any one of those is hard, but because all of them together is not a seven-day build. It&rsquo;s a three-month build. Calling it an MVP doesn&rsquo;t make it one. The word MVP has been eroded by founders who use it to mean &ldquo;my full product but cheap.&rdquo; It originally meant something much tighter: the smallest thing you can put in front of a real user to learn whether they care.</p>
+<h2>What actually fits in seven days</h2>
+<p>Here&rsquo;s what a real seven-day MVP looks like:</p>
+<ul>
+<li><strong>One user flow, end-to-end.</strong> Sign up, do the one core action, see the result. That&rsquo;s it.</li>
+<li><strong>Auth via Clerk or Supabase Auth.</strong> Not custom. Not OAuth integrations. Email + password or magic link.</li>
+<li><strong>Database via Supabase or Postgres on Neon.</strong> One or two tables. Not a schema that has to survive production traffic on day one.</li>
+<li><strong>One landing page.</strong> Hero, three benefit blocks, pricing, footer. The landing page is part of the seven days.</li>
+<li><strong>Deployed on Vercel.</strong> Custom domain, SSL, analytics. Done.</li>
+<li><strong>One payment flow if needed.</strong> Stripe checkout link. Not a custom subscription dashboard.</li>
+</ul>
+<p>What&rsquo;s not in the seven days:</p>
+<ul>
+<li>No mobile app (that&rsquo;s a separate 14-day project minimum)</li>
+<li>No admin dashboard (use the Supabase UI until you have 100 users)</li>
+<li>No complex search (ship text-based, add semantic later)</li>
+<li>No AI features unless it&rsquo;s literally the product (a ChatGPT wrapper is fine, a &ldquo;smart&rdquo; feature on top of something else is scope creep)</li>
+<li>No social graph, feed, DMs, notifications, or any feature that assumes more than one user is using it simultaneously</li>
+<li>No onboarding emails, drip campaigns, or lifecycle marketing (that&rsquo;s post-MVP work)</li>
+</ul>
+<h2>Why the scope rules are the whole product</h2>
+<p>The founder who messaged me about the fitness app didn&rsquo;t want an MVP. He wanted validation that his full product was worth building. Those are different things.</p>
+<p>An MVP answers one question: <em>does anyone care enough about this specific thing to sign up, use it once, and come back?</em></p>
+<p>If the answer is yes, you build the rest. If the answer is no, you didn&rsquo;t waste three months building a social feed nobody uses.</p>
+<p>The seven-day constraint is what makes the question answerable. A three-month build gives you a hundred ways to explain away the result: &ldquo;we didn&rsquo;t market it well,&rdquo; &ldquo;the onboarding wasn&rsquo;t polished,&rdquo; &ldquo;the design could&rsquo;ve been tighter.&rdquo; A seven-day build with one user flow either gets used or it doesn&rsquo;t. There&rsquo;s nothing to blame.</p>
+<h2>What week two looks like</h2>
+<p>If the MVP works — meaning people sign up, use it, and some small percentage come back — week two is not &ldquo;add all the other features.&rdquo; It&rsquo;s this:</p>
+<ol>
+<li>Talk to the first 10 users. Find out which feature they wished existed when they hit a wall.</li>
+<li>Build that feature. Just that one.</li>
+<li>Ship it by the end of the week.</li>
+</ol>
+<p>Repeat until you have a product.</p>
+<p>Most founders skip step 1 and go straight to step 2, except they build five features instead of one. That&rsquo;s how a seven-day MVP becomes a six-month project that nobody uses.</p>
+<h2>The founder I said no to</h2>
+<p>I&rsquo;m not going to name him. He went to another shop that said yes, spent $18,000, got a half-finished app, and shut it down six months later because he couldn&rsquo;t afford to finish it.</p>
+<p>The irony is that his original idea was good. A seven-day MVP of just the workout-logging flow would have validated it. He could&rsquo;ve known by July whether it worked. Instead he spent until February and learned nothing.</p>
+<p>Saying no to scope is the kindest thing a builder can do for a founder. Most builders don&rsquo;t, because saying no costs them the revenue.</p>
+<p>Shipside does, because the whole model depends on it.</p>
+<hr />
+<p><em>Shipside ships seven-day MVPs with one real user flow, on Next.js + Supabase + Stripe. $1,500 flat, scope locked on day one.</em></p>
+  </article>
+
+  <div class="cta-banner">
+    <h3>Need this fixed?</h3>
+    <p>Shipside builds fast, flat-price websites and teardowns for local service businesses. Audits from $149, rebuilds from $499. No retainer. No bloat.</p>
+    <a href="mailto:shipside.labs@gmail.com">Get a teardown →</a>
+  </div>
+</main>
+
+<footer>
+  <span>Shipside © 2025</span>
+  <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a>
+  <a href="../../index.html">Home</a>
+</footer>
+
+</body>
+</html>
