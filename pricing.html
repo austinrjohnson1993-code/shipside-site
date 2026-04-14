@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Shipside</title>
+<meta name="description" content="Shipside pricing. $750 flat for a ready-to-launch website. Monthly plans from $97. No surprises.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--iron); color: var(--bone); font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body { background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 48px 48px; background-position: -1px -1px; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 0%, rgba(212,77,28,0.04), transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(184,50,26,0.03), transparent 50%); pointer-events: none; z-index: 0; }
+  nav { position: relative; z-index: 10; padding: 24px var(--gutter); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--steel); }
+  .brand { font-family: 'Bungee', sans-serif; font-size: 20px; letter-spacing: 0.02em; color: var(--bone); text-decoration: none; }
+  .brand span { color: var(--rust); }
+  .nav-links { display: flex; gap: 32px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-links a.active { color: var(--rust); }
+  main { position: relative; z-index: 5; max-width: 960px; margin: 0 auto; padding: var(--gutter); }
+  h1 { font-family: 'Bungee', sans-serif; font-size: clamp(36px, 6vw, 64px); line-height: 1; color: var(--bone); margin: clamp(48px,8vw,80px) 0 16px; }
+  .page-sub { font-size: 16px; color: var(--bone-dim); max-width: 60ch; margin-bottom: 64px; }
+  section { margin-bottom: 72px; }
+  section h2 { font-family: 'Bungee', sans-serif; font-size: clamp(20px,3.5vw,32px); color: var(--bone); margin-bottom: 32px; }
+
+  /* Pricing cards */
+  .price-card {
+    border: 1px solid var(--steel);
+    background: var(--iron-light);
+    padding: 40px;
+    margin-bottom: 24px;
+  }
+  .price-card.featured {
+    border-color: var(--rust);
+    background: linear-gradient(135deg, rgba(212,77,28,0.08), rgba(255,92,37,0.03));
+  }
+  .price-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 8px;
+  }
+  .price-name {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(22px,3vw,30px);
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+  .price-amount {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(40px,6vw,64px);
+    color: var(--rust-bright);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-amount span {
+    font-size: 18px;
+    color: var(--bone-dim);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .price-desc {
+    font-size: 14px;
+    color: var(--bone-dim);
+    margin-bottom: 28px;
+    max-width: 55ch;
+  }
+  .price-includes {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px 32px;
+    margin-bottom: 32px;
+  }
+  .price-includes li {
+    font-size: 13px;
+    color: var(--bone);
+    padding-left: 20px;
+    position: relative;
+  }
+  .price-includes li::before {
+    content: '✓';
+    color: var(--rust);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+  .price-divider {
+    border: none;
+    border-top: 1px dashed var(--grid);
+    margin: 40px 0;
+  }
+
+  /* Add-on row */
+  .addon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .addon-card {
+    border: 1px solid var(--steel);
+    background: var(--iron-light);
+    padding: 28px;
+  }
+  .addon-price {
+    font-family: 'Bungee', sans-serif;
+    font-size: 28px;
+    color: var(--rust-bright);
+    margin-bottom: 4px;
+  }
+  .addon-name {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin-bottom: 10px;
+  }
+  .addon-desc {
+    font-size: 13px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta-button { display: inline-block; padding: 14px 32px; background: var(--rust); color: var(--bone); text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; border: 2px solid var(--rust); transition: all 0.2s; }
+  .cta-button:hover { background: transparent; color: var(--rust-bright); border-color: var(--rust-bright); }
+  .cta-button.secondary { background: transparent; color: var(--bone-dim); border-color: var(--steel); }
+  .cta-button.secondary:hover { color: var(--rust); border-color: var(--rust); }
+
+  .final-cta { text-align: center; padding: 60px var(--gutter); margin-top: 80px; border-top: 1px solid var(--grid); }
+  .final-cta h2 { font-family: 'Bungee', sans-serif; font-size: clamp(24px,4vw,40px); margin-bottom: 16px; }
+  .final-cta p { font-size: 15px; color: var(--bone-dim); margin-bottom: 28px; }
+
+  footer { background: rgba(20,20,24,0.8); border-top: 1px solid var(--grid); padding: 40px var(--gutter); text-align: center; position: relative; z-index: 5; }
+  footer a { color: var(--rust); text-decoration: none; font-weight: 500; }
+  footer a:hover { color: var(--rust-bright); }
+  footer p { font-size: 13px; color: var(--bone-dim); margin: 8px 0; }
+
+  @media (max-width: 768px) {
+    nav { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .nav-links { flex-wrap: wrap; gap: 12px 20px; }
+    .price-includes { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
+    <div class="nav-links">
+      <a href="./index.html">HOME</a>
+      <a href="./services.html">SERVICES</a>
+      <a href="./pricing.html" class="active">PRICING</a>
+      <a href="./work.html">WORK</a>
+      <a href="./blog/index.html">FIELD NOTES</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./about.html">ABOUT</a>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Simple pricing.<br>No surprises.</h1>
+    <p class="page-sub">One price to get live. Optional plans if you want ongoing support. Everything upfront.</p>
+
+    <section>
+      <h2>Get your site live.</h2>
+
+      <div class="price-card featured">
+        <div class="price-label">Primary Offer</div>
+        <div class="price-name">Ready-to-Launch Website</div>
+        <div class="price-amount">$750 <span>one-time</span></div>
+        <p class="price-desc">Pre-built for your industry. Customized with your info. You own it from day one — no monthly fees required to keep it running.</p>
+        <ul class="price-includes">
+          <li>5 pages (Home, About, Services, Gallery/Reviews, Contact)</li>
+          <li>Mobile-responsive, 90+ PageSpeed</li>
+          <li>Contact form — leads go straight to your inbox</li>
+          <li>Basic SEO (titles, descriptions, schema markup)</li>
+          <li>Hosting setup on Vercel (free tier, no server bills)</li>
+          <li>Full ownership — code and domain are yours forever</li>
+          <li>Owner's guide for simple self-service updates</li>
+          <li>Google Search Console submitted at launch</li>
+        </ul>
+        <a href="tel:+15125591741" class="cta-button">Call to Get Started — (512) 559-1741</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-label">Add-On</div>
+        <div class="price-name">Domain Registration</div>
+        <div class="price-amount">$25 <span>one-time</span></div>
+        <p class="price-desc">We handle registering your domain, pointing it to your site, and walking you through ownership transfer. Or register it yourself — we'll connect it either way.</p>
+      </div>
+    </section>
+
+    <hr class="price-divider">
+
+    <section>
+      <h2>Keep it current.</h2>
+      <p style="color:var(--bone-dim); margin-bottom: 32px; max-width: 65ch;">Both plans are month-to-month. Cancel anytime. You keep the site either way.</p>
+
+      <div class="addon-grid">
+        <div class="price-card">
+          <div class="price-label">Maintenance Plan</div>
+          <div class="price-amount">$97 <span>/mo</span></div>
+          <ul class="price-includes" style="margin-top: 16px;">
+            <li>Monthly content refresh (hours, promos, services)</li>
+            <li>2x Google Business Profile posts per month</li>
+            <li>Review monitoring + response drafts</li>
+            <li>Uptime monitoring</li>
+            <li>Annual domain renewal managed</li>
+          </ul>
+        </div>
+
+        <div class="price-card featured">
+          <div class="price-label">Growth Plan</div>
+          <div class="price-amount">$297 <span>/mo</span></div>
+          <ul class="price-includes" style="margin-top: 16px;">
+            <li>Everything in Maintenance</li>
+            <li>1 new SEO page or blog post per month</li>
+            <li>Monthly Google Search Console report</li>
+            <li>1 seasonal landing page per quarter</li>
+            <li>Google Business Profile optimization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="price-divider">
+
+    <section>
+      <h2>Already have a site?</h2>
+      <p style="color:var(--bone-dim); margin-bottom: 32px; max-width: 65ch;">We work on existing sites too — audits, rebuilds, or full custom builds from scratch.</p>
+      <div class="addon-grid">
+        <div class="addon-card">
+          <div class="addon-price">$149</div>
+          <div class="addon-name">Teardown</div>
+          <p class="addon-desc">Full audit of your existing site. We tell you what's broken, what's costing you leads, and exactly what a rebuild would look like.</p>
+        </div>
+        <div class="addon-card">
+          <div class="addon-price">$499+</div>
+          <div class="addon-name">Rebuild</div>
+          <p class="addon-desc">Fix or rebuild a site that isn't converting. Fresh code, fast load, conversion-focused. Scope determines final price.</p>
+        </div>
+        <div class="addon-card">
+          <div class="addon-price">$1,500</div>
+          <div class="addon-name">Custom MVP Build</div>
+          <p class="addon-desc">Fully custom build from scratch — no template. For businesses with specific needs outside our standard skins.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="final-cta">
+      <h2>Questions about pricing?</h2>
+      <p>Call or email — we'll tell you exactly what applies to your situation.</p>
+      <a href="tel:+15125591741" class="cta-button">Call (512) 559-1741</a>&nbsp;&nbsp;
+      <a href="mailto:shipside.labs@gmail.com" class="cta-button secondary">Email</a>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
+    <p>© 2026 Ryan Johnson · Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;">We build websites for service businesses.</p>
+  </footer>
+</body>
+</html>

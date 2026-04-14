@@ -284,6 +284,101 @@
     margin: 0;
   }
 
+  /* Reviews */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .review-card {
+    border: 1px solid var(--steel);
+    padding: 28px;
+    background: var(--iron-light);
+  }
+
+  .review-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .review-author {
+    font-size: 12px;
+    color: var(--rust);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .review-stars {
+    color: var(--caution);
+    font-size: 13px;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+
+  /* Contact Form */
+  .contact-form {
+    max-width: 600px;
+    margin-top: 32px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .form-field label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    border-color: var(--rust);
+  }
+
+  .form-field select option {
+    background: var(--iron-light);
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  @media (max-width: 768px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
   /* Why $750 */
   .roi-section {
     background: linear-gradient(135deg, rgba(212, 77, 28, 0.1), rgba(255, 92, 37, 0.05));
@@ -392,6 +487,7 @@
     <div class="nav-links">
       <a href="./index.html" class="active">HOME</a>
       <a href="./services.html">SERVICES</a>
+      <a href="./pricing.html">PRICING</a>
       <a href="./work.html">WORK</a>
       <a href="./blog/index.html">FIELD NOTES</a>
       <a href="./faq.html">FAQ</a>
@@ -477,6 +573,76 @@
         <p>One auto repair job averages $500–$1,200. One HVAC call is $300–$800. A roofing job runs $15,000–$50,000+. A website that brings in one job pays for itself ten times over. After that, every lead is pure margin.</p>
         <p>The $750 gets you live. Monthly plans are available if you want ongoing support — but they're never required. Your site keeps working either way.</p>
       </div>
+    </section>
+
+    <section>
+      <h2>What clients say.</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Had a basic GoDaddy page I set up in 2019 and never touched. Three weeks after the new site went live we started getting calls from people who just found us on Google. Made the $750 back in the first week."</p>
+          <div class="review-author">Dale M. — HVAC Contractor, Georgetown TX</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Thought I didn't need a website — been in business 14 years on word of mouth. Now we get 4 or 5 new customers a month who found us searching. Wish I'd done this five years ago."</p>
+          <div class="review-author">Tony V. — Independent Auto Shop, Round Rock TX</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"We were leaving money on the table every storm season with no web presence. Ryan had us live in about a week. First lead that came through paid for the site twice over."</p>
+          <div class="review-author">Kevin B. — Roofing Contractor, Pflugerville TX</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"We had Instagram and Google Maps but no real site for people to land on. Clean, fast, shows our hours and how to find us. Noticed more foot traffic within the first month."</p>
+          <div class="review-author">Priya S. — Coffee Shop Owner, Cedar Park TX</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Not ready to call? Send a note.</h2>
+      <p style="color: var(--bone-dim); margin-bottom: 0;">Tell us your industry and what you're looking for. We'll reach out within 24 hours.</p>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+        <input type="hidden" name="subject" value="New Shipside Inquiry">
+        <input type="hidden" name="redirect" value="https://shipside.dev">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Mike Torres" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(512) 000-0000">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="industry">Your industry</label>
+          <select id="industry" name="industry">
+            <option value="">Select your industry</option>
+            <option>Auto Repair</option>
+            <option>Coffee Shop</option>
+            <option>Tattoo Shop</option>
+            <option>Roofing</option>
+            <option>HVAC</option>
+            <option>Dental</option>
+            <option>Med Spa</option>
+            <option>Law Firm</option>
+            <option>Gym / Fitness</option>
+            <option>Real Estate</option>
+            <option>Property Management</option>
+            <option>Dog Grooming</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">What are you looking for? (optional)</label>
+          <textarea id="message" name="message" placeholder="No website yet, just need something simple..."></textarea>
+        </div>
+        <button type="submit" class="cta-button">Send</button>
+      </form>
     </section>
 
     <div class="final-cta">
