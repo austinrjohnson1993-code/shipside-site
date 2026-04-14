@@ -1,372 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work — Shipside</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Bungee&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --iron: #0b0b0d;
-      --iron-light: #141418;
-      --steel: #1f1f24;
-      --grid: rgba(37,37,44,0.35);
-      --bone: #f2ede0;
-      --bone-dim: #a8a398;
-      --rust: #d44d1c;
-      --rust-bright: #ff5c25;
-      --red-stamp: #b8321a;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Shipside</title>
+<meta name="description" content="Portfolio of Shipside websites built for service businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-    }
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
 
-    body {
-      background-color: var(--iron);
-      color: var(--bone);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 14px;
-      line-height: 1.6;
-      position: relative;
-      overflow-x: hidden;
-    }
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
 
-    /* Grid background */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(0deg, transparent 23%, rgba(37, 37, 44, 0.3) 24%, rgba(37, 37, 44, 0.3) 26%, transparent 27%, transparent 74%, rgba(37, 37, 44, 0.3) 75%, rgba(37, 37, 44, 0.3) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 23%, rgba(37, 37, 44, 0.3) 24%, rgba(37, 37, 44, 0.3) 26%, transparent 27%, transparent 74%, rgba(37, 37, 44, 0.3) 75%, rgba(37, 37, 44, 0.3) 76%, transparent 77%, transparent);
-      background-size: 48px 48px;
-      pointer-events: none;
-      z-index: 0;
-    }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    /* Noise overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/></filter><rect width="100" height="100" fill="rgba(242,237,224,0.02)" filter="url(%23noise)"/></svg>');
-      pointer-events: none;
-      z-index: 1;
-    }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
 
-    /* Rust radial accents */
-    body > *:first-child::before {
-      content: '';
-      position: fixed;
-      top: -400px;
-      right: -400px;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(212, 77, 28, 0.04) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
-    }
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
 
-    main {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-decoration: none;
+  }
 
-    /* Navigation */
+  .brand span { color: var(--rust); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a {
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rust); }
+  .nav-links a.active { color: var(--rust); }
+
+  main {
+    position: relative;
+    z-index: 5;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--gutter);
+  }
+
+  h1 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin: 60px 0 24px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--bone-dim);
+    max-width: 70ch;
+    margin-bottom: 40px;
+  }
+
+  .portfolio-note {
+    background: var(--iron-light);
+    border: 1px dashed var(--grid);
+    padding: 40px;
+    text-align: center;
+    margin: 60px 0;
+  }
+
+  .portfolio-note p {
+    font-size: 15px;
+    color: var(--bone);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .portfolio-note strong {
+    color: var(--rust);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 60px var(--gutter);
+    margin-top: 80px;
+    border-top: 1px solid var(--grid);
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    color: var(--bone-dim);
+    margin-bottom: 32px;
+  }
+
+  .cta-link {
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .cta-link:hover {
+    color: var(--rust-bright);
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--rust);
+    color: var(--bone);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    border: 2px solid var(--rust);
+  }
+
+  .cta-button:hover {
+    background: transparent;
+    color: var(--rust-bright);
+    border-color: var(--rust-bright);
+  }
+
+  footer {
+    background: rgba(20, 20, 24, 0.8);
+    border-top: 1px solid var(--grid);
+    padding: 40px var(--gutter);
+    text-align: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  footer a {
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  footer a:hover {
+    color: var(--rust-bright);
+  }
+
+  footer p {
+    font-size: 13px;
+    color: var(--bone-dim);
+    margin: 8px 0;
+  }
+
+  @media (max-width: 768px) {
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(11, 11, 13, 0.95);
-      backdrop-filter: blur(4px);
-      padding: 16px 24px;
-      border-bottom: 1px solid var(--grid);
-      z-index: 1000;
-      font-size: 12px;
-      letter-spacing: 0.05em;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
     }
 
-    nav .nav-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav .brand {
-      font-family: 'Bungee', sans-serif;
-      font-size: 14px;
-      font-weight: bold;
-      color: var(--bone);
-      text-decoration: none;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 24px;
-    }
-
-    nav a {
-      color: var(--bone-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      color: var(--bone);
-    }
-
-    nav a.active {
-      color: var(--rust-bright);
-    }
-
-    body {
-      padding-top: 50px;
-    }
-
-    /* Stamp */
-    .stamp {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: var(--bone-dim);
-      margin-bottom: 40px;
-      text-transform: uppercase;
-    }
-
-    /* Headings */
-    h1 {
-      font-family: 'Bungee', sans-serif;
-      font-size: 48px;
-      line-height: 1.1;
-      margin-bottom: 12px;
-      color: var(--bone);
-      font-weight: bold;
-    }
-
-    .subtitle {
-      font-size: 14px;
-      color: var(--bone-dim);
-      margin-bottom: 60px;
-      line-height: 1.8;
-    }
-
-    /* Case study cards */
-    .case-study {
-      background-color: var(--steel);
-      border: 1px solid var(--grid);
-      padding: 32px;
-      margin-bottom: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-study::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(212, 77, 28, 0.05) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .case-study > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .case-study-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--bone-dim);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .case-study-title {
-      font-family: 'Bungee', sans-serif;
-      font-size: 28px;
-      color: var(--bone);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .case-study-description {
-      color: var(--bone);
-      margin-bottom: 20px;
-      line-height: 1.7;
-    }
-
-    .case-study-tags {
-      display: flex;
-      flex-wrap: wrap;
+    .nav-links {
+      flex-direction: column;
       gap: 12px;
-      margin-bottom: 24px;
     }
 
-    .tag {
-      font-size: 11px;
-      color: var(--bone-dim);
-      border: 1px solid var(--grid);
-      padding: 6px 12px;
-      background-color: rgba(31, 31, 36, 0.5);
+    .portfolio-note {
+      padding: 32px 24px;
     }
 
-    .case-study-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .case-study-link {
-      color: var(--rust-bright);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .case-study-link:hover {
-      color: var(--bone);
-    }
-
-    .status-stamp {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--red-stamp);
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    /* Placeholder section */
-    .placeholder {
-      border: 2px dashed var(--bone-dim);
-      padding: 40px 32px;
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .placeholder-text {
-      color: var(--bone-dim);
-      line-height: 1.8;
-    }
-
-    /* CTA */
     .cta-section {
-      text-align: center;
-      padding: 40px 0;
-      border-top: 1px solid var(--grid);
+      padding: 40px var(--gutter);
     }
-
-    .cta-link {
-      color: var(--rust-bright);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .cta-link:hover {
-      color: var(--bone);
-    }
-
-    @media (max-width: 640px) {
-      h1 {
-        font-size: 36px;
-      }
-
-      .case-study {
-        padding: 24px;
-      }
-
-      .case-study-title {
-        font-size: 22px;
-      }
-
-      .case-study-footer {
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-      }
-
-      nav ul {
-        gap: 16px;
-      }
-
-      nav {
-        font-size: 11px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <nav>
-    <div class="nav-container">
-      <a href="#" class="brand">SHIPSIDE</a>
-      <ul>
-        <li><a href="./index.html">HOME</a></li>
-        <li><a href="./blog/index.html">FIELD NOTES</a></li>
-        <li><a href="./work.html" class="active">WORK</a></li>
-        <li><a href="mailto:shipside.labs@gmail.com">INQUIRIES</a></li>
-      </ul>
+    <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
+    <div class="nav-links">
+      <a href="./index.html">HOME</a>
+      <a href="./services.html">SERVICES</a>
+      <a href="./work.html" class="active">WORK</a>
+      <a href="./blog/index.html">FIELD NOTES</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./about.html">ABOUT</a>
     </div>
   </nav>
 
   <main>
-    <div class="stamp">FROM THE BENCH</div>
+    <h1>Portfolio shipping May 2026.</h1>
+    <p class="subtitle">Live examples of each $750 skin coming soon.</p>
 
-    <h1>Work samples.</h1>
-    <p class="subtitle">Live builds and spec work. Click through to see what ships.</p>
-
-    <!-- Case Study: Hitoki Rollz -->
-    <div class="case-study">
-      <div class="case-study-label">SPEC BUILD · DTC PRODUCT</div>
-      <div class="case-study-title">Hitoki Rollz — Glass-tip collector landing page</div>
-      <p class="case-study-description">
-        Spec landing page for a Florida-based glass-tip rolling accessory brand selling through Instagram DM. Three product tiers ($75 / $185 / $385), lifestyle imagery callouts, mobile-first layout optimized for IG traffic.
-      </p>
-      <div class="case-study-tags">
-        <span class="tag">dtc</span>
-        <span class="tag">instagram</span>
-        <span class="tag">product-landing</span>
-        <span class="tag">mobile-first</span>
-      </div>
-      <div class="case-study-footer">
-        <a href="./Samples/hitoki-rollz/landing.html" class="case-study-link">View the build →</a>
-        <span class="status-stamp">DELIVERED</span>
-      </div>
+    <div class="portfolio-note">
+      <p><strong>On our call, I'll show you live examples of every skin we offer for your industry.</strong> You'll see exactly what your site will look like before you commit to anything.</p>
     </div>
 
-    <!-- Placeholder Section -->
-    <div class="placeholder">
-      <p class="placeholder-text">More coming.<br>New builds ship weekly. Bookmark this page or check back.</p>
-    </div>
-
-    <!-- CTA Section -->
     <div class="cta-section">
-      <p>Want to be on this page? <a href="mailto:shipside.labs@gmail.com" class="cta-link">Let's talk.</a></p>
+      <p>Ready to talk? <a href="tel:+15125591741" class="cta-link">Call (512) 559-1741</a> or <a href="mailto:shipside.labs@gmail.com" class="cta-link">email me.</a></p>
     </div>
   </main>
+
+  <footer>
+    <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
+    <p>© 2026 Ryan Johnson · Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;">We build websites for service businesses.</p>
+  </footer>
 </body>
 </html>
