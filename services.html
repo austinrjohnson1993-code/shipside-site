@@ -140,6 +140,39 @@
     margin-bottom: 32px;
   }
 
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 8px;
+  }
+  .flow-step {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .step-num {
+    font-family: 'Bungee', sans-serif;
+    font-size: 28px;
+    color: var(--rust);
+    flex-shrink: 0;
+    line-height: 1;
+    min-width: 40px;
+  }
+  .flow-step strong {
+    display: block;
+    font-size: 15px;
+    color: var(--bone);
+    margin-bottom: 4px;
+  }
+  .flow-step p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 65ch;
+  }
+
   .whats-included {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -388,8 +421,43 @@
       </div>
 
       <p style="font-size: 14px; color: var(--bone-dim); margin-top: 32px; border-top: 1px dashed var(--grid); padding-top: 24px;">
-        <strong style="color: var(--bone);">No timelines published.</strong> The pace is entirely on you. We're here when you're ready.
+        <strong style="color: var(--bone);">No rigid timeline.</strong> The pace is entirely on you. We're here when you're ready.
       </p>
+    </section>
+
+    <section>
+      <h2>What happens after you pay?</h2>
+      <p class="service-intro">No mystery. Here's exactly what the process looks like:</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <span class="step-num">01</span>
+          <div>
+            <strong>Payment confirmed.</strong>
+            <p>We send you a short intake form — your hours, services, photos, contact info. Takes about 15 minutes to fill out. That's the only homework.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="step-num">02</span>
+          <div>
+            <strong>We build your pages.</strong>
+            <p>We take your info and drop it into your chosen skin. No back-and-forth design cycles. You picked the look — we build it.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="step-num">03</span>
+          <div>
+            <strong>Walkthrough call.</strong>
+            <p>We walk you through the live site. You approve, or tell us what to tweak. Usually one round of revisions covers it.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="step-num">04</span>
+          <div>
+            <strong>Ownership transferred.</strong>
+            <p>Domain points to your site. Hosting is in your name. Code goes to your GitHub if you want it. We send the owner's guide. You're done.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section>
