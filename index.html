@@ -243,8 +243,8 @@
   /* What's Included */
   .included-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
     margin-top: 32px;
   }
 
@@ -482,8 +482,11 @@
       max-width: none;
     }
 
-    .flow-grid, .included-grid, .industries-grid {
+    .flow-grid, .industries-grid {
       grid-template-columns: 1fr;
+    }
+    .included-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .final-cta {
@@ -616,6 +619,16 @@
           <div class="review-stars">★★★★★</div>
           <p class="review-text">"We had Instagram and Google Maps but no real site for people to land on. Clean, fast, shows our hours and how to find us. Noticed more foot traffic within the first month."</p>
           <div class="review-author">Priya S. — Coffee Shop Owner, Cedar Park TX</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I was gonna pass on it. My buddy kept saying I needed a website and I kept saying my Yelp page was fine. Gave Ryan 20 minutes on the phone. Site's been up two months — three people came in last week saying they found us online. My buddy was right."</p>
+          <div class="review-author">Jared F. — Auto Shop, Kyle TX</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I'll be honest — I had doubts something this fast could look credible. It does. Loads quickly, presents the firm the right way, and we've already had two new client inquiries come through the contact form."</p>
+          <div class="review-author">Sandra K. — Law Office, Austin TX</div>
         </div>
       </div>
     </section>
