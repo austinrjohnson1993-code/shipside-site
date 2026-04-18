@@ -15,7 +15,7 @@ Path: posts/2026-03-11-teardown-explainer.md
 ## 2026-02-18 · google-business-profile-signal
 **The Google Business Profile Setting That's Splitting Your Ranking In Half**
 If your GBP URL doesn't exactly match your live URL, Google treats them as two different businesses. Most small businesses have this misconfigured and lose half their local ranking.
-Tags: google-business-profile, local-seo, gbp, ranking
+Tags: google-business-profile, local-search, gbp, ranking
 Reading time: 3 min
 Path: posts/2026-02-18-google-business-profile-signal.md
 
@@ -26,12 +26,12 @@ Tags: wordpress, nextjs, local-service, methodology
 Reading time: 4 min
 Path: posts/2026-01-27-wordpress-leads-2026.md
 
-## 2025-12-19 · seven-day-mvp
-**The Seven-Day MVP: What Ships, What Doesn't, And Why We Say No To Half The Asks**
-A 7-day MVP is not a 7-day negotiation. Here's exactly what fits in the build window, what doesn't, and why saying no to scope is the reason it's possible at all.
-Tags: mvp, saas, founders, methodology
+## 2025-12-19 · seven-day-first-build
+**The Seven-Day First Build: What Fits, What Doesn't, And Why Scope Matters**
+A 7-day first build is not a 7-day negotiation. Here is what fits in the build window, what does not, and why tight scope is the whole reason it works.
+Tags: first-build, saas, founders, methodology
 Reading time: 4 min
-Path: posts/2025-12-19-seven-day-mvp.md
+Path: posts/2025-12-19-seven-day-first-build.md
 
 ## 2025-12-02 · flat-price-methodology
 **Flat-Price Web Builds: Why We Quote $499 And Hit It Every Time**
@@ -57,7 +57,7 @@ Path: posts/2025-10-28-captcha-kills-leads.md
 ## 2025-10-14 · real-estate-idx-plugins
 **Real Estate IDX Plugins Are Eating Your Ranking**
 Most real estate sites run a third-party IDX plugin that destroys pagespeed, bloats the page with iframes, and tanks local search ranking. Here's what to do instead.
-Tags: real-estate, idx, wordpress, local-seo
+Tags: real-estate, idx, wordpress, local-search
 Reading time: 3 min
 Path: posts/2025-10-14-real-estate-idx-plugins.md
 
@@ -85,13 +85,13 @@ Path: posts/2025-08-12-law-firm-contact-form-leaks.md
 ## 2025-07-22 · mobile-speed-penalty-hvac
 **The Mobile Speed Penalty Nobody Tells HVAC Owners About**
 Google is actively penalizing HVAC sites with slow mobile loads in local pack ranking. Most HVAC owners don't know, and their web guy is quietly collecting $200/month to not fix it.
-Tags: hvac, local-seo, mobile-speed, google
+Tags: hvac, local-search, mobile-speed, google
 Reading time: 3 min
 Path: posts/2025-07-22-mobile-speed-penalty-hvac.md
 
 ---
 
 **Total:** 12 posts · **Date range:** 2025-07-22 → 2026-03-11
-**Topics covered:** HVAC, law, med spa, dental, contractors, real estate, methodology, pricing, WordPress, Next.js, Google Business Profile, forms, conversion, MVP, teardowns.
+**Topics covered:** HVAC, law, med spa, dental, contractors, real estate, methodology, pricing, WordPress, plain-file builds, Google Business Profile, forms, conversion, first builds, teardowns.
 
 *Shipside field notes are published under `/blog/posts/` as plain markdown for AI crawler discoverability. Each post is self-contained and evergreen.*

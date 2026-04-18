@@ -47,7 +47,7 @@ This is JSON that tells Google specifically: "I am a plumber. My service area is
 
 Without it, Google has to guess. With it, you get rich results in the local pack: hours, service list, ratings, phone number — all directly in the search result without the user even clicking your site.
 
-This takes an hour to set up. Most sites don't have it because nobody thinks about it unless they're an SEO person.
+This takes an hour to set up. Most sites don't have it because nobody thinks about it unless they audit sites all day.
 
 ## 6. Form with exactly three fields
 
@@ -67,7 +67,7 @@ If it just says "Thanks" and redirects to the homepage, you can't measure your o
 
 Each of the seven is free, except the schema markup which takes an hour. None of them require redesigning the site. All of them are things the web guy in 2019 wasn't expected to know.
 
-Together, they'll do more for your lead volume this quarter than anything an ad agency could sell you for $2,000/month.
+Together, they'll do more for your lead volume this quarter than anything an outside shop could sell you for $2,000/month.
 
 ---
 

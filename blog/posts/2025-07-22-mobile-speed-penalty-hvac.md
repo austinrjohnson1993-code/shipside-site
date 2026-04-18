@@ -3,7 +3,7 @@ title: "The Google Penalty Hiding In Your HVAC Site's Mobile Speed Score"
 slug: mobile-speed-penalty-hvac
 date: 2025-07-22
 summary: "Google's local pack actively demotes slow mobile sites for HVAC and home service searches. If your score is under 50 you're invisible for the searches that matter."
-tags: [hvac, local-seo, mobile-speed, google]
+tags: [hvac, local-search, mobile-speed, google]
 reading_time: 3
 ---
 
@@ -31,9 +31,9 @@ The pattern is almost universal:
 - A theme with 14 plugins installed
 - A 4MB hero image that was never compressed
 - A contact form with client-side JavaScript that runs on every page load
-- A tracking pixel stack that loads 8 third-party scripts before the "call us" button is interactive
+- A tracking pixel pile that loads 8 third-party scripts before the "call us" button is interactive
 
-None of that is anyone's fault. Your dev set it up right the first time and then left. The modern stack moved on. Your site didn't.
+None of that is anyone's fault. Your dev set it up right the first time and then left. The newer build recipe moved on. Your site didn't.
 
 ## The fix is not "redesign the site"
 
@@ -55,4 +55,4 @@ The hard part isn't the fix. The hard part is knowing to look.
 
 ---
 
-*Shipside builds fast, flat-price Next.js rebuilds and teardowns for local service businesses. Audits from $149, rebuilds from $499.*
+*Shipside builds fast, flat-price plain-file rebuilds and teardowns for local service businesses. Audits from $149, rebuilds from $499.*

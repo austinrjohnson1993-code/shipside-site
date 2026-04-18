@@ -40,7 +40,7 @@ That's the whole form.
 
 A dental practice I audited last quarter had a 12-field new-patient form converting at 6% of visitors. Same practice, same traffic, switched to a 4-field form two weeks later: 19% conversion.
 
-Nothing else changed. Same ads, same SEO, same homepage. Three times the bookings.
+Nothing else changed. Same ads, same search setup, same homepage. Three times the bookings.
 
 A practice doing 200 new-patient website visits a month went from 12 bookings to 38 bookings after the change. At a typical LTV of $1,800/year per new patient — which assumes they stick with you for one checkup cycle — that's roughly $46,000 in annual LTV unlocked from deleting eight fields.
 

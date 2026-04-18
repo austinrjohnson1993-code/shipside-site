@@ -23,27 +23,27 @@ Run your site through `pagespeed.web.dev` on mobile. If it's a WordPress site wi
 
 A score under 50 means Google's local pack ranks your competitors above you for every "Georgetown realtor," "Austin homes for sale," and "sell my house" search in your service area. You're not showing up.
 
-## Why your SEO guy hasn't fixed this
+## Why your search guy hasn't fixed this
 
-Because fixing IDX performance is technical work, not SEO work.
+Because fixing IDX performance is under-the-hood work, not search work.
 
-The SEO guy is optimizing your meta descriptions and building citations on Yelp. Those don't matter if you're not even in the top 3 because your site takes 9 seconds to be interactive on mobile.
+The search guy is optimizing your meta descriptions and building citations on Yelp. Those don't matter if you're not even in the top 3 because your site takes 9 seconds to be interactive on mobile.
 
 ## The fix — two paths
 
 **Path 1 (cheap, works):** Lazy-load the IDX plugin. It only runs on the listing pages that actually need it. Your homepage, bio, about page, and testimonials load without touching the plugin at all. Mobile score usually jumps 30-50 points.
 
-This is a 4-hour job for a developer who knows WordPress performance. Most SEO agencies don't do it because they're not developers.
+This is a 4-hour job for a developer who knows WordPress performance. Most search shops don't do it because they're not developers.
 
-**Path 2 (better, also works):** Move the static pages of your site to plain HTML or Next.js and only keep the IDX-powered pages on WordPress. Homepage, about, bio, service area pages — all rebuilt as static, loading instantly. Listings stay where they are. When a visitor clicks a listing, they cross over to the IDX pages, and the speed penalty only hits the pages where it's unavoidable.
+**Path 2 (better, also works):** Move the static pages of your site to plain HTML and only keep the IDX-powered pages on WordPress. Homepage, about, bio, service area pages - all rebuilt as static, loading instantly. Listings stay where they are. When a visitor clicks a listing, they cross over to the IDX pages, and the speed penalty only hits the pages where it's unavoidable.
 
 This is a 5-day rebuild. Flat price. You keep the code.
 
 ## What I don't recommend
 
-Don't hire an SEO retainer to fix a performance problem. Don't buy a "premium" IDX plugin from the same vendor that sold you the slow one. Don't let anyone sell you a $5,000 redesign of the frontend when the problem is in the plugin stack.
+Don't hire a search retainer to fix a performance problem. Don't buy a "premium" IDX plugin from the same vendor that sold you the slow one. Don't let anyone sell you a $5,000 redesign of the frontend when the problem is in the plugin pile.
 
-The fix is technical, it's small, and it's one of the highest-leverage things you can do for lead volume this quarter.
+The fix is under the hood, it's small, and it's one of the highest-leverage things you can do for lead volume this quarter.
 
 ---
 

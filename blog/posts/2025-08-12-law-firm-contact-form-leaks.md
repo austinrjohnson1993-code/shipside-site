@@ -45,7 +45,7 @@ If you're going to keep a CAPTCHA, at least make it Cloudflare Turnstile, which 
 
 ## The honest math
 
-Two fewer fields and a better CAPTCHA will do more for your intake volume this quarter than any SEO play you could run.
+Two fewer fields and a better CAPTCHA will do more for your intake volume this quarter than any search tune-up you could run.
 
 Neither one requires you to rebuild anything. Both are free. Most firms won't do it because nobody tells them.
 
