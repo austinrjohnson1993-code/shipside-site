@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="Shipside emblem">
+  <title>Shipside</title>
+  <rect x="0" y="0" width="180" height="180" fill="#d44d1c"/>
+  <path d="M 30 30 L 30 70 L 42 70 L 42 42 L 70 42 L 70 30 Z" fill="#f2ede0"/>
+  <path d="M 150 30 L 150 70 L 138 70 L 138 42 L 110 42 L 110 30 Z" fill="#f2ede0"/>
+  <path d="M 30 150 L 30 110 L 42 110 L 42 138 L 70 138 L 70 150 Z" fill="#f2ede0"/>
+  <path d="M 150 150 L 150 110 L 138 110 L 138 138 L 110 138 L 110 150 Z" fill="#f2ede0"/>
+  <rect x="78" y="82" width="24" height="16" fill="#0b0b0d"/>
+</svg>
