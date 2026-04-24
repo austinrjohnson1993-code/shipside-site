@@ -13,11 +13,11 @@ Here's something nobody at your web guy's shop told you: Google's local pack —
 
 Not a secondary factor. A ranking signal.
 
-If your site scores under 50 on Google's own pagespeed tool on mobile, you don't show up in the top three for emergency HVAC searches in your service area. You can have 500 five-star reviews, a ten-year-old domain, and a picture of your truck in every neighborhood — Google still ranks the faster competitor above you.
+If your site scores under 50 on Google's own mobile speed test, you don't show up in the top three for emergency HVAC searches in your service area. You can have 500 five-star reviews, a ten-year-old domain, and a picture of your truck in every neighborhood - Google still ranks the faster competitor above you.
 
 ## How to check yours in 60 seconds
 
-1. Go to `pagespeed.web.dev`
+1. Open Google's mobile speed test
 2. Paste your homepage URL
 3. Look at the mobile performance score. It's the big number at the top.
 
@@ -37,9 +37,9 @@ None of that is anyone's fault. Your dev set it up right the first time and then
 
 ## The fix is not "redesign the site"
 
-This is where most agencies try to sell you a $5,000 redesign. You don't need one.
+This is where most web shops try to sell you a $5,000 redesign. You don't need one.
 
-A site built in 2018 can usually be fixed in 7 days by swapping the image compression, removing dead plugins, and migrating the static pages off WordPress to plain HTML. Same content. Same design. 4x faster. Ranking recovers in 2-4 weeks.
+A site built in 2018 can usually be fixed by swapping the image compression, removing dead plugins, and moving the static pages off WordPress to plain HTML. Same content. Same design. 4x faster. Ranking recovers in 2-4 weeks.
 
 That's a flat-price job. No retainer. No "ongoing maintenance." No "let me talk to my team."
 
@@ -49,10 +49,10 @@ Say your service area is Georgetown and the three local competitors ranking abov
 
 That's $12,000/month in revenue that Google is routing around you because of a number you didn't know existed.
 
-A $500 fix pays for itself in the first three calls.
+A $750 fix pays for itself in the first three calls.
 
 The hard part isn't the fix. The hard part is knowing to look.
 
 ---
 
-*Shipside builds fast, flat-price plain-file rebuilds and teardowns for local service businesses. Audits from $149, rebuilds from $499.*
+*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*

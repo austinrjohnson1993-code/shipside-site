@@ -48,7 +48,7 @@ Every one of those is either a performance hit, a security hole, or a maintenanc
 
 Small business WordPress sites run on $8/month shared hosting from GoDaddy or Bluehost, which is the right price for the customer and the wrong place for the site. Shared hosting means the site sits on a server with 200 other sites competing for CPU, and every time one of them gets a traffic spike, yours gets slower.
 
-Plain hosted files on Vercel are free for small sites. Yes, free. The free tier covers roughly 100,000 visits a month. Most local service sites never touch the paid tier.
+Plain hosted files can be cheap or free for small sites. Most local service sites never touch the paid tier.
 
 The customer who was paying $96/year for GoDaddy hosting is now paying zero and getting a 5x faster site. The only reason they're not already doing it is nobody told them.
 
@@ -66,21 +66,21 @@ Fair point. Except in practice, 90% of small business owners never edit their we
 
 For the 10% who genuinely want to edit themselves, I recommend a headless CMS (Sanity, Contentful, Decap) pointed at the plain-file site. The editor gets a clean interface, the site stays fast, the business owner doesn't need to touch WordPress admin. Best of both worlds. Costs $0-$10/month for most use cases.
 
-## When a rebuild makes sense
+## When a fresh build makes sense
 
 Not every WordPress site needs to be rebuilt. Here's the rule I use:
 
-- **Mobile pagespeed score under 50** → rebuild, it's an emergency
-- **More than 8 active plugins** → rebuild
-- **More than 12 contact form fields** → rebuild (it's a funnel problem, not a plumbing problem, but the rebuild is the cheapest time to fix both)
+- **Mobile speed score under 50** -> start fresh, it's an emergency
+- **More than 8 active plugins** → start fresh
+- **More than 12 contact form fields** -> start fresh (it's a follow-up problem, not a plumbing problem, but a clean build is the cheapest time to fix both)
 - **Everything else** → leave it alone, the WordPress site is fine
 
 ## What I ship instead
 
-Plain HTML + Tailwind for styling + Vercel for hosting + Sanity for the CMS if the customer wants self-edit. Flat price, 7-day turnaround on rebuilds, full content migration included.
+Plain pages, simple styling, plain hosting, and a clean editor if the customer wants self-edit. Flat price, tight turnaround on rebuilds, full content migration included.
 
-That build recipe isn't novel and I didn't invent it. It's the same recipe half of Silicon Valley ships marketing sites on. What's novel is offering it at a flat $499-$1,200 price point for local service businesses who've been quoted $5,000 for a "modern redesign" by someone trying to resell the same WordPress theme with a different header image.
+That build recipe isn't novel and I didn't invent it. It's the same recipe half of Silicon Valley ships marketing sites on. What's novel is offering it at a flat $750 price point for local service businesses who've been quoted $5,000 for a "modern redesign" by someone trying to resell the same WordPress theme with a different header image.
 
 ---
 
-*Shipside rebuilds slow WordPress lead sites as plain-file builds on Vercel. Flat price. 7 days. You own the code.*
+*Shipside rebuilds slow WordPress lead sites as plain-file builds. Flat price. You own the code.*

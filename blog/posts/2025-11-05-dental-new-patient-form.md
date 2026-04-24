@@ -1,17 +1,17 @@
 ---
-title: "Dentists: Your New-Patient Form Is A Funnel, Not A Formality"
+title: "Dentists: Your New-Patient Form Is Too Heavy"
 slug: dental-new-patient-form
 date: 2025-11-05
-summary: "The new-patient form on a dental site is the single biggest conversion lever most practices ignore. Here's why, and what a good one actually looks like."
-tags: [dental, conversion, forms, new-patient]
+summary: "The new-patient form on a dental site is where many good prospects quit. Here's why, and what a good one actually looks like."
+tags: [dental, forms, new-patient]
 reading_time: 3
 ---
 
-# Dentists: Your New-Patient Form Is A Funnel, Not A Formality
+# Dentists: Your New-Patient Form Is Too Heavy
 
 Most dental practices treat the new-patient form on their website like a DMV form. Something you fill out because you have to, not because anyone cares whether you finish.
 
-The problem: the new-patient form is the *first* step of a funnel that ends with a $2,000-a-year patient walking into your office. If half the people who click "New Patient" abandon the form, you just lost half your web-sourced growth.
+The problem: the new-patient form is the first step between interest and a real callback. If half the people who click "New Patient" abandon the form, you just lost half your web-sourced growth.
 
 Most forms I audit for dental practices are built this way:
 
@@ -60,4 +60,4 @@ One afternoon. No redesign. No new vendor. Double or triple your new-patient con
 
 ---
 
-*Shipside audits dental practice websites for conversion leaks. $149 for a 10-minute walkthrough and a 1-page fix plan.*
+*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*

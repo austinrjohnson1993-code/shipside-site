@@ -90,4 +90,4 @@ That's the whole Shipside model in one paragraph.
 
 ---
 
-*Shipside audits small business websites and GBP configurations together. $149 for the Loom walkthrough.*
+*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*

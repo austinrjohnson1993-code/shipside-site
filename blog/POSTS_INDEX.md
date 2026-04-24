@@ -5,13 +5,6 @@ Each entry: date, slug, title, summary, tags, reading time.
 
 ---
 
-## 2026-03-11 · teardown-explainer
-**The $149 Teardown: What Actually Goes In A Shipside Site Audit**
-Transparency about what a Shipside $149 teardown actually includes — what I check, what the deliverable looks like, and why it's priced so low.
-Tags: shipside, teardown, audit, offer
-Reading time: 3 min
-Path: posts/2026-03-11-teardown-explainer.md
-
 ## 2026-02-18 · google-business-profile-signal
 **The Google Business Profile Setting That's Splitting Your Ranking In Half**
 If your GBP URL doesn't exactly match your live URL, Google treats them as two different businesses. Most small businesses have this misconfigured and lose half their local ranking.
@@ -22,7 +15,7 @@ Path: posts/2026-02-18-google-business-profile-signal.md
 ## 2026-01-27 · wordpress-leads
 **Why I Don't Use WordPress For Anyone Who Wants Leads**
 WordPress still runs 40% of the internet. It's also the wrong tool for 90% of local business lead sites. Here's the honest breakdown of why, and what I ship instead.
-Tags: wordpress, nextjs, local-service, methodology
+Tags: wordpress, plain-files, local-service, methodology
 Reading time: 4 min
 Path: posts/2026-01-27-wordpress-leads-2026.md
 
@@ -33,16 +26,9 @@ Tags: first-build, saas, founders, methodology
 Reading time: 4 min
 Path: posts/2025-12-19-seven-day-first-build.md
 
-## 2025-12-02 · flat-price-methodology
-**Flat-Price Web Builds: Why We Quote $499 And Hit It Every Time**
-Most agencies quote hourly and land 40% over estimate. Flat pricing fixes the incentives and forces discipline. Here's the math behind how Shipside quotes a fixed price and actually hits it.
-Tags: methodology, pricing, shipside
-Reading time: 4 min
-Path: posts/2025-12-02-flat-price-methodology.md
-
 ## 2025-11-05 · dental-new-patient-form
 **Your Dental New-Patient Form Is Why You're Not Growing**
-Most dental office new-patient forms ask for 18+ fields before the patient has ever walked in. It's not a form, it's a funnel leak. Here's what actually needs to be there and what can wait.
+Most dental office new-patient forms ask for 18+ fields before the patient has ever walked in. It's not a form, it's a drop-off point. Here's what actually needs to be there and what can wait.
 Tags: dental, conversion, forms, local-service
 Reading time: 3 min
 Path: posts/2025-11-05-dental-new-patient-form.md
@@ -56,7 +42,7 @@ Path: posts/2025-10-28-captcha-kills-leads.md
 
 ## 2025-10-14 · real-estate-idx-plugins
 **Real Estate IDX Plugins Are Eating Your Ranking**
-Most real estate sites run a third-party IDX plugin that destroys pagespeed, bloats the page with iframes, and tanks local search ranking. Here's what to do instead.
+Most real estate sites run a third-party IDX plugin that destroys mobile speed, bloats the page with iframes, and tanks local search ranking. Here's what to do instead.
 Tags: real-estate, idx, wordpress, local-search
 Reading time: 3 min
 Path: posts/2025-10-14-real-estate-idx-plugins.md
@@ -91,7 +77,7 @@ Path: posts/2025-07-22-mobile-speed-penalty-hvac.md
 
 ---
 
-**Total:** 12 posts · **Date range:** 2025-07-22 → 2026-03-11
-**Topics covered:** HVAC, law, med spa, dental, contractors, real estate, methodology, pricing, WordPress, plain-file builds, Google Business Profile, forms, conversion, first builds, teardowns.
+**Total:** 10 posts · **Date range:** 2025-07-22 → 2026-02-18
+**Topics covered:** HVAC, law, med spa, dental, contractors, real estate, methodology, WordPress, plain-file builds, Google Business Profile, forms, first builds.
 
 *Shipside field notes are published under `/blog/posts/` as plain markdown for AI crawler discoverability. Each post is self-contained and evergreen.*

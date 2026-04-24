@@ -19,7 +19,7 @@ Google's mobile speed test hates this more than almost anything else.
 
 ## What the numbers actually look like
 
-Run your site through `pagespeed.web.dev` on mobile. If it's a WordPress site with an IDX plugin installed, your score is somewhere between 12 and 35. I've audited dozens. The best one I've seen was a 42, and that was a broker who paid a developer $3,000 to rewrite the plugin integration.
+Run your site through Google's mobile speed test. If it's a WordPress site with an IDX plugin installed, your score is somewhere between 12 and 35. I've audited dozens. The best one I've seen was a 42, and that was a broker who paid a developer $3,000 to rewrite the plugin integration.
 
 A score under 50 means Google's local pack ranks your competitors above you for every "Georgetown realtor," "Austin homes for sale," and "sell my house" search in your service area. You're not showing up.
 
@@ -37,7 +37,7 @@ This is a 4-hour job for a developer who knows WordPress performance. Most searc
 
 **Path 2 (better, also works):** Move the static pages of your site to plain HTML and only keep the IDX-powered pages on WordPress. Homepage, about, bio, service area pages - all rebuilt as static, loading instantly. Listings stay where they are. When a visitor clicks a listing, they cross over to the IDX pages, and the speed penalty only hits the pages where it's unavoidable.
 
-This is a 5-day rebuild. Flat price. You keep the code.
+This is a seven-day build. Flat price. You keep the files.
 
 ## What I don't recommend
 
