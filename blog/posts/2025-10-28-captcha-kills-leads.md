@@ -17,7 +17,7 @@ It's called reCAPTCHA. Google makes it. Most website builders turn it on by defa
 
 Stanford did a study in 2023 on reCAPTCHA friction. The headline finding: on mobile devices, the v2 image challenge (the "pick the bicycles" puzzle) increases form abandonment by 38%. The v3 "invisible" version is better but still costs around 8-12% of completions because of false-positive bot scoring that flags real humans as suspicious and forces them into a challenge.
 
-Stanford is not the only one. Every serious conversion study on reCAPTCHA since 2020 has found the same thing: it's a tax on your conversion rate, and the tax is measured in double digits.
+Stanford is not the only one. Every serious conversion study on reCAPTCHA since 2020 has found the same thing: it's a tax on your inbound calls, and the tax is measured in double digits.
 
 ## Why local business sites have it turned on
 
@@ -68,4 +68,4 @@ Nobody does this, which means it's free alpha. Go take it.
 
 ---
 
-*Shipside audits small business forms for conversion leaks. $149 for the Loom walkthrough and the 1-page fix plan.*
+*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*

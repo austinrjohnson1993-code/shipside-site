@@ -41,7 +41,7 @@ That means every first-visit booking you lose is not a $300 loss. It's a $2,000 
 
 A 10% improvement in booking path conversion on a spa doing 100 Instagram-sourced inquiries a month is 2 extra consultations, or ~$4,000 in annual LTV. Per month.
 
-That math doesn't exist in any other vertical. It's why med spa conversion optimization is the highest-leverage web work in any local service category.
+That math doesn't exist in any other vertical. It's why med spa booking-path cleanup is the highest-leverage web work in any local service category.
 
 ## The fix that takes a day
 
@@ -57,4 +57,4 @@ That's not a redesign. That's a one-day refactor.
 
 ---
 
-*Shipside does conversion audits for med spas — the booking path, the mobile speed, the form leak. $149 for the teardown, $499 for a full rebuild.*
+*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*

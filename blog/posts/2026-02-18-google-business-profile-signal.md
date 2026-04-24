@@ -3,7 +3,7 @@ title: "The Google Business Profile Setting That's Splitting Your Ranking In Hal
 slug: google-business-profile-signal
 date: 2026-02-18
 summary: "If your Google Business Profile URL doesn't exactly match your website's live URL, Google treats them as two different businesses. Most small businesses have this misconfigured and lose half their local ranking."
-tags: [google-business-profile, local-seo, gbp, ranking]
+tags: [google-business-profile, local-search, gbp, ranking]
 reading_time: 3
 ---
 
@@ -63,7 +63,7 @@ Google will re-crawl within a few days. Rankings usually improve in 2-4 weeks. I
 
 ## Why this almost never gets fixed
 
-Because nobody in the SEO business knows about it except people who actually audit websites. The agencies selling you "local SEO" are running citation building and writing blog posts. They're not looking at your GBP URL field. The person who set up your GBP originally isn't checking it anymore. Your web developer isn't thinking about it because it's not on the website — it's on Google's side.
+Because almost nobody in the search-visibility business knows about it except people who actually audit websites. The shops selling you "local search work" are running citation building and writing blog posts. They're not looking at your GBP URL field. The person who set up your GBP originally isn't checking it anymore. Your web developer isn't thinking about it because it's not on the website - it's on Google's side.
 
 The field sits there, wrong, for years. Nothing breaks. The site works. The only symptom is that your competitor ranks above you in the local pack, and nobody can explain why.
 
@@ -82,7 +82,7 @@ None of those are as high-leverage as the URL fix, but all of them are worth 5 m
 
 ## The meta point
 
-Most local businesses are losing ranking not because of SEO they haven't done, but because of small configuration errors nobody notices. The URL mismatch on GBP is the most common one I find. The form field count on the website is second. The tap-to-call link is third.
+Most local businesses are losing ranking not because of missing search work, but because of small configuration errors nobody notices. The URL mismatch on GBP is the most common one I find. The form field count on the website is second. The tap-to-call link is third.
 
 None of them require a monthly retainer to fix. All of them are things a single audit surfaces in ten minutes and a small business can fix themselves in an afternoon.
 
@@ -90,4 +90,4 @@ That's the whole Shipside model in one paragraph.
 
 ---
 
-*Shipside audits small business websites and GBP configurations together. $149 for the Loom walkthrough.*
+*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*

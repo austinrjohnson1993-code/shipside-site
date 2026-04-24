@@ -41,13 +41,13 @@ If there's a mismatch — `www.yoursite.com` on GBP but your actual site redirec
 
 Fix: log in, fix the URL, wait 2 weeks.
 
-## 5. Schema markup (`LocalBusiness` and `Service`)
+## 5. Local business details search engines can read
 
 This is JSON that tells Google specifically: "I am a plumber. My service area is this zip code list. I am open these hours. My phone is this. My services are these."
 
 Without it, Google has to guess. With it, you get rich results in the local pack: hours, service list, ratings, phone number — all directly in the search result without the user even clicking your site.
 
-This takes an hour to set up. Most sites don't have it because nobody thinks about it unless they're an SEO person.
+This takes an hour to set up. Most sites don't have it because nobody thinks about it unless they audit sites all day.
 
 ## 6. Form with exactly three fields
 
@@ -59,16 +59,16 @@ Twelve-field forms convert at 10% of three-field forms. This is not a preference
 
 After someone submits the form, do they see a thank-you page that (a) confirms you got it, (b) tells them when to expect a call, (c) gives them the phone number as a backup, and (d) fires a Google Analytics / Meta Pixel conversion event?
 
-If it just says "Thanks" and redirects to the homepage, you can't measure your own funnel. You're flying blind.
+If it just says "Thanks" and redirects to the homepage, you can't see where requests are dropping. You're flying blind.
 
 ---
 
 ## The pattern
 
-Each of the seven is free, except the schema markup which takes an hour. None of them require redesigning the site. All of them are things the web guy in 2019 wasn't expected to know.
+Each of the seven is free, except the local business details setup which takes an hour. None of them require redesigning the site. All of them are things the web guy in 2019 wasn't expected to know.
 
-Together, they'll do more for your lead volume this quarter than anything an ad agency could sell you for $2,000/month.
+Together, they'll do more for your lead volume this quarter than anything an outside shop could sell you for $2,000/month.
 
 ---
 
-*Shipside audits contractor sites for these seven and more. $149 gets the Loom walkthrough and a 1-page fix plan ranked by dollar impact.*
+*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*

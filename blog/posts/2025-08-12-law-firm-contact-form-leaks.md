@@ -45,10 +45,10 @@ If you're going to keep a CAPTCHA, at least make it Cloudflare Turnstile, which 
 
 ## The honest math
 
-Two fewer fields and a better CAPTCHA will do more for your intake volume this quarter than any SEO play you could run.
+Two fewer fields and a better CAPTCHA will do more for your intake volume this quarter than any search tune-up you could run.
 
-Neither one requires you to rebuild anything. Both are free. Most firms won't do it because nobody tells them.
+Neither one requires you to replace anything. Both are free. Most firms won't do it because nobody tells them.
 
 ---
 
-*Shipside audits small-firm websites for conversion leaks. 10-minute Loom walkthrough and a 1-page fix plan, $149.*
+*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*

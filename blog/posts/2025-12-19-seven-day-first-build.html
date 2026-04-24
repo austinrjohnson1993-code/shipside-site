@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Seven-Day MVP: What Ships, What Doesn't, And Why We Say No To Half The Asks — Shipside</title>
-<meta name="description" content="A 7-day MVP is not a 7-day negotiation. Here's exactly what fits in the build window, what doesn't, and why saying no to scope is the reason it's possible at all.">
-<meta property="og:title" content="The Seven-Day MVP: What Ships, What Doesn't, And Why We Say No To Half The Asks">
-<meta property="og:description" content="A 7-day MVP is not a 7-day negotiation. Here's exactly what fits in the build window, what doesn't, and why saying no to scope is the reason it's possible at all.">
+<title>The Tight-Scope First Build: What Fits, What Doesn't, And Why Scope Matters — Shipside</title>
+<meta name="description" content="A short first build is not a moving target. Here is what fits in the build window, what does not, and why tight scope is the whole reason it works.">
+<meta property="og:title" content="The Tight-Scope First Build: What Fits, What Doesn't, And Why Scope Matters">
+<meta property="og:description" content="A short first build is not a moving target. Here is what fits in the build window, what does not, and why tight scope is the whole reason it works.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -323,62 +323,62 @@
       <span class="divider">|</span>
       <span>4 min read</span>
     </div>
-    <h1 class="article-title">The Seven-Day MVP: What Ships, What Doesn't, And Why We Say No To Half The Asks</h1>
-    <p class="article-summary">A 7-day MVP is not a 7-day negotiation. Here's exactly what fits in the build window, what doesn't, and why saying no to scope is the reason it's possible at all.</p>
-    <div class="article-tags"><span class="tag">mvp</span><span class="tag">saas</span><span class="tag">founders</span><span class="tag">shipside</span></div>
+    <h1 class="article-title">The Tight-Scope First Build: What Fits, What Doesn't, And Why Scope Matters</h1>
+    <p class="article-summary">A short first build is not a moving target. Here is what fits in the build window, what does not, and why tight scope is the whole reason it works.</p>
+    <div class="article-tags"><span class="tag">first-build</span><span class="tag">scope</span><span class="tag">founders</span><span class="tag">shipside</span></div>
   </header>
 
   <article class="article-body">
-    <h1>The Seven-Day MVP: What Ships, What Doesn&rsquo;t, And Why We Say No To Half The Asks</h1>
-<p>A founder messaged me last summer asking for a seven-day MVP for a fitness app. Onboarding flow, workout library, progress tracking, social feed, in-app purchases, push notifications, email onboarding sequence, admin dashboard, and analytics.</p>
+    <h1>The Tight-Scope First Build: What Fits, What Doesn&rsquo;t, And Why Scope Matters</h1>
+<p>A founder messaged me last summer asking for a tight first build for a fitness app. Onboarding flow, workout library, progress tracking, social feed, purchases, notifications, email sequence, admin dashboard, and analytics.</p>
 <p>I said no.</p>
-<p>Not because any one of those is hard, but because all of them together is not a seven-day build. It&rsquo;s a three-month build. Calling it an MVP doesn&rsquo;t make it one. The word MVP has been eroded by founders who use it to mean &ldquo;my full product but cheap.&rdquo; It originally meant something much tighter: the smallest thing you can put in front of a real user to learn whether they care.</p>
-<h2>What actually fits in seven days</h2>
-<p>Here&rsquo;s what a real seven-day MVP looks like:</p>
+<p>Not because any one of those is hard, but because all of them together is a three-month build. Calling something a first build only matters if the scope is actually tight. What founders usually mean is &ldquo;my full product, just cheaper.&rdquo; What they really need is the smallest thing a real user can try.</p>
+<h2>What actually fits in a short first build</h2>
+<p>Here&rsquo;s what a real short first build looks like:</p>
 <ul>
 <li><strong>One user flow, end-to-end.</strong> Sign up, do the one core action, see the result. That&rsquo;s it.</li>
-<li><strong>Auth via Clerk or Supabase Auth.</strong> Not custom. Not OAuth integrations. Email + password or magic link.</li>
-<li><strong>Database via Supabase or Postgres on Neon.</strong> One or two tables. Not a schema that has to survive production traffic on day one.</li>
-<li><strong>One landing page.</strong> Hero, three benefit blocks, pricing, footer. The landing page is part of the seven days.</li>
-<li><strong>Deployed on Vercel.</strong> Custom domain, SSL, analytics. Done.</li>
+<li><strong>Simple sign-in.</strong> Not custom. Not a pile of integrations. Email and password or magic link.</li>
+<li><strong>Simple data model.</strong> One or two tables. Not a structure that has to survive production traffic on day one.</li>
+<li><strong>One landing page.</strong> Hero, three benefit blocks, pricing, footer. The landing page is part of the first build.</li>
+<li><strong>Deployed with a real domain.</strong> Custom domain, SSL, analytics. Done.</li>
 <li><strong>One payment flow if needed.</strong> Stripe checkout link. Not a custom subscription dashboard.</li>
 </ul>
-<p>What&rsquo;s not in the seven days:</p>
+<p>What&rsquo;s not in the first build:</p>
 <ul>
 <li>No mobile app (that&rsquo;s a separate 14-day project minimum)</li>
-<li>No admin dashboard (use the Supabase UI until you have 100 users)</li>
+<li>No admin dashboard (use the simplest internal view until you have 100 users)</li>
 <li>No complex search (ship text-based, add semantic later)</li>
-<li>No AI features unless it&rsquo;s literally the product (a ChatGPT wrapper is fine, a &ldquo;smart&rdquo; feature on top of something else is scope creep)</li>
+<li>No fancy add-on features unless they are literally the product</li>
 <li>No social graph, feed, DMs, notifications, or any feature that assumes more than one user is using it simultaneously</li>
-<li>No onboarding emails, drip campaigns, or lifecycle marketing (that&rsquo;s post-MVP work)</li>
+<li>No onboarding emails or drip campaigns (that&rsquo;s post-launch work)</li>
 </ul>
 <h2>Why the scope rules are the whole product</h2>
-<p>The founder who messaged me about the fitness app didn&rsquo;t want an MVP. He wanted validation that his full product was worth building. Those are different things.</p>
-<p>An MVP answers one question: <em>does anyone care enough about this specific thing to sign up, use it once, and come back?</em></p>
+<p>The founder who messaged me about the fitness app didn&rsquo;t want a first build. He wanted validation that his full product was worth building. Those are different things.</p>
+<p>A first build answers one question: <em>does anyone care enough about this specific thing to sign up, use it once, and come back?</em></p>
 <p>If the answer is yes, you build the rest. If the answer is no, you didn&rsquo;t waste three months building a social feed nobody uses.</p>
-<p>The seven-day constraint is what makes the question answerable. A three-month build gives you a hundred ways to explain away the result: &ldquo;we didn&rsquo;t market it well,&rdquo; &ldquo;the onboarding wasn&rsquo;t polished,&rdquo; &ldquo;the design could&rsquo;ve been tighter.&rdquo; A seven-day build with one user flow either gets used or it doesn&rsquo;t. There&rsquo;s nothing to blame.</p>
+<p>A tight time box is what makes the question answerable. A three-month build gives you a hundred ways to explain away the result: &ldquo;we didn&rsquo;t market it well,&rdquo; &ldquo;the onboarding wasn&rsquo;t polished,&rdquo; &ldquo;the design could&rsquo;ve been tighter.&rdquo; A short build with one user flow either gets used or it doesn&rsquo;t. There&rsquo;s nothing to blame.</p>
 <h2>What week two looks like</h2>
-<p>If the MVP works — meaning people sign up, use it, and some small percentage come back — week two is not &ldquo;add all the other features.&rdquo; It&rsquo;s this:</p>
+<p>If the first build works - meaning people sign up, use it, and some small percentage come back - week two is not &ldquo;add all the other features.&rdquo; It&rsquo;s this:</p>
 <ol>
 <li>Talk to the first 10 users. Find out which feature they wished existed when they hit a wall.</li>
 <li>Build that feature. Just that one.</li>
 <li>Ship it by the end of the week.</li>
 </ol>
 <p>Repeat until you have a product.</p>
-<p>Most founders skip step 1 and go straight to step 2, except they build five features instead of one. That&rsquo;s how a seven-day MVP becomes a six-month project that nobody uses.</p>
+<p>Most founders skip step 1 and go straight to step 2, except they build five features instead of one. That&rsquo;s how a short first build becomes a six-month project that nobody uses.</p>
 <h2>The founder I said no to</h2>
 <p>I&rsquo;m not going to name him. He went to another shop that said yes, spent $18,000, got a half-finished app, and shut it down six months later because he couldn&rsquo;t afford to finish it.</p>
-<p>The irony is that his original idea was good. A seven-day MVP of just the workout-logging flow would have validated it. He could&rsquo;ve known by July whether it worked. Instead he spent until February and learned nothing.</p>
+<p>The irony is that his original idea was good. A tight first build of just the workout-logging flow would have validated it. He could&rsquo;ve known by July whether it worked. Instead he spent until February and learned nothing.</p>
 <p>Saying no to scope is the kindest thing a builder can do for a founder. Most builders don&rsquo;t, because saying no costs them the revenue.</p>
 <p>Shipside does, because the whole model depends on it.</p>
 <hr />
-<p><em>Shipside ships seven-day MVPs with one real user flow, on Next.js + Supabase + Stripe. $1,500 flat, scope locked on day one.</em></p>
+<p><em>Shipside ships tightly scoped first builds with one real user flow. Flat price, scope locked on day one.</em></p>
   </article>
 
   <div class="cta-banner">
     <h3>Need this fixed?</h3>
-    <p>Shipside builds fast, flat-price websites and teardowns for local service businesses. Audits from $149, rebuilds from $499. No retainer. No bloat.</p>
-    <a href="mailto:shipside.labs@gmail.com">Get a teardown →</a>
+    <p>Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery. You own the files and the domain.</p>
+    <a href="/contact.html">Talk to Ryan →</a>
   </div>
 </main>
 
