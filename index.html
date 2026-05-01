@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shipside — Clean Sites And Lead Capture</title>
-<meta name="description" content="We build a clean site for local service businesses, then add simple tools so calls, quote requests, and follow-ups do not disappear.">
+<title>Shipside — Websites and Business Systems for Working Businesses</title>
+<meta name="description" content="Shipside builds websites and the business systems behind them — clean sites for local service businesses, plus practical AI, intake, follow-up, scheduling, and workflow systems for the work that needs more than a website.">
+<link rel="canonical" href="https://shipside.dev/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -299,42 +300,6 @@
     margin: 0;
   }
 
-  /* Reviews */
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 32px;
-  }
-
-  .review-card {
-    border: 1px solid var(--steel);
-    padding: 28px;
-    background: var(--iron-light);
-  }
-
-  .review-text {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--bone);
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-
-  .review-author {
-    font-size: 12px;
-    color: var(--rust);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .review-stars {
-    color: var(--caution);
-    font-size: 13px;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-  }
-
   /* Contact Form */
   .contact-form {
     max-width: 600px;
@@ -394,7 +359,7 @@
     .form-row { grid-template-columns: 1fr; }
   }
 
-  /* Why $750 */
+  /* Legacy ROI styles (unused after v3.0 cleanup, kept to avoid CSS churn) */
   .roi-section {
     background: linear-gradient(135deg, rgba(212, 77, 28, 0.1), rgba(255, 92, 37, 0.05));
     border: 1px solid var(--rust);
@@ -506,7 +471,7 @@
     <div class="nav-links">
       <a href="./index.html" class="active">HOME</a>
       <a href="./services.html">SERVICES</a>
-      <a href="./pricing.html">PRICING</a>
+      <a href="./consulting.html">CONSULTING</a>
       <a href="./work.html">WORK</a>
       <a href="./blog/index.html">FIELD NOTES</a>
       <a href="./faq.html">FAQ</a>
@@ -520,17 +485,17 @@
       <h1>Word of mouth gets the name out. We help the phone check hold up.</h1>
       <p class="hero-sub">We build a clean site for local service businesses, then add simple tools so calls, quote requests, and follow-ups do not disappear.</p>
       <div class="hero-cta">
-        <a href="tel:+15125591741" class="cta-button">Fix the leak - book a 15-min call</a>
-        <a href="#sales-ladder" class="cta-button secondary">See the packages</a>
+        <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
+        <a href="./services.html" class="cta-button secondary">See what we build</a>
       </div>
       <a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
     </section>
 
     <section>
-      <h2>This is the leak.</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">You've run a good shop for years. Your work speaks for itself. The referrals keep coming - and they should.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">But here's what's actually happening when somebody drops your name: the prospect pulls out their phone, looks you up, and gets nothing. Or they get a half-dead Yelp page from 2017. Or a GoDaddy parking spot from a site you started and never finished.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch;">It looks like the lights are off. They go to the next name on the list. You never even know you were in the running.</p>
+      <h2>What happens when somebody looks you up.</h2>
+      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">You've run a good shop for years. The work holds up. Referrals keep coming - and they should.</p>
+      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">But when somebody drops your name, the prospect pulls out their phone and looks you up. If what they find is nothing, or a half-dead listing from years ago, or a parking page from a site that was never finished, it looks like the lights are off.</p>
+      <p style="color: var(--bone-dim); max-width: 70ch;">They go to the next name on the list. You never even know you were in the running.</p>
     </section>
 
     <section>
@@ -554,109 +519,72 @@
 
     <section id="sales-ladder">
       <h2>Start with the site. Add capture when you need it.</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 32px;">Launch is the clean site. Catch adds missed-call and follow-up text capture. Control gives you a private owner login so every lead is saved and followed up.</p>
+      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 32px;">Three scope levels. We talk through which one fits on a fit call before any work starts.</p>
       <div class="flow-grid">
         <div class="flow-item" data-step="1">
           <h3>Launch</h3>
-          <p><strong>$750 one-time.</strong> For the owner who just needs a clean place to send people. $375 to start, $375 when ready to launch.</p>
+          <p>Get a clean, owned website online. Five pages, contact form, connected to your domain, customer-owned.</p>
         </div>
         <div class="flow-item" data-step="2">
           <h3>Catch</h3>
-          <p><strong>$1,120 one-time + $146/mo.</strong> The site gives people a reason to call. Call Catcher keeps you from losing them when you are busy.</p>
+          <p>Add basic call and quote-request capture so fewer opportunities disappear. Launch plus Domain Setup, Site Care, and Call Catcher.</p>
         </div>
         <div class="flow-item" data-step="3">
           <h3>Control</h3>
-          <p><strong>$1,120 one-time + $295/mo.</strong> For when you are tired of leads living in texts, voicemails, and memory.</p>
+          <p>Add owner visibility so leads, replies, notes, reminders, and monthly summaries stay organized. Catch plus Owner Inbox.</p>
         </div>
         <div class="flow-item" data-step="4">
           <h3>Timing</h3>
-          <p>Usually done in a few days. We give ourselves up to 7 so nobody gets surprised.</p>
+          <p>Once scope is locked, the build is usually done in a few days. We give ourselves up to 7 so nobody gets surprised.</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>The parts inside the ladder.</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 32px;">The $750 site works on its own. The next steps are for owners who want fewer missed people and a cleaner follow-up path.</p>
+      <h2>The parts inside Catch and Control.</h2>
+      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 32px;">Plain names, plain jobs. No extra system to babysit.</p>
       <div class="included-grid">
         <div class="included-item">
-          <p><strong>Domain Setup - $75.</strong> We connect the site to your domain and handle the basics so you do not have to wrestle with logins.</p>
+          <p><strong>Domain Setup.</strong> We connect the site to your domain and handle the basic setup so you don't wrestle with logins.</p>
         </div>
         <div class="included-item">
-          <p><strong>Site Care - $97/mo.</strong> Hosting, checks, and text or photo updates when hours, services, or work photos change.</p>
+          <p><strong>Site Care.</strong> Hosting, basic checks, and quick text or photo updates when hours, services, or crew photos change.</p>
         </div>
         <div class="included-item">
-          <p><strong>Call Catcher - $295 setup + $49/mo.</strong> A big tap-to-call path plus a simple missed-call text back: "Sorry we missed you - what can we help with?"</p>
+          <p><strong>Call Catcher.</strong> Tap-to-call on the site plus a simple missed-call text back: "Sorry we missed you - what can we help with?"</p>
         </div>
         <div class="included-item">
-          <p><strong>Owner Inbox - $149/mo.</strong> Private owner login, saved requests, lead notes, follow-up reminders, and a monthly lead summary.</p>
+          <p><strong>Owner Inbox.</strong> Open your phone. Every missed call, every quote request, and every text reply sits in one list. We text you when something new shows up. Notes, follow-up reminders, and a monthly lead summary live in the same place. Login is yours, owner-only.</p>
         </div>
       </div>
     </section>
 
     <section>
       <h2>Is this a fit for your business?</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">Simple test: do people in your area look you up before they call? If yes - and you do not have a real site, or yours looks dead - you are leaking work to whoever shows up first. That is the problem we fix.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">If most of your work comes from referrals, you are tired of hearing "I couldn't find you," and you want something clean without babysitting it, this is for you.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch;">If you need a simple five-page site, want calls and quote requests easier to catch, and want to own the site when we are done, we are a fit.</p>
+      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">Simple test: do people in your area look you up before they call? If yes - and there's nothing real online, or what's there hasn't been touched in years - that's the problem Shipside fixes.</p>
+      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">If most of your work comes from referrals, you're tired of hearing "I couldn't find you," and you want something clean without babysitting it, that's the fit.</p>
+      <p style="color: var(--bone-dim); max-width: 70ch;">If you need a simple five-page site, want calls and quote requests easier to catch, and want to own the site when we're done, we're a fit. We talk through scope and cost on the fit call before any work starts.</p>
     </section>
 
     <section>
-      <h2>Real operators. Real calls.</h2>
-      <div class="roi-section">
-        <h3>One service call pays for it.</h3>
-        <p>One auto repair job averages $500-$1,200. One HVAC call is $300-$800. A roofing job runs $15,000-$50,000+. A site that brings in one real job pays for itself fast.</p>
-        <p>The point is not to win awards. The point is to stop failing the phone sniff test when somebody checks your name.</p>
-      </div>
-    </section>
-
-    <section>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Had a basic GoDaddy page I set up in 2019 and never touched. Three weeks after the new site went live we started getting calls from people who just found us on Google. Made the $750 back in the first week."</p>
-          <div class="review-author">Dale M. — HVAC Contractor, Georgetown TX</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Thought I didn't need a website — been in business 14 years on word of mouth. Now we get 4 or 5 new customers a month who found us searching. Wish I'd done this five years ago."</p>
-          <div class="review-author">Tony V. — Independent Auto Shop, Round Rock TX</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"We were leaving money on the table every storm season with no web presence. Ryan had us live in about a week. First lead that came through paid for the site twice over."</p>
-          <div class="review-author">Kevin B. — Roofing Contractor, Pflugerville TX</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"We had Instagram and Google Maps but no real site for people to land on. Clean, fast, shows our hours and how to find us. Noticed more foot traffic within the first month."</p>
-          <div class="review-author">Priya S. — Coffee Shop Owner, Cedar Park TX</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"I was gonna pass on it. My buddy kept saying I needed a website and I kept saying my Yelp page was fine. Gave Ryan 20 minutes on the phone. Site's been up two months — three people came in last week saying they found us online. My buddy was right."</p>
-          <div class="review-author">Jared F. — Auto Shop, Kyle TX</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"I'll be honest — I had doubts something this fast could look credible. It does. Loads quickly, presents the firm the right way, and we've already had two new client inquiries come through the contact form."</p>
-          <div class="review-author">Sandra K. — Law Office, Austin TX</div>
-        </div>
-      </div>
+      <h2>When the website isn't the whole story.</h2>
+      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">A clean site is the first impression. Behind it, most working businesses still run on manual stitching — intake spread across inboxes, scheduling held together by memory, follow-up that depends on who's paying attention that day.</p>
+      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">Shipside also works on that layer: business systems, workflow cleanup, light CRM, and the practical AI that quietly takes work off the plate. Owner-readable. Plain pieces. Smallest useful piece first.</p>
+      <p style="color: var(--bone-dim); max-width: 70ch;"><a href="./consulting.html" style="color: var(--rust); text-decoration: none; font-weight: 500;">See how Shipside approaches consulting work →</a></p>
     </section>
 
     <div class="final-cta">
       <h2>The phone should ring.</h2>
-      <p style="color: var(--bone-dim);">Book a 15-minute call. We'll look at what you've got - or do not got - and tell you straight if Shipside's a fit. No pitch deck. No hard sell.</p>
-      <a href="tel:+15125591741" class="cta-button">Book the call</a>
+      <p style="color: var(--bone-dim);">Book a 15-minute fit call. We'll walk through your site and follow-up setup and tell you straight if Shipside fits. No pitch deck. No hard sell.</p>
+      <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
       <br><a href="sms:+15125591741" class="sms-link" style="margin-top: 16px; display: inline-block;">↩ Text us instead</a>
     </div>
   </main>
 
   <footer>
     <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
-    <p>© 2026 Ryan Johnson · Shipside</p>
-    <p style="margin-top: 12px; font-size: 12px;">We build websites for service businesses.</p>
+    <p>© 2026 Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> · Shipside builds websites and business systems for working businesses.</p>
   </footer>
 </body>
 </html>

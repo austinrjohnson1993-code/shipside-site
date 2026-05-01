@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services — Shipside</title>
-<meta name="description" content="Launch a clean five-page site, then add Site Care, Call Catcher, and Owner Inbox when calls, quote requests, and follow-ups need a place to land.">
+<meta name="description" content="Shipside builds clean sites for local service businesses, then adds simple tools so calls, quote requests, and follow-ups don't disappear. Three scope levels: Launch, Catch, Control. Talk it through on a fit call.">
+<link rel="canonical" href="https://shipside.dev/services">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -106,7 +107,7 @@
   main {
     position: relative;
     z-index: 5;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: var(--gutter);
   }
@@ -118,164 +119,250 @@
     letter-spacing: -0.01em;
     color: var(--bone);
     margin: 60px 0 24px;
+    max-width: 18ch;
   }
 
   h2 {
     font-family: 'Bungee', sans-serif;
-    font-size: clamp(24px, 5vw, 42px);
+    font-size: clamp(24px, 5vw, 40px);
     color: var(--bone);
-    margin: 48px 0 28px;
+    margin: 56px 0 24px;
     letter-spacing: -0.01em;
   }
 
-  section {
-    margin-bottom: 60px;
+  h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    color: var(--bone);
+    margin-bottom: 12px;
+    letter-spacing: 0;
   }
 
-  .service-intro {
-    font-size: 16px;
+  section {
+    margin-bottom: 72px;
+  }
+
+  .lede {
+    font-size: 17px;
     line-height: 1.7;
     color: var(--bone-dim);
     max-width: 70ch;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 
-  .flow-steps {
+  p.body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--bone-dim);
+    max-width: 70ch;
+    margin-bottom: 16px;
+  }
+
+  /* Tier cards: Launch / Catch / Control */
+  .tier-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .tier-card {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    border-left: 4px solid var(--rust);
+    padding: 32px;
+  }
+
+  .tier-card.featured {
+    border-color: var(--rust);
+    background: linear-gradient(135deg, rgba(212, 77, 28, 0.08), rgba(255, 92, 37, 0.02));
+  }
+
+  .tier-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .tier-name {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(24px, 3vw, 30px);
+    color: var(--bone);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .tier-tagline {
+    font-size: 15px;
+    color: var(--bone);
+    margin-bottom: 20px;
+    max-width: 60ch;
+  }
+
+  .tier-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px 28px;
+    margin: 0;
+  }
+
+  .tier-list li {
+    font-size: 14px;
+    color: var(--bone-dim);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .tier-list li::before {
+    content: '→';
+    color: var(--rust);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* Service-piece grid */
+  .piece-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .piece-card {
+    background: var(--iron-light);
+    border: 1px solid var(--grid);
+    border-left: 4px solid var(--caution);
+    padding: 24px;
+  }
+
+  .piece-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--bone);
+  }
+
+  .piece-card p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Fit / who-this-is-for */
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .fit-item {
+    border-left: 3px solid var(--rust);
+    padding-left: 18px;
+  }
+
+  .fit-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--rust-bright);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .fit-item p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Process steps */
+  .process-list {
     display: flex;
     flex-direction: column;
-    gap: 28px;
-    margin-top: 8px;
-  }
-  .flow-step {
-    display: flex;
     gap: 24px;
+    margin-top: 28px;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 22px;
     align-items: flex-start;
   }
+
   .step-num {
     font-family: 'Bungee', sans-serif;
     font-size: 28px;
     color: var(--rust);
     flex-shrink: 0;
     line-height: 1;
-    min-width: 40px;
+    min-width: 44px;
   }
-  .flow-step strong {
+
+  .process-step strong {
     display: block;
     font-size: 15px;
     color: var(--bone);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
-  .flow-step p {
+
+  .process-step p {
     font-size: 14px;
     color: var(--bone-dim);
     line-height: 1.6;
     margin: 0;
-    max-width: 65ch;
+    max-width: 60ch;
   }
 
-  .whats-included {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-    margin-bottom: 40px;
-  }
-
-  .include-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-
-  .include-item::before {
-    content: '→';
-    color: var(--rust);
-    flex-shrink: 0;
-    font-weight: bold;
-    font-size: 14px;
-  }
-
-  .include-item p {
-    font-size: 14px;
+  /* CTA + section dividers */
+  .cta-button {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--rust);
     color: var(--bone);
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .flow-detail {
-    background: var(--iron-light);
-    border: 1px solid var(--grid);
-    border-left: 4px solid var(--rust);
-    padding: 28px;
-    margin: 32px 0;
-  }
-
-  .flow-detail h3 {
-    font-family: 'Bungee', sans-serif;
-    font-size: 18px;
-    color: var(--bone);
-    margin-bottom: 12px;
-  }
-
-  .flow-detail p {
-    font-size: 14px;
-    color: var(--bone-dim);
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .industries-note {
-    font-size: 14px;
-    color: var(--bone);
-    margin-bottom: 12px;
-  }
-
-  .industries-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .industries-list li {
-    list-style: none;
-    color: var(--bone-dim);
-    padding-left: 20px;
-    position: relative;
-  }
-
-  .industries-list li::before {
-    content: '◆';
-    position: absolute;
-    left: 0;
-    color: var(--rust);
-  }
-
-  .add-on-section {
-    background: linear-gradient(135deg, rgba(232, 178, 32, 0.08), rgba(232, 178, 32, 0.03));
-    border: 1px solid var(--grid);
-    border-left: 4px solid var(--caution);
-    padding: 32px;
-    margin: 60px 0;
-  }
-
-  .add-on-section h3 {
-    font-family: 'Bungee', sans-serif;
-    font-size: 20px;
-    color: var(--bone);
-    margin-bottom: 16px;
-  }
-
-  .add-on-section p {
-    font-size: 14px;
-    color: var(--bone);
-    margin-bottom: 12px;
-    line-height: 1.6;
-  }
-
-  .add-on-section strong {
-    color: var(--rust-bright);
+    text-decoration: none;
     font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid var(--rust);
+    transition: all 0.2s ease;
   }
+
+  .cta-button:hover {
+    background: transparent;
+    color: var(--rust-bright);
+    border-color: var(--rust-bright);
+  }
+
+  .cta-button.secondary {
+    background: transparent;
+    color: var(--bone-dim);
+    border-color: var(--steel);
+  }
+
+  .cta-button.secondary:hover {
+    color: var(--rust);
+    border-color: var(--rust);
+  }
+
+  .sms-link {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--bone-dim);
+    text-decoration: none;
+    margin-top: 14px;
+    transition: color 0.2s;
+  }
+
+  .sms-link:hover { color: var(--rust); }
 
   .cta-section {
     text-align: center;
@@ -288,24 +375,40 @@
     margin-top: 0;
   }
 
-  .cta-button {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--rust);
-    color: var(--bone);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
-    border: 2px solid var(--rust);
+  .cta-section p {
+    color: var(--bone-dim);
+    font-size: 16px;
+    margin-bottom: 32px;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .cta-button:hover {
-    background: transparent;
+  .why-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .why-item {
+    border-left: 3px solid var(--rust);
+    padding-left: 18px;
+  }
+
+  .why-item strong {
     color: var(--rust-bright);
-    border-color: var(--rust-bright);
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .why-item p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0;
   }
 
   footer {
@@ -341,11 +444,11 @@
     }
 
     .nav-links {
-      flex-direction: column;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 12px 20px;
     }
 
-    .whats-included {
+    .tier-list {
       grid-template-columns: 1fr;
     }
 
@@ -362,7 +465,7 @@
     <div class="nav-links">
       <a href="./index.html">HOME</a>
       <a href="./services.html" class="active">SERVICES</a>
-      <a href="./pricing.html">PRICING</a>
+      <a href="./consulting.html">CONSULTING</a>
       <a href="./work.html">WORK</a>
       <a href="./blog/index.html">FIELD NOTES</a>
       <a href="./faq.html">FAQ</a>
@@ -373,177 +476,196 @@
 
   <main>
     <h1>What Shipside builds.</h1>
-    <p class="service-intro">A clean site first. Simple lead capture next. Nothing cute.</p>
+    <p class="lede">A clean website for a local service business, then a simple capture and follow-up layer so calls, quote requests, and replies don't disappear. Pick the scope on a fit call.</p>
 
     <section>
-      <h2>The core site</h2>
-      <p class="service-intro">Five pages. Your info. Your photos. Usually done in a few days. We give ourselves up to 7 so nobody gets surprised.</p>
-
-      <div style="background: linear-gradient(135deg, rgba(212, 77, 28, 0.1), rgba(255, 92, 37, 0.05)); border: 1px solid var(--rust); padding: 32px; margin: 32px 0; text-align: center;">
-        <div style="font-family: 'Bungee', sans-serif; font-size: 48px; color: var(--rust-bright); margin-bottom: 8px;">$750</div>
-        <p style="font-size: 15px; color: var(--bone); margin: 0;">Five-page site. Yours forever. $375 down, $375 on launch.</p>
-      </div>
-
-      <h3 style="font-family: 'IBM Plex Mono'; font-size: 16px; color: var(--bone); margin: 28px 0 16px;">What You Get</h3>
-      <div class="whats-included">
-        <div class="include-item">
-          <p><strong>5 Pages.</strong> Home, About, Services, Work/Gallery, Contact. The pages people actually look at before they call.</p>
+      <h2>Who this is for</h2>
+      <div class="fit-grid">
+        <div class="fit-item">
+          <strong>Owner-operators.</strong>
+          <p>Auto repair, roofing, HVAC, landscaping, contractors, trades. One- and two-person shops and small crews.</p>
         </div>
-        <div class="include-item">
-          <p><strong>Built around your work.</strong> Roofer, auto shop, landscaper, HVAC, contractor. The site shows what you do and how to reach you.</p>
+        <div class="fit-item">
+          <strong>Word-of-mouth businesses.</strong>
+          <p>Most of the work comes through referrals. The site is the trust check that happens after the name gets passed along.</p>
         </div>
-        <div class="include-item">
-          <p><strong>Your info, your photos.</strong> One kickoff call, one intake form. We write the copy, you approve it, we ship.</p>
+        <div class="fit-item">
+          <strong>No site, or a stale one.</strong>
+          <p>Nothing online, or something there that hasn't been touched in years.</p>
         </div>
-        <div class="include-item">
-          <p><strong>Contact form.</strong> Quote requests go straight to your inbox. Add Call Catcher if you want missed-call and follow-up text capture too.</p>
-        </div>
-        <div class="include-item">
-          <p><strong>You own it.</strong> The site is yours. The domain is yours. Walk away from us any day; the site stays live.</p>
-        </div>
-        <div class="include-item">
-          <p><strong>Clear timing.</strong> Usually done in a few days. Up to 7 so nobody gets surprised.</p>
+        <div class="fit-item">
+          <strong>Wants to own the site.</strong>
+          <p>Files, domain, login - all yours. No hostage retainer to keep the site alive.</p>
         </div>
       </div>
-
-      <h3 style="font-family: 'IBM Plex Mono'; font-size: 16px; color: var(--bone); margin: 32px 0 16px;">The Build Window</h3>
-
-      <div class="flow-detail">
-        <h3>Day 1</h3>
-        <p>Deposit lands. We do a 20-minute kickoff call and collect the basics.</p>
-      </div>
-
-      <div class="flow-detail">
-        <h3>Day 2-3</h3>
-        <p>We draft your copy and wire up the layout with your info, photos, services, and contact details.</p>
-      </div>
-
-      <div class="flow-detail">
-        <h3>Day 4-5</h3>
-        <p>You review the draft. We tighten the copy, swap anything that needs fixing, and get the final version ready.</p>
-      </div>
-
-      <div class="flow-detail">
-        <h3>Launch</h3>
-        <p>The site goes live. Final payment lands. We hand over the files, the domain access, and the whole thing is yours.</p>
-      </div>
-
-      <p style="font-size: 14px; color: var(--bone-dim); margin-top: 32px; border-top: 1px dashed var(--grid); padding-top: 24px;">
-        <strong style="color: var(--bone);">$375 to start.</strong> $375 when the site goes live.
-      </p>
     </section>
 
     <section>
-      <h2>The sales ladder</h2>
-      <p class="service-intro">The $750 site works on its own. Add capture and a private owner login when leads start slipping through texts, calls, and memory.</p>
-      <div class="flow-steps">
-        <div class="flow-step">
-          <span class="step-num">01</span>
-          <div>
-            <strong>Launch - $750 one-time.</strong>
-            <p>For the owner who just needs a clean place to send people. Five pages, contact form, phone-friendly, connected to your domain, and customer owned.</p>
-          </div>
+      <h2>What it solves</h2>
+      <p class="body">Word of mouth gets the name out. The phone check has to hold up - a clean place to land, the right info up front, and an easy next step. From there, calls and quote requests need somewhere to land so the busy days don't eat them.</p>
+      <p class="body">Shipside handles the website and the capture layer in one place. One team across the build and the follow-up — no vendor handoffs between site, domain, and lead capture.</p>
+    </section>
+
+    <section>
+      <h2>Three scope levels</h2>
+      <p class="body">Pick the scope that matches where the business is. We talk it through on a fit call before any work starts.</p>
+
+      <div class="tier-stack">
+        <div class="tier-card featured">
+          <div class="tier-label">Launch</div>
+          <div class="tier-name">Get a clean, owned website online.</div>
+          <p class="tier-tagline">For the owner who just needs a clean place to send people.</p>
+          <ul class="tier-list">
+            <li>5-page site: Home, About, Services, Work/Gallery, Contact</li>
+            <li>Built around your trade and your photos</li>
+            <li>Phone-friendly, fast, plain files</li>
+            <li>Contact form to your inbox</li>
+            <li>Connected to your domain</li>
+            <li>You own the site and files</li>
+          </ul>
         </div>
-        <div class="flow-step">
-          <span class="step-num">02</span>
-          <div>
-            <strong>Catch - $1,120 one-time + $146/mo.</strong>
-            <p>Launch plus Domain Setup, Site Care, and Call Catcher. The site gives people a reason to call. Call Catcher keeps you from losing them when you are busy.</p>
-          </div>
+
+        <div class="tier-card">
+          <div class="tier-label">Catch</div>
+          <div class="tier-name">Add basic call and quote-request capture so fewer opportunities disappear.</div>
+          <p class="tier-tagline">Launch plus Domain Setup, Site Care, and Call Catcher.</p>
+          <ul class="tier-list">
+            <li>Everything in Launch</li>
+            <li>Domain Setup - we connect the site to your domain</li>
+            <li>Site Care - hosting, checks, and update help when hours, services, or photos change</li>
+            <li>Call Catcher - tap-to-call path on the site plus a simple text-back when you miss someone</li>
+          </ul>
         </div>
-        <div class="flow-step">
-          <span class="step-num">03</span>
-          <div>
-            <strong>Control - $1,120 one-time + $295/mo.</strong>
-            <p>Everything in Catch plus Owner Inbox: private owner login, saved requests, lead status, notes, follow-up reminders, and a monthly lead summary.</p>
-          </div>
+
+        <div class="tier-card">
+          <div class="tier-label">Control</div>
+          <div class="tier-name">Add owner visibility so leads, replies, notes, reminders, and monthly summaries stay organized.</div>
+          <p class="tier-tagline">Catch plus Owner Inbox.</p>
+          <ul class="tier-list">
+            <li>Everything in Catch</li>
+            <li>Every missed call, quote request, and text reply in one list on your phone</li>
+            <li>Push when something new shows up</li>
+            <li>Lead status, notes, and follow-up reminders</li>
+            <li>Monthly lead summary</li>
+            <li>Owner-only login</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section>
       <h2>The service pieces</h2>
-      <p class="service-intro">These are the plain parts inside Catch and Control.</p>
+      <p class="body">These are the parts inside Catch and Control. Plain names, plain jobs.</p>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
-        <div class="add-on-section">
-          <h3 style="color: var(--bone);">Domain Setup</h3>
-          <div style="font-family: 'Bungee', sans-serif; font-size: 32px; color: var(--rust-bright); margin-bottom: 16px;">$75</div>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: var(--bone-dim); line-height: 1.8;">
-            <li>• Connect the site to your domain</li>
-            <li>• Handle the basic setup</li>
-            <li>• Customer owns it</li>
-          </ul>
+      <div class="piece-grid">
+        <div class="piece-card">
+          <h3>Domain Setup</h3>
+          <p>We connect the site to your domain and handle the basic setup so you don't wrestle with logins.</p>
         </div>
-
-        <div class="add-on-section">
-          <h3 style="color: var(--bone);">Site Care</h3>
-          <div style="font-family: 'Bungee', sans-serif; font-size: 32px; color: var(--rust-bright); margin-bottom: 16px;">$97<span style="font-size: 16px; color: var(--bone-dim);">/mo</span></div>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: var(--bone-dim); line-height: 1.8;">
-            <li>• Hosting handled for you</li>
-            <li>• Basic checks</li>
-            <li>• Text and photo updates</li>
-            <li>• Fast fixes when hours, services, or crew photos change</li>
-            <li>• Cancel any month</li>
-          </ul>
+        <div class="piece-card">
+          <h3>Site Care</h3>
+          <p>Hosting handled, basic checks, and quick text or photo updates when hours, services, or crew photos change.</p>
         </div>
-
-        <div class="add-on-section">
-          <h3 style="color: var(--bone);">Call Catcher</h3>
-          <div style="font-family: 'Bungee', sans-serif; font-size: 32px; color: var(--rust-bright); margin-bottom: 16px;">$295<span style="font-size: 16px; color: var(--bone-dim);"> setup</span></div>
-          <p style="font-size: 14px; color: var(--bone-dim); margin: 0 0 12px;">$49/mo after setup.</p>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: var(--bone-dim); line-height: 1.8;">
-            <li>• Big tap-to-call path</li>
-            <li>• Missed-call text back</li>
-            <li>• Follow-up text capture</li>
-          </ul>
+        <div class="piece-card">
+          <h3>Call Catcher</h3>
+          <p>A big tap-to-call path on the site plus missed-call and follow-up text capture. When someone tries to reach you and the call gets missed, they get a simple text back so the lead doesn't drop.</p>
         </div>
-
-        <div class="add-on-section">
-          <h3 style="color: var(--bone);">Owner Inbox</h3>
-          <div style="font-family: 'Bungee', sans-serif; font-size: 32px; color: var(--rust-bright); margin-bottom: 16px;">$149<span style="font-size: 16px; color: var(--bone-dim);">/mo</span></div>
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: var(--bone-dim); line-height: 1.8;">
-            <li>• Private owner login</li>
-            <li>• Saved website requests and missed-call replies</li>
-            <li>• New / Contacted / Estimated / Won / Lost status</li>
-            <li>• Notes and follow-up reminders</li>
-            <li>• Monthly lead summary</li>
-            <li>• Extra login: $29/mo</li>
-          </ul>
+        <div class="piece-card">
+          <h3>Owner Inbox</h3>
+          <p>Open your phone. Every missed call, every quote request, and every text reply sits in one list. We text you when something new shows up. Notes, follow-up reminders, and a monthly lead summary live in the same place. The login is owner-only and incidental — you'll mostly use the texts.</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>Already have a site?</h2>
-      <p class="service-intro">Not working the way it should? Launch covers a fresh five-page build on your same domain for the same $750. For bigger asks, Custom Build.</p>
-
-      <div class="add-on-section">
-        <h3>Launch (fresh site)</h3>
-        <div style="font-family: 'Bungee', sans-serif; font-size: 28px; color: var(--rust-bright); margin-bottom: 12px;">$750</div>
-        <p>Same $750 flat. $375 to start, $375 when it launches. We replace the old site with a clean five-page build on your same domain. You own the new files. Seven-day delivery.</p>
+      <h2>How the build runs</h2>
+      <div class="process-list">
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <div>
+            <strong>Fit call.</strong>
+            <p>Fifteen minutes. We ask what you do, where you operate, how customers usually find you, and where the phone is dropping. If Shipside fits, we say so. If it doesn't, we say that too.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <div>
+            <strong>Scope and start.</strong>
+            <p>We pick Launch, Catch, or Control based on what came up on the fit call. Scope, deposit, and timing land in writing before any build work starts.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <div>
+            <strong>Kickoff and draft.</strong>
+            <p>Short kickoff call to collect hours, services, photos, and contact info. We draft the copy and wire up the layout around your trade.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">04</span>
+          <div>
+            <strong>Review and tighten.</strong>
+            <p>You review the draft. We tighten the copy, swap anything that needs fixing, and lock the final version.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">05</span>
+          <div>
+            <strong>Launch and hand-off.</strong>
+            <p>The site goes live on your domain. Files, domain access, and any capture or inbox setup are handed over. You own it.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">06</span>
+          <div>
+            <strong>Optional ongoing.</strong>
+            <p>If the scope includes Site Care, Call Catcher, or Owner Inbox, we keep those running. Cancel any month - the site itself stays yours.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="add-on-section">
-        <h3>Custom Build</h3>
-        <div style="font-family: 'Bungee', sans-serif; font-size: 28px; color: var(--rust-bright); margin-bottom: 12px;">$1,500</div>
-        <p>For work outside the standard five-page offer. Bigger ask, tighter scoping, same plain-spoken process.</p>
+    <section>
+      <h2>Why Shipside</h2>
+      <div class="why-list">
+        <div class="why-item">
+          <strong>One team accountable across the whole job.</strong>
+          <p>Site, domain, capture, and follow-up are wired by the same group. No handoff between vendors, no finger-pointing when something needs a fix.</p>
+        </div>
+        <div class="why-item">
+          <strong>Plain files, no page-builder mess.</strong>
+          <p>Clean static site. No WordPress plugin chain. Loads fast, stays simple, ages well.</p>
+        </div>
+        <div class="why-item">
+          <strong>You own it at the end.</strong>
+          <p>Files, domain, login. Walk away any time and the site stays live.</p>
+        </div>
+        <div class="why-item">
+          <strong>Plain language, no marketing fog.</strong>
+          <p>Call Catcher is tap-to-call plus a missed-call text-back. Owner Inbox is one list of leads on your phone with text alerts. That's it — no over-the-top promises, no jargon stack.</p>
+        </div>
       </div>
+    </section>
 
-      <p style="font-size: 14px; color: var(--bone-dim); margin-top: 32px; padding-top: 24px; border-top: 1px dashed var(--grid);">All pricing is up front. We will tell you what fits and what does not.</p>
+    <section>
+      <h2>What happens after the fit call</h2>
+      <p class="body">If we're a fit, you get a written scope - what we'll build, what's included, the timing, and the cost - before any deposit. If we're not a fit, we tell you that on the call so nobody wastes a week.</p>
+      <p class="body">Either way, the fit call doesn't cost anything and there's no auto-enrollment, no quote-trapping form, no drip sequence chasing you afterwards.</p>
+      <p class="body">Month 6 should feel boring in the right way: your site is still live, your quote requests still land where they should, and you know what needs a reply.</p>
     </section>
 
     <div class="cta-section">
-      <h2>Ready to talk?</h2>
-      <p style="color: var(--bone-dim); font-size: 16px; margin-bottom: 32px;">Call or text. We will tell you fast if Shipside is a fit.</p>
-      <a href="tel:+15125591741" class="cta-button">Call (512) 559-1741</a>
+      <h2>See if Shipside fits your business.</h2>
+      <p>Book a 15-minute fit call. Quick job-walk, no pitch deck, no hard sell. We'll walk through your site and follow-up setup and tell you straight whether this is the right move.</p>
+      <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
+      <br><a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
     </div>
   </main>
 
   <footer>
     <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
-    <p>© 2026 Ryan Johnson · Shipside</p>
-    <p style="margin-top: 12px; font-size: 12px;">We build websites for service businesses.</p>
+    <p>© 2026 Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> · Shipside builds websites and business systems for working businesses.</p>
   </footer>
 </body>
 </html>

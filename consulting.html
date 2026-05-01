@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulting — Shipside</title>
+<meta name="description" content="Shipside works on the systems behind the business: intake, follow-up, scheduling, CRM, workflow, and practical AI. For the work that needs more than a website.">
+<link rel="canonical" href="https://shipside.dev/consulting">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iron: #0b0b0d;
+    --iron-light: #141418;
+    --steel: #1f1f24;
+    --grid: rgba(37,37,44,0.35);
+    --bone: #f2ede0;
+    --bone-dim: #a8a398;
+    --rust: #d44d1c;
+    --rust-bright: #ff5c25;
+    --caution: #e8b220;
+    --red-stamp: #b8321a;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--iron);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
+
+  .brand {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+
+  .brand span { color: var(--rust); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a {
+    color: var(--bone-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rust); }
+  .nav-links a.active { color: var(--rust); }
+
+  main {
+    position: relative;
+    z-index: 5;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--gutter);
+  }
+
+  h1 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin: 60px 0 24px;
+    max-width: 18ch;
+  }
+
+  h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(24px, 5vw, 40px);
+    color: var(--bone);
+    margin: 56px 0 24px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 20px;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+
+  section { margin-bottom: 72px; }
+
+  .lede {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--bone-dim);
+    max-width: 70ch;
+    margin-bottom: 16px;
+  }
+
+  p.body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--bone-dim);
+    max-width: 70ch;
+    margin-bottom: 16px;
+  }
+
+  /* Capability tiles */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .cap-card {
+    background: var(--iron-light);
+    border: 1px solid var(--grid);
+    border-left: 4px solid var(--rust);
+    padding: 24px;
+  }
+
+  .cap-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--bone);
+  }
+
+  .cap-card p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* When-this-fits list */
+  .fit-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .fit-item {
+    border-left: 3px solid var(--rust);
+    padding-left: 18px;
+  }
+
+  .fit-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--rust-bright);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .fit-item p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Process */
+  .process-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Bungee', sans-serif;
+    font-size: 28px;
+    color: var(--rust);
+    flex-shrink: 0;
+    line-height: 1;
+    min-width: 44px;
+  }
+
+  .process-step strong {
+    display: block;
+    font-size: 15px;
+    color: var(--bone);
+    margin-bottom: 6px;
+  }
+
+  .process-step p {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* CTA */
+  .cta-button {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--rust);
+    color: var(--bone);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid var(--rust);
+    transition: all 0.2s ease;
+  }
+
+  .cta-button:hover {
+    background: transparent;
+    color: var(--rust-bright);
+    border-color: var(--rust-bright);
+  }
+
+  .cta-button.secondary {
+    background: transparent;
+    color: var(--bone-dim);
+    border-color: var(--steel);
+  }
+
+  .cta-button.secondary:hover {
+    color: var(--rust);
+    border-color: var(--rust);
+  }
+
+  .sms-link {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--bone-dim);
+    text-decoration: none;
+    margin-top: 14px;
+    transition: color 0.2s;
+  }
+
+  .sms-link:hover { color: var(--rust); }
+
+  .cta-section {
+    text-align: center;
+    padding: 60px var(--gutter);
+    margin-top: 80px;
+    border-top: 1px solid var(--grid);
+  }
+
+  .cta-section h2 { margin-top: 0; }
+
+  .cta-section p {
+    color: var(--bone-dim);
+    font-size: 16px;
+    margin-bottom: 32px;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer {
+    background: rgba(20, 20, 24, 0.8);
+    border-top: 1px solid var(--grid);
+    padding: 40px var(--gutter);
+    text-align: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  footer a {
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  footer a:hover { color: var(--rust-bright); }
+
+  footer p {
+    font-size: 13px;
+    color: var(--bone-dim);
+    margin: 8px 0;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 12px 20px;
+    }
+    .cta-section {
+      padding: 40px var(--gutter);
+    }
+  }
+</style>
+<link rel="icon" type="image/svg+xml" href="/shipside-emblem.svg">
+</head>
+<body>
+  <nav>
+    <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
+    <div class="nav-links">
+      <a href="./index.html">HOME</a>
+      <a href="./services.html">SERVICES</a>
+      <a href="./consulting.html" class="active">CONSULTING</a>
+      <a href="./work.html">WORK</a>
+      <a href="./blog/index.html">FIELD NOTES</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./about.html">ABOUT</a>
+      <a href="./contact.html">CONTACT</a>
+    </div>
+  </nav>
+
+  <main>
+    <h1>For the work that needs more than a website.</h1>
+    <p class="lede">Shipside works on the systems behind the business — intake, follow-up, scheduling, CRM cleanup, workflow, and the practical AI that earns its keep. The website is the first impression. The systems are how the work actually runs.</p>
+
+    <section>
+      <h2>What this work is</h2>
+      <p class="body">Most of the businesses we talk to are running fine on referrals and the work itself. What slips is the connective tissue: a missed call no one circles back on, a scheduling tangle that lives in three places, a follow-up that depends on someone remembering. We build the small system that closes those gaps and stays out of the way.</p>
+
+      <div class="cap-grid">
+        <div class="cap-card">
+          <h3>Intake and follow-up</h3>
+          <p>Where leads, calls, quote requests, and replies actually land. One list, one place, with reminders that fire when something hasn't been answered.</p>
+        </div>
+        <div class="cap-card">
+          <h3>Scheduling</h3>
+          <p>Booking flows, route windows, and confirmation/reminder texts that match how the crew actually works — not a generic calendar widget.</p>
+        </div>
+        <div class="cap-card">
+          <h3>Light CRM</h3>
+          <p>A clean record of who's a lead, who's a customer, what was quoted, what was won, and what needs a check-in. Owner-readable, no consultant required to use it.</p>
+        </div>
+        <div class="cap-card">
+          <h3>Workflow cleanup</h3>
+          <p>The manual stitching between email, texts, spreadsheets, and software. We map it, find what's eating time, and rebuild the part that pays back fastest.</p>
+        </div>
+        <div class="cap-card">
+          <h3>Practical AI</h3>
+          <p>AI where it earns its keep — call summaries, intake triage, draft replies, document parsing, simple internal tools. Not the hype kind. The kind that quietly takes work off the plate.</p>
+        </div>
+        <div class="cap-card">
+          <h3>Internal tools</h3>
+          <p>Custom dashboards, lookups, and small admin apps so the team doesn't paste data between tabs all day.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>When this fits</h2>
+      <div class="fit-list">
+        <div class="fit-item">
+          <strong>The website is one piece of a bigger problem.</strong>
+          <p>The site is fine, or about to be. The drag is somewhere else — leads dropping, scheduling friction, or a workflow held together with notes and good memory.</p>
+        </div>
+        <div class="fit-item">
+          <strong>Manual work is slowing the team down.</strong>
+          <p>Someone is doing the same task by hand every day, or the day starts with checking three inboxes to see what came in overnight.</p>
+        </div>
+        <div class="fit-item">
+          <strong>The current tools don't fit how you actually operate.</strong>
+          <p>You bought the platform, the team works around it, and the real workflow lives in messages and spreadsheets.</p>
+        </div>
+        <div class="fit-item">
+          <strong>You need a partner to think it through and build it.</strong>
+          <p>You can feel something is off but turning that into a clear next system is the part that hasn't happened. We help map it, scope it, and build the smallest useful piece first.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How Shipside approaches it</h2>
+      <div class="process-list">
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <div>
+            <strong>Understand the workflow.</strong>
+            <p>Short conversation, then a closer look at how the work actually moves through the business today — not how the org chart says it does.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <div>
+            <strong>Find the real constraint.</strong>
+            <p>The thing that, if it stopped breaking, would unblock the most other things. We name it in writing before any build work starts.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <div>
+            <strong>Design the smallest useful system.</strong>
+            <p>The version that fixes the constraint without adding three more tools to maintain. Plain pieces, owner-readable, hand-off documented.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">04</span>
+          <div>
+            <strong>Build and test against real use.</strong>
+            <p>Ship it into the actual workflow with the actual team. Watch where it bends. Adjust until it holds up on a normal week.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">05</span>
+          <div>
+            <strong>Improve from there.</strong>
+            <p>Once the first piece is steady, the next constraint becomes obvious. We work the list one piece at a time. No big-bang rollouts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What this is not</h2>
+      <p class="body">Not a strategy retainer. Not a packaged audit. Not a deck. Shipside is here to build the working piece, hand it off cleanly, and stay out of the way once it runs.</p>
+    </section>
+
+    <div class="cta-section">
+      <h2>Tell us what you're trying to fix.</h2>
+      <p>Short conversation. We listen, ask a few questions about how the work actually moves, and tell you straight whether Shipside is the right partner for the next piece.</p>
+      <a href="tel:+15125591741" class="cta-button">Start the conversation</a>
+      <br><a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
+    <p>© 2026 Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> · Shipside builds websites and business systems for working businesses.</p>
+  </footer>
+</body>
+</html>
