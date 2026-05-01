@@ -5,12 +5,43 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/pricing",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/pricing.html",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/2025-08-12-law-firm-contact-form-leaks.html",
+      "destination": "/blog/posts/2025-08-12-law-firm-contact-form.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/2025-08-12-law-firm-contact-form-leaks",
+      "destination": "/blog/posts/2025-08-12-law-firm-contact-form",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/blog", "destination": "/blog/index.html" }
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    }
   ]
 }
