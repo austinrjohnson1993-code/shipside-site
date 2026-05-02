@@ -2,7 +2,7 @@
 title: "If Your Contact Form Has A reCAPTCHA, You're Losing Half Your Leads"
 slug: captcha-kills-leads
 date: 2025-10-28
-summary: "Google's reCAPTCHA drops form conversion by 20-40% on mobile. Most local business sites have it turned on by default and nobody notices the leak."
+summary: "Google's reCAPTCHA drops form conversion by 20-40% on mobile. Most local business sites have it turned on by default and nobody notices the drop."
 tags: [forms, conversion, captcha, local-service]
 reading_time: 3
 ---
@@ -68,4 +68,4 @@ Nobody does this, which means it's free alpha. Go take it.
 
 ---
 
-*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*
+*Shipside builds clean websites and simple lead-capture for local service businesses.*

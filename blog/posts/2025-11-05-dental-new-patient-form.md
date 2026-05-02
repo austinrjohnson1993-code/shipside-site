@@ -38,11 +38,9 @@ That's the whole form.
 
 ## What the math looks like
 
-A dental practice I audited last quarter had a 12-field new-patient form converting at 6% of visitors. Same practice, same traffic, switched to a 4-field form two weeks later: 19% conversion.
+Here's the math that matters: if even a few high-value new-patient requests fail to submit each month, the lost lifetime value gets expensive fast.
 
-Nothing else changed. Same ads, same search setup, same homepage. Three times the bookings.
-
-A practice doing 200 new-patient website visits a month went from 12 bookings to 38 bookings after the change. At a typical LTV of $1,800/year per new patient — which assumes they stick with you for one checkup cycle — that's roughly $46,000 in annual LTV unlocked from deleting eight fields.
+A 12-field form will convert worse than a 4-field form in almost every honest test. The exact lift depends on the practice, the traffic source, and how the office handles follow-up. Run the numbers on your own practice — your own monthly new-patient page visits, your own current submit rate, your own typical patient lifetime value. The gap between a friction-heavy form and a clean one compounds into real money fast, and none of that math depends on someone else's case study.
 
 ## The objection your office manager will raise
 
@@ -60,4 +58,4 @@ One afternoon. No redesign. No new vendor. Double or triple your new-patient con
 
 ---
 
-*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*
+*Shipside builds clean websites and simple lead-capture for local service businesses.*

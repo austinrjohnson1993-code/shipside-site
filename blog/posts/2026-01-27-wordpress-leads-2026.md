@@ -77,10 +77,10 @@ Not every WordPress site needs to be rebuilt. Here's the rule I use:
 
 ## What I ship instead
 
-Plain pages, simple styling, plain hosting, and a clean editor if the customer wants self-edit. Flat price, tight turnaround on rebuilds, full content migration included.
+Plain pages, simple styling, plain hosting, and a clean editor if the customer wants self-edit. Tight turnaround on rebuilds, full content migration included.
 
-That build recipe isn't novel and I didn't invent it. It's the same recipe half of Silicon Valley ships marketing sites on. What's novel is offering it at a flat $750 price point for local service businesses who've been quoted $5,000 for a "modern redesign" by someone trying to resell the same WordPress theme with a different header image.
+That build recipe isn't novel and I didn't invent it. It's the same recipe half of Silicon Valley ships marketing sites on. What's novel is offering it on a clean, flat-scoped contract to local service businesses who've been quoted thousands for a "modern redesign" by someone trying to resell the same WordPress theme with a different header image.
 
 ---
 
-*Shipside rebuilds slow WordPress lead sites as plain-file builds. Flat price. You own the code.*
+*Shipside rebuilds slow WordPress lead sites as plain-file builds. You own the code.*

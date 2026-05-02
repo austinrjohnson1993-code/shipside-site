@@ -1,6 +1,6 @@
 ---
 title: "Why Law Firms With 12-Field Contact Forms Lose The Client Before The Callback"
-slug: law-firm-contact-form-leaks
+slug: law-firm-contact-form
 date: 2025-08-12
 summary: "Every extra field on a law firm intake form drops conversion. For a practice at $3,000 avg case value, a form that's too long costs real money — and most firms don't realize they're bleeding leads."
 tags: [law-firm, conversion, forms, intake]
@@ -51,4 +51,4 @@ Neither one requires you to replace anything. Both are free. Most firms won't do
 
 ---
 
-*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*
+*Shipside builds clean websites and simple lead-capture for local service businesses.*

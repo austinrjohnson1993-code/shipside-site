@@ -37,7 +37,7 @@ This is a 4-hour job for a developer who knows WordPress performance. Most searc
 
 **Path 2 (better, also works):** Move the static pages of your site to plain HTML and only keep the IDX-powered pages on WordPress. Homepage, about, bio, service area pages - all rebuilt as static, loading instantly. Listings stay where they are. When a visitor clicks a listing, they cross over to the IDX pages, and the speed penalty only hits the pages where it's unavoidable.
 
-This is a seven-day build. Flat price. You keep the files.
+This is a clean rebuild scoped on a fit call. You keep the files.
 
 ## What I don't recommend
 
@@ -47,4 +47,4 @@ The fix is under the hood, it's small, and it's one of the highest-leverage thin
 
 ---
 
-*Shipside rebuilds real estate sites to preserve IDX and kill the mobile speed penalty. Flat price, 7-day delivery.*
+*Shipside rebuilds real estate sites to preserve IDX and kill the mobile speed penalty.*

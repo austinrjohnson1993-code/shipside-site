@@ -69,4 +69,4 @@ Shipside does, because the whole model depends on it.
 
 ---
 
-*Shipside ships tightly scoped first builds with one real user flow. Flat price, scope locked on day one.*
+*Shipside ships tightly scoped first builds with one real user flow. Scope locked on day one.*

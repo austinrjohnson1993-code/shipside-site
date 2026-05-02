@@ -11,7 +11,7 @@ reading_time: 4
 
 Not accusing anyone. The guy who built your site in 2019 did a fine job for 2019. These things just weren't standard back then, or they weren't a priority, or the budget ran out and this is where the project stopped.
 
-Here's the checklist. Go open your site and check each one honestly. If you're missing more than three, your site is leaking money every week.
+Here's the checklist. Go open your site and check each one honestly. If you're missing more than three, your site is bleeding work every week.
 
 ## 1. The phone number isn't a `tel:` link
 
@@ -71,4 +71,4 @@ Together, they'll do more for your lead volume this quarter than anything an out
 
 ---
 
-*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*
+*Shipside builds clean websites and simple lead-capture for local service businesses.*

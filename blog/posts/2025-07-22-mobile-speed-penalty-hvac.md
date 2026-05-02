@@ -37,11 +37,11 @@ None of that is anyone's fault. Your dev set it up right the first time and then
 
 ## The fix is not "redesign the site"
 
-This is where most web shops try to sell you a $5,000 redesign. You don't need one.
+This is where most web shops try to sell you a redesign you don't need.
 
 A site built in 2018 can usually be fixed by swapping the image compression, removing dead plugins, and moving the static pages off WordPress to plain HTML. Same content. Same design. 4x faster. Ranking recovers in 2-4 weeks.
 
-That's a flat-price job. No retainer. No "ongoing maintenance." No "let me talk to my team."
+It's scoped on a fit call. No retainer. No "ongoing maintenance." No "let me talk to my team."
 
 ## What the math actually looks like
 
@@ -49,10 +49,9 @@ Say your service area is Georgetown and the three local competitors ranking abov
 
 That's $12,000/month in revenue that Google is routing around you because of a number you didn't know existed.
 
-A $750 fix pays for itself in the first three calls.
 
 The hard part isn't the fix. The hard part is knowing to look.
 
 ---
 
-*Shipside builds flat-price websites for local service businesses. Launch is $750 flat, five pages, seven-day delivery.*
+*Shipside builds clean websites and simple lead-capture for local service businesses.*

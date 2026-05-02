@@ -35,7 +35,7 @@ Path: posts/2025-11-05-dental-new-patient-form.md
 
 ## 2025-10-28 · captcha-kills-leads
 **If Your Contact Form Has A reCAPTCHA, You're Losing Half Your Leads**
-Google's reCAPTCHA drops form conversion by 20-40% on mobile. Most local business sites have it turned on by default and nobody notices the leak.
+Google's reCAPTCHA drops form conversion by 20-40% on mobile. Most local business sites have it turned on by default and nobody notices the drop.
 Tags: forms, conversion, captcha, local-service
 Reading time: 3 min
 Path: posts/2025-10-28-captcha-kills-leads.md
@@ -49,7 +49,7 @@ Path: posts/2025-10-14-real-estate-idx-plugins.md
 
 ## 2025-09-24 · contractor-site-checklist
 **Seven Things Your Old Web Guy Forgot On Your Contractor Site**
-A practical checklist every plumbing, electrical, and general contractor site should pass. Your old web guy hit maybe two of these. The rest are leaking leads.
+A practical checklist every plumbing, electrical, and general contractor site should pass. Your old web guy hit maybe two of these. The rest are quietly costing you work.
 Tags: plumbing, electrical, contractors, checklist, local-service
 Reading time: 4 min
 Path: posts/2025-09-24-contractor-site-checklist.md
@@ -61,12 +61,12 @@ Tags: med-spa, aesthetics, conversion, booking
 Reading time: 3 min
 Path: posts/2025-09-03-med-spa-booking-path-math.md
 
-## 2025-08-12 · law-firm-contact-form-leaks
-**Your Law Firm Contact Form Is Leaking $5,000 Cases**
+## 2025-08-12 · law-firm-contact-form
+**Why Law Firms With 12-Field Contact Forms Lose The Client Before The Callback**
 Most law firm contact forms ask for 12+ fields when the prospect is already panicking. Every extra field drops completion by 7%. Here's what to cut and what to keep.
 Tags: law-firm, conversion, forms, intake
 Reading time: 3 min
-Path: posts/2025-08-12-law-firm-contact-form-leaks.md
+Path: posts/2025-08-12-law-firm-contact-form.md
 
 ## 2025-07-22 · mobile-speed-penalty-hvac
 **The Mobile Speed Penalty Nobody Tells HVAC Owners About**
