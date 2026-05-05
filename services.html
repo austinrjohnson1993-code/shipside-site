@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services — Shipside</title>
-<meta name="description" content="Shipside builds clean sites for local service businesses, then adds simple tools so calls, quote requests, and follow-ups don't disappear. Three scope levels: Launch, Catch, Control. Talk it through on a fit call.">
+<meta name="description" content="Shipside builds owned websites for working businesses and wires the capture, owner-control, and care layers behind them. Four-layer architecture: Owned Site, Capture Layer, Owner Control, Ongoing Care. Talked through on a fit call.">
 <link rel="canonical" href="https://shipside.dev/services">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Services — Shipside">
-<meta property="og:description" content="Shipside builds clean sites for local service businesses, then adds simple tools so calls, quote requests, and follow-ups don't disappear. Three scope levels: Launch, Catch, Control. Talk it through on a fit call.">
+<meta property="og:description" content="Shipside builds owned websites for working businesses and wires the capture, owner-control, and care layers behind them. Four-layer architecture: Owned Site, Capture Layer, Owner Control, Ongoing Care.">
 <meta property="og:url" content="https://shipside.dev/services">
 <meta property="og:site_name" content="Shipside">
 <meta property="og:image" content="https://shipside.dev/brand/og-card.png">
@@ -17,30 +17,21 @@
 <meta property="og:image:alt" content="Shipside — Websites and business systems for working businesses.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Services — Shipside">
-<meta name="twitter:description" content="Shipside builds clean sites for local service businesses, then adds simple tools so calls, quote requests, and follow-ups don't disappear. Three scope levels: Launch, Catch, Control. Talk it through on a fit call.">
+<meta name="twitter:description" content="Shipside builds owned websites for working businesses and wires the capture, owner-control, and care layers behind them. Four-layer architecture: Owned Site, Capture Layer, Owner Control, Ongoing Care.">
 <meta name="twitter:image" content="https://shipside.dev/brand/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
   :root {
-    --iron: #0b0b0d;
-    --iron-light: #141418;
-    --steel: #1f1f24;
-    --grid: rgba(37,37,44,0.35);
-    --bone: #f2ede0;
-    --bone-dim: #a8a398;
-    --rust: #d44d1c;
-    --rust-bright: #ff5c25;
-    --caution: #e8b220;
-    --red-stamp: #b8321a;
     --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    background: var(--iron);
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 15px;
@@ -270,9 +261,15 @@
   /* Fit / who-this-is-for */
   .fit-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
     margin-top: 28px;
+  }
+  @media (max-width: 980px) {
+    .fit-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .fit-grid { grid-template-columns: 1fr; }
   }
 
   .fit-item {
@@ -399,9 +396,15 @@
 
   .why-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
     margin-top: 28px;
+  }
+  @media (max-width: 980px) {
+    .why-list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .why-list { grid-template-columns: 1fr; }
   }
 
   .why-item {
@@ -469,6 +472,351 @@
       padding: 40px var(--gutter);
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     SHIPSIDE SERVICES v4 — DESIGN UPGRADE (2026-05-02)
+     Lighter surface tier + vertical wired system stack to mirror
+     homepage's blueprint language. Cascade-wins over earlier rules.
+     ═══════════════════════════════════════════════════════════════════ */
+  main { max-width: 1200px; }
+
+  .v4-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .v4-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--rust);
+  }
+  .v4-eyebrow .num {
+    color: var(--bone-dim);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+  }
+
+  /* What owner gets strip */
+  .v4-what-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 64px;
+  }
+  .v4-what-cell {
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-top: 2px solid var(--rust);
+    border-radius: 4px;
+    padding: 16px 18px 18px;
+  }
+  .v4-what-cell .what-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .v4-what-cell .what-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: 14px;
+    color: var(--bone);
+    margin-bottom: 8px;
+    letter-spacing: 0;
+    line-height: 1.1;
+  }
+  .v4-what-cell .what-body {
+    font-size: 12.5px;
+    color: var(--bone-dim);
+    line-height: 1.55;
+  }
+  @media (max-width: 900px) {
+    .v4-what-strip { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 540px) {
+    .v4-what-strip { grid-template-columns: 1fr; }
+  }
+
+  /* Vertical wired stack mirrors homepage v4 */
+  .v4-arch-stack {
+    position: relative;
+    margin-top: 36px;
+    padding-left: 40px;
+  }
+  .v4-arch-stack::before {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: linear-gradient(180deg,
+      rgba(212,77,28,0.6) 0%,
+      rgba(212,77,28,0.25) 30%,
+      rgba(212,77,28,0.25) 70%,
+      rgba(212,77,28,0.6) 100%);
+  }
+  .v4-arch-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 28px;
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(212,77,28,0.55);
+    border-radius: 4px;
+    padding: 26px 28px 28px;
+    margin-bottom: 18px;
+    position: relative;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .v4-arch-row:hover {
+    transform: translateX(4px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.42);
+    border-left-color: var(--rust);
+  }
+  .v4-arch-row::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 36px;
+    width: 30px;
+    height: 2px;
+    background: var(--rust);
+  }
+  .v4-arch-row::after {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 30px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--rust);
+    border-radius: 50%;
+    background: var(--iron);
+    box-shadow: 0 0 12px rgba(212,77,28,0.45);
+  }
+  .v4-arch-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--rust);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .v4-arch-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: 24px;
+    color: var(--bone);
+    letter-spacing: 0;
+    margin: 0 0 12px;
+    line-height: 1.05;
+  }
+  .v4-arch-body {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.65;
+    max-width: 50ch;
+    margin: 0 0 12px;
+  }
+  .v4-arch-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--rust);
+    letter-spacing: 0.06em;
+  }
+  .v4-arch-meta span::before {
+    content: '· ';
+    color: var(--bone-dim);
+    margin-right: 2px;
+  }
+  .v4-arch-meta span:first-child::before { content: ''; margin: 0; }
+  .v4-arch-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-self: center;
+  }
+  .v4-arch-list li {
+    font-size: 13px;
+    color: var(--bone);
+    line-height: 1.5;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.025);
+    border-left: 2px solid rgba(212,77,28,0.45);
+  }
+  @media (max-width: 800px) {
+    .v4-arch-stack { padding-left: 28px; }
+    .v4-arch-row {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .v4-arch-row::before { width: 22px; left: -28px; }
+    .v4-arch-row::after { left: -16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .v4-arch-row { transition: none; }
+    .v4-arch-row:hover { transform: none; }
+  }
+
+  /* ─── Scope tracks (replaces the legacy Launch/Catch/Control tier-stack) ─── */
+  .v4-scope-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .v4-scope-card {
+    position: relative;
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-top: 3px solid var(--rust);
+    border-radius: 4px;
+    padding: 26px 22px 24px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.34);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .v4-scope-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.42);
+    border-top-color: var(--rust-bright);
+  }
+  .v4-scope-card--featured {
+    background:
+      linear-gradient(180deg, rgba(212,77,28,0.08) 0%, rgba(31,31,38,0.95) 60%, #18181D 100%);
+    border-color: rgba(212,77,28,0.28);
+  }
+  .v4-scope-rail {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--rust);
+    font-weight: 700;
+    padding: 3px 8px;
+    border: 1px solid rgba(212,77,28,0.3);
+    border-radius: 3px;
+    background: rgba(212,77,28,0.08);
+  }
+  .v4-scope-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 8px;
+    max-width: 70%;
+  }
+  .v4-scope-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: 19px;
+    color: var(--bone);
+    letter-spacing: 0;
+    margin: 0 0 10px;
+    line-height: 1.1;
+  }
+  .v4-scope-sub {
+    font-size: 13.5px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0 0 16px;
+    max-width: 56ch;
+  }
+  .v4-scope-list {
+    list-style: none;
+    padding: 0;
+    margin: auto 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .v4-scope-list li {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--bone);
+    line-height: 1.5;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.025);
+    border-left: 2px solid var(--rust);
+    letter-spacing: 0.02em;
+  }
+  .v4-scope-list li.muted {
+    color: rgba(168,163,152,0.7);
+    border-left-color: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.012);
+  }
+
+  @media (max-width: 1000px) {
+    .v4-scope-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v4-scope-card { transition: none; }
+    .v4-scope-card:hover { transform: none; }
+  }
+
+  /* Mouse-follow glow v2 — three-layer lerp pattern (matches homepage) */
+  .v4-glow,
+  .v4-glow-core,
+  .v4-glow-trail {
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 2;
+    opacity: 0; transition: opacity 0.6s ease;
+    will-change: opacity, background; mix-blend-mode: screen;
+  }
+  .v4-glow {
+    background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(212,77,28,0.20) 0%,
+      rgba(212,77,28,0.09) 26%,
+      rgba(212,77,28,0.025) 50%,
+      transparent 72%);
+  }
+  .v4-glow-trail {
+    background: radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
+      rgba(212,77,28,0.12) 0%,
+      rgba(212,77,28,0.04) 36%,
+      transparent 62%);
+  }
+  .v4-glow-core {
+    background:
+      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,92,37,0.44) 0%,
+        rgba(255,92,37,0.16) 26%,
+        rgba(255,92,37,0.04) 48%,
+        transparent 64%),
+      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,200,160,0.30) 0%,
+        rgba(255,200,160,0.05) 60%,
+        transparent 86%);
+  }
+  body.has-mouse .v4-glow,
+  body.has-mouse .v4-glow-trail,
+  body.has-mouse .v4-glow-core { opacity: 1; }
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
+  }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -476,6 +824,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+  <div class="v4-glow"       aria-hidden="true"></div>
+  <div class="v4-glow-trail" aria-hidden="true"></div>
+  <div class="v4-glow-core"  aria-hidden="true"></div>
+
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
@@ -493,6 +847,113 @@
   <main>
     <h1>Websites built to be owned, handed off, and understood.</h1>
     <p class="lede">Clean files, clear scope, hosted on your terms. No platform lock-in.</p>
+
+    <section>
+      <div class="v4-eyebrow"><span class="num">01 /</span> WHAT THE OWNER GETS</div>
+      <h2>Four pieces. Stacked together. End-to-end accountable.</h2>
+      <p class="body">The owner gets a website, a working capture layer, an owner-only inbox, and someone to keep it running. Built once, owned by you, no middleware to babysit. Pick the layers that match where the business is — we walk through scope on a fit call before any work starts.</p>
+
+      <div class="v4-what-strip">
+        <div class="v4-what-cell">
+          <div class="what-num">L01</div>
+          <div class="what-title">Website</div>
+          <div class="what-body">Clean five-page site on your domain. Files yours.</div>
+        </div>
+        <div class="v4-what-cell">
+          <div class="what-num">L02</div>
+          <div class="what-title">Call + form capture</div>
+          <div class="what-body">Tap-to-call path. Missed-call text-back. Quote-request form.</div>
+        </div>
+        <div class="v4-what-cell">
+          <div class="what-num">L03</div>
+          <div class="what-title">Owner inbox</div>
+          <div class="what-body">One list of leads, replies, notes, reminders — on your phone.</div>
+        </div>
+        <div class="v4-what-cell">
+          <div class="what-num">L04</div>
+          <div class="what-title">Care + updates</div>
+          <div class="what-body">Hosting, checks, content updates when the business changes.</div>
+        </div>
+      </div>
+
+      <div class="v4-arch-stack" role="list" aria-label="Shipside system layers, top to bottom">
+        <article class="v4-arch-row" role="listitem">
+          <div class="v4-arch-col">
+            <div class="v4-arch-num">Layer 01 · Foundation</div>
+            <h3 class="v4-arch-title">Owned Site</h3>
+            <p class="v4-arch-body">A clean five-page website on your domain — built around your trade and your photos. Plain static files, no page-builder mess, no plugin chain. Files, domain, and login are yours from day one.</p>
+            <div class="v4-arch-meta">
+              <span>Owner artifact: live owned site</span>
+              <span>5 pages</span>
+              <span>Phone-friendly</span>
+            </div>
+          </div>
+          <ul class="v4-arch-list">
+            <li>Home · About · Services · Work · Contact</li>
+            <li>Built around your trade and your photos</li>
+            <li>Connected to your domain on day one</li>
+            <li>You own files, domain, and login — leave any time</li>
+          </ul>
+        </article>
+
+        <article class="v4-arch-row" role="listitem">
+          <div class="v4-arch-col">
+            <div class="v4-arch-num">Layer 02 · Capture</div>
+            <h3 class="v4-arch-title">Capture Layer</h3>
+            <p class="v4-arch-body">The path from "someone reached out" to "the lead landed somewhere you'll actually see it." Tap-to-call on every page, missed-call text-back firing within seconds, quote-request form landing in one inbox — all wired in.</p>
+            <div class="v4-arch-meta">
+              <span>Owner artifact: nothing slips while you're on a job</span>
+              <span>Auto text-back</span>
+              <span>One inbox</span>
+            </div>
+          </div>
+          <ul class="v4-arch-list">
+            <li>Tap-to-call on every page</li>
+            <li>Missed-call text-back fires within seconds</li>
+            <li>Quote-request form lands in one inbox</li>
+            <li>Domain Setup — connect, configure, hand over</li>
+          </ul>
+        </article>
+
+        <article class="v4-arch-row" role="listitem">
+          <div class="v4-arch-col">
+            <div class="v4-arch-num">Layer 03 · Visibility</div>
+            <h3 class="v4-arch-title">Owner Control</h3>
+            <p class="v4-arch-body">One owner-only list of every lead, reply, note, and reminder — on your phone. Push when something new shows up. Notes and follow-up reminders threaded next to the lead. Monthly summary so you see the month, not babysit a dashboard.</p>
+            <div class="v4-arch-meta">
+              <span>Owner artifact: lead in your hand</span>
+              <span>Owner-only</span>
+              <span>Push alerts</span>
+            </div>
+          </div>
+          <ul class="v4-arch-list">
+            <li>Owner-only login, push alerts</li>
+            <li>Status, notes, and follow-up reminders</li>
+            <li>Replies threaded next to the lead</li>
+            <li>Monthly lead summary, no dashboard babysitting</li>
+          </ul>
+        </article>
+
+        <article class="v4-arch-row" role="listitem">
+          <div class="v4-arch-col">
+            <div class="v4-arch-num">Layer 04 · Care</div>
+            <h3 class="v4-arch-title">Ongoing Care</h3>
+            <p class="v4-arch-body">Hosting handled. Basic checks running. Quick text-or-photo updates when hours, services, crew photos, or a new offering change. Cancel any month — the site stays yours, live.</p>
+            <div class="v4-arch-meta">
+              <span>Owner artifact: site stays current and live</span>
+              <span>Hosting</span>
+              <span>Update help</span>
+            </div>
+          </div>
+          <ul class="v4-arch-list">
+            <li>Hosting + basic monitoring</li>
+            <li>Update help when hours, services, or photos change</li>
+            <li>Cancel any month — site stays live</li>
+            <li>No platform lock-in, no hostage retainer</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
     <section>
       <h2>Who this is for</h2>
@@ -523,73 +984,49 @@
     </section>
 
     <section>
-      <h2>Three scope levels</h2>
-      <p class="body">Pick the scope that matches where the business is. We talk it through on a fit call before any work starts.</p>
+      <div class="v4-eyebrow"><span class="num">04 /</span> SCOPE TRACKS</div>
+      <h2>Three ways to start. One architecture underneath.</h2>
+      <p class="body">Every build sits inside the four-layer stack above. Where a project starts depends on where the business is — what the website is doing today, whether calls and quote requests are getting caught, and whether the owner can actually see the leads. Walk through scope on a fit call before any work starts.</p>
 
-      <div class="tier-stack">
-        <div class="tier-card featured">
-          <div class="tier-label">Launch</div>
-          <div class="tier-name">Get a clean, owned website online.</div>
-          <p class="tier-tagline">For the owner who just needs a clean place to send people.</p>
-          <ul class="tier-list">
-            <li>5-page site: Home, About, Services, Work/Gallery, Contact</li>
-            <li>Built around your trade and your photos</li>
-            <li>Phone-friendly, fast, plain files</li>
-            <li>Contact form to your inbox</li>
-            <li>Connected to your domain</li>
-            <li>You own the site and files</li>
+      <div class="v4-scope-grid">
+        <article class="v4-scope-card v4-scope-card--featured">
+          <div class="v4-scope-rail">L01</div>
+          <div class="v4-scope-num">Track 01 · Foundation</div>
+          <h3 class="v4-scope-title">Owned site only</h3>
+          <p class="v4-scope-sub">For the owner who just needs a clean place to send people. Layer 01 alone — no capture, no inbox.</p>
+          <ul class="v4-scope-list">
+            <li>L01 · Owned Site</li>
+            <li class="muted">L02 · Capture Layer — not yet</li>
+            <li class="muted">L03 · Owner Control — not yet</li>
+            <li class="muted">L04 · Ongoing Care — optional</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="tier-card">
-          <div class="tier-label">Catch</div>
-          <div class="tier-name">Add basic call and quote-request capture so fewer opportunities disappear.</div>
-          <p class="tier-tagline">Launch plus Domain Setup, Site Care, and Call Catcher.</p>
-          <ul class="tier-list">
-            <li>Everything in Launch</li>
-            <li>Domain Setup - we connect the site to your domain</li>
-            <li>Site Care - hosting, checks, and update help when hours, services, or photos change</li>
-            <li>Call Catcher - tap-to-call path on the site plus a simple text-back when you miss someone</li>
+        <article class="v4-scope-card">
+          <div class="v4-scope-rail">L02</div>
+          <div class="v4-scope-num">Track 02 · Capture-on</div>
+          <h3 class="v4-scope-title">Site + capture wired in</h3>
+          <p class="v4-scope-sub">Add the capture layer behind the site so calls and quote requests stop slipping. Layers 01 and 02 — owner still reads from email today.</p>
+          <ul class="v4-scope-list">
+            <li>L01 · Owned Site</li>
+            <li>L02 · Capture Layer (tap-to-call · missed-call text-back · quote form)</li>
+            <li class="muted">L03 · Owner Control — not yet</li>
+            <li>L04 · Ongoing Care — recommended</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="tier-card">
-          <div class="tier-label">Control</div>
-          <div class="tier-name">Add owner visibility so leads, replies, notes, reminders, and monthly summaries stay organized.</div>
-          <p class="tier-tagline">Catch plus Owner Inbox.</p>
-          <ul class="tier-list">
-            <li>Everything in Catch</li>
-            <li>Every missed call, quote request, and text reply in one list on your phone</li>
-            <li>Push when something new shows up</li>
-            <li>Lead status, notes, and follow-up reminders</li>
-            <li>Monthly lead summary</li>
-            <li>Owner-only login</li>
+        <article class="v4-scope-card">
+          <div class="v4-scope-rail">L03</div>
+          <div class="v4-scope-num">Track 03 · Full stack</div>
+          <h3 class="v4-scope-title">Site + capture + owner inbox</h3>
+          <p class="v4-scope-sub">All three working layers wired together — every lead, reply, note, and reminder in one owner-only inbox on your phone. Layer 04 keeps it running.</p>
+          <ul class="v4-scope-list">
+            <li>L01 · Owned Site</li>
+            <li>L02 · Capture Layer</li>
+            <li>L03 · Owner Control (one inbox · push · notes · reminders · monthly summary)</li>
+            <li>L04 · Ongoing Care — recommended</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>The service pieces</h2>
-      <p class="body">These are the parts inside Catch and Control. Plain names, plain jobs.</p>
-
-      <div class="piece-grid">
-        <div class="piece-card">
-          <h3>Domain Setup</h3>
-          <p>We connect the site to your domain and handle the basic setup so you don't wrestle with logins.</p>
-        </div>
-        <div class="piece-card">
-          <h3>Site Care</h3>
-          <p>Hosting handled, basic checks, and quick text or photo updates when hours, services, or crew photos change.</p>
-        </div>
-        <div class="piece-card">
-          <h3>Call Catcher</h3>
-          <p>A big tap-to-call path on the site plus missed-call and follow-up text capture. When someone tries to reach you and the call gets missed, they get a simple text back so the lead doesn't drop.</p>
-        </div>
-        <div class="piece-card">
-          <h3>Owner Inbox</h3>
-          <p>Open your phone. Every missed call, every quote request, and every text reply sits in one list. We text you when something new shows up. Notes, follow-up reminders, and a monthly lead summary live in the same place. The login is owner-only and incidental — you'll mostly use the texts.</p>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -607,7 +1044,7 @@
           <span class="step-num">02</span>
           <div>
             <strong>Scope and start.</strong>
-            <p>We pick Launch, Catch, or Control based on what came up on the fit call. Scope, deposit, and timing land in writing before any build work starts.</p>
+            <p>We pick a scope track — owned site only, capture-on, or full stack — based on what came up on the fit call. Layer-by-layer scope, deposit, and timing land in writing before any build work starts.</p>
           </div>
         </div>
         <div class="process-step">
@@ -635,7 +1072,7 @@
           <span class="step-num">06</span>
           <div>
             <strong>Optional ongoing.</strong>
-            <p>If the scope includes Site Care, Call Catcher, or Owner Inbox, we keep those running. Cancel any month - the site itself stays yours.</p>
+            <p>If the scope includes Layer 02 (Capture), Layer 03 (Owner Control), or Layer 04 (Ongoing Care), we keep those running. Cancel any month — Layer 01, the site itself, stays yours.</p>
           </div>
         </div>
       </div>
@@ -658,7 +1095,7 @@
         </div>
         <div class="why-item">
           <strong>Plain language, no marketing fog.</strong>
-          <p>Call Catcher is tap-to-call plus a missed-call text-back. Owner Inbox is one list of leads on your phone with text alerts. That's it — no over-the-top promises, no jargon stack.</p>
+          <p>Layer 02 (Capture) is tap-to-call plus a missed-call text-back. Layer 03 (Owner Control) is one list of leads on your phone with text alerts. Plain pieces, plain names, no jargon stack.</p>
         </div>
       </div>
     </section>
@@ -677,6 +1114,58 @@
       <br><a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
     </div>
   </main>
+
+  <script>
+    // Mouse-follow glow v2 — three-layer lerp (matches homepage)
+    (function(){
+      try {
+        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      } catch (_) {}
+      var w = window.innerWidth || 1440, h = window.innerHeight || 900;
+      var raw = { x: w*0.5, y: h*0.34 };
+      var halo = { x: raw.x, y: raw.y };
+      var core = { x: raw.x, y: raw.y };
+      var trail = { x: raw.x, y: raw.y };
+      var rafId = null, seeded = false;
+      try {
+        if ((window.location.search || '').indexOf('glow_demo=1') !== -1) {
+          var apply = function(){
+            document.body.classList.add('has-mouse');
+            seeded = true;
+            halo.x = core.x = trail.x = raw.x;
+            halo.y = core.y = trail.y = raw.y;
+            flush();
+          };
+          if (document.body) apply(); else document.addEventListener('DOMContentLoaded', apply);
+        }
+      } catch(_){}
+      function flush(){
+        var s = document.documentElement.style;
+        s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
+        s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
+        s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
+      }
+      function tick(){
+        halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
+        core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
+        trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
+        flush();
+        var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
+                      Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
+                      Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
+        rafId = settled ? null : requestAnimationFrame(tick);
+      }
+      document.addEventListener('mousemove', function(e){
+        raw.x = e.clientX; raw.y = e.clientY;
+        if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
+        if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      }, { passive: true });
+      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
+      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
+    })();
+  </script>
 
   <footer>
     <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>

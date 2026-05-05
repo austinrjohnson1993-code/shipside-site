@@ -3,44 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shipside — Websites and Business Systems for Working Businesses</title>
-<meta name="description" content="Shipside builds websites and the business systems behind them — clean sites for local service businesses, plus practical AI, intake, follow-up, scheduling, and workflow systems for the work that needs more than a website.">
+<title>Shipside — We build sites that don't lose leads.</title>
+<meta name="description" content="Shipside builds owned websites for working businesses and wires the capture, follow-up, and owner-visibility layer behind them. Missed calls, quote requests, and replies land where you'll see them — your phone — instead of disappearing.">
 <link rel="canonical" href="https://shipside.dev/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Shipside — Websites and Business Systems for Working Businesses">
-<meta property="og:description" content="Shipside builds websites and the business systems behind them — clean sites for local service businesses, plus practical AI, intake, follow-up, scheduling, and workflow systems for the work that needs more than a website.">
+<meta property="og:title" content="Shipside — We build sites that don't lose leads.">
+<meta property="og:description" content="Owned websites for working businesses, wired to the capture and owner-control layer behind them. Missed calls, quote requests, and replies land where you'll see them — instead of disappearing.">
 <meta property="og:url" content="https://shipside.dev/">
 <meta property="og:site_name" content="Shipside">
 <meta property="og:image" content="https://shipside.dev/brand/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Shipside — Websites and business systems for working businesses.">
+<meta property="og:image:alt" content="Shipside — We build sites that don't lose leads.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Shipside — Websites and Business Systems for Working Businesses">
-<meta name="twitter:description" content="Shipside builds websites and the business systems behind them — clean sites for local service businesses, plus practical AI, intake, follow-up, scheduling, and workflow systems for the work that needs more than a website.">
+<meta name="twitter:title" content="Shipside — We build sites that don't lose leads.">
+<meta name="twitter:description" content="Owned websites for working businesses, wired to the capture and owner-control layer behind them. Missed calls, quote requests, and replies land where you'll see them — instead of disappearing.">
 <meta name="twitter:image" content="https://shipside.dev/brand/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
   :root {
-    --iron: #0b0b0d;
-    --iron-light: #141418;
-    --steel: #1f1f24;
-    --grid: rgba(37,37,44,0.35);
-    --bone: #f2ede0;
-    --bone-dim: #a8a398;
-    --rust: #d44d1c;
-    --rust-bright: #ff5c25;
-    --caution: #e8b220;
-    --red-stamp: #b8321a;
     --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    background: var(--iron);
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 15px;
@@ -372,6 +363,287 @@
     .form-row { grid-template-columns: 1fr; }
   }
 
+  /* ─── What disappears / What Shipside makes visible (v3.1, 2026-05-02) ──── */
+  /* Two-column section that names the missing leads in plain language and
+     shows the matched owner-visible artifact. Static layout, no JS. */
+  .ledger-section {
+    margin-bottom: 80px;
+  }
+
+  .ledger-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    margin-bottom: 12px;
+  }
+
+  .ledger-eyebrow span { color: var(--rust); }
+
+  .ledger-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--steel);
+    background: var(--iron-light);
+    margin-top: 32px;
+  }
+
+  .ledger-col {
+    padding: 28px 28px 32px;
+  }
+
+  .ledger-col + .ledger-col {
+    border-left: 1px solid var(--steel);
+  }
+
+  .ledger-col h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0;
+    margin-bottom: 18px;
+    color: var(--bone);
+  }
+
+  .ledger-col.disappears h3 { color: var(--bone-dim); }
+  .ledger-col.visible h3 { color: var(--rust-bright); }
+
+  .ledger-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ledger-col li {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--bone);
+    padding-left: 22px;
+    position: relative;
+  }
+
+  .ledger-col.disappears li {
+    color: var(--bone-dim);
+    text-decoration: line-through;
+    text-decoration-color: rgba(184, 50, 26, 0.5);
+    text-decoration-thickness: 1px;
+  }
+
+  .ledger-col.disappears li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    color: var(--red-stamp);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .ledger-col.visible li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--rust);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* ─── System-flow visual (v3.1) ─── */
+  /* Three-stage horizontal flow: Site → Capture → Owner Inbox.
+     Static HTML/CSS, no JS, no animation that would distract.
+     Respects prefers-reduced-motion via tokens.css global override. */
+  .flow-section {
+    margin-bottom: 80px;
+  }
+
+  .flow-board {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .flow-stage {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    padding: 22px 22px 24px;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flow-stage--accent {
+    border-left: 3px solid var(--rust);
+  }
+
+  .flow-stage-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 10px;
+  }
+
+  .flow-stage-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: 18px;
+    color: var(--bone);
+    margin-bottom: 14px;
+    letter-spacing: 0;
+  }
+
+  .flow-stage-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .flow-stage-list li {
+    font-size: 13px;
+    color: var(--bone-dim);
+    line-height: 1.5;
+    padding: 6px 10px;
+    border-left: 2px solid var(--steel);
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  .flow-stage-list li.is-output {
+    border-left-color: var(--rust);
+    color: var(--bone);
+  }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    color: var(--rust);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    user-select: none;
+  }
+
+  .flow-arrow::before {
+    content: '→';
+  }
+
+  .flow-caption {
+    margin-top: 14px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--bone-dim);
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  @media (max-width: 900px) {
+    .flow-board {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .flow-arrow {
+      width: 100%;
+      height: 40px;
+    }
+    .flow-arrow::before {
+      content: '↓';
+    }
+    .ledger-grid {
+      grid-template-columns: 1fr;
+    }
+    .ledger-col + .ledger-col {
+      border-left: none;
+      border-top: 1px solid var(--steel);
+    }
+  }
+
+  /* ─── Architecture ladder (v3.2, 2026-05-02) ───────────────────── */
+  /* Four-card horizontal stack that names the build stack as
+     01 Owned Site / 02 Capture Layer / 03 Owner Control / 04 Ongoing Care.
+     Visually rhymes with .flow-board (rust accent border, iron-light
+     bg, list of inside-this-layer items). No JS, no animation. */
+  .arch-section {
+    margin-bottom: 80px;
+  }
+
+  .arch-board {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .arch-card {
+    background: var(--iron-light);
+    border: 1px solid var(--steel);
+    border-left: 3px solid var(--rust);
+    padding: 22px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+  }
+
+  .arch-card-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 10px;
+  }
+
+  .arch-card-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: 18px;
+    color: var(--bone);
+    margin-bottom: 12px;
+    letter-spacing: 0;
+  }
+
+  .arch-card-body {
+    font-size: 13px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .arch-card-list {
+    list-style: none;
+    padding: 0;
+    margin: auto 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .arch-card-list li {
+    font-size: 12px;
+    color: var(--bone);
+    line-height: 1.5;
+    padding: 5px 9px;
+    border-left: 2px solid var(--steel);
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  @media (max-width: 1100px) {
+    .arch-board { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .arch-board { grid-template-columns: 1fr; }
+  }
+
   /* Legacy ROI styles (unused after v3.0 cleanup, kept to avoid CSS churn) */
   .roi-section {
     background: linear-gradient(135deg, rgba(212, 77, 28, 0.1), rgba(255, 92, 37, 0.05));
@@ -475,6 +747,765 @@
       padding: 40px var(--gutter);
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     SHIPSIDE HOMEPAGE v4 — DESIGN UPGRADE (2026-05-02)
+     Lighter layered-charcoal surface tier, blueprint visual proof,
+     interactive layer-selector, vertical wired architecture stack,
+     consolidated fit CTA. Cascade-wins over earlier rules where
+     selectors collide. New components are namespaced .v4-*.
+     Respects prefers-reduced-motion via the @media block at end.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* Surface tier — clearer separation between bg, panel, elevated panel */
+  .v4-surface-1 { background: linear-gradient(180deg, #20202A 0%, #17171E 100%); }
+  .v4-surface-2 { background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%); }
+  .v4-rule      { border: 1px solid rgba(255,255,255,0.07); }
+  .v4-rule-rust { border: 1px solid rgba(212,77,28,0.35); }
+
+  main {
+    max-width: 1200px;
+    padding: 24px var(--gutter) 0;
+  }
+
+  .v4-section { margin-bottom: 120px; }
+
+  .v4-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .v4-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--rust);
+  }
+  .v4-eyebrow .num {
+    color: var(--bone-dim);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+  }
+
+  .v4-section h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(28px, 5vw, 46px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 18px;
+    max-width: 22ch;
+  }
+  .v4-section .v4-lede {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--bone-dim);
+    max-width: 64ch;
+    margin-bottom: 32px;
+  }
+
+  /* HERO v4 — split layout with circuit visual */
+  .hero.v4 {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 64px;
+    align-items: center;
+    padding: clamp(60px, 9vw, 96px) 0 clamp(40px, 6vw, 72px);
+    margin-bottom: 96px;
+  }
+  .hero.v4 h1 {
+    font-size: clamp(40px, 7vw, 76px);
+    margin-bottom: 28px;
+    max-width: 14ch;
+  }
+  .hero.v4 .hero-sub {
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 60ch;
+  }
+  .hero.v4 .hero-cta { margin-bottom: 18px; }
+  .hero.v4 .cta-button { padding: 16px 28px; }
+
+  /* Hero circuit — the box itself originates as the Shipside logo
+     and morphs into the schematic modal. The container is transparent
+     during the boot animation; the .hero-morph capsule below becomes
+     the visible surface as it grows from logo-pill → schematic box. */
+  .hero-circuit {
+    position: relative;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 18px 14px;
+    box-shadow: none;
+    overflow: visible;
+    min-height: 280px;
+  }
+  /* Inner grid texture removed (no grids inside animated modals).
+     Pseudo-element retained empty for cascade compat with later rules
+     that may reference .hero-circuit::before. */
+  .hero-circuit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: none;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  /* ─── Hero boot morph (refined) ───────────────────────────────────
+     The .hero-morph capsule starts as a Shipside logo (small rust
+     circle with emblem) and physically becomes the schematic modal.
+     Single continuous easing curve — no hard keyframe stops, no
+     pulse-snap, no abrupt color jumps. The emblem fades smoothly
+     across the whole morph instead of holding-then-ejecting. The
+     schematic frame fades in only after the morph fully settles,
+     so the box has a beat to "land" before content arrives.
+     Total runtime ≈ 3.0s. Skipped on prefers-reduced-motion. */
+  .hero-morph {
+    position: absolute;
+    /* Hidden during the hold — emblem stands alone with no halo
+       around it. Materializes only at the start of the morph. */
+    width: 84px;
+    height: 84px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(60, 50, 56, 0.6) 0%, rgba(34, 34, 42, 0.7) 100%);
+    box-shadow: none;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    /* Total 4.0s: hold (62% / ~2.5s) emblem-only, morph (38% / ~1.5s)
+       capsule materializes around the emblem and grows into the modal. */
+    animation: heroBoxMorph 4.0s cubic-bezier(0.32, 0.0, 0.18, 1) 0.6s forwards;
+  }
+
+  .hero-morph-emblem {
+    position: absolute;
+    /* Bigger now since it stands alone — feels like a real brand mark
+       on screen rather than a small dot inside a halo. */
+    width: 64px;
+    height: 64px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 2;
+    pointer-events: none;
+    /* Subtle neutral drop-shadow only — no rust halo. */
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+    opacity: 0;
+    animation: heroEmblemBoot 4.0s cubic-bezier(0.32, 0.0, 0.18, 1) 0.6s forwards;
+  }
+
+  /* The capsule is invisible during the hold (emblem-alone phase) and
+     only fades in as the morph begins. The morph is one continuous
+     interpolation: a faint slate-warm pill grows + corners tighten +
+     bg darkens into the final modal. No rust gradient anywhere — the
+     emblem already carries the brand color, the box arrives as the
+     surface it's meant to be. */
+  @keyframes heroBoxMorph {
+    /* — Hold phase (0% to 62%) — capsule completely invisible — */
+    0%, 60% {
+      width: 84px; height: 84px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: linear-gradient(180deg, rgba(60, 50, 56, 0.6) 0%, rgba(34, 34, 42, 0.7) 100%);
+      box-shadow: none;
+      opacity: 0;
+    }
+    /* — Morph phase (62% to 100%) — capsule materializes + grows — */
+    72% {
+      /* Soft slate pill emerges around the emblem position — no rust. */
+      width: 140px; height: 140px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: linear-gradient(180deg, rgba(58, 50, 56, 0.78) 0%, rgba(34, 34, 42, 0.86) 100%);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.34);
+      opacity: 1;
+    }
+    86% {
+      /* Mid-morph — soft squircle, deeper shadow, color settling. */
+      width: 70%; height: 56%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 28%;
+      background: linear-gradient(180deg, rgba(46, 44, 52, 0.92) 0%, rgba(28, 28, 36, 0.95) 100%);
+      box-shadow: 0 14px 42px rgba(0,0,0,0.46);
+      opacity: 1;
+    }
+    100% {
+      /* Final modal box — same surface as production hero-circuit. */
+      width: 100%; height: 100%;
+      top: 0; left: 0;
+      transform: translate(0, 0);
+      border-radius: 4px;
+      background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
+      box-shadow:
+        0 18px 56px rgba(0,0,0,0.46),
+        0 1px 0 rgba(255,255,255,0.04) inset,
+        0 0 0 1px rgba(255,255,255,0.07);
+      opacity: 1;
+    }
+  }
+
+  /* Emblem fades IN over the first 0.4s, holds steady through the
+     entire 2.5s hold, then fades OUT smoothly during the morph as
+     the capsule grows around it. */
+  @keyframes heroEmblemBoot {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.92);
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+    }
+    8% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+    }
+    62% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+    }
+    78% {
+      opacity: 0.55;
+      transform: translate(-50%, -50%) scale(1.18);
+    }
+    92% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.4);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.4);
+    }
+  }
+
+  /* Schematic frame starts AFTER the morph completes. Total morph
+     ends at 0.6 (delay) + 4.0 (anim) = 4.6s. Frame starts at 4.55s
+     to overlap the final settle by 50ms. */
+  .hero-circuit-frame {
+    position: relative;
+    z-index: 3;
+    opacity: 0;
+    transform: scale(0.97);
+    animation: heroFrameIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 4.55s forwards;
+  }
+  @keyframes heroFrameIn {
+    0%   { opacity: 0; transform: scale(0.97); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-morph,
+    .hero-morph-emblem { display: none !important; }
+    .hero-circuit {
+      background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 18px 56px rgba(0,0,0,0.46), 0 1px 0 rgba(255,255,255,0.04) inset;
+    }
+    .hero-circuit-frame { opacity: 1 !important; transform: none !important; animation: none !important; }
+  }
+  .hero-circuit-bar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+  .hero-circuit-bar .live {
+    color: var(--rust);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-circuit-bar .live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rust);
+    box-shadow: 0 0 8px rgba(212,77,28,0.7);
+    animation: heroPulse 2s ease-in-out infinite;
+  }
+  @keyframes heroPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.85); }
+  }
+  .hero-circuit-svg {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hero-circuit-meta {
+    position: relative;
+    z-index: 2;
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .hero-circuit-meta-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    color: var(--bone-dim);
+    letter-spacing: 0.06em;
+    border-left: 2px solid var(--rust);
+    padding-left: 8px;
+    line-height: 1.45;
+  }
+  .hero-circuit-meta-item strong {
+    display: block;
+    color: var(--bone);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 1px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .hero.v4 {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+
+  /* BLUEPRINT MODULE — interactive system schematic */
+  .v4-blueprint {
+    background: linear-gradient(180deg, #20202A 0%, #17171E 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 24px 72px rgba(0,0,0,0.5);
+    margin-top: 40px;
+  }
+  .v4-blueprint-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+  .v4-blueprint-bar .bar-status {
+    color: var(--rust);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .v4-blueprint-bar .bar-status::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rust);
+    box-shadow: 0 0 8px rgba(212,77,28,0.65);
+    animation: heroPulse 2s ease-in-out infinite;
+  }
+  .v4-blueprint-canvas {
+    position: relative;
+    padding: 28px 24px 16px;
+    /* Grid texture removed — animated modals stay clean */
+  }
+  .v4-blueprint-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .v4-blueprint-detail {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    padding: 22px 24px 28px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.012);
+    align-items: start;
+  }
+  .v4-blueprint-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .v4-blueprint-tab {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 11px 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-left: 2px solid rgba(255,255,255,0.08);
+    color: var(--bone-dim);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    font-weight: 600;
+  }
+  .v4-blueprint-tab:hover {
+    color: var(--bone);
+    background: rgba(255,255,255,0.025);
+  }
+  .v4-blueprint-tab.is-active {
+    color: var(--bone);
+    background: rgba(212,77,28,0.1);
+    border-left-color: var(--rust);
+  }
+  .v4-blueprint-tab .tab-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--rust);
+    flex-shrink: 0;
+  }
+  .v4-blueprint-panels { position: relative; }
+  .v4-blueprint-panel { display: none; }
+  .v4-blueprint-panel.is-active {
+    display: block;
+    animation: bpFade 0.25s ease;
+  }
+  @keyframes bpFade {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .v4-blueprint-panel h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0;
+    color: var(--bone);
+    margin-bottom: 8px;
+  }
+  .v4-blueprint-panel .panel-sub {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    max-width: 56ch;
+  }
+  .v4-blueprint-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .v4-blueprint-panel li {
+    font-size: 13px;
+    color: var(--bone);
+    line-height: 1.5;
+    padding: 9px 12px;
+    background: rgba(255,255,255,0.025);
+    border-left: 2px solid var(--rust);
+  }
+
+  @media (max-width: 800px) {
+    .v4-blueprint-detail { grid-template-columns: 1fr; }
+    .v4-blueprint-panel ul { grid-template-columns: 1fr; }
+    .v4-blueprint-canvas { padding: 18px 14px 12px; }
+  }
+
+  /* LEDGER v4 — refined surfaces */
+  .v4-ledger .ledger-grid {
+    border: 1px solid rgba(255,255,255,0.07);
+    background: linear-gradient(180deg, #20202A 0%, #17171E 100%);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.36);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .v4-ledger .ledger-col { padding: 32px 32px 36px; }
+  .v4-ledger .ledger-col h3 { font-size: 18px; margin-bottom: 20px; }
+  .v4-ledger .ledger-col li { font-size: 14px; line-height: 1.6; }
+
+  /* ARCHITECTURE — vertical wired stack */
+  .v4-arch-stack {
+    position: relative;
+    margin-top: 40px;
+    padding-left: 40px;
+  }
+  .v4-arch-stack::before {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: linear-gradient(180deg,
+      rgba(212,77,28,0.6) 0%,
+      rgba(212,77,28,0.25) 30%,
+      rgba(212,77,28,0.25) 70%,
+      rgba(212,77,28,0.6) 100%);
+  }
+  .v4-arch-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 28px;
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(212,77,28,0.55);
+    border-radius: 4px;
+    padding: 24px 28px 26px;
+    margin-bottom: 18px;
+    position: relative;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .v4-arch-row:hover {
+    transform: translateX(4px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.42);
+    border-left-color: var(--rust);
+  }
+  .v4-arch-row::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 32px;
+    width: 30px;
+    height: 2px;
+    background: var(--rust);
+  }
+  .v4-arch-row::after {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 26px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--rust);
+    border-radius: 50%;
+    background: var(--iron);
+    box-shadow: 0 0 12px rgba(212,77,28,0.45);
+  }
+  .v4-arch-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--rust);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .v4-arch-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: 22px;
+    color: var(--bone);
+    letter-spacing: 0;
+    margin-bottom: 10px;
+    line-height: 1.05;
+  }
+  .v4-arch-body {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.65;
+    max-width: 44ch;
+    margin: 0;
+  }
+  .v4-arch-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-self: center;
+  }
+  .v4-arch-list li {
+    font-size: 13px;
+    color: var(--bone);
+    line-height: 1.5;
+    padding: 7px 11px;
+    background: rgba(255,255,255,0.02);
+    border-left: 2px solid rgba(212,77,28,0.45);
+  }
+  @media (max-width: 800px) {
+    .v4-arch-stack { padding-left: 28px; }
+    .v4-arch-row {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .v4-arch-row::before { width: 22px; left: -28px; }
+    .v4-arch-row::after { left: -16px; }
+  }
+
+  /* FIT CTA — final block, gradient + grid */
+  .v4-cta-block {
+    margin-top: 48px;
+    padding: 56px 48px;
+    background:
+      linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%);
+    border: 1px solid rgba(212,77,28,0.32);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.5);
+  }
+  .v4-cta-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  .v4-cta-block > * { position: relative; z-index: 2; }
+  .v4-cta-block h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--bone);
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    line-height: 1.05;
+  }
+  .v4-cta-block p {
+    font-size: 15px;
+    color: var(--bone-dim);
+    line-height: 1.65;
+    margin: 0 0 8px;
+    max-width: 52ch;
+  }
+  .v4-cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .v4-cta-actions .cta-button {
+    font-size: 14px;
+    padding: 16px 28px;
+    text-align: center;
+  }
+  .v4-cta-actions .sms-link {
+    text-align: center;
+    margin-top: 4px;
+  }
+  @media (max-width: 800px) {
+    .v4-cta-block {
+      grid-template-columns: 1fr;
+      padding: 36px 28px;
+    }
+  }
+
+  /* Reduced motion — kill all SVG/blueprint animations */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-circuit-bar .live::before,
+    .v4-blueprint-bar .bar-status::before { animation: none !important; }
+    .v4-blueprint-panel.is-active { animation: none !important; }
+    .hero-circuit-svg .pulse,
+    .v4-blueprint-svg .pulse { animation: none !important; opacity: 0; }
+    .v4-arch-row { transition: none; }
+    .v4-arch-row:hover { transform: none; }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     V3 INTERACTIVE POLISH — mouse-follow grid glow v2 (2026-05-02)
+     Three-layer glow with separate eased follow rates so the halo has
+     weight: a slow trail, a medium halo, and a fast bright core. JS
+     drives --mx/--my (halo), --cx/--cy (core), --tx/--ty (trail) via
+     rAF lerp. Disabled on touch + prefers-reduced-motion.
+     ═══════════════════════════════════════════════════════════════════ */
+  .v4-glow,
+  .v4-glow-core,
+  .v4-glow-trail {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    will-change: opacity, background;
+    mix-blend-mode: screen;
+  }
+  /* Outer halo — slow follow (~0.18 lerp), broad, low intensity */
+  .v4-glow {
+    background:
+      radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
+        rgba(212, 77, 28, 0.20) 0%,
+        rgba(212, 77, 28, 0.09) 26%,
+        rgba(212, 77, 28, 0.025) 50%,
+        transparent 72%);
+  }
+  /* Trail — slowest follow (~0.08 lerp), medium radius, very subtle */
+  .v4-glow-trail {
+    background:
+      radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
+        rgba(212, 77, 28, 0.12) 0%,
+        rgba(212, 77, 28, 0.04) 36%,
+        transparent 62%);
+  }
+  /* Core — fast follow (~0.42 lerp), small bright rust-bright peak
+     plus an even smaller bone-tinted hot center for the focal point. */
+  .v4-glow-core {
+    background:
+      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255, 92, 37, 0.44) 0%,
+        rgba(255, 92, 37, 0.16) 26%,
+        rgba(255, 92, 37, 0.04) 48%,
+        transparent 64%),
+      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255, 200, 160, 0.30) 0%,
+        rgba(255, 200, 160, 0.05) 60%,
+        transparent 86%);
+  }
+  body.has-mouse .v4-glow,
+  body.has-mouse .v4-glow-trail,
+  body.has-mouse .v4-glow-core { opacity: 1; }
+
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
+  }
+
+  /* Sections get a subtle bottom-edge fade so the glow can pass between
+     them without a hard cut. Surfaces of cards/blueprints/CTA blocks
+     remain opaque so the glow lifts only background grid, not content. */
+  .v4-section { position: relative; }
+
+  /* Hero circuit + blueprint hover polish — lift on cursor approach */
+  .hero-circuit,
+  .v4-blueprint {
+    transition: box-shadow 0.45s ease, border-color 0.45s ease;
+  }
+  body.has-mouse .hero-circuit:hover {
+    border-color: rgba(212, 77, 28, 0.32);
+    box-shadow: 0 22px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,77,28,0.08), 0 1px 0 rgba(255,255,255,0.05) inset;
+  }
+  body.has-mouse .v4-blueprint:hover {
+    border-color: rgba(212, 77, 28, 0.22);
+    box-shadow: 0 28px 84px rgba(0,0,0,0.55);
+  }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -482,6 +1513,18 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+  <!-- v4 grid animation layers (z-index 1) — signal scan + cursor-proximity
+       grid intersection nodes. Defined in tokens.css. -->
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+
+  <!-- Mouse-follow glow v2 (2026-05-02). Three lerped layers driven by
+       --mx/--my (halo), --tx/--ty (trail), --cx/--cy (core). Hidden on
+       touch + reduced-motion via CSS @media in head. -->
+  <div class="v4-glow"       aria-hidden="true"></div>
+  <div class="v4-glow-trail" aria-hidden="true"></div>
+  <div class="v4-glow-core"  aria-hidden="true"></div>
+
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
@@ -497,105 +1540,536 @@
   </nav>
 
   <main>
-    <section class="hero">
-      <h1>We build the website and the systems behind it.</h1>
-      <p class="hero-sub">Shipside builds owner-owned websites, internal tools, and useful AI inside the workflow — not in the sales pitch.</p>
-      <div class="hero-cta">
-        <a href="./contact.html" class="cta-button">Start the conversation</a>
-        <a href="./services.html" class="cta-button secondary">How we work</a>
+    <!-- ═══ HERO v4 — split layout with circuit visual ═══ -->
+    <section class="hero v4">
+      <div class="hero-content">
+        <div class="v4-eyebrow"><span class="num">↳</span> SHIPSIDE / FOR WORKING BUSINESSES</div>
+        <h1>We build sites that don't lose leads.</h1>
+        <p class="hero-sub">Owned website. Tap-to-call and missed-call text-back. An owner-only inbox of leads, replies, and reminders on your phone. Wired together so nothing slips while you're on a job — and yours to keep when we hand it off.</p>
+        <div class="hero-cta">
+          <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
+          <a href="#blueprint" class="cta-button secondary">See it wired</a>
+        </div>
+        <a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
       </div>
-      <a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
+
+      <div class="hero-circuit" aria-hidden="true">
+        <!-- Boot animation: the box itself originates as the Shipside
+             logo (small rust circle with emblem) and physically morphs
+             into the modal box shape + slate surface over 2s. The
+             schematic content fades in once the morph completes. -->
+        <div class="hero-morph"></div>
+        <img src="/brand/emblem.png" alt="" class="hero-morph-emblem" width="44" height="44">
+
+        <div class="hero-circuit-frame">
+        <div class="hero-circuit-bar">
+          <span>// SHIPSIDE / SCHEMATIC v1</span>
+          <span class="live">LIVE</span>
+        </div>
+        <svg viewBox="0 0 480 280" class="hero-circuit-svg" preserveAspectRatio="xMidYMid meet">
+          <!-- routing traces (base, dim) -->
+          <g fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.4">
+            <path id="hero-trace-1" d="M 96 140 L 152 140 L 152 56 L 200 56"/>
+            <path id="hero-trace-2" d="M 96 140 L 152 140 L 200 140"/>
+            <path id="hero-trace-3" d="M 96 140 L 152 140 L 152 224 L 200 224"/>
+            <path id="hero-trace-4" d="M 320 56 L 360 56 L 360 140 L 392 140"/>
+            <path id="hero-trace-5" d="M 320 140 L 392 140"/>
+            <path id="hero-trace-6" d="M 320 224 L 360 224 L 360 140 L 392 140"/>
+          </g>
+
+          <!-- pulse dots traveling along routes -->
+          <g class="pulse">
+            <circle r="3" fill="#ff5c25" opacity="0.95">
+              <animateMotion dur="3.6s" repeatCount="indefinite" begin="0s">
+                <mpath href="#hero-trace-1"/>
+              </animateMotion>
+            </circle>
+            <circle r="3" fill="#ff5c25" opacity="0.95">
+              <animateMotion dur="3.6s" repeatCount="indefinite" begin="0.7s">
+                <mpath href="#hero-trace-2"/>
+              </animateMotion>
+            </circle>
+            <circle r="3" fill="#ff5c25" opacity="0.95">
+              <animateMotion dur="3.6s" repeatCount="indefinite" begin="1.4s">
+                <mpath href="#hero-trace-3"/>
+              </animateMotion>
+            </circle>
+            <circle r="3" fill="#ff7344" opacity="0.95">
+              <animateMotion dur="3.2s" repeatCount="indefinite" begin="2.0s">
+                <mpath href="#hero-trace-5"/>
+              </animateMotion>
+            </circle>
+          </g>
+
+          <!-- visitor source -->
+          <g transform="translate(20,116)">
+            <rect width="76" height="48" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+            <text x="38" y="20" text-anchor="middle" fill="#a8a398" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1.6">VISITOR</text>
+            <text x="38" y="34" text-anchor="middle" fill="#f2ede0" font-family="IBM Plex Mono" font-size="10" font-weight="700">Referral</text>
+          </g>
+
+          <!-- station: Owned Site -->
+          <g transform="translate(200,32)">
+            <rect width="120" height="48" rx="2" fill="#1F1F26" stroke="rgba(212,77,28,0.55)"/>
+            <rect x="0" y="0" width="120" height="3" fill="#d44d1c"/>
+            <text x="12" y="22" fill="#a8a398" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1.4">L01 · OWNED</text>
+            <text x="12" y="38" fill="#f2ede0" font-family="IBM Plex Sans" font-size="12" font-weight="800">Owned Site</text>
+          </g>
+
+          <!-- station: Capture -->
+          <g transform="translate(200,116)">
+            <rect width="120" height="48" rx="2" fill="#1F1F26" stroke="rgba(212,77,28,0.55)"/>
+            <rect x="0" y="0" width="120" height="3" fill="#d44d1c"/>
+            <text x="12" y="22" fill="#a8a398" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1.4">L02 · CAPTURE</text>
+            <text x="12" y="38" fill="#f2ede0" font-family="IBM Plex Sans" font-size="12" font-weight="800">Capture Layer</text>
+          </g>
+
+          <!-- station: Owner Control -->
+          <g transform="translate(200,200)">
+            <rect width="120" height="48" rx="2" fill="#1F1F26" stroke="rgba(212,77,28,0.55)"/>
+            <rect x="0" y="0" width="120" height="3" fill="#d44d1c"/>
+            <text x="12" y="22" fill="#a8a398" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1.4">L03 · CONTROL</text>
+            <text x="12" y="38" fill="#f2ede0" font-family="IBM Plex Sans" font-size="12" font-weight="800">Owner Control</text>
+          </g>
+
+          <!-- owner phone (output) -->
+          <g transform="translate(392,116)">
+            <rect width="68" height="48" rx="2" fill="rgba(212,77,28,0.16)" stroke="rgba(212,77,28,0.65)"/>
+            <text x="34" y="20" text-anchor="middle" fill="#d44d1c" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1.6">OWNER</text>
+            <text x="34" y="34" text-anchor="middle" fill="#f2ede0" font-family="IBM Plex Mono" font-size="10" font-weight="700">Phone</text>
+          </g>
+        </svg>
+        <div class="hero-circuit-meta">
+          <div class="hero-circuit-meta-item">
+            <strong>Front door</strong>
+            Owned site
+          </div>
+          <div class="hero-circuit-meta-item">
+            <strong>Routing</strong>
+            Capture layer
+          </div>
+          <div class="hero-circuit-meta-item">
+            <strong>Output</strong>
+            Owner phone
+          </div>
+        </div>
+        </div><!-- /.hero-circuit-frame -->
+      </div>
     </section>
 
-    <section>
-      <h2>What happens when somebody looks you up.</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">You've run a good shop for years. The work holds up. Referrals keep coming - and they should.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">But when somebody drops your name, the prospect pulls out their phone and looks you up. If what they find is nothing, or a half-dead listing from years ago, or a parking page from a site that was never finished, it looks like the lights are off.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch;">They go to the next name on the list. You never even know you were in the running.</p>
-    </section>
+    <!-- ═══ INTERACTIVE BLUEPRINT — proof-of-build module ═══ -->
+    <section class="v4-section" id="blueprint">
+      <div class="v4-eyebrow"><span class="num">01 /</span> SYSTEM SCHEMATIC</div>
+      <h2>How the lead path is wired.</h2>
+      <p class="v4-lede">Click a layer to see what's inside it. Three stations, one routing path, no vendor handoff. Built once, owned by you, runs whether anyone's watching the dashboard or not.</p>
 
-    <section>
-      <h2>We turn the lights on.</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 32px;">A clean place to send people. Five pages. Clear services. Work photos. Easy next step. Usually done in a few days. We give ourselves up to 7 so nobody gets surprised.</p>
-      <div class="included-grid">
-        <div class="included-item">
-          <p><strong>The Five Pages.</strong> Home, About, Services, Work/Gallery, Contact. The stuff people actually look at before calling you.</p>
+      <div class="v4-blueprint" id="bp-module">
+        <div class="v4-blueprint-bar">
+          <span>// SHIPSIDE / SCHEMATIC / LEAD-PATH-001</span>
+          <span class="bar-status">ACTIVE</span>
         </div>
-        <div class="included-item">
-          <p><strong>Built around your work.</strong> Roofer, auto shop, landscaper, HVAC, contractor. The site shows what you do and how to reach you.</p>
+        <div class="v4-blueprint-canvas">
+          <svg viewBox="0 0 1100 320" class="v4-blueprint-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Shipside lead-path schematic: visitor to owner phone via three system layers">
+            <defs>
+              <linearGradient id="bp-station-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#25252E"/>
+                <stop offset="100%" stop-color="#181820"/>
+              </linearGradient>
+              <linearGradient id="bp-station-fill-active" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#2C1A12"/>
+                <stop offset="100%" stop-color="#1B1B22"/>
+              </linearGradient>
+            </defs>
+
+            <!-- routing traces (base) -->
+            <g fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1.5">
+              <path id="bp-trace-1" d="M 110 160 L 170 160 L 200 160"/>
+              <path id="bp-trace-2" d="M 400 160 L 480 160"/>
+              <path id="bp-trace-3" d="M 680 160 L 760 160"/>
+              <path id="bp-trace-4" d="M 960 160 L 1010 160"/>
+            </g>
+
+            <!-- pulse dots -->
+            <g class="pulse">
+              <circle r="4" fill="#ff5c25">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="0s"><mpath href="#bp-trace-1"/></animateMotion>
+              </circle>
+              <circle r="4" fill="#ff5c25">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.6s"><mpath href="#bp-trace-2"/></animateMotion>
+              </circle>
+              <circle r="4" fill="#ff5c25">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s"><mpath href="#bp-trace-3"/></animateMotion>
+              </circle>
+              <circle r="4" fill="#ff7344">
+                <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.8s"><mpath href="#bp-trace-4"/></animateMotion>
+              </circle>
+            </g>
+
+            <!-- visitor source -->
+            <g transform="translate(20,128)">
+              <rect width="90" height="64" rx="2" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.22)"/>
+              <rect x="0" y="0" width="90" height="3" fill="rgba(255,255,255,0.4)"/>
+              <text x="45" y="24" text-anchor="middle" fill="#a8a398" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.6">SOURCE</text>
+              <text x="45" y="40" text-anchor="middle" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11" font-weight="700">Visitor</text>
+              <text x="45" y="55" text-anchor="middle" fill="#a8a398" font-family="IBM Plex Mono" font-size="9">Referral · Search</text>
+            </g>
+
+            <!-- L01 station -->
+            <g class="bp-station" data-layer="01" transform="translate(200,60)" style="cursor:pointer;">
+              <rect width="200" height="200" rx="3" fill="url(#bp-station-fill)" stroke="rgba(212,77,28,0.55)" stroke-width="1.4"/>
+              <rect x="0" y="0" width="200" height="6" fill="#d44d1c"/>
+              <text x="14" y="28" fill="#a8a398" font-family="IBM Plex Mono" font-size="9.5" letter-spacing="1.6">LAYER 01 · FOUNDATION</text>
+              <text x="14" y="56" fill="#f2ede0" font-family="Bungee" font-size="20" letter-spacing="0">Owned Site</text>
+              <line x1="14" y1="72" x2="186" y2="72" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="14" y="96"  fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ 5 pages</text>
+              <text x="14" y="118" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Domain on day one</text>
+              <text x="14" y="140" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Phone-friendly</text>
+              <text x="14" y="162" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Files yours</text>
+              <text x="14" y="186" fill="#a8a398" font-family="IBM Plex Mono" font-size="9.5" letter-spacing="1.4">OUT → CAP</text>
+            </g>
+
+            <!-- L02 station -->
+            <g class="bp-station" data-layer="02" transform="translate(480,60)" style="cursor:pointer;">
+              <rect width="200" height="200" rx="3" fill="url(#bp-station-fill)" stroke="rgba(212,77,28,0.55)" stroke-width="1.4"/>
+              <rect x="0" y="0" width="200" height="6" fill="#d44d1c"/>
+              <text x="14" y="28" fill="#a8a398" font-family="IBM Plex Mono" font-size="9.5" letter-spacing="1.6">LAYER 02 · CAPTURE</text>
+              <text x="14" y="56" fill="#f2ede0" font-family="Bungee" font-size="20" letter-spacing="0">Capture Layer</text>
+              <line x1="14" y1="72" x2="186" y2="72" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="14" y="96"  fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Tap-to-call</text>
+              <text x="14" y="118" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Missed-call text-back</text>
+              <text x="14" y="140" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Quote-request form</text>
+              <text x="14" y="162" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ One inbox</text>
+              <text x="14" y="186" fill="#a8a398" font-family="IBM Plex Mono" font-size="9.5" letter-spacing="1.4">OUT → CTRL</text>
+            </g>
+
+            <!-- L03 station -->
+            <g class="bp-station" data-layer="03" transform="translate(760,60)" style="cursor:pointer;">
+              <rect width="200" height="200" rx="3" fill="url(#bp-station-fill)" stroke="rgba(212,77,28,0.55)" stroke-width="1.4"/>
+              <rect x="0" y="0" width="200" height="6" fill="#d44d1c"/>
+              <text x="14" y="28" fill="#a8a398" font-family="IBM Plex Mono" font-size="9.5" letter-spacing="1.6">LAYER 03 · CONTROL</text>
+              <text x="14" y="56" fill="#f2ede0" font-family="Bungee" font-size="20" letter-spacing="0">Owner Control</text>
+              <line x1="14" y1="72" x2="186" y2="72" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="14" y="96"  fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Owner-only inbox</text>
+              <text x="14" y="118" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Push on new lead</text>
+              <text x="14" y="140" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Notes · reminders</text>
+              <text x="14" y="162" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11">→ Monthly summary</text>
+              <text x="14" y="186" fill="#a8a398" font-family="IBM Plex Mono" font-size="9.5" letter-spacing="1.4">OUT → PHONE</text>
+            </g>
+
+            <!-- owner phone output -->
+            <g transform="translate(1010,128)">
+              <rect width="74" height="64" rx="2" fill="rgba(212,77,28,0.18)" stroke="rgba(212,77,28,0.7)" stroke-width="1.4"/>
+              <rect x="0" y="0" width="74" height="3" fill="#d44d1c"/>
+              <text x="37" y="24" text-anchor="middle" fill="#d44d1c" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.6">OWNER</text>
+              <text x="37" y="40" text-anchor="middle" fill="#f2ede0" font-family="IBM Plex Mono" font-size="11" font-weight="700">Phone</text>
+              <text x="37" y="55" text-anchor="middle" fill="#a8a398" font-family="IBM Plex Mono" font-size="9">Lead in hand</text>
+            </g>
+          </svg>
         </div>
-        <div class="included-item">
-          <p><strong>Your info, your photos.</strong> One call, one form. We write the copy, you approve it, we ship.</p>
-        </div>
-        <div class="included-item">
-          <p><strong>You own it.</strong> The site is yours. The domain is yours. Cancel us any day; the site does not go dark.</p>
+
+        <div class="v4-blueprint-detail">
+          <div class="v4-blueprint-tabs" role="tablist" aria-label="Layer details">
+            <button type="button" class="v4-blueprint-tab is-active" role="tab" aria-selected="true" data-layer="01">
+              <span class="tab-num">L01</span>
+              <span>Owned Site</span>
+            </button>
+            <button type="button" class="v4-blueprint-tab" role="tab" aria-selected="false" data-layer="02">
+              <span class="tab-num">L02</span>
+              <span>Capture Layer</span>
+            </button>
+            <button type="button" class="v4-blueprint-tab" role="tab" aria-selected="false" data-layer="03">
+              <span class="tab-num">L03</span>
+              <span>Owner Control</span>
+            </button>
+            <button type="button" class="v4-blueprint-tab" role="tab" aria-selected="false" data-layer="04">
+              <span class="tab-num">L04</span>
+              <span>Ongoing Care</span>
+            </button>
+          </div>
+
+          <div class="v4-blueprint-panels">
+            <div class="v4-blueprint-panel is-active" role="tabpanel" data-panel="01">
+              <h3>Owned Site</h3>
+              <p class="panel-sub">A clean, fast, five-page website on your domain. Built around your trade and your photos. Files yours. Domain yours. No platform lock-in.</p>
+              <ul>
+                <li>Home · About · Services · Work · Contact</li>
+                <li>Phone-friendly, plain files, ages well</li>
+                <li>Connected to your domain on day one</li>
+                <li>Trust check holds up to a phone-search lookup</li>
+              </ul>
+            </div>
+            <div class="v4-blueprint-panel" role="tabpanel" data-panel="02">
+              <h3>Capture Layer</h3>
+              <p class="panel-sub">The path from "someone reached out" to "the lead landed somewhere you'll actually see it." Tap-to-call, missed-call text-back, and quote-request form — wired in.</p>
+              <ul>
+                <li>Tap-to-call on every page</li>
+                <li>Missed-call text-back fires within seconds</li>
+                <li>Quote-request form lands in one inbox</li>
+                <li>Nothing slips while you're on a job</li>
+              </ul>
+            </div>
+            <div class="v4-blueprint-panel" role="tabpanel" data-panel="03">
+              <h3>Owner Control</h3>
+              <p class="panel-sub">One owner-only list of every lead, reply, note, and reminder — on your phone. Push when something new shows up. Monthly summary so you see the month, not babysit a dashboard.</p>
+              <ul>
+                <li>Owner-only login, push alerts</li>
+                <li>Status, notes, follow-up reminders</li>
+                <li>Replies threaded next to the lead</li>
+                <li>Monthly lead summary</li>
+              </ul>
+            </div>
+            <div class="v4-blueprint-panel" role="tabpanel" data-panel="04">
+              <h3>Ongoing Care</h3>
+              <p class="panel-sub">Hosting handled. Basic checks running. Quick text-or-photo updates when hours, services, crew photos, or a new offering change. Cancel any month — the site stays yours, live.</p>
+              <ul>
+                <li>Hosting + basic monitoring</li>
+                <li>Update help when the business changes</li>
+                <li>You own the files — leave any time</li>
+                <li>No platform lock-in, no hostage retainer</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="sales-ladder">
-      <h2>Start with the site. Add capture when you need it.</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 32px;">Three scope levels. We talk through which one fits on a fit call before any work starts.</p>
-      <div class="flow-grid">
-        <div class="flow-item" data-step="1">
-          <h3>Launch</h3>
-          <p>Get a clean, owned website online. Five pages, contact form, connected to your domain, customer-owned.</p>
+    <!-- ═══ LEDGER v4 — what disappears / what becomes visible ═══ -->
+    <section class="v4-section v4-ledger" id="ledger">
+      <div class="v4-eyebrow"><span class="num">02 /</span> WHAT TODAY LOOKS LIKE</div>
+      <h2>What disappears today. What Shipside makes visible.</h2>
+      <p class="v4-lede">Most one- and two-truck shops are leaking inbound work — not because the work is bad, but because the path from inbound signal to owner action is broken. Plain language. No dashboards to babysit.</p>
+      <div class="ledger-grid">
+        <div class="ledger-col disappears">
+          <h3>Disappears today</h3>
+          <ul>
+            <li>Missed calls during a job — no callback, no record</li>
+            <li>Quote requests buried in personal email</li>
+            <li>Text replies that never get a follow-up</li>
+            <li>"I called you last Tuesday" — and you have no idea</li>
+            <li>Referrals who looked you up and bounced</li>
+            <li>A site that hasn't been touched in years</li>
+          </ul>
         </div>
-        <div class="flow-item" data-step="2">
-          <h3>Catch</h3>
-          <p>Add basic call and quote-request capture so fewer opportunities disappear. Launch plus Domain Setup, Site Care, and Call Catcher.</p>
-        </div>
-        <div class="flow-item" data-step="3">
-          <h3>Control</h3>
-          <p>Add owner visibility so leads, replies, notes, reminders, and monthly summaries stay organized. Catch plus Owner Inbox.</p>
-        </div>
-        <div class="flow-item" data-step="4">
-          <h3>Timing</h3>
-          <p>Once scope is locked, the build is usually done in a few days. We give ourselves up to 7 so nobody gets surprised.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>The parts inside Catch and Control.</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 32px;">Plain names, plain jobs. No extra system to babysit.</p>
-      <div class="included-grid">
-        <div class="included-item">
-          <p><strong>Domain Setup.</strong> We connect the site to your domain and handle the basic setup so you don't wrestle with logins.</p>
-        </div>
-        <div class="included-item">
-          <p><strong>Site Care.</strong> Hosting, basic checks, and quick text or photo updates when hours, services, or crew photos change.</p>
-        </div>
-        <div class="included-item">
-          <p><strong>Call Catcher.</strong> Tap-to-call on the site plus a simple missed-call text back: "Sorry we missed you - what can we help with?"</p>
-        </div>
-        <div class="included-item">
-          <p><strong>Owner Inbox.</strong> Open your phone. Every missed call, every quote request, and every text reply sits in one list. We text you when something new shows up. Notes, follow-up reminders, and a monthly lead summary live in the same place. Login is yours, owner-only.</p>
+        <div class="ledger-col visible">
+          <h3>Visible with Shipside</h3>
+          <ul>
+            <li>Every missed call texted back automatically</li>
+            <li>Every quote request in one owner-only list</li>
+            <li>Replies threaded next to the lead, not lost in email</li>
+            <li>Notes, follow-up reminders, monthly summary</li>
+            <li>A clean owned site that holds up to a phone check</li>
+            <li>Owner login is yours — cancel us, the site stays live</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>Is this a fit for your business?</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">Simple test: do people in your area look you up before they call? If yes - and there's nothing real online, or what's there hasn't been touched in years - that's the problem Shipside fixes.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">If most of your work comes from referrals, you're tired of hearing "I couldn't find you," and you want something clean without babysitting it, that's the fit.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch;">If you need a simple five-page site, want calls and quote requests easier to catch, and want to own the site when we're done, we're a fit. We talk through scope and cost on the fit call before any work starts.</p>
+    <!-- ═══ ARCHITECTURE — vertical wired stack ═══ -->
+    <section class="v4-section" id="architecture">
+      <div class="v4-eyebrow"><span class="num">03 /</span> THE BUILD STACK</div>
+      <h2>Four layers. Wired together. One team accountable end to end.</h2>
+      <p class="v4-lede">Plain names, plain jobs. Pick the layers that fit where the business is. We talk through scope on a fit call before any work starts.</p>
+      <div class="v4-arch-stack" role="list" aria-label="Shipside build stack">
+        <article class="v4-arch-row" role="listitem">
+          <div class="v4-arch-col">
+            <div class="v4-arch-num">Layer 01 · Foundation</div>
+            <h3 class="v4-arch-title">Owned Site</h3>
+            <p class="v4-arch-body">A clean, fast, five-page website on your domain. Built around your trade and your photos. Files yours. Domain yours. No platform lock-in.</p>
+          </div>
+          <ul class="v4-arch-list">
+            <li>Home · About · Services · Work · Contact</li>
+            <li>Phone-friendly, plain files, ages well</li>
+            <li>Connected to your domain on day one</li>
+          </ul>
+        </article>
+        <article class="v4-arch-row" role="listitem">
+          <div class="v4-arch-col">
+            <div class="v4-arch-num">Layer 02 · Capture</div>
+            <h3 class="v4-arch-title">Capture Layer</h3>
+            <p class="v4-arch-body">The path from "someone reached out" to "the lead landed somewhere you'll actually see it." Tap-to-call, missed-call text-back, and quote-request form — wired in.</p>
+          </div>
+          <ul class="v4-arch-list">
+            <li>Tap-to-call on every page</li>
+            <li>Missed-call text-back fires in seconds</li>
+            <li>Quote requests land in one inbox</li>
+          </ul>
+        </article>
+        <article class="v4-arch-row" role="listitem">
+          <div class="v4-arch-col">
+            <div class="v4-arch-num">Layer 03 · Visibility</div>
+            <h3 class="v4-arch-title">Owner Control</h3>
+            <p class="v4-arch-body">One owner-only list of every lead, reply, note, and reminder — on your phone. Push when something new shows up. Monthly summary so you see the month, not babysit a dashboard.</p>
+          </div>
+          <ul class="v4-arch-list">
+            <li>Owner-only login, push alerts</li>
+            <li>Status, notes, follow-up reminders</li>
+            <li>Monthly lead summary</li>
+          </ul>
+        </article>
+        <article class="v4-arch-row" role="listitem">
+          <div class="v4-arch-col">
+            <div class="v4-arch-num">Layer 04 · Care</div>
+            <h3 class="v4-arch-title">Ongoing Care</h3>
+            <p class="v4-arch-body">Hosting handled. Basic checks running. Quick text-or-photo updates when hours, services, crew photos, or a new offering change. Cancel any month — the site stays yours, live.</p>
+          </div>
+          <ul class="v4-arch-list">
+            <li>Hosting + basic monitoring</li>
+            <li>Update help when the business changes</li>
+            <li>You own the files — leave any time</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
-    <section>
-      <h2>The site is the first layer.</h2>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">A clean website gives the business a place to send people. The systems behind it keep the work moving after they reach out.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch; margin-bottom: 24px;">We build intake paths, follow-up tools, scheduling flows, CRM cleanup, and small internal tools that fit the way the business actually works.</p>
-      <p style="color: var(--bone-dim); max-width: 70ch;"><a href="./consulting.html" style="color: var(--rust); text-decoration: none; font-weight: 500;">See systems work →</a></p>
+    <!-- ═══ FIT CTA — consolidated ═══ -->
+    <section class="v4-section" id="fit">
+      <div class="v4-eyebrow"><span class="num">04 /</span> IS THIS A FIT</div>
+      <div class="v4-cta-block">
+        <div class="v4-cta-copy">
+          <h2>The phone should ring. The lead should land somewhere you'll see it.</h2>
+          <p>If most of your work comes from referrals, you're tired of hearing "I couldn't find you," and you want a clean owned site plus a working capture layer — without a dashboard to babysit — that's the fit.</p>
+          <p>Fifteen-minute fit call. We walk through your site and follow-up setup, tell you straight whether Shipside fits, and put scope and cost in writing before any work starts. No pitch deck. No hard sell.</p>
+        </div>
+        <div class="v4-cta-actions">
+          <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
+          <a href="./services.html" class="cta-button secondary">See the full service architecture</a>
+          <a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
+        </div>
+      </div>
     </section>
-
-    <div class="final-cta">
-      <h2>The phone should ring.</h2>
-      <p style="color: var(--bone-dim);">Book a 15-minute fit call. We'll walk through your site and follow-up setup and tell you straight if Shipside fits. No pitch deck. No hard sell.</p>
-      <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
-      <br><a href="sms:+15125591741" class="sms-link" style="margin-top: 16px; display: inline-block;">↩ Text us instead</a>
-    </div>
   </main>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════════════
+    // Blueprint interactivity — layer tab + SVG station selector
+    // No external deps. Inert when section absent. 2026-05-02.
+    // ═══════════════════════════════════════════════════════════════════
+    (function(){
+      var module = document.getElementById('bp-module');
+      if (!module) return;
+      var tabs = module.querySelectorAll('.v4-blueprint-tab');
+      var panels = module.querySelectorAll('.v4-blueprint-panel');
+      var stations = module.querySelectorAll('.bp-station');
+
+      function activate(layer){
+        tabs.forEach(function(t){
+          var on = t.dataset.layer === layer;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function(p){
+          p.classList.toggle('is-active', p.dataset.panel === layer);
+        });
+        stations.forEach(function(s){
+          var on = s.dataset.layer === layer;
+          var rect = s.querySelector('rect');
+          if (rect) {
+            rect.setAttribute('fill', on ? 'url(#bp-station-fill-active)' : 'url(#bp-station-fill)');
+            rect.setAttribute('stroke', on ? '#ff5c25' : 'rgba(212,77,28,0.55)');
+            rect.setAttribute('stroke-width', on ? '2' : '1.4');
+          }
+        });
+      }
+
+      tabs.forEach(function(t){
+        t.addEventListener('click', function(){ activate(t.dataset.layer); });
+        t.addEventListener('keydown', function(e){
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activate(t.dataset.layer);
+          }
+        });
+      });
+      stations.forEach(function(s){
+        s.addEventListener('click', function(){ activate(s.dataset.layer); });
+      });
+    })();
+
+    // ═══════════════════════════════════════════════════════════════════
+    // Mouse-follow glow v2 — three-layer lerp (2026-05-02)
+    // Three pointer-tracked radial gradients with separate eased follow
+    // rates: trail (0.08), halo (0.18), core (0.42). Sub-pixel rounding
+    // avoids jitter. rAF auto-stops when all three layers settle within
+    // 0.4px of the cursor. Skipped on touch + prefers-reduced-motion.
+    // ═══════════════════════════════════════════════════════════════════
+    (function(){
+      try {
+        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      } catch (_) {}
+
+      var w = window.innerWidth || 1440;
+      var h = window.innerHeight || 900;
+      var raw   = { x: w * 0.5, y: h * 0.34 };
+      var halo  = { x: raw.x, y: raw.y };
+      var core  = { x: raw.x, y: raw.y };
+      var trail = { x: raw.x, y: raw.y };
+      var rafId = null;
+      var seeded = false;
+
+      // Headless capture flag: ?glow_demo=1 parks the glow at viewport
+      // center so screenshots can prove it renders. Inert without flag.
+      try {
+        var qs = window.location.search || '';
+        if (qs.indexOf('glow_demo=1') !== -1) {
+          var apply = function(){
+            document.body.classList.add('has-mouse');
+            seeded = true;
+            raw.x = w * 0.5; raw.y = h * 0.34;
+            halo.x = core.x = trail.x = raw.x;
+            halo.y = core.y = trail.y = raw.y;
+            flush();
+          };
+          if (document.body) apply();
+          else document.addEventListener('DOMContentLoaded', apply);
+        }
+      } catch (_) {}
+
+      function flush(){
+        var s = document.documentElement.style;
+        s.setProperty('--mx', Math.round(halo.x)  + 'px');
+        s.setProperty('--my', Math.round(halo.y)  + 'px');
+        s.setProperty('--cx', Math.round(core.x)  + 'px');
+        s.setProperty('--cy', Math.round(core.y)  + 'px');
+        s.setProperty('--tx', Math.round(trail.x) + 'px');
+        s.setProperty('--ty', Math.round(trail.y) + 'px');
+      }
+
+      function tick(){
+        halo.x  += (raw.x - halo.x)  * 0.18;
+        halo.y  += (raw.y - halo.y)  * 0.18;
+        core.x  += (raw.x - core.x)  * 0.42;
+        core.y  += (raw.y - core.y)  * 0.42;
+        trail.x += (raw.x - trail.x) * 0.08;
+        trail.y += (raw.y - trail.y) * 0.08;
+        flush();
+
+        // Stop the rAF loop when every layer has settled within 0.4px.
+        var settled =
+          Math.abs(raw.x - halo.x)  < 0.4 && Math.abs(raw.y - halo.y)  < 0.4 &&
+          Math.abs(raw.x - core.x)  < 0.4 && Math.abs(raw.y - core.y)  < 0.4 &&
+          Math.abs(raw.x - trail.x) < 0.4 && Math.abs(raw.y - trail.y) < 0.4;
+        rafId = settled ? null : requestAnimationFrame(tick);
+      }
+
+      function onMove(e){
+        raw.x = e.clientX; raw.y = e.clientY;
+        if (!seeded) {
+          halo.x = core.x = trail.x = raw.x;
+          halo.y = core.y = trail.y = raw.y;
+          seeded = true;
+        }
+        if (!document.body.classList.contains('has-mouse')) {
+          document.body.classList.add('has-mouse');
+        }
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      }
+
+      document.addEventListener('mousemove', onMove, { passive: true });
+      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
+      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
+    })();
+  </script>
 
   <footer>
     <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>

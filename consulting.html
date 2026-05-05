@@ -22,25 +22,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
   :root {
-    --iron: #0b0b0d;
-    --iron-light: #141418;
-    --steel: #1f1f24;
-    --grid: rgba(37,37,44,0.35);
-    --bone: #f2ede0;
-    --bone-dim: #a8a398;
-    --rust: #d44d1c;
-    --rust-bright: #ff5c25;
-    --caution: #e8b220;
-    --red-stamp: #b8321a;
     --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    background: var(--iron);
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 15px;
@@ -361,6 +352,281 @@
       padding: 40px var(--gutter);
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     CONSULTING v4 (2026-05-02) — wired stack + premium hero + glow.
+     Matches homepage/services design grammar. Cascade-overrides.
+     ═══════════════════════════════════════════════════════════════════ */
+  main { max-width: 1200px; }
+
+  .v4-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .v4-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--rust);
+  }
+  .v4-eyebrow .num {
+    color: var(--bone-dim);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+  }
+
+  /* Hero — bigger title, framed sub */
+  main > h1:first-of-type {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.04;
+    margin: 56px 0 22px;
+    max-width: 22ch;
+  }
+  main > p.lede {
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.7;
+    color: var(--bone-dim);
+    max-width: 64ch;
+    margin: 0 0 24px;
+  }
+
+  /* Section rhythm + h2 sizing */
+  section { margin-bottom: 96px; position: relative; }
+  section h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    max-width: 22ch;
+  }
+  section p.body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--bone-dim);
+    max-width: 64ch;
+    margin: 0 0 24px;
+  }
+
+  /* Capabilities — wired stack instead of generic card grid */
+  .cap-grid {
+    position: relative;
+    display: block !important;
+    margin-top: 24px !important;
+    padding-left: 40px;
+    grid-template-columns: unset !important;
+    gap: 0 !important;
+  }
+  .cap-grid::before {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: linear-gradient(180deg,
+      rgba(212,77,28,0.6) 0%,
+      rgba(212,77,28,0.25) 50%,
+      rgba(212,77,28,0.6) 100%);
+  }
+  .cap-card {
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%) !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    border-left: 3px solid rgba(212,77,28,0.55) !important;
+    border-radius: 4px !important;
+    padding: 22px 26px 22px !important;
+    margin-bottom: 14px;
+    position: relative;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .cap-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.42);
+    border-left-color: var(--rust) !important;
+  }
+  .cap-card::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 28px;
+    width: 30px;
+    height: 2px;
+    background: var(--rust);
+  }
+  .cap-card::after {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 22px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--rust);
+    border-radius: 50%;
+    background: var(--iron);
+    box-shadow: 0 0 12px rgba(212,77,28,0.45);
+  }
+  .cap-card h3 {
+    font-family: 'Bungee', sans-serif !important;
+    font-size: 18px !important;
+    color: var(--bone) !important;
+    letter-spacing: 0 !important;
+    margin: 0 0 10px !important;
+  }
+  .cap-card p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: var(--bone-dim) !important;
+    margin: 0 !important;
+    max-width: 70ch;
+  }
+  @media (max-width: 800px) {
+    .cap-grid { padding-left: 28px; }
+    .cap-card::before { width: 22px; left: -28px; }
+    .cap-card::after { left: -16px; }
+  }
+
+  /* Fit-list — refined surface tier, locked to 4-up at desktop */
+  .fit-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+  }
+  @media (max-width: 980px) {
+    .fit-list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .fit-list { grid-template-columns: 1fr; }
+  }
+  .fit-item {
+    background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-left: 3px solid var(--rust) !important;
+    padding: 18px 20px !important;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .fit-item:hover {
+    transform: translateY(-1px);
+    border-left-color: var(--rust-bright) !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.34);
+  }
+
+  /* Process steps — keep but lift surface */
+  .process-list {
+    margin-top: 22px;
+  }
+  .process-step {
+    background: linear-gradient(180deg, #20202A 0%, #17171E 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin-bottom: 10px;
+  }
+
+  /* CTA block — gradient + grid, like homepage */
+  .cta-section {
+    margin-top: 56px !important;
+    padding: 56px 48px !important;
+    background:
+      linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%) !important;
+    border: 1px solid rgba(212,77,28,0.32) !important;
+    border-top: 1px solid rgba(212,77,28,0.32) !important;
+    border-radius: 4px;
+    text-align: left !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  .cta-section > * { position: relative; z-index: 2; }
+  .cta-section h2 {
+    margin: 0 0 14px !important;
+    max-width: 24ch !important;
+  }
+  .cta-section p {
+    color: var(--bone-dim) !important;
+    margin: 0 0 12px !important;
+    text-align: left !important;
+    max-width: 50ch !important;
+  }
+  .cta-section .cta-button { padding: 16px 28px; font-size: 14px; }
+  .cta-section .sms-link {
+    margin-top: 8px !important;
+    display: inline-block !important;
+  }
+  @media (max-width: 800px) {
+    .cta-section {
+      grid-template-columns: 1fr !important;
+      padding: 36px 28px !important;
+    }
+  }
+
+  /* Mouse-follow glow v2 — three-layer lerp pattern (matches homepage) */
+  .v4-glow,
+  .v4-glow-core,
+  .v4-glow-trail {
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 2;
+    opacity: 0; transition: opacity 0.6s ease;
+    will-change: opacity, background; mix-blend-mode: screen;
+  }
+  .v4-glow {
+    background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(212,77,28,0.20) 0%,
+      rgba(212,77,28,0.09) 26%,
+      rgba(212,77,28,0.025) 50%,
+      transparent 72%);
+  }
+  .v4-glow-trail {
+    background: radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
+      rgba(212,77,28,0.12) 0%,
+      rgba(212,77,28,0.04) 36%,
+      transparent 62%);
+  }
+  .v4-glow-core {
+    background:
+      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,92,37,0.44) 0%,
+        rgba(255,92,37,0.16) 26%,
+        rgba(255,92,37,0.04) 48%,
+        transparent 64%),
+      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,200,160,0.30) 0%,
+        rgba(255,200,160,0.05) 60%,
+        transparent 86%);
+  }
+  body.has-mouse .v4-glow,
+  body.has-mouse .v4-glow-trail,
+  body.has-mouse .v4-glow-core { opacity: 1; }
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
+    .cap-card, .fit-item { transition: none; }
+    .cap-card:hover, .fit-item:hover { transform: none; }
+  }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -368,6 +634,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+  <div class="v4-glow"       aria-hidden="true"></div>
+  <div class="v4-glow-trail" aria-hidden="true"></div>
+  <div class="v4-glow-core"  aria-hidden="true"></div>
+
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
@@ -383,11 +655,13 @@
   </nav>
 
   <main>
+    <div class="v4-eyebrow"><span class="num">↳</span> CONSULTING / SYSTEMS</div>
     <h1>Custom systems for the work your off-the-shelf tools don't handle.</h1>
     <p class="lede">Intake, scheduling, follow-up, CRM cleanup, internal tools, and useful AI inside the workflow — not in the pitch.</p>
     <p style="margin: 8px 0 24px;"><a href="./contact.html" class="cta-button">Walk us through the build</a></p>
 
     <section>
+      <div class="v4-eyebrow"><span class="num">01 /</span> CAPABILITIES</div>
       <h2>What this work is</h2>
       <p class="body">Most of the businesses we talk to are running fine on referrals and the work itself. What slips is the connective tissue: a missed call no one circles back on, a scheduling tangle that lives in three places, a follow-up that depends on someone remembering. We build the small system that closes those gaps and stays out of the way.</p>
 
@@ -420,6 +694,7 @@
     </section>
 
     <section>
+      <div class="v4-eyebrow"><span class="num">02 /</span> FIT</div>
       <h2>When this fits</h2>
       <div class="fit-list">
         <div class="fit-item">
@@ -442,6 +717,7 @@
     </section>
 
     <section>
+      <div class="v4-eyebrow"><span class="num">03 /</span> APPROACH</div>
       <h2>How Shipside approaches it</h2>
       <div class="process-list">
         <div class="process-step">
@@ -483,17 +759,74 @@
     </section>
 
     <section>
+      <div class="v4-eyebrow"><span class="num">04 /</span> SCOPE BOUNDARY</div>
       <h2>What this is not</h2>
       <p class="body">Not a strategy retainer. Not a packaged audit. Not a deck. Shipside is here to build the working piece, hand it off cleanly, and stay out of the way once it runs.</p>
     </section>
 
     <div class="cta-section">
-      <h2>Tell us what you're trying to fix.</h2>
-      <p>Short conversation. We listen, ask a few questions about how the work actually moves, and tell you straight whether Shipside is the right partner for the next piece.</p>
-      <a href="tel:+15125591741" class="cta-button">Start the conversation</a>
-      <br><a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
+      <div>
+        <h2>Tell us what you're trying to fix.</h2>
+        <p>Short conversation. We listen, ask a few questions about how the work actually moves, and tell you straight whether Shipside is the right partner for the next piece.</p>
+      </div>
+      <div>
+        <a href="tel:+15125591741" class="cta-button">Start the conversation</a>
+        <br><a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
+      </div>
     </div>
   </main>
+
+  <script>
+    // Mouse-follow glow v2 — three-layer lerp (matches homepage)
+    (function(){
+      try {
+        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      } catch (_) {}
+      var w = window.innerWidth || 1440, h = window.innerHeight || 900;
+      var raw = { x: w*0.5, y: h*0.34 };
+      var halo = { x: raw.x, y: raw.y };
+      var core = { x: raw.x, y: raw.y };
+      var trail = { x: raw.x, y: raw.y };
+      var rafId = null, seeded = false;
+      try {
+        if ((window.location.search || '').indexOf('glow_demo=1') !== -1) {
+          var apply = function(){
+            document.body.classList.add('has-mouse');
+            seeded = true;
+            halo.x = core.x = trail.x = raw.x;
+            halo.y = core.y = trail.y = raw.y;
+            flush();
+          };
+          if (document.body) apply(); else document.addEventListener('DOMContentLoaded', apply);
+        }
+      } catch(_){}
+      function flush(){
+        var s = document.documentElement.style;
+        s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
+        s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
+        s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
+      }
+      function tick(){
+        halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
+        core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
+        trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
+        flush();
+        var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
+                      Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
+                      Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
+        rafId = settled ? null : requestAnimationFrame(tick);
+      }
+      document.addEventListener('mousemove', function(e){
+        raw.x = e.clientX; raw.y = e.clientY;
+        if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
+        if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      }, { passive: true });
+      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
+      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
+    })();
+  </script>
 
   <footer>
     <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
