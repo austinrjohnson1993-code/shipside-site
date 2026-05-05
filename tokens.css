@@ -1,0 +1,421 @@
+/* Shipside design tokens — canonical source.
+   Linked from every site HTML page. Do not duplicate color values
+   in inline :root blocks. Page-specific vars (e.g. --gutter) live
+   in the page's own <style> block.
+   ------------------------------------------------------------
+   Token shift 2026-05-02: lighter layered-charcoal palette.
+   See Ops/09_Sales_Presentation/DESIGN.md for visual grammar.
+*/
+
+:root {
+  /* Layered charcoal — softer than pure black */
+  --iron:        #0F0F12;
+  --iron-light:  #16161B;
+  --steel:       #1E1E25;
+  --elevated:    #25252E;
+
+  /* Borders — neutral white-tinted */
+  --border-subtle:   rgba(255, 255, 255, 0.06);
+  --border-emphatic: rgba(255, 255, 255, 0.12);
+
+  /* Brand accents — preserved unchanged */
+  --rust:        #d44d1c;
+  --rust-bright: #ff5c25;
+  --bone:        #f2ede0;
+  --bone-dim:    #a8a398;
+  --caution:     #e8b220;
+  --red-stamp:   #b8321a;
+
+  /* Focus ring — rust-bright for clear keyboard nav */
+  --focus-ring:  var(--rust-bright);
+
+  /* Subtle grid texture (tuned to new charcoal) */
+  --grid: rgba(40, 40, 48, 0.35);
+}
+
+/* Universal focus polish — consistent keyboard nav across pages. */
+:where(a, button, [role="button"], input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Honor user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   v4 GRID ANIMATION SYSTEM (2026-05-02)
+   Two fixed layers that sit above the static body-grid background
+   and below site content:
+   .v4-grid-pulse — always-on diagonal signal scan (subtle, ambient).
+   .v4-grid-nodes — rust dots at every 48px grid intersection, masked
+                    by cursor proximity via --cx / --cy. Lights up only
+                    inside ~220px of the pointer.
+   Both auto-disable on touch and prefers-reduced-motion.
+   Pages must include matching <div> elements + the standard
+   mouse-glow JS that updates --cx/--cy.
+   ═══════════════════════════════════════════════════════════════════ */
+.v4-grid-pulse,
+.v4-grid-nodes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  /* z-index 0 — sits behind every positioned content layer (which all
+     use z-index >= 5). No mix-blend-mode: with backdrop-filter on
+     panels, mix-blend-mode caused the wave to composite over panel
+     content. Plain alpha now. */
+  z-index: 0;
+  will-change: opacity, mask-image, background-position;
+}
+
+/* Signal-scan disabled: it was causing the rust diagonal to composite
+   over modal content via mix-blend-mode: screen. The cursor-follow
+   grid-nodes layer below is the only animated grid effect now. */
+.v4-grid-pulse {
+  display: none !important;
+}
+
+.v4-grid-nodes {
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  /* Rust node centered inside each 48px grid square. No mix-blend-mode
+     (it was making the dots composite over panel content). The dots
+     paint at z-index 0 behind every panel; backdrop-filter on panels
+     blurs them out. */
+  background-image:
+    radial-gradient(circle at 24px 24px,
+      rgba(255, 92, 37, 0.85) 0px,
+      rgba(255, 92, 37, 0.50) 1.4px,
+      rgba(255, 92, 37, 0.0)  2.6px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
+  /* Mask: dots only visible inside ~220px of the cursor. Falls off
+     softly so the lit zone reads as signal energy, not a hard circle. */
+  -webkit-mask-image: radial-gradient(220px circle at var(--cx, 50%) var(--cy, 30%),
+    rgba(0, 0, 0, 1)    0%,
+    rgba(0, 0, 0, 0.45) 50%,
+    rgba(0, 0, 0, 0.06) 80%,
+    transparent         100%);
+          mask-image: radial-gradient(220px circle at var(--cx, 50%) var(--cy, 30%),
+    rgba(0, 0, 0, 1)    0%,
+    rgba(0, 0, 0, 0.45) 50%,
+    rgba(0, 0, 0, 0.06) 80%,
+    transparent         100%);
+}
+body.has-mouse .v4-grid-nodes { opacity: 1; }
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .v4-grid-nodes { display: none !important; }
+  .v4-grid-pulse { animation: none !important; opacity: 0 !important; display: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   v4 mouse-follow glow (canonical version for pages without inline
+   glow CSS — blog posts in particular). Three lerped layers driven by
+   --mx/--my (halo), --tx/--ty (trail), --cx/--cy (core). Pages that
+   already declare these rules inline cascade-override naturally.
+   ═══════════════════════════════════════════════════════════════════ */
+.v4-glow,
+.v4-glow-core,
+.v4-glow-trail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  will-change: opacity, background;
+  mix-blend-mode: screen;
+}
+.v4-glow {
+  background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
+    rgba(212,77,28,0.20) 0%,
+    rgba(212,77,28,0.09) 26%,
+    rgba(212,77,28,0.025) 50%,
+    transparent 72%);
+}
+.v4-glow-trail {
+  background: radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
+    rgba(212,77,28,0.12) 0%,
+    rgba(212,77,28,0.04) 36%,
+    transparent 62%);
+}
+.v4-glow-core {
+  background:
+    radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
+      rgba(255,92,37,0.44) 0%,
+      rgba(255,92,37,0.16) 26%,
+      rgba(255,92,37,0.04) 48%,
+      transparent 64%),
+    radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
+      rgba(255,200,160,0.30) 0%,
+      rgba(255,200,160,0.05) 60%,
+      transparent 86%);
+}
+body.has-mouse .v4-glow,
+body.has-mouse .v4-glow-trail,
+body.has-mouse .v4-glow-core { opacity: 1; }
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   v5 FROST PANEL SYSTEM — public site (2026-05-02)
+   Premium frosted glass surface for focal panels (CTAs, hero panels,
+   architecture rows, scope tracks, channel rows, etc.). Replaces the
+   solid #27272F→#1B1B22 card gradient on these surfaces with a 3-stop
+   slate-warm translucent gradient + backdrop-blur. Adds a slow
+   warmth-drift animated halo (rust → rust-bright → caution → rust
+   over 9s) plus inner orange L-shaped corner notches on the focal
+   panels that don't conflict with existing pseudo-elements.
+
+   Browser support: backdrop-filter is in Safari, Chrome, Edge, and
+   Firefox 103+. Older browsers fall back to the solid gradient.
+   Reduced-motion respects via @media block at the end.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@property --v5-warmth { syntax: '<number>'; inherits: false; initial-value: 0; }
+
+/* TIER 1 — frosted bg + backdrop blur applies to every focal panel.
+   Bumped opacity (0.78 → 0.92) so the body grid behind the panel is
+   fully hidden — backdrop-filter blur softens what little leakage
+   remains at the panel edges. Saturate(160%) preserves warm rust
+   undertones from the radial bg overlays so the panel doesn't read
+   as a flat slate slab. */
+.v4-cta-block,
+.blog-cta,
+.cta-banner,
+.cta-section,
+.fit-panel,
+.about-intro-panel,
+.operator-card,
+.contact-card,
+.hero-circuit,
+.v4-blueprint,
+.v4-arch-row,
+.v4-scope-card,
+.channel-row,
+.v4-artifact-row,
+.v4-what-cell,
+.philosophy-item,
+.fit-item,
+.cap-card,
+.v4-skip-cell,
+.faq-accordion,
+.faq-q,
+.tier-card,
+.piece-card,
+.qualify-item,
+.hours-panel,
+.ledger-grid,
+.ledger-col,
+.process-step,
+.cta-card,
+.cta-banner > div,
+.v4-cta-block > div,
+.blog-cta > div,
+.cta-section > div {
+  background:
+    linear-gradient(180deg,
+      rgba(50, 48, 58, 0.78) 0%,
+      rgba(36, 34, 44, 0.85) 60%,
+      rgba(22, 20, 28, 0.92) 100%) !important;
+  backdrop-filter: blur(32px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(160%) !important;
+  border-color: rgba(212, 77, 28, 0.32) !important;
+}
+
+/* Reset the inner div wrappers inside CTA blocks — they shouldn't
+   double up the frosted bg, only the outer wrapper should. */
+.v4-cta-block > div,
+.blog-cta > div,
+.cta-banner > div,
+.cta-section > div {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* TIER 2 — focal panels get the warmth-drift halo + corner notches.
+   These panels DON'T already use ::before or ::after for grid texture,
+   so we can safely use those pseudo-elements for the L-mark notches.
+   The halo is a multi-radius outer box-shadow that animates color
+   between three brand-warm waypoints over 9s. */
+.fit-panel,
+.about-intro-panel,
+.operator-card,
+.v4-arch-row,
+.v4-scope-card,
+.channel-row,
+.v4-artifact-row {
+  position: relative;
+  animation: v5WarmthDrift 9s ease-in-out infinite;
+}
+
+.fit-panel::before,
+.about-intro-panel::before,
+.operator-card::before,
+.v4-arch-row::before,
+.v4-scope-card::before,
+.channel-row::before,
+.v4-artifact-row::before,
+.fit-panel::after,
+.about-intro-panel::after,
+.operator-card::after,
+.v4-arch-row::after,
+.v4-scope-card::after,
+.channel-row::after,
+.v4-artifact-row::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 16px !important;
+  height: 16px !important;
+  pointer-events: none;
+  z-index: 2;
+  background: transparent !important;
+  border-radius: 0 !important;
+  border-color: var(--rust-bright) !important;
+  border-style: solid !important;
+}
+
+.fit-panel::before,
+.about-intro-panel::before,
+.operator-card::before,
+.v4-arch-row::before,
+.v4-scope-card::before,
+.channel-row::before,
+.v4-artifact-row::before {
+  top: 8px !important;
+  left: 8px !important;
+  border-width: 2px 0 0 2px !important;
+}
+
+.fit-panel::after,
+.about-intro-panel::after,
+.operator-card::after,
+.v4-arch-row::after,
+.v4-scope-card::after,
+.channel-row::after,
+.v4-artifact-row::after {
+  bottom: 8px !important;
+  right: 8px !important;
+  border-width: 0 2px 2px 0 !important;
+}
+
+/* The CTA blocks already have a grid-texture ::before pseudo. Suppress
+   it (per "no grid inside modals" rule) and replace ::after with the
+   bottom-right corner notch. The top-left corner notch is added via
+   a tiny inline-block decoration in the cascade below. */
+.v4-cta-block::before,
+.blog-cta::before,
+.cta-banner::before,
+.cta-section::before {
+  background-image: none !important;
+  opacity: 0 !important;
+  /* Repurpose ::before as the top-left corner notch */
+  content: '' !important;
+  position: absolute !important;
+  inset: auto !important;
+  top: 8px !important;
+  left: 8px !important;
+  width: 16px !important;
+  height: 16px !important;
+  pointer-events: none;
+  z-index: 2;
+  background: transparent !important;
+  border-color: var(--rust-bright) !important;
+  border-style: solid !important;
+  border-width: 2px 0 0 2px !important;
+  border-radius: 0 !important;
+  opacity: 1 !important;
+}
+.v4-cta-block::after,
+.blog-cta::after,
+.cta-banner::after,
+.cta-section::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 8px !important;
+  right: 8px !important;
+  width: 16px !important;
+  height: 16px !important;
+  pointer-events: none;
+  z-index: 2;
+  background: transparent !important;
+  border-color: var(--rust-bright) !important;
+  border-style: solid !important;
+  border-width: 0 2px 2px 0 !important;
+  border-radius: 0 !important;
+  opacity: 1 !important;
+}
+
+.v4-cta-block,
+.blog-cta,
+.cta-banner,
+.cta-section {
+  position: relative !important;
+  animation: v5WarmthDrift 9s ease-in-out infinite;
+}
+
+/* The warmth-drift keyframes — halo color cycles across three brand
+   waypoints over 9s. Never goes cool; never breaks the palette.
+   Box-shadow animations are GPU-cheap and visually rich. */
+@keyframes v5WarmthDrift {
+  0%, 100% {
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.06) inset,
+      0 0 0 1px rgba(212,77,28,0.18),
+      0 0 28px rgba(212,77,28,0.22),
+      0 0 56px rgba(212,77,28,0.12),
+      0 0 92px rgba(212,77,28,0.06),
+      0 18px 48px rgba(0,0,0,0.4);
+  }
+  33% {
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.06) inset,
+      0 0 0 1px rgba(255,92,37,0.22),
+      0 0 28px rgba(255,92,37,0.26),
+      0 0 56px rgba(255,92,37,0.14),
+      0 0 92px rgba(255,92,37,0.06),
+      0 18px 48px rgba(0,0,0,0.4);
+  }
+  66% {
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.06) inset,
+      0 0 0 1px rgba(232,178,32,0.18),
+      0 0 28px rgba(232,178,32,0.18),
+      0 0 56px rgba(232,178,32,0.10),
+      0 0 92px rgba(255,92,37,0.06),
+      0 18px 48px rgba(0,0,0,0.4);
+  }
+}
+
+/* Reduced-motion + touch — pause animation, retain frosted bg + corners */
+@media (prefers-reduced-motion: reduce) {
+  .v4-cta-block,
+  .blog-cta,
+  .cta-banner,
+  .cta-section,
+  .fit-panel,
+  .about-intro-panel,
+  .operator-card,
+  .v4-arch-row,
+  .v4-scope-card,
+  .channel-row,
+  .v4-artifact-row {
+    animation: none !important;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.06) inset,
+      0 0 0 1px rgba(212,77,28,0.22),
+      0 0 24px rgba(212,77,28,0.18),
+      0 18px 48px rgba(0,0,0,0.4) !important;
+  }
+}

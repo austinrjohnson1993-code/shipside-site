@@ -22,24 +22,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
   :root {
-    --iron: #0b0b0d;
-    --iron-light: #141418;
-    --steel: #1f1f24;
-    --grid: rgba(37,37,44,0.35);
-    --bone: #f2ede0;
-    --bone-dim: #a8a398;
-    --rust: #d44d1c;
-    --rust-bright: #ff5c25;
-    --red-stamp: #b8321a;
     --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    background: var(--iron);
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 15px;
@@ -239,6 +231,220 @@
       padding: 32px 24px;
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     FAQ v4 (2026-05-02) — grouped accordion + glow.
+     ═══════════════════════════════════════════════════════════════════ */
+  main { max-width: 1100px; }
+
+  .v4-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin: 56px 0 14px;
+    font-weight: 600;
+  }
+  .v4-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
+  .v4-eyebrow .num { color: var(--bone-dim); font-weight: 500; letter-spacing: 0.2em; }
+
+  main > h1:first-of-type {
+    margin: 0 0 14px !important;
+    font-size: clamp(38px, 6vw, 56px);
+    line-height: 1.05;
+  }
+  .faq-lede {
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.7;
+    color: var(--bone-dim);
+    max-width: 64ch;
+    margin: 0 0 36px;
+  }
+
+  .faq-section { margin-bottom: 42px; }
+
+  .faq-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .faq-section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--rust); }
+  .faq-section-eyebrow .group-num {
+    color: var(--bone-dim); letter-spacing: 0.2em; font-weight: 500;
+  }
+
+  .faq-section h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 22px;
+    color: var(--bone);
+    margin: 0 0 14px;
+    letter-spacing: 0;
+    line-height: 1.1;
+  }
+
+  .faq-accordion {
+    display: flex; flex-direction: column;
+    background: linear-gradient(180deg, #20202A 0%, #17171E 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.36);
+  }
+  .faq-q {
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .faq-q:first-child { border-top: none; }
+  .faq-q > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 22px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--bone);
+    letter-spacing: 0.01em;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .faq-q > summary::-webkit-details-marker { display: none; }
+  .faq-q > summary::after {
+    content: '+';
+    color: var(--rust);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    width: 20px; text-align: center;
+  }
+  .faq-q[open] > summary::after { transform: rotate(45deg); }
+  .faq-q > summary:hover {
+    background: linear-gradient(90deg, rgba(212,77,28,0.06) 0%, rgba(255,255,255,0.015) 100%);
+    color: var(--bone);
+  }
+  .faq-q[open] > summary {
+    color: var(--rust-bright);
+    background: linear-gradient(90deg, rgba(212,77,28,0.08) 0%, rgba(255,255,255,0.015) 100%);
+  }
+  .faq-q .faq-a {
+    padding: 4px 22px 22px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--bone-dim);
+    max-width: 76ch;
+  }
+  .faq-q .faq-a strong { color: var(--bone); font-weight: 600; }
+
+  /* CTA panel — gradient like other v4 pages */
+  main > .cta-section {
+    margin-top: 56px !important;
+    padding: 48px 44px !important;
+    background:
+      linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%) !important;
+    border: 1px solid rgba(212,77,28,0.32) !important;
+    border-radius: 4px;
+    text-align: left !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.46);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  main > .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none; opacity: 0.55;
+  }
+  main > .cta-section > * { position: relative; z-index: 2; }
+  main > .cta-section h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(24px, 3vw, 32px);
+    color: var(--bone);
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+  main > .cta-section p { color: var(--bone-dim) !important; max-width: 50ch; margin: 0 0 14px !important; }
+  .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+  .cta-actions .cta-button {
+    display: inline-block;
+    padding: 16px 28px;
+    background: var(--rust);
+    color: var(--bone);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid var(--rust);
+    transition: all 0.2s ease;
+  }
+  .cta-actions .cta-button:hover {
+    background: transparent;
+    color: var(--rust-bright);
+    border-color: var(--rust-bright);
+  }
+  .cta-actions .sms-link {
+    text-align: center;
+    font-size: 12px;
+    color: var(--bone-dim);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+  }
+  @media (max-width: 800px) {
+    main > .cta-section { grid-template-columns: 1fr !important; padding: 36px 28px !important; }
+  }
+
+  /* Mouse-follow glow v2 */
+  .v4-glow,
+  .v4-glow-core,
+  .v4-glow-trail {
+    position: fixed; inset: 0; pointer-events: none; z-index: 2;
+    opacity: 0; transition: opacity 0.6s ease;
+    will-change: opacity, background; mix-blend-mode: screen;
+  }
+  .v4-glow {
+    background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(212,77,28,0.20) 0%, rgba(212,77,28,0.09) 26%, rgba(212,77,28,0.025) 50%, transparent 72%);
+  }
+  .v4-glow-trail {
+    background: radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
+      rgba(212,77,28,0.12) 0%, rgba(212,77,28,0.04) 36%, transparent 62%);
+  }
+  .v4-glow-core {
+    background:
+      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,92,37,0.44) 0%, rgba(255,92,37,0.16) 26%, rgba(255,92,37,0.04) 48%, transparent 64%),
+      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,200,160,0.30) 0%, rgba(255,200,160,0.05) 60%, transparent 86%);
+  }
+  body.has-mouse .v4-glow,
+  body.has-mouse .v4-glow-trail,
+  body.has-mouse .v4-glow-core { opacity: 1; }
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
+    .faq-q > summary::after { transition: none; }
+  }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -246,6 +452,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+  <div class="v4-glow"       aria-hidden="true"></div>
+  <div class="v4-glow-trail" aria-hidden="true"></div>
+  <div class="v4-glow-core"  aria-hidden="true"></div>
+
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
@@ -261,85 +473,159 @@
   </nav>
 
   <main>
+    <div class="v4-eyebrow"><span class="num">↳</span> FAQ / OWNER QUESTIONS</div>
     <h1>Questions before you call.</h1>
+    <p class="faq-lede">Real owner questions, plain answers. Tap a question to expand. If something isn't answered here, the fit call covers it in fifteen minutes.</p>
 
-    <div class="faq-grid">
-      <div class="faq-item">
-        <div class="faq-question">What is Shipside?</div>
-        <div class="faq-answer">A clean website for a local service business, plus a simple capture and follow-up layer so calls, quote requests, and missed-call replies don't disappear. Three scope levels: Launch, Catch, Control.</div>
+    <section class="faq-section">
+      <div class="faq-section-eyebrow"><span class="group-num">01 /</span> GETTING STARTED</div>
+      <h2>Getting started</h2>
+      <div class="faq-accordion">
+        <details class="faq-q">
+          <summary>What is Shipside?</summary>
+          <div class="faq-a">A clean owned website for a working business, wired into a capture, owner-control, and care layer behind it — so calls, quote requests, and replies stop disappearing. Four layers: <strong>L01 Owned Site</strong>, <strong>L02 Capture</strong>, <strong>L03 Owner Control</strong>, <strong>L04 Ongoing Care</strong>. Three scope tracks (foundation, capture-on, full stack) sit on top of those layers.</div>
+        </details>
+        <details class="faq-q">
+          <summary>What's the fit call?</summary>
+          <div class="faq-a">Fifteen minutes, no pitch deck. We ask what you do, where you operate, how customers usually find you, and where the phone is dropping. If Shipside fits, we say so and quote scope and cost in writing. If not, we tell you that on the call.</div>
+        </details>
+        <details class="faq-q">
+          <summary>Why isn't pricing on the site?</summary>
+          <div class="faq-a">Because the right scope depends on what's actually missing — whether the site is the gap, the call follow-up is the gap, or the owner just can't see what's coming in. We talk it through, then quote scope and cost in writing. The fit call doesn't cost anything.</div>
+        </details>
+        <details class="faq-q">
+          <summary>What industries do you serve?</summary>
+          <div class="faq-a">Owner-operators in working trades: auto repair, roofing, HVAC, landscaping, contractors, plumbing, electrical, welding, and similar local service businesses. One- and two-person shops and small crews. If you're not sure you fit, book a fit call anyway and we'll tell you straight.</div>
+        </details>
       </div>
+    </section>
 
-      <div class="faq-item">
-        <div class="faq-question">Why isn't pricing on the site?</div>
-        <div class="faq-answer">Because the right scope depends on what's actually missing. We talk through your trade, your area, how customers usually find you, and what the follow-up looks like, then quote scope and cost in writing. The fit call doesn't cost anything.</div>
+    <section class="faq-section">
+      <div class="faq-section-eyebrow"><span class="group-num">02 /</span> THE BUILD</div>
+      <h2>The build</h2>
+      <div class="faq-accordion">
+        <details class="faq-q">
+          <summary>How fast does it go live?</summary>
+          <div class="faq-a">Once scope is locked, usually a few days. We give ourselves up to seven so nobody gets surprised. The build stays tight: five pages, clear services, work photos, contact form, and an easy next step.</div>
+        </details>
+        <details class="faq-q">
+          <summary>What's in Layer 02 (Capture)?</summary>
+          <div class="faq-a">A tap-to-call path on every page plus missed-call text-back. When you miss someone, they get a simple text back asking what they need so the lead doesn't drop. Quote-request form lands in one inbox.</div>
+        </details>
+        <details class="faq-q">
+          <summary>What's in Layer 03 (Owner Control)?</summary>
+          <div class="faq-a">Open your phone. Every missed call, every quote request, and every text reply sits in one list. We text you when something new shows up. Notes, follow-up reminders, and a monthly lead summary live in the same place. The login is owner-only and incidental — most of the time you'll just be reading texts.</div>
+        </details>
+        <details class="faq-q">
+          <summary>What if I don't have a domain?</summary>
+          <div class="faq-a">We handle it. Connecting the site to your domain (or registering one if you don't have one) is part of any track that includes Layer 02 — so you don't have to wrestle with registrars.</div>
+        </details>
+        <details class="faq-q">
+          <summary>I already have Facebook. Why do I need a website?</summary>
+          <div class="faq-a">Because when somebody hears your name, they look you up. If all they find is a half-dead social page, it looks like the lights are off. A real owned site makes it obvious that you're open, real, and ready to call back — and a Facebook page can't run a missed-call text-back or own a domain.</div>
+        </details>
       </div>
+    </section>
 
-      <div class="faq-item">
-        <div class="faq-question">What's the fit call?</div>
-        <div class="faq-answer">Fifteen minutes, no pitch deck. We ask what you do, where you operate, how customers usually find you, and where the phone is dropping. If Shipside fits, we say so and quote scope. If not, we tell you that too.</div>
+    <section class="faq-section">
+      <div class="faq-section-eyebrow"><span class="group-num">03 /</span> OWNERSHIP &amp; OPTIONS</div>
+      <h2>Ownership and options</h2>
+      <div class="faq-accordion">
+        <details class="faq-q">
+          <summary>Do I really own the site?</summary>
+          <div class="faq-a">Yes. The files are yours. The domain is yours. The login is yours. If you stop working with Shipside, the site doesn't go dark — Layer 01 is a one-time build you own.</div>
+        </details>
+        <details class="faq-q">
+          <summary>Do I have to keep paying monthly?</summary>
+          <div class="faq-a">No. The site itself (Layer 01) is a one-time build you own. Layers 02–04 — capture, owner inbox, and ongoing care — only run monthly when your scope calls for them, and you can cancel any month. The site stays live either way.</div>
+        </details>
+        <details class="faq-q">
+          <summary>Can I cancel the monthly layers?</summary>
+          <div class="faq-a">Any month. We turn off whichever monthly layer you cancel; the site itself keeps running on your domain. No hostage retainer, no platform lock-in.</div>
+        </details>
       </div>
+    </section>
 
-      <div class="faq-item">
-        <div class="faq-question">How fast does it go live?</div>
-        <div class="faq-answer">Once scope is locked, usually a few days. We give ourselves up to 7 so nobody gets surprised. The build stays tight: five pages, clear services, work photos, contact form, and an easy next step.</div>
+    <section class="faq-section">
+      <div class="faq-section-eyebrow"><span class="group-num">04 /</span> AFTER LAUNCH</div>
+      <h2>After launch</h2>
+      <div class="faq-accordion">
+        <details class="faq-q">
+          <summary>What if I change my hours or services?</summary>
+          <div class="faq-a">You can update it yourself, or — if your scope includes Layer 04 (Ongoing Care) — text us the update. Hours, photos, service list, crew changes. That's what the monthly help is for.</div>
+        </details>
+        <details class="faq-q">
+          <summary>Can I get help after launch?</summary>
+          <div class="faq-a">Yes. Layers 02 (Capture), 03 (Owner Control), and 04 (Ongoing Care) keep running monthly if your scope includes them. Cancel any month — the site itself stays yours either way.</div>
+        </details>
+        <details class="faq-q">
+          <summary>Let me think about it.</summary>
+          <div class="faq-a">Totally fair. No pressure on the fit call. When you're ready to talk through scope, call or text and we'll set it up.</div>
+        </details>
       </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Do I really own the site?</div>
-        <div class="faq-answer">Yes. The site is yours. The domain is yours. The files are yours. If you stop working with Shipside, the site doesn't go dark.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What if I don't have a domain?</div>
-        <div class="faq-answer">That's what Domain Setup is for. We connect the site to your domain and handle the basic setup so you don't have to wrestle with registrars.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What's Call Catcher?</div>
-        <div class="faq-answer">A tap-to-call path on the site plus missed-call and follow-up text capture. When you miss someone, they get a simple text back asking what they need so the lead doesn't drop.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What's Owner Inbox?</div>
-        <div class="faq-answer">Open your phone. Every missed call, every quote request, and every text reply sits in one list. We text you when something new shows up. Notes, follow-up reminders, and a monthly lead summary live in the same place. The login is owner-only and incidental - most of the time you'll just be reading texts.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What if I change my hours or services?</div>
-        <div class="faq-answer">You can update it yourself, or - if your scope includes Site Care - text us the update. Hours, photos, service list, crew changes. That's what the monthly help is for.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Can I get help after launch?</div>
-        <div class="faq-answer">Yes. Site Care, Call Catcher, and Owner Inbox keep running monthly if your scope includes them. Cancel any month - the site itself stays yours either way.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">I already have Facebook. Why do I need a website?</div>
-        <div class="faq-answer">Because when somebody hears your name, they look you up. If all they find is a half-dead social page, it looks like the lights are off. A real site makes it obvious that you're open, real, and ready to call back.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What industries do you serve?</div>
-        <div class="faq-answer">The sweet spot is blue-collar owner-operators: auto repair, roofing, HVAC, landscaping, contractors, and similar local trades. If you're not sure you fit, book a fit call anyway and we'll tell you straight.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Do I have to keep paying monthly?</div>
-        <div class="faq-answer">No. The site itself is a one-time build you own. Monthly help (Site Care, Call Catcher, Owner Inbox) is only included when your scope calls for it, and you can cancel any month. The site stays live either way.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Let me think about it.</div>
-        <div class="faq-answer">Totally fair. No pressure on the fit call. When you're ready to talk through scope, call or text and we'll set it up.</div>
-      </div>
-    </div>
+    </section>
 
     <div class="cta-section">
-      <h3>Still have a question?</h3>
-      <p style="color: var(--bone-dim); margin: 0;">Call or text. We'll tell you fast if Shipside fits and what scope makes sense.</p>
+      <div>
+        <h3>Still have a question?</h3>
+        <p>Call or text. We'll tell you fast if Shipside fits and what scope makes sense.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
+        <a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
+      </div>
     </div>
   </main>
+
+  <script>
+    // Mouse-follow glow v2 — three-layer lerp (matches homepage)
+    (function(){
+      try {
+        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      } catch (_) {}
+      var w = window.innerWidth || 1440, h = window.innerHeight || 900;
+      var raw = { x: w*0.5, y: h*0.34 };
+      var halo = { x: raw.x, y: raw.y };
+      var core = { x: raw.x, y: raw.y };
+      var trail = { x: raw.x, y: raw.y };
+      var rafId = null, seeded = false;
+      try {
+        if ((window.location.search || '').indexOf('glow_demo=1') !== -1) {
+          var apply = function(){
+            document.body.classList.add('has-mouse'); seeded = true;
+            halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y;
+            flush();
+          };
+          if (document.body) apply(); else document.addEventListener('DOMContentLoaded', apply);
+        }
+      } catch(_){}
+      function flush(){
+        var s = document.documentElement.style;
+        s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
+        s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
+        s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
+      }
+      function tick(){
+        halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
+        core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
+        trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
+        flush();
+        var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
+                      Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
+                      Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
+        rafId = settled ? null : requestAnimationFrame(tick);
+      }
+      document.addEventListener('mousemove', function(e){
+        raw.x = e.clientX; raw.y = e.clientY;
+        if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
+        if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      }, { passive: true });
+      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
+      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
+    })();
+  </script>
 
   <footer>
     <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>

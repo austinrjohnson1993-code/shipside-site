@@ -22,24 +22,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
   :root {
-    --iron: #0b0b0d;
-    --iron-light: #141418;
-    --steel: #1f1f24;
-    --grid: rgba(37,37,44,0.35);
-    --bone: #f2ede0;
-    --bone-dim: #a8a398;
-    --rust: #d44d1c;
-    --rust-bright: #ff5c25;
-    --red-stamp: #b8321a;
     --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    background: var(--iron);
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 15px;
@@ -272,6 +264,225 @@
       padding: 32px 24px;
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     ABOUT v4 (2026-05-02) — eyebrow, lifted philosophy grid, glow.
+     ═══════════════════════════════════════════════════════════════════ */
+  main { max-width: 1100px; }
+
+  .v4-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin: 56px 0 14px;
+    font-weight: 600;
+  }
+  .v4-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--rust);
+  }
+  .v4-eyebrow .num {
+    color: var(--bone-dim);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+  }
+
+  main > h1:first-of-type,
+  h1:first-of-type {
+    margin: 0 0 22px !important;
+    font-size: clamp(38px, 6vw, 60px);
+    line-height: 1.05;
+    max-width: 22ch;
+  }
+
+  main > section + section { margin-bottom: 72px; }
+
+  /* Lifted intro panel for "What Shipside does" */
+  .about-intro-panel {
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid var(--rust);
+    border-radius: 4px;
+    padding: 26px 30px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.32);
+    margin-top: 14px;
+  }
+  .about-intro-panel p {
+    font-size: 16px;
+    line-height: 1.72;
+    color: var(--bone) !important;
+    margin: 0 !important;
+    max-width: 64ch;
+  }
+
+  /* Philosophy grid — wired card grid v4 */
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px !important;
+    margin-top: 20px !important;
+  }
+  .philosophy-item {
+    background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-left: 3px solid var(--rust) !important;
+    border-radius: 4px;
+    padding: 18px 20px !important;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .philosophy-item:hover {
+    transform: translateY(-1px);
+    border-left-color: var(--rust-bright) !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.34);
+  }
+  .philosophy-item strong {
+    font-family: 'Bungee', sans-serif;
+    font-size: 14px !important;
+    color: var(--bone) !important;
+    margin-bottom: 8px !important;
+    letter-spacing: 0;
+  }
+  .philosophy-item p {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+    color: var(--bone-dim) !important;
+  }
+
+  /* Operator credibility card — schematic-style key/value rows */
+  .operator-card {
+    margin-top: 24px;
+    background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid var(--rust);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.36);
+  }
+  .op-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 18px;
+    align-items: center;
+    padding: 12px 22px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .op-row:first-child { border-top: none; }
+  .op-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+  }
+  .op-value {
+    font-size: 14px;
+    color: var(--bone);
+    line-height: 1.55;
+  }
+  @media (max-width: 700px) {
+    .op-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding: 12px 18px;
+    }
+  }
+
+  /* CTA banner — gradient grid panel matching homepage */
+  .cta-banner {
+    background:
+      linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%) !important;
+    border: 1px solid rgba(212,77,28,0.32) !important;
+    border-radius: 4px;
+    padding: 48px 44px !important;
+    margin-top: 56px !important;
+    text-align: left !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.46);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  .cta-banner > * { position: relative; z-index: 2; }
+  .cta-banner h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(22px, 3vw, 30px) !important;
+    color: var(--bone) !important;
+    margin: 0 0 14px !important;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .cta-banner p {
+    color: var(--bone-dim) !important;
+    margin: 0 0 14px !important;
+    max-width: 50ch;
+  }
+  .cta-banner .cta-button { padding: 16px 28px; font-size: 14px; }
+  @media (max-width: 800px) {
+    .cta-banner { grid-template-columns: 1fr; padding: 36px 28px !important; }
+  }
+
+  /* Mouse-follow glow v2 — three-layer lerp */
+  .v4-glow,
+  .v4-glow-core,
+  .v4-glow-trail {
+    position: fixed; inset: 0; pointer-events: none; z-index: 2;
+    opacity: 0; transition: opacity 0.6s ease;
+    will-change: opacity, background; mix-blend-mode: screen;
+  }
+  .v4-glow {
+    background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(212,77,28,0.20) 0%,
+      rgba(212,77,28,0.09) 26%,
+      rgba(212,77,28,0.025) 50%,
+      transparent 72%);
+  }
+  .v4-glow-trail {
+    background: radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
+      rgba(212,77,28,0.12) 0%,
+      rgba(212,77,28,0.04) 36%,
+      transparent 62%);
+  }
+  .v4-glow-core {
+    background:
+      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,92,37,0.44) 0%,
+        rgba(255,92,37,0.16) 26%,
+        rgba(255,92,37,0.04) 48%,
+        transparent 64%),
+      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,200,160,0.30) 0%,
+        rgba(255,200,160,0.05) 60%,
+        transparent 86%);
+  }
+  body.has-mouse .v4-glow,
+  body.has-mouse .v4-glow-trail,
+  body.has-mouse .v4-glow-core { opacity: 1; }
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
+    .philosophy-item { transition: none; }
+    .philosophy-item:hover { transform: none; }
+  }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -279,6 +490,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+  <div class="v4-glow"       aria-hidden="true"></div>
+  <div class="v4-glow-trail" aria-hidden="true"></div>
+  <div class="v4-glow-core"  aria-hidden="true"></div>
+
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
@@ -294,55 +511,145 @@
   </nav>
 
   <main>
+    <div class="v4-eyebrow"><span class="num">↳</span> ABOUT / SHIPSIDE</div>
     <h1>A web and systems shop for working businesses.</h1>
 
     <section>
+      <div class="v4-eyebrow"><span class="num">01 /</span> WHAT WE DO</div>
       <h2>What Shipside does</h2>
-      <p>Shipside builds the public face and the operating layer behind it: websites, internal tools, and practical AI where it earns its place. The work is built to be used, handed off, hosted, changed, and understood.</p>
+      <div class="about-intro-panel">
+        <p>Shipside builds the public face and the operating layer behind it — owned websites, capture and follow-up wiring, owner-only inboxes, internal tools, and practical AI where it earns its place. Built to be used, handed off, hosted, changed, and understood. Not built to be a platform you can never leave.</p>
+      </div>
     </section>
 
     <section>
+      <div class="v4-eyebrow"><span class="num">02 /</span> HOUSE RULES</div>
       <h2>How we think about the work</h2>
       <div class="philosophy-grid">
         <div class="philosophy-item">
-          <strong>Fast, not fancy.</strong>
+          <strong>Fast, not fancy</strong>
           <p>The site loads fast and shows the right info. The system does its job and stays out of the way. That's the bar.</p>
         </div>
         <div class="philosophy-item">
-          <strong>You own it.</strong>
+          <strong>You own it</strong>
           <p>Code, domain, content, and any internal tools we build are yours. No proprietary builder. No subscription trap. Walk away any day; nothing goes dark.</p>
         </div>
         <div class="philosophy-item">
-          <strong>Clear scope, written first.</strong>
+          <strong>Clear scope, written first</strong>
           <p>What gets built, what's included, the timing — all in writing before any deposit. No hidden meter, no scope creep dressed up as discovery.</p>
         </div>
         <div class="philosophy-item">
-          <strong>Smallest useful piece first.</strong>
+          <strong>Smallest useful piece first</strong>
           <p>Whether it's a five-page site or an internal tool, the first version fixes the real constraint and earns the next one. No big-bang rollouts.</p>
         </div>
         <div class="philosophy-item">
-          <strong>Plain files, plain language.</strong>
+          <strong>Plain files, plain language</strong>
           <p>Static where static fits. No plugin chains to babysit. Everything we hand off is something the business can read and run.</p>
         </div>
         <div class="philosophy-item">
-          <strong>Practical AI, not the hype kind.</strong>
+          <strong>Practical AI, not the hype kind</strong>
           <p>AI lives in the parts where it earns its keep — call summaries, intake triage, draft replies, internal lookups. Not where it adds risk for show.</p>
         </div>
       </div>
     </section>
 
     <section>
+      <div class="v4-eyebrow"><span class="num">03 /</span> WHY THIS MODEL</div>
       <h2>Why this model works</h2>
       <p>Most working businesses can't stomach the bloat of a big agency or a stack of platforms that don't fit how the work actually runs. So they wait — and keep losing time to manual stitching, missed leads, and tools that almost fit.</p>
-      <p>Shipside builds the small, useful piece. A clean website. A real intake-and-follow-up layer. The internal tool that takes a half-day off the week. Plain language, owner-readable, scope locked, hand-off documented.</p>
+      <p>Shipside builds the small, useful piece. A clean owned website. A real capture and follow-up layer. The internal tool that takes a half-day off the week. Plain language, owner-readable, scope locked, hand-off documented. We stay accountable end to end so there's no vendor finger-pointing when something needs a fix.</p>
+    </section>
+
+    <section class="operator-section">
+      <div class="v4-eyebrow"><span class="num">04 /</span> ACCOUNTABILITY</div>
+      <h2>Built by an operator, not a handoff chain.</h2>
+      <p>One operator owns the build end to end — fit call, scope, copy, layout, capture wiring, owner-inbox setup, hand-off. No account manager passing your work to a junior. No agency sub-contracting the live build to someone you'll never meet. The person on the fit call is the person on the keyboard.</p>
+      <p>That doesn't mean lone-wolf craft. The work runs through a serious system: locked scope written first, layered architecture (L01 Owned Site → L02 Capture → L03 Owner Control → L04 Ongoing Care), plain static files, a hand-off checklist for every layer. The system is what keeps the work tight when one person is accountable.</p>
+
+      <div class="operator-card">
+        <div class="op-row">
+          <div class="op-label">Accountability</div>
+          <div class="op-value">One operator, end to end</div>
+        </div>
+        <div class="op-row">
+          <div class="op-label">Build cadence</div>
+          <div class="op-value">Usually 4–7 days, scope locked first</div>
+        </div>
+        <div class="op-row">
+          <div class="op-label">Stack discipline</div>
+          <div class="op-value">Plain HTML + CSS, no plugin chain</div>
+        </div>
+        <div class="op-row">
+          <div class="op-label">Hand-off contract</div>
+          <div class="op-value">Files + domain + login, owner-readable docs</div>
+        </div>
+        <div class="op-row">
+          <div class="op-label">Cancel posture</div>
+          <div class="op-value">Layers 02–04 cancellable any month; L01 stays yours</div>
+        </div>
+      </div>
     </section>
 
     <div class="cta-banner">
-      <h3>Tell us what you're trying to fix.</h3>
-      <p>A short conversation. We listen, ask a few questions about how the work actually moves, and tell you straight whether Shipside is the right partner for the next piece.</p>
-      <a href="tel:+15125591741" class="cta-button">Start the conversation</a>
+      <div>
+        <h3>Tell us what you're trying to fix.</h3>
+        <p>A short conversation. We listen, ask a few questions about how the work actually moves, and tell you straight whether Shipside is the right partner for the next piece.</p>
+      </div>
+      <div>
+        <a href="tel:+15125591741" class="cta-button">Start the conversation</a>
+      </div>
     </div>
   </main>
+
+  <script>
+    // Mouse-follow glow v2 — three-layer lerp (matches homepage)
+    (function(){
+      try {
+        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      } catch (_) {}
+      var w = window.innerWidth || 1440, h = window.innerHeight || 900;
+      var raw = { x: w*0.5, y: h*0.34 };
+      var halo = { x: raw.x, y: raw.y };
+      var core = { x: raw.x, y: raw.y };
+      var trail = { x: raw.x, y: raw.y };
+      var rafId = null, seeded = false;
+      try {
+        if ((window.location.search || '').indexOf('glow_demo=1') !== -1) {
+          var apply = function(){
+            document.body.classList.add('has-mouse'); seeded = true;
+            halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y;
+            flush();
+          };
+          if (document.body) apply(); else document.addEventListener('DOMContentLoaded', apply);
+        }
+      } catch(_){}
+      function flush(){
+        var s = document.documentElement.style;
+        s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
+        s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
+        s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
+      }
+      function tick(){
+        halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
+        core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
+        trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
+        flush();
+        var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
+                      Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
+                      Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
+        rafId = settled ? null : requestAnimationFrame(tick);
+      }
+      document.addEventListener('mousemove', function(e){
+        raw.x = e.clientX; raw.y = e.clientY;
+        if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
+        if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      }, { passive: true });
+      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
+      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
+    })();
+  </script>
 
   <footer>
     <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>

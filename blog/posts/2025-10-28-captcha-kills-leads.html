@@ -22,25 +22,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
   :root {
-    --iron: #0b0b0d;
-    --iron-light: #141418;
-    --steel: #1f1f24;
-    --grid: rgba(37,37,44,0.35);
-    --bone: #f2ede0;
-    --bone-dim: #a8a398;
-    --rust: #d44d1c;
-    --rust-bright: #ff5c25;
-    --caution: #e8b220;
-    --red-stamp: #b8321a;
     --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    background: var(--iron);
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 15px;
@@ -306,6 +297,43 @@
     .article-meta { flex-wrap: wrap; gap: 10px; }
     .nav-links { gap: 18px; font-size: 11px; }
   }
+
+/* ═══ BLOG POST v4 OVERRIDES (2026-05-02) ═══ */
+.v4-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rust); margin-bottom: 14px; font-weight: 600; }
+.v4-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
+.article-header { padding: 60px var(--gutter) 36px !important; max-width: 880px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.article-meta { color: var(--rust) !important; font-weight: 700 !important; letter-spacing: 0.16em !important; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+.article-meta .divider { color: var(--bone-dim); }
+.article-title { font-family: 'Bungee', sans-serif !important; font-size: clamp(32px, 5vw, 50px) !important; line-height: 1.05 !important; letter-spacing: -0.01em !important; margin-top: 12px !important; max-width: 22ch; }
+.article-summary { font-size: clamp(15px, 1.4vw, 17px) !important; line-height: 1.7 !important; color: var(--bone-dim) !important; max-width: 60ch; margin-top: 18px !important; }
+.article-tags { margin-top: 18px; }
+.article-tags .tag { background: rgba(212,77,28,0.08) !important; border: 1px solid rgba(212,77,28,0.28) !important; }
+.article-body { max-width: 720px; margin: 36px auto 0; padding: 0 var(--gutter); font-size: 16px; line-height: 1.78; color: var(--bone) !important; }
+.article-body h1 { display: none; }
+.article-body h2 { font-family: 'Bungee', sans-serif !important; font-size: 22px !important; color: var(--bone) !important; margin: 36px 0 14px !important; letter-spacing: 0 !important; line-height: 1.15 !important; }
+.article-body h3 { font-family: 'Bungee', sans-serif; font-size: 17px; color: var(--bone); margin: 26px 0 10px; }
+.article-body p { margin: 0 0 16px; color: var(--bone-dim); }
+.article-body strong { color: var(--bone); font-weight: 700; }
+.article-body a { color: var(--rust); text-decoration: underline; text-decoration-color: rgba(212,77,28,0.45); text-underline-offset: 2px; }
+.article-body a:hover { color: var(--rust-bright); }
+.article-body code { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 3px; font-size: 13px; color: var(--rust-bright); font-family: 'IBM Plex Mono', monospace; }
+.article-body pre { background: linear-gradient(180deg, #22222A 0%, #18181E 100%); border: 1px solid rgba(255,255,255,0.07); border-left: 3px solid var(--rust); border-radius: 4px; padding: 16px 20px; margin: 18px 0; overflow-x: auto; }
+.article-body blockquote { border-left: 3px solid var(--rust); padding: 14px 20px; margin: 24px 0; background: linear-gradient(90deg, rgba(212,77,28,0.06), transparent); color: var(--bone); font-style: italic; }
+.article-body ul, .article-body ol { margin: 14px 0 18px 22px; color: var(--bone-dim); }
+.article-body li { margin-bottom: 8px; }
+.article-body hr { border: none; border-top: 1px dashed rgba(255,255,255,0.1); margin: 32px 0; }
+.article-body em { color: var(--bone); font-style: italic; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; max-width: 880px; margin: 18px auto 0 !important; padding: 0 var(--gutter); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rust) !important; text-decoration: none; }
+.back-link:hover { color: var(--rust-bright) !important; }
+.back-link::before { content: '←'; }
+.cta-banner { max-width: 880px !important; margin: 56px auto !important; padding: 48px 44px !important; background: linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%) !important; border: 1px solid rgba(212,77,28,0.32) !important; border-radius: 4px !important; position: relative; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.46); display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; text-align: left !important; }
+.cta-banner::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; opacity: 0.55; }
+.cta-banner > * { position: relative; z-index: 2; }
+.cta-banner h3 { font-family: 'Bungee', sans-serif !important; font-size: clamp(22px, 3vw, 28px) !important; color: var(--bone) !important; margin: 0 0 12px !important; letter-spacing: -0.01em !important; line-height: 1.05; }
+.cta-banner p { color: var(--bone-dim) !important; margin: 0 0 0 !important; max-width: 50ch; font-size: 14px !important; line-height: 1.65 !important; }
+.cta-banner a { display: inline-block; padding: 16px 28px; background: var(--rust); color: var(--bone) !important; text-decoration: none !important; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; border: 2px solid var(--rust); transition: all 0.2s ease; }
+.cta-banner a:hover { background: transparent; color: var(--rust-bright) !important; border-color: var(--rust-bright); }
+@media (max-width: 700px) { .cta-banner { grid-template-columns: 1fr !important; padding: 36px 26px !important; } .article-title { font-size: 28px !important; } }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -313,6 +341,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+
+<div class="v4-grid-pulse" aria-hidden="true"></div>
+<div class="v4-grid-nodes" aria-hidden="true"></div>
+<div class="v4-glow"       aria-hidden="true"></div>
+<div class="v4-glow-trail" aria-hidden="true"></div>
+<div class="v4-glow-core"  aria-hidden="true"></div>
 
 <nav>
   <a href="../../index.html" class="brand">SHIP<span>SIDE</span></a>
@@ -394,6 +428,45 @@
   <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
   <p>© 2026 Shipside</p>
 </footer>
+
+<script>
+(function(){
+  try {
+    if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  } catch (_) {}
+  var w = window.innerWidth || 1440, h = window.innerHeight || 900;
+  var raw = { x: w*0.5, y: h*0.34 };
+  var halo = { x: raw.x, y: raw.y };
+  var core = { x: raw.x, y: raw.y };
+  var trail = { x: raw.x, y: raw.y };
+  var rafId = null, seeded = false;
+  function flush(){
+    var s = document.documentElement.style;
+    s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
+    s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
+    s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
+  }
+  function tick(){
+    halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
+    core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
+    trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
+    flush();
+    var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
+                  Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
+                  Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
+    rafId = settled ? null : requestAnimationFrame(tick);
+  }
+  document.addEventListener('mousemove', function(e){
+    raw.x = e.clientX; raw.y = e.clientY;
+    if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
+    if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }, { passive: true });
+  document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
+  document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
+})();
+</script>
 
 </body>
 </html>

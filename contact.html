@@ -22,25 +22,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
   :root {
-    --iron: #0b0b0d;
-    --iron-light: #141418;
-    --steel: #1f1f24;
-    --grid: rgba(37,37,44,0.35);
-    --bone: #f2ede0;
-    --bone-dim: #a8a398;
-    --rust: #d44d1c;
-    --rust-bright: #ff5c25;
-    --red-stamp: #b8321a;
-    --caution: #e8b220;
     --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    background: var(--iron);
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 15px;
@@ -314,6 +305,431 @@
       grid-template-columns: 1fr;
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     CONTACT v4 REDESIGN (2026-05-02)
+     Channel rows with proper email font (IBM Plex Mono, not Bungee),
+     wired-stack rhythm matching homepage, premium fit-call panel.
+     ═══════════════════════════════════════════════════════════════════ */
+  main {
+    max-width: 1100px;
+  }
+
+  .v4-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .v4-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--rust);
+  }
+  .v4-eyebrow .num {
+    color: var(--bone-dim);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+  }
+
+  /* Hero v4 — split layout with small fit-call schematic */
+  .contact-hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+    padding: clamp(48px, 8vw, 80px) 0 clamp(36px, 5vw, 56px);
+    margin-bottom: 72px;
+  }
+  .contact-hero h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.02;
+    margin: 0 0 22px;
+    max-width: 16ch;
+  }
+  .contact-hero .lede {
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.7;
+    color: var(--bone-dim);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  .contact-card {
+    position: relative;
+    background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 18px 20px;
+    box-shadow: 0 18px 56px rgba(0,0,0,0.46), 0 1px 0 rgba(255,255,255,0.04) inset;
+    overflow: hidden;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  .contact-card-bar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    margin-bottom: 14px;
+  }
+  .contact-card-bar .live {
+    color: var(--rust);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .contact-card-bar .live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rust);
+    box-shadow: 0 0 8px rgba(212,77,28,0.7);
+    animation: contactPulse 2s ease-in-out infinite;
+  }
+  @keyframes contactPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.85); }
+  }
+  .contact-card-svg {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .contact-hero {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-top: 36px;
+    }
+  }
+
+  /* Channel stack — wired vertical rows for Call / Text / Email */
+  .v4-section { margin-bottom: 96px; position: relative; }
+  .v4-section h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.05;
+    color: var(--bone);
+    margin: 0 0 14px;
+    max-width: 22ch;
+  }
+  .v4-section .v4-lede {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--bone-dim);
+    max-width: 64ch;
+    margin: 0 0 28px;
+  }
+
+  .channel-stack {
+    position: relative;
+    margin-top: 28px;
+    padding-left: 40px;
+  }
+  .channel-stack::before {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: linear-gradient(180deg,
+      rgba(212,77,28,0.6) 0%,
+      rgba(212,77,28,0.25) 50%,
+      rgba(212,77,28,0.6) 100%);
+  }
+  .channel-row {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 24px;
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(212,77,28,0.55);
+    border-radius: 4px;
+    padding: 22px 26px 24px;
+    margin-bottom: 16px;
+    position: relative;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .channel-row:hover {
+    transform: translateX(4px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.42);
+    border-left-color: var(--rust);
+  }
+  .channel-row::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 32px;
+    width: 30px;
+    height: 2px;
+    background: var(--rust);
+  }
+  .channel-row::after {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 26px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--rust);
+    border-radius: 50%;
+    background: var(--iron);
+    box-shadow: 0 0 12px rgba(212,77,28,0.45);
+  }
+
+  .channel-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--rust);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .channel-title {
+    font-family: 'Bungee', sans-serif;
+    font-size: 22px;
+    color: var(--bone);
+    letter-spacing: 0;
+    margin: 0 0 10px;
+    line-height: 1;
+  }
+  .channel-value {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(15px, 1.4vw, 17px);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--rust-bright);
+    word-break: break-all;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(212,77,28,0.32);
+    padding-bottom: 1px;
+    transition: border-color 0.18s ease, color 0.18s ease;
+  }
+  .channel-row:hover .channel-value {
+    color: var(--rust-bright);
+    border-bottom-color: var(--rust);
+  }
+  .channel-note {
+    font-size: 13.5px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 50ch;
+  }
+  .channel-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-self: center;
+  }
+  .channel-meta span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--bone);
+    line-height: 1.5;
+    padding: 7px 11px;
+    background: rgba(255,255,255,0.025);
+    border-left: 2px solid rgba(212,77,28,0.45);
+    letter-spacing: 0.02em;
+  }
+  .channel-meta span strong {
+    color: var(--rust);
+    font-weight: 700;
+    margin-right: 6px;
+  }
+
+  @media (max-width: 800px) {
+    .channel-stack { padding-left: 28px; }
+    .channel-row {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .channel-row::before { width: 22px; left: -28px; }
+    .channel-row::after { left: -16px; }
+  }
+
+  /* Fit-call detail panel + qualify grid (refined) */
+  .fit-panel {
+    background: linear-gradient(180deg, #20202A 0%, #17171E 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 32px 36px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.36);
+  }
+  .fit-panel h3 {
+    font-family: 'Bungee', sans-serif;
+    font-size: 18px;
+    color: var(--bone);
+    margin: 0 0 14px;
+    letter-spacing: 0;
+  }
+  .fit-panel p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--bone-dim);
+    margin: 0 0 12px;
+    max-width: 64ch;
+  }
+  .fit-panel p:last-child { margin-bottom: 0; }
+
+  .qualify-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 14px !important;
+  }
+  @media (max-width: 980px) {
+    .qualify-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 540px) {
+    .qualify-grid { grid-template-columns: 1fr !important; }
+  }
+  .qualify-item {
+    background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-left: 3px solid var(--rust) !important;
+    padding: 18px 20px !important;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .qualify-item:hover {
+    transform: translateY(-1px);
+    border-left-color: var(--rust-bright) !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.34);
+  }
+
+  /* Hours panel — compact, designed */
+  .hours-panel {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 28px;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(232,178,32,0.1) 0%, rgba(31,31,38,0.95) 60%, rgba(20,20,24,0.95) 100%);
+    border: 1px solid rgba(232,178,32,0.32);
+    border-radius: 4px;
+    padding: 22px 28px;
+    margin-top: 32px;
+    box-shadow: 0 18px 48px rgba(0,0,0,0.42);
+  }
+  .hours-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--caution);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .hours-eyebrow strong {
+    display: block;
+    color: var(--bone);
+    font-family: 'Bungee', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0;
+    margin-top: 4px;
+  }
+  .hours-body {
+    font-size: 14px;
+    color: var(--bone-dim);
+    line-height: 1.6;
+    max-width: 56ch;
+  }
+  .hours-stamp {
+    border: 2px solid var(--red-stamp);
+    color: var(--red-stamp);
+    padding: 6px 14px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    transform: rotate(-2deg);
+    white-space: nowrap;
+  }
+  @media (max-width: 720px) {
+    .hours-panel { grid-template-columns: 1fr; gap: 14px; }
+    .hours-stamp { justify-self: flex-start; }
+  }
+
+  /* Mouse-follow glow v2 — three-layer lerp pattern (2026-05-02) */
+  .v4-glow,
+  .v4-glow-core,
+  .v4-glow-trail {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    will-change: opacity, background;
+    mix-blend-mode: screen;
+  }
+  .v4-glow {
+    background:
+      radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
+        rgba(212,77,28,0.20) 0%,
+        rgba(212,77,28,0.09) 26%,
+        rgba(212,77,28,0.025) 50%,
+        transparent 72%);
+  }
+  .v4-glow-trail {
+    background:
+      radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
+        rgba(212,77,28,0.12) 0%,
+        rgba(212,77,28,0.04) 36%,
+        transparent 62%);
+  }
+  .v4-glow-core {
+    background:
+      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,92,37,0.44) 0%,
+        rgba(255,92,37,0.16) 26%,
+        rgba(255,92,37,0.04) 48%,
+        transparent 64%),
+      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,200,160,0.30) 0%,
+        rgba(255,200,160,0.05) 60%,
+        transparent 86%);
+  }
+  body.has-mouse .v4-glow,
+  body.has-mouse .v4-glow-trail,
+  body.has-mouse .v4-glow-core { opacity: 1; }
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
+    .contact-card-bar .live::before { animation: none; }
+    .channel-row { transition: none; }
+    .channel-row:hover { transform: none; }
+  }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -321,6 +737,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+  <div class="v4-glow"       aria-hidden="true"></div>
+  <div class="v4-glow-trail" aria-hidden="true"></div>
+  <div class="v4-glow-core"  aria-hidden="true"></div>
+
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
@@ -336,60 +758,151 @@
   </nav>
 
   <main>
-    <h1>What needs to get built?</h1>
-    <p class="lede">A new site, a system that does not fit the work anymore, or a workflow that needs cleaned up. Send the shape of the problem and we will tell you where we would start.</p>
+    <!-- ═══ HERO ═══ -->
+    <section class="contact-hero">
+      <div>
+        <div class="v4-eyebrow"><span class="num">↳</span> CONTACT</div>
+        <h1>Tell us the shape of the build.</h1>
+        <p class="lede">A new owned site, a workflow eating time, or a system that doesn't fit the way the business actually runs. Three ways in below — pick whichever fits. We tell you fast whether Shipside is the right partner.</p>
+      </div>
 
-    <div class="cta-grid">
-      <a href="tel:+15125591741" class="cta-card">
-        <div class="cta-label">Call</div>
-        <div class="cta-value">(512) 559-1741</div>
-        <div class="cta-note">15 minutes. We ask what you do, who calls you, and where the phone is dropping. If we can help, we say so.</div>
-      </a>
-      <a href="sms:+15125591741" class="cta-card">
-        <div class="cta-label">Text</div>
-        <div class="cta-value">(512) 559-1741</div>
-        <div class="cta-note">Prefer to type? Text works. Short or long, pictures fine. Usually a reply within a few hours.</div>
-      </a>
-      <a href="mailto:shipside.labs@gmail.com?subject=Shipside%20inquiry" class="cta-card">
-        <div class="cta-label">Email</div>
-        <div class="cta-value">shipside.labs@gmail.com</div>
-        <div class="cta-note">Send your current site if you have one, your trade, and your city. We reply within one business day.</div>
-      </a>
-    </div>
+      <div class="contact-card" aria-hidden="true">
+        <div class="contact-card-bar">
+          <span>// SHIPSIDE / FIT-CALL FLOW</span>
+          <span class="live">15-MIN</span>
+        </div>
+        <svg viewBox="0 0 360 168" class="contact-card-svg" preserveAspectRatio="xMidYMid meet">
+          <!-- routing traces -->
+          <g fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.4">
+            <path id="cc-trace-1" d="M 70 84 L 110 84"/>
+            <path id="cc-trace-2" d="M 190 84 L 230 84"/>
+            <path id="cc-trace-3" d="M 310 84 L 348 84"/>
+          </g>
+          <g class="pulse">
+            <circle r="3" fill="#ff5c25"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0s"><mpath href="#cc-trace-1"/></animateMotion></circle>
+            <circle r="3" fill="#ff5c25"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0.7s"><mpath href="#cc-trace-2"/></animateMotion></circle>
+            <circle r="3" fill="#ff5c25"><animateMotion dur="2.6s" repeatCount="indefinite" begin="1.4s"><mpath href="#cc-trace-3"/></animateMotion></circle>
+          </g>
 
-    <section>
-      <h2>What happens on the fit call</h2>
-      <p>Fifteen minutes, no pitch deck. We ask what you do, what area you cover, how customers usually find you, and where the phone is dropping. If Shipside fits, we walk you through scope - Launch, Catch, or Control - and send a written quote. If it doesn't fit, we tell you that on the call.</p>
-      <p>If you already have a site that's not pulling its weight, we can talk through a fresh five-page replacement on the same domain. For anything bigger than the standard five-page scope, we'll talk that through on the fit call too.</p>
-    </section>
-
-    <section>
-      <h2>Who this fits</h2>
-      <div class="qualify-grid">
-        <div class="qualify-item">
-          <strong>Owner-operators.</strong>
-          <p>Auto repair, roofing, HVAC, landscaping, contractors, trades. One- or two-person shops and small crews.</p>
-        </div>
-        <div class="qualify-item">
-          <strong>Word-of-mouth businesses.</strong>
-          <p>Referrals drive most work, but the name keeps getting lost when someone checks online.</p>
-        </div>
-        <div class="qualify-item">
-          <strong>No existing site, or a dead one.</strong>
-          <p>Nothing there, or something there that looks like the lights are off.</p>
-        </div>
-        <div class="qualify-item">
-          <strong>Wants to own it.</strong>
-          <p>Your files, your domain, your login. No hostage contracts, no monthly fee required to keep it alive.</p>
-        </div>
+          <!-- you -->
+          <g transform="translate(8, 60)">
+            <rect width="62" height="48" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.22)"/>
+            <text x="31" y="20" text-anchor="middle" fill="#a8a398" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1.6">YOU</text>
+            <text x="31" y="34" text-anchor="middle" fill="#f2ede0" font-family="IBM Plex Mono" font-size="10" font-weight="700">Reach out</text>
+          </g>
+          <!-- fit call -->
+          <g transform="translate(110, 60)">
+            <rect width="80" height="48" rx="2" fill="#1F1F26" stroke="rgba(212,77,28,0.55)"/>
+            <rect x="0" y="0" width="80" height="3" fill="#d44d1c"/>
+            <text x="40" y="22" text-anchor="middle" fill="#a8a398" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1.4">STEP 01</text>
+            <text x="40" y="38" text-anchor="middle" fill="#f2ede0" font-family="IBM Plex Sans" font-size="11" font-weight="800">Fit call</text>
+          </g>
+          <!-- scope -->
+          <g transform="translate(230, 60)">
+            <rect width="80" height="48" rx="2" fill="#1F1F26" stroke="rgba(212,77,28,0.55)"/>
+            <rect x="0" y="0" width="80" height="3" fill="#d44d1c"/>
+            <text x="40" y="22" text-anchor="middle" fill="#a8a398" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="1.4">STEP 02</text>
+            <text x="40" y="38" text-anchor="middle" fill="#f2ede0" font-family="IBM Plex Sans" font-size="11" font-weight="800">Scope</text>
+          </g>
+          <!-- ship -->
+          <g transform="translate(348, 60)">
+            <rect width="2" height="48" fill="rgba(212,77,28,0.65)"/>
+          </g>
+          <text x="180" y="148" text-anchor="middle" fill="#a8a398" font-family="IBM Plex Mono" font-size="9" letter-spacing="1.2">→ Written scope before any work starts</text>
+        </svg>
       </div>
     </section>
 
-    <div class="hours-box">
-      <h3>Hours</h3>
-      <p>Monday through Friday, 8am to 6pm Central. Text anytime - we get back in the morning if it comes in late.</p>
-      <div class="stamp">Austin, TX</div>
-    </div>
+    <!-- ═══ CHANNELS — wired stack ═══ -->
+    <section class="v4-section" id="channels">
+      <div class="v4-eyebrow"><span class="num">01 /</span> CHANNELS</div>
+      <h2>Three ways in. Pick whichever fits.</h2>
+      <p class="v4-lede">All three land with Ryan. Fit calls run 15 minutes — we ask what you do, where you operate, how customers usually find you, and where the phone is dropping. Straight answer either way.</p>
+
+      <div class="channel-stack" role="list">
+        <a class="channel-row" role="listitem" href="tel:+15125591741">
+          <div class="channel-col">
+            <div class="channel-num">Channel 01 · Voice</div>
+            <h3 class="channel-title">Call</h3>
+            <span class="channel-value">(512) 559-1741</span>
+            <p class="channel-note">Fastest path to a fit call. We ask the same fifteen-minute questions and tell you straight whether Shipside fits.</p>
+          </div>
+          <div class="channel-meta">
+            <span><strong>Best for</strong> fit-call kickoff</span>
+            <span><strong>Hours</strong> Mon–Fri 8a–6p CT</span>
+            <span><strong>SLA</strong> Live or callback inside the day</span>
+          </div>
+        </a>
+
+        <a class="channel-row" role="listitem" href="sms:+15125591741">
+          <div class="channel-col">
+            <div class="channel-num">Channel 02 · Text</div>
+            <h3 class="channel-title">Text</h3>
+            <span class="channel-value">(512) 559-1741</span>
+            <p class="channel-note">Short or long, pictures fine. Easiest if you're between jobs. Most replies inside a few hours, always within the same business day.</p>
+          </div>
+          <div class="channel-meta">
+            <span><strong>Best for</strong> quick context drop</span>
+            <span><strong>Anytime</strong> we read in the morning</span>
+            <span><strong>SLA</strong> Reply same business day</span>
+          </div>
+        </a>
+
+        <a class="channel-row" role="listitem" href="mailto:shipside.labs@gmail.com?subject=Shipside%20inquiry">
+          <div class="channel-col">
+            <div class="channel-num">Channel 03 · Email</div>
+            <h3 class="channel-title">Email</h3>
+            <span class="channel-value">shipside.labs@gmail.com</span>
+            <p class="channel-note">Best when you can send links — current site if you have one, your trade, your city, and a sentence about what's not working. Reply within one business day.</p>
+          </div>
+          <div class="channel-meta">
+            <span><strong>Best for</strong> attaching links / docs</span>
+            <span><strong>Subject</strong> "Shipside inquiry" works</span>
+            <span><strong>SLA</strong> Reply within 1 business day</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ FIT CALL — what to expect ═══ -->
+    <section class="v4-section" id="fit-call">
+      <div class="v4-eyebrow"><span class="num">02 /</span> WHAT TO EXPECT</div>
+      <h2>The fit call, in fifteen minutes.</h2>
+      <div class="fit-panel">
+        <p>No pitch deck. We ask what you do, what area you cover, how customers usually find you, and where the phone is dropping. If Shipside fits, we walk you through the build stack — Owned Site, Capture Layer, Owner Control, Ongoing Care — and send a written scope and cost before any deposit.</p>
+        <p>If you already have a site that's not pulling its weight, we can talk through a fresh five-page replacement on the same domain. For anything bigger than the standard five-page scope, we'll talk that through on the call too. If we're not the right fit, we say that on the call so nobody wastes a week.</p>
+      </div>
+    </section>
+
+    <!-- ═══ FIT — who this is for ═══ -->
+    <section class="v4-section" id="who">
+      <div class="v4-eyebrow"><span class="num">03 /</span> WHO THIS FITS</div>
+      <h2>Working businesses. Owner-operated. Tired of leads disappearing.</h2>
+      <div class="qualify-grid">
+        <div class="qualify-item">
+          <strong>Owner-operators</strong>
+          <p>Auto repair, roofing, HVAC, landscaping, contractors, trades. One- or two-person shops and small crews.</p>
+        </div>
+        <div class="qualify-item">
+          <strong>Word-of-mouth businesses</strong>
+          <p>Referrals drive most work, but the name keeps getting lost when someone checks online and bounces.</p>
+        </div>
+        <div class="qualify-item">
+          <strong>No site, or a stale one</strong>
+          <p>Nothing online, or a site that hasn't been touched in years and now looks like the lights are off.</p>
+        </div>
+        <div class="qualify-item">
+          <strong>Wants to own it</strong>
+          <p>Your files, your domain, your login. No hostage contract, no monthly fee required to keep the site alive.</p>
+        </div>
+      </div>
+
+      <div class="hours-panel">
+        <div class="hours-eyebrow">HOURS<strong>Mon–Fri 8a–6p CT</strong></div>
+        <div class="hours-body">Text anytime — we get back in the morning if it comes in late. Calls outside hours go to voicemail with a callback inside the next business day.</div>
+        <div class="hours-stamp">Austin, TX</div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -397,5 +910,57 @@
     <p>&copy; 2026 Shipside</p>
     <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> &middot; Clean websites. Useful systems. No platform lock-in.</p>
   </footer>
+
+  <script>
+    // Mouse-follow glow v2 — three-layer lerp (matches homepage)
+    (function(){
+      try {
+        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      } catch (_) {}
+      var w = window.innerWidth || 1440, h = window.innerHeight || 900;
+      var raw = { x: w*0.5, y: h*0.34 };
+      var halo = { x: raw.x, y: raw.y };
+      var core = { x: raw.x, y: raw.y };
+      var trail = { x: raw.x, y: raw.y };
+      var rafId = null, seeded = false;
+      try {
+        if ((window.location.search || '').indexOf('glow_demo=1') !== -1) {
+          var apply = function(){
+            document.body.classList.add('has-mouse');
+            seeded = true;
+            halo.x = core.x = trail.x = raw.x;
+            halo.y = core.y = trail.y = raw.y;
+            flush();
+          };
+          if (document.body) apply(); else document.addEventListener('DOMContentLoaded', apply);
+        }
+      } catch(_){}
+      function flush(){
+        var s = document.documentElement.style;
+        s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
+        s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
+        s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
+      }
+      function tick(){
+        halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
+        core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
+        trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
+        flush();
+        var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
+                      Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
+                      Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
+        rafId = settled ? null : requestAnimationFrame(tick);
+      }
+      document.addEventListener('mousemove', function(e){
+        raw.x = e.clientX; raw.y = e.clientY;
+        if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
+        if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      }, { passive: true });
+      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
+      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
+    })();
+  </script>
 </body>
 </html>

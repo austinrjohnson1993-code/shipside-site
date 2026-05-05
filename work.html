@@ -22,24 +22,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
 <style>
   :root {
-    --iron: #0b0b0d;
-    --iron-light: #141418;
-    --steel: #1f1f24;
-    --grid: rgba(37,37,44,0.35);
-    --bone: #f2ede0;
-    --bone-dim: #a8a398;
-    --rust: #d44d1c;
-    --rust-bright: #ff5c25;
-    --red-stamp: #b8321a;
     --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    background: var(--iron);
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 15px;
@@ -250,6 +242,263 @@
       padding: 40px var(--gutter);
     }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     WORK v4 (2026-05-02) — proof-of-build patterns + glow.
+     ═══════════════════════════════════════════════════════════════════ */
+  .v4-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin: 56px 0 14px;
+    font-weight: 600;
+  }
+  .v4-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
+  .v4-eyebrow .num { color: var(--bone-dim); font-weight: 500; letter-spacing: 0.2em; }
+
+  main > h1:first-of-type {
+    margin: 0 0 22px !important;
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.04;
+    max-width: 22ch;
+  }
+  .subtitle {
+    font-size: clamp(15px, 1.4vw, 17px) !important;
+    line-height: 1.7 !important;
+    color: var(--bone-dim);
+    max-width: 64ch !important;
+    margin: 0 0 28px !important;
+  }
+
+  /* Section rhythm */
+  main section { margin-bottom: 80px !important; position: relative; }
+  main section h2 {
+    font-family: 'Bungee', sans-serif !important;
+    font-size: clamp(26px, 4vw, 36px) !important;
+    line-height: 1.05 !important;
+    color: var(--bone) !important;
+    letter-spacing: -0.01em !important;
+    margin: 0 0 14px !important;
+    max-width: 22ch;
+  }
+  main section p {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    color: var(--bone-dim) !important;
+    max-width: 64ch !important;
+    margin: 0 0 14px !important;
+  }
+
+  /* Artifact stack — wired vertical rows showing what owner gets per layer */
+  .v4-artifact-stack {
+    position: relative;
+    margin-top: 28px;
+    padding-left: 40px;
+  }
+  .v4-artifact-stack::before {
+    content: '';
+    position: absolute;
+    left: 13px; top: 24px; bottom: 24px;
+    width: 2px;
+    background: linear-gradient(180deg,
+      rgba(212,77,28,0.6) 0%, rgba(212,77,28,0.25) 50%, rgba(212,77,28,0.6) 100%);
+  }
+  .v4-artifact-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 24px;
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(212,77,28,0.55);
+    border-radius: 4px;
+    padding: 22px 26px 24px;
+    margin-bottom: 16px;
+    position: relative;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .v4-artifact-row:hover {
+    transform: translateX(4px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.42);
+    border-left-color: var(--rust);
+  }
+  .v4-artifact-row::before {
+    content: ''; position: absolute;
+    left: -40px; top: 30px; width: 30px; height: 2px; background: var(--rust);
+  }
+  .v4-artifact-row::after {
+    content: ''; position: absolute;
+    left: -27px; top: 24px; width: 14px; height: 14px;
+    border: 2px solid var(--rust); border-radius: 50%;
+    background: var(--iron); box-shadow: 0 0 12px rgba(212,77,28,0.45);
+  }
+  .v4-artifact-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .v4-artifact-title {
+    font-family: 'Bungee', sans-serif !important;
+    font-size: 22px !important;
+    color: var(--bone) !important;
+    letter-spacing: 0;
+    margin: 0 0 10px !important;
+    line-height: 1.05;
+  }
+  .v4-artifact-body {
+    font-size: 14px !important;
+    color: var(--bone-dim) !important;
+    line-height: 1.65 !important;
+    margin: 0 0 8px !important;
+    max-width: 50ch;
+  }
+  .v4-artifact-meta {
+    display: flex; flex-wrap: wrap; gap: 6px 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--rust);
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+  .v4-artifact-meta span::before {
+    content: '· '; color: var(--bone-dim); margin-right: 2px;
+  }
+  .v4-artifact-meta span:first-child::before { content: ''; margin: 0; }
+  .v4-artifact-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 7px; align-self: center;
+  }
+  .v4-artifact-list li {
+    font-size: 12.5px;
+    color: var(--bone);
+    line-height: 1.5;
+    padding: 7px 11px;
+    background: rgba(255,255,255,0.025);
+    border-left: 2px solid rgba(212,77,28,0.45);
+  }
+  @media (max-width: 800px) {
+    .v4-artifact-stack { padding-left: 28px; }
+    .v4-artifact-row { grid-template-columns: 1fr; gap: 14px; }
+    .v4-artifact-row::before { width: 22px; left: -28px; }
+    .v4-artifact-row::after { left: -16px; }
+  }
+
+  /* "What we don't do" — lifted card list */
+  .v4-skip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .v4-skip-cell {
+    background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid var(--red-stamp);
+    border-radius: 4px;
+    padding: 16px 20px;
+  }
+  .v4-skip-cell strong {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--red-stamp);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .v4-skip-cell p {
+    font-size: 13.5px !important;
+    color: var(--bone) !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  /* CTA panel — gradient like other v4 pages */
+  main > .cta-section {
+    margin-top: 40px !important;
+    padding: 48px 44px !important;
+    background:
+      linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%) !important;
+    border: 1px solid rgba(212,77,28,0.32) !important;
+    border-top: 1px solid rgba(212,77,28,0.32) !important;
+    border-radius: 4px;
+    text-align: left !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.46);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  main > .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none; opacity: 0.55;
+  }
+  main > .cta-section > * { position: relative; z-index: 2; }
+  main > .cta-section h2 {
+    margin: 0 0 14px !important;
+    max-width: 24ch !important;
+  }
+  main > .cta-section p {
+    color: var(--bone-dim) !important;
+    margin: 0 0 14px !important;
+    max-width: 52ch !important;
+    text-align: left !important;
+  }
+  main > .cta-section .cta-button { padding: 16px 28px; font-size: 14px; }
+  @media (max-width: 800px) {
+    main > .cta-section { grid-template-columns: 1fr !important; padding: 36px 28px !important; }
+  }
+
+  /* Mouse-follow glow v2 */
+  .v4-glow,
+  .v4-glow-core,
+  .v4-glow-trail {
+    position: fixed; inset: 0; pointer-events: none; z-index: 2;
+    opacity: 0; transition: opacity 0.6s ease;
+    will-change: opacity, background; mix-blend-mode: screen;
+  }
+  .v4-glow {
+    background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
+      rgba(212,77,28,0.20) 0%, rgba(212,77,28,0.09) 26%, rgba(212,77,28,0.025) 50%, transparent 72%);
+  }
+  .v4-glow-trail {
+    background: radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
+      rgba(212,77,28,0.12) 0%, rgba(212,77,28,0.04) 36%, transparent 62%);
+  }
+  .v4-glow-core {
+    background:
+      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,92,37,0.44) 0%, rgba(255,92,37,0.16) 26%, rgba(255,92,37,0.04) 48%, transparent 64%),
+      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
+        rgba(255,200,160,0.30) 0%, rgba(255,200,160,0.05) 60%, transparent 86%);
+  }
+  body.has-mouse .v4-glow,
+  body.has-mouse .v4-glow-trail,
+  body.has-mouse .v4-glow-core { opacity: 1; }
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
+    .v4-artifact-row { transition: none; }
+    .v4-artifact-row:hover { transform: none; }
+  }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -257,6 +506,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+  <div class="v4-glow"       aria-hidden="true"></div>
+  <div class="v4-glow-trail" aria-hidden="true"></div>
+  <div class="v4-glow-core"  aria-hidden="true"></div>
+
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
@@ -272,48 +527,193 @@
   </nav>
 
   <main>
-    <h1>How it gets built</h1>
-    <p class="subtitle">The Shipside approach: plain files, trade-fit layouts, no mystery. You own the site. You own the files. You own the future.</p>
+    <div class="v4-eyebrow"><span class="num">↳</span> WORK / HOW IT GETS BUILT</div>
+    <h1>What gets shipped, what gets handed off, what gets owned.</h1>
+    <p class="subtitle">Plain files, trade-fit layouts, no mystery. The work below is what every Shipside build produces — the artifacts an owner walks away with at hand-off, and the build patterns we use to get there.</p>
 
-    <section style="margin-top: 60px; margin-bottom: 60px;">
-      <h2 style="font-family: 'Bungee', sans-serif; font-size: 28px; color: var(--bone); margin-bottom: 24px;">What it's made of</h2>
-      <p style="font-size: 15px; line-height: 1.7; color: var(--bone-dim); max-width: 70ch; margin-bottom: 16px;">Plain files. Clean markup. No WordPress. No page builders. No plugin updates that break your site.</p>
-      <p style="font-size: 15px; line-height: 1.7; color: var(--bone-dim); max-width: 70ch;">Fast by default. The code is yours. You own it. Transfer it whenever you want. No vendor lock-in.</p>
+    <section>
+      <div class="v4-eyebrow"><span class="num">01 /</span> ARTIFACTS PER LAYER</div>
+      <h2>What the owner gets, layer by layer.</h2>
+      <p>Each layer of the build produces a real artifact — a working website, a wired capture path, an owner inbox you can open on your phone. We can show all of these on a fit call. No fake portfolio carousel.</p>
+
+      <div class="v4-artifact-stack" role="list">
+        <article class="v4-artifact-row" role="listitem">
+          <div>
+            <div class="v4-artifact-num">Layer 01 · Foundation</div>
+            <h3 class="v4-artifact-title">A live owned site</h3>
+            <p class="v4-artifact-body">Five plain HTML pages on your domain — Home, About, Services, Work, Contact. Built around your trade and your photos. No WordPress, no page builders, no plugin chain to babysit.</p>
+            <div class="v4-artifact-meta">
+              <span>Hand-off: files + domain + login</span>
+              <span>Phone-friendly</span>
+              <span>You own it</span>
+            </div>
+          </div>
+          <ul class="v4-artifact-list">
+            <li>Static HTML/CSS — no DB, no admin panel</li>
+            <li>Hosting transferable to any provider</li>
+            <li>Trade-fit layout, your photos and copy</li>
+            <li>Files handed off, no platform lock-in</li>
+          </ul>
+        </article>
+
+        <article class="v4-artifact-row" role="listitem">
+          <div>
+            <div class="v4-artifact-num">Layer 02 · Capture</div>
+            <h3 class="v4-artifact-title">Calls and forms wired in</h3>
+            <p class="v4-artifact-body">Tap-to-call paths on every page. Missed-call text-back firing within seconds. Quote-request form landing in one inbox. The path from "someone reached out" to "you have a record of it" — wired.</p>
+            <div class="v4-artifact-meta">
+              <span>Hand-off: phone number + auto text-back rules</span>
+              <span>Owner-readable</span>
+              <span>Cancel any month</span>
+            </div>
+          </div>
+          <ul class="v4-artifact-list">
+            <li>Tap-to-call CTA on every page</li>
+            <li>Auto missed-call SMS reply</li>
+            <li>Quote form posts to one inbox</li>
+            <li>Domain configured + verified</li>
+          </ul>
+        </article>
+
+        <article class="v4-artifact-row" role="listitem">
+          <div>
+            <div class="v4-artifact-num">Layer 03 · Visibility</div>
+            <h3 class="v4-artifact-title">An owner-only inbox of leads</h3>
+            <p class="v4-artifact-body">One list of every lead, reply, and reminder on your phone. Push when something new shows up. Notes and follow-up reminders next to the lead. Monthly summary so you see the month, not babysit a dashboard.</p>
+            <div class="v4-artifact-meta">
+              <span>Hand-off: owner-only login</span>
+              <span>Push alerts</span>
+              <span>Monthly summary</span>
+            </div>
+          </div>
+          <ul class="v4-artifact-list">
+            <li>One inbox: missed calls + forms + replies</li>
+            <li>Push to your phone on new lead</li>
+            <li>Notes, status, follow-up reminders</li>
+            <li>Monthly lead summary delivered</li>
+          </ul>
+        </article>
+
+        <article class="v4-artifact-row" role="listitem">
+          <div>
+            <div class="v4-artifact-num">Layer 04 · Care</div>
+            <h3 class="v4-artifact-title">A site that stays current</h3>
+            <p class="v4-artifact-body">Hosting handled, basic checks running, quick text-or-photo updates when hours, services, crew photos, or a new offering change. Cancel any month — Layer 01 stays yours, live, on your domain.</p>
+            <div class="v4-artifact-meta">
+              <span>Hand-off: site + content stay current</span>
+              <span>Hosting + checks</span>
+              <span>Update help</span>
+            </div>
+          </div>
+          <ul class="v4-artifact-list">
+            <li>Hosting + uptime + SSL handled</li>
+            <li>Update help when business changes</li>
+            <li>Cancel any month, site stays live</li>
+            <li>No hostage retainer, no platform lock-in</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
-    <section style="margin-bottom: 60px;">
-      <h2 style="font-family: 'Bungee', sans-serif; font-size: 28px; color: var(--bone); margin-bottom: 24px;">The layout system</h2>
-      <p style="font-size: 15px; line-height: 1.7; color: var(--bone-dim); max-width: 70ch; margin-bottom: 16px;">Built around the kind of work you do. You pick the direction. We plug in your services, photos, hours, and contact path.</p>
-      <p style="font-size: 15px; line-height: 1.7; color: var(--bone-dim); max-width: 70ch;">No wandering. You see it, you like it, we build it.</p>
+    <section>
+      <div class="v4-eyebrow"><span class="num">02 /</span> WHAT WE DON'T DO</div>
+      <h2>Things you won't get from Shipside.</h2>
+      <p>Plain promises about what's not on the menu. Each one is a thing other shops do that we choose not to.</p>
+      <div class="v4-skip-grid">
+        <div class="v4-skip-cell">
+          <strong>No mystery strategy sessions</strong>
+          <p>We talk on a fit call. Fifteen minutes, real questions, straight answer.</p>
+        </div>
+        <div class="v4-skip-cell">
+          <strong>No drawn-out discovery</strong>
+          <p>Scope and cost land in writing before any build work starts. No hidden meter.</p>
+        </div>
+        <div class="v4-skip-cell">
+          <strong>No retainer lock-in</strong>
+          <p>Layers 02–04 are optional and cancellable any month. Layer 01 stays yours regardless.</p>
+        </div>
+        <div class="v4-skip-cell">
+          <strong>No bait-and-switch add-ons</strong>
+          <p>Whatever's in the written scope is what gets built. New asks become a separate scope.</p>
+        </div>
+        <div class="v4-skip-cell">
+          <strong>No platform lock-in</strong>
+          <p>Plain HTML, plain hosting. Transfer the files to any provider any time.</p>
+        </div>
+        <div class="v4-skip-cell">
+          <strong>No fake portfolio</strong>
+          <p>We show real artifacts on a fit call. No staged screenshots, no borrowed logos.</p>
+        </div>
+      </div>
     </section>
 
-    <section style="margin-bottom: 60px;">
-      <h2 style="font-family: 'Bungee', sans-serif; font-size: 28px; color: var(--bone); margin-bottom: 24px;">What We Don't Do</h2>
-      <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; color: var(--bone-dim); line-height: 1.7; max-width: 70ch;">
-        <li style="margin-bottom: 12px;">• No mystery "strategy sessions." We talk on a fit call.</li>
-        <li style="margin-bottom: 12px;">• No drawn-out discovery phases. Scope and cost land in writing before any build work.</li>
-        <li style="margin-bottom: 12px;">• No lock-in. No mandatory retainers. Site Care, Call Catcher, and Owner Inbox are only included when scope calls for it, and you can cancel any month.</li>
-        <li style="margin-bottom: 12px;">• No bait-and-switch add-ons. Whatever's in the written scope is what gets built.</li>
-      </ul>
-    </section>
-
-    <section style="margin-bottom: 60px;">
-      <h2 style="font-family: 'Bungee', sans-serif; font-size: 28px; color: var(--bone); margin-bottom: 24px;">Why Static</h2>
-      <p style="font-size: 15px; line-height: 1.7; color: var(--bone-dim); max-width: 70ch; margin-bottom: 16px;">Plain sites load faster. They stay simpler. They do not fall apart because some plugin updated overnight.</p>
-      <p style="font-size: 15px; line-height: 1.7; color: var(--bone-dim); max-width: 70ch;">A service business does not need another dashboard to babysit. You need a site that works and does not disappear.</p>
-    </section>
-
-    <section style="margin-bottom: 60px;">
-      <h2 style="font-family: 'Bungee', sans-serif; font-size: 28px; color: var(--bone); margin-bottom: 24px;">Speed</h2>
-      <p style="font-size: 15px; line-height: 1.7; color: var(--bone-dim); max-width: 70ch;">From kickoff to live, the job stays tight. Usually done in a few days. We give ourselves up to 7 so nobody gets surprised.</p>
+    <section>
+      <div class="v4-eyebrow"><span class="num">03 /</span> CADENCE</div>
+      <h2>How fast it gets shipped.</h2>
+      <p>From kickoff to live, the job stays tight. Most builds finish in a few days; we give ourselves up to seven so nobody gets surprised. Layer 02 wiring usually lights up the same week. Layer 03 onboarding lands at the hand-off call.</p>
+      <p>No phase that exists just to bill. Every step has an artifact you can point at — a draft, a domain, a working text-back, an owner login.</p>
     </section>
 
     <div class="cta-section">
-      <h2 style="margin-top: 0;">Ready to talk?</h2>
-      <p style="color: var(--bone-dim); font-size: 16px; margin-bottom: 32px;">Book a 15-minute fit call. We'll walk through your site and follow-up setup.</p>
-      <a href="tel:+15125591741" style="display: inline-block; padding: 14px 32px; background: var(--rust); color: var(--bone); text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s ease; border: 2px solid var(--rust);">Book a 15-minute fit call</a>
+      <div>
+        <h2 style="margin-top: 0;">Want to see it on a call?</h2>
+        <p>Book a 15-minute fit call. We can show every layer working — owned site, missed-call text-back, owner inbox — without screenshots.</p>
+      </div>
+      <div>
+        <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
+      </div>
     </div>
   </main>
+
+  <script>
+    // Mouse-follow glow v2 — three-layer lerp (matches homepage)
+    (function(){
+      try {
+        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      } catch (_) {}
+      var w = window.innerWidth || 1440, h = window.innerHeight || 900;
+      var raw = { x: w*0.5, y: h*0.34 };
+      var halo = { x: raw.x, y: raw.y };
+      var core = { x: raw.x, y: raw.y };
+      var trail = { x: raw.x, y: raw.y };
+      var rafId = null, seeded = false;
+      try {
+        if ((window.location.search || '').indexOf('glow_demo=1') !== -1) {
+          var apply = function(){
+            document.body.classList.add('has-mouse'); seeded = true;
+            halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y;
+            flush();
+          };
+          if (document.body) apply(); else document.addEventListener('DOMContentLoaded', apply);
+        }
+      } catch(_){}
+      function flush(){
+        var s = document.documentElement.style;
+        s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
+        s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
+        s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
+      }
+      function tick(){
+        halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
+        core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
+        trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
+        flush();
+        var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
+                      Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
+                      Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
+        rafId = settled ? null : requestAnimationFrame(tick);
+      }
+      document.addEventListener('mousemove', function(e){
+        raw.x = e.clientX; raw.y = e.clientY;
+        if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
+        if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      }, { passive: true });
+      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
+      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
+    })();
+  </script>
 
   <footer>
     <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
