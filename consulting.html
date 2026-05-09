@@ -4,628 +4,174 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Consulting — Shipside</title>
-<meta name="description" content="Custom systems for the work your off-the-shelf tools don't handle. Shipside builds intake, scheduling, follow-up, CRM cleanup, internal tools, and useful AI inside the workflow.">
+<meta name="description" content="AI consulting and workflow mapping. The AI Workflow Review surfaces what runs the business, where time gets lost, and where AI actually changes the day. Honest call, written output.">
 <link rel="canonical" href="https://shipside.dev/consulting">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Consulting — Shipside">
-<meta property="og:description" content="Custom systems for the work your off-the-shelf tools don't handle. Shipside builds intake, scheduling, follow-up, CRM cleanup, internal tools, and useful AI inside the workflow.">
+<meta property="og:description" content="AI consulting and workflow mapping. The AI Workflow Review.">
 <meta property="og:url" content="https://shipside.dev/consulting">
 <meta property="og:site_name" content="Shipside">
 <meta property="og:image" content="https://shipside.dev/brand/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Shipside — Websites and business systems for working businesses.">
+<meta property="og:image:alt" content="Shipside — Consulting">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Consulting — Shipside">
-<meta name="twitter:description" content="Custom systems for the work your off-the-shelf tools don't handle. Shipside builds intake, scheduling, follow-up, CRM cleanup, internal tools, and useful AI inside the workflow.">
+<meta name="twitter:description" content="AI consulting and workflow mapping. The AI Workflow Review.">
 <meta name="twitter:image" content="https://shipside.dev/brand/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css">
 <style>
-  :root {
-    --gutter: clamp(20px, 4vw, 48px);
-  }
-
+  :root { --gutter: clamp(20px, 4vw, 48px); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html, body {
     background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    font-size: 15px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    font-size: 15px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
-
   body {
     background-image:
       linear-gradient(var(--grid) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: -1px -1px;
+    background-size: 48px 48px; background-position: -1px -1px;
   }
-
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
+    content: ''; position: fixed; inset: 0;
     background:
       radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
       radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.015;
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: overlay;
+    pointer-events: none; z-index: 0;
   }
 
   nav {
-    position: relative;
-    z-index: 10;
+    position: relative; z-index: 10;
     padding: 24px var(--gutter);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     border-bottom: 1px solid var(--steel);
   }
-
-  .brand {
-    font-family: 'Bungee', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.02em;
-    color: var(--bone);
-    text-decoration: none;
-  }
-
+  .brand { font-family: 'Bungee', sans-serif; font-size: 20px; letter-spacing: 0.02em; color: var(--bone); text-decoration: none; }
   .brand span { color: var(--rust); }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .nav-links a {
-    color: var(--bone-dim);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
+  .nav-links { display: flex; gap: 28px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; flex-wrap: wrap; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--rust); }
   .nav-links a.active { color: var(--rust); }
 
-  main {
-    position: relative;
-    z-index: 5;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: var(--gutter);
-  }
+  main { position: relative; z-index: 5; max-width: 1100px; margin: 0 auto; padding: 24px var(--gutter) 0; }
 
+  .v4-section { margin-bottom: 96px; }
+  .v4-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 14px; font-weight: 600;
+  }
+  .v4-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
+  .v4-eyebrow .num { color: var(--bone-dim); font-weight: 500; letter-spacing: 0.2em; }
   h1 {
     font-family: 'Bungee', sans-serif;
-    font-size: clamp(40px, 7vw, 72px);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    color: var(--bone);
-    margin: 60px 0 24px;
-    max-width: 18ch;
+    font-size: clamp(36px, 6vw, 64px); line-height: 1.05;
+    letter-spacing: -0.01em; color: var(--bone);
+    margin-bottom: 22px; max-width: 22ch;
   }
-
-  h2 {
+  .v4-section h2 {
     font-family: 'Bungee', sans-serif;
-    font-size: clamp(24px, 5vw, 40px);
-    color: var(--bone);
-    margin: 56px 0 24px;
-    letter-spacing: -0.01em;
+    font-size: clamp(26px, 4.4vw, 40px); line-height: 1.05;
+    letter-spacing: -0.01em; color: var(--bone);
+    margin-bottom: 18px; max-width: 24ch;
   }
+  .v4-lede { font-size: 16px; line-height: 1.65; color: var(--bone-dim); max-width: 64ch; margin-bottom: 32px; }
 
-  h3 {
-    font-family: 'Bungee', sans-serif;
-    font-size: 20px;
-    color: var(--bone);
-    margin-bottom: 12px;
-  }
+  .hero { padding: clamp(48px, 8vw, 80px) 0 clamp(32px, 5vw, 56px); }
+  .hero-sub { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.7; color: var(--bone-dim); margin-bottom: 28px; max-width: 62ch; }
 
-  section { margin-bottom: 72px; }
-
-  .lede {
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--bone-dim);
-    max-width: 70ch;
-    margin-bottom: 16px;
-  }
-
-  p.body {
-    font-size: 15px;
-    line-height: 1.75;
-    color: var(--bone-dim);
-    max-width: 70ch;
-    margin-bottom: 16px;
-  }
-
-  /* Capability tiles */
-  .cap-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    margin-top: 32px;
-  }
-
-  .cap-card {
-    background: var(--iron-light);
-    border: 1px solid var(--grid);
-    border-left: 4px solid var(--rust);
-    padding: 24px;
-  }
-
-  .cap-card h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    color: var(--bone);
-  }
-
-  .cap-card p {
-    font-size: 14px;
-    color: var(--bone-dim);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* When-this-fits list */
-  .fit-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    margin-top: 28px;
-  }
-
-  .fit-item {
-    border-left: 3px solid var(--rust);
-    padding-left: 18px;
-  }
-
-  .fit-item strong {
-    display: block;
-    font-size: 14px;
-    color: var(--rust-bright);
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-
-  .fit-item p {
-    font-size: 14px;
-    color: var(--bone-dim);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Process */
-  .process-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 28px;
-  }
-
-  .process-step {
-    display: flex;
-    gap: 22px;
-    align-items: flex-start;
-  }
-
-  .step-num {
-    font-family: 'Bungee', sans-serif;
-    font-size: 28px;
-    color: var(--rust);
-    flex-shrink: 0;
-    line-height: 1;
-    min-width: 44px;
-  }
-
-  .process-step strong {
-    display: block;
-    font-size: 15px;
-    color: var(--bone);
-    margin-bottom: 6px;
-  }
-
-  .process-step p {
-    font-size: 14px;
-    color: var(--bone-dim);
-    line-height: 1.6;
-    margin: 0;
-    max-width: 60ch;
-  }
-
-  /* CTA */
   .cta-button {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--rust);
-    color: var(--bone);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    display: inline-block; padding: 14px 28px;
+    background: var(--rust); color: var(--bone);
+    text-decoration: none; font-weight: 600;
+    font-size: 13px; line-height: 1.4; letter-spacing: 0.1em;
+    text-transform: uppercase; transition: all 0.2s;
     border: 2px solid var(--rust);
-    transition: all 0.2s ease;
   }
-
-  .cta-button:hover {
-    background: transparent;
-    color: var(--rust-bright);
-    border-color: var(--rust-bright);
-  }
-
-  .cta-button.secondary {
-    background: transparent;
-    color: var(--bone-dim);
-    border-color: var(--steel);
-  }
-
-  .cta-button.secondary:hover {
-    color: var(--rust);
-    border-color: var(--rust);
-  }
-
-  .sms-link {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: var(--bone-dim);
-    text-decoration: none;
-    margin-top: 14px;
-    transition: color 0.2s;
-  }
-
+  .cta-button:hover { background: transparent; color: var(--rust-bright); border-color: var(--rust-bright); }
+  .cta-button.secondary { background: transparent; color: var(--bone-dim); border-color: var(--steel); }
+  .cta-button.secondary:hover { color: var(--rust); border-color: var(--rust); }
+  .hero-cta { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+  .sms-link { display: inline-block; font-size: 12px; letter-spacing: 0.06em; color: var(--bone-dim); text-decoration: none; }
   .sms-link:hover { color: var(--rust); }
 
-  .cta-section {
-    text-align: center;
-    padding: 60px var(--gutter);
-    margin-top: 80px;
-    border-top: 1px solid var(--grid);
+  .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+  .pillar {
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(212,77,28,0.55);
+    border-radius: 4px; padding: 24px 26px;
   }
+  .pillar h3 { font-family: 'Bungee', sans-serif; font-size: 18px; color: var(--bone); margin-bottom: 10px; }
+  .pillar p { font-size: 14px; color: var(--bone-dim); line-height: 1.65; margin: 0; }
+  @media (max-width: 700px) { .pillar-grid { grid-template-columns: 1fr; } }
 
-  .cta-section h2 { margin-top: 0; }
-
-  .cta-section p {
+  .review-panel {
+    background: linear-gradient(180deg, #20202A 0%, #17171E 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px; margin-top: 28px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.36);
+    overflow: hidden;
+  }
+  .review-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--bone-dim);
-    font-size: 16px;
-    margin-bottom: 32px;
-    max-width: 60ch;
-    margin-left: auto;
-    margin-right: auto;
   }
+  .review-bar .live { color: var(--rust); }
+  .review-body { padding: 28px 32px; }
+  .review-body h3 { font-family: 'Bungee', sans-serif; font-size: 22px; color: var(--bone); margin-bottom: 12px; }
+  .review-body p { font-size: 15px; color: var(--bone-dim); line-height: 1.7; margin-bottom: 14px; max-width: 64ch; }
+  .review-body ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .review-body li {
+    font-size: 13px; color: var(--bone); line-height: 1.5;
+    padding: 9px 12px; background: rgba(255,255,255,0.02);
+    border-left: 2px solid rgba(212,77,28,0.45);
+  }
+  @media (max-width: 700px) { .review-body ul { grid-template-columns: 1fr; } }
+
+  .v4-cta-block {
+    margin-top: 48px; padding: 48px 40px;
+    background: linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%);
+    border: 1px solid rgba(212,77,28,0.32); border-radius: 4px;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.5);
+  }
+  .v4-cta-block h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(24px, 3.5vw, 36px); color: var(--bone);
+    margin-bottom: 14px; line-height: 1.05; max-width: none;
+  }
+  .v4-cta-block p { font-size: 15px; color: var(--bone-dim); line-height: 1.65; margin: 0 0 8px; max-width: 52ch; }
+  .v4-cta-actions { display: flex; flex-direction: column; gap: 12px; }
+  @media (max-width: 800px) { .v4-cta-block { grid-template-columns: 1fr; padding: 32px 24px; } }
 
   footer {
     background: rgba(20, 20, 24, 0.8);
     border-top: 1px solid var(--grid);
-    padding: 40px var(--gutter);
-    text-align: center;
-    position: relative;
-    z-index: 5;
+    padding: 40px var(--gutter); text-align: center;
+    position: relative; z-index: 5;
   }
-
-  footer a {
-    color: var(--rust);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
+  footer a { color: var(--rust); text-decoration: none; font-weight: 500; }
   footer a:hover { color: var(--rust-bright); }
-
-  footer p {
-    font-size: 13px;
-    color: var(--bone-dim);
-    margin: 8px 0;
-  }
+  footer p { font-size: 13px; color: var(--bone-dim); margin: 8px 0; }
 
   @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .nav-links {
-      flex-wrap: wrap;
-      gap: 12px 20px;
-    }
-    .cta-section {
-      padding: 40px var(--gutter);
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════
-     CONSULTING v4 (2026-05-02) — wired stack + premium hero + glow.
-     Matches homepage/services design grammar. Cascade-overrides.
-     ═══════════════════════════════════════════════════════════════════ */
-  main { max-width: 1200px; }
-
-  .v4-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 14px;
-    font-weight: 600;
-  }
-  .v4-eyebrow::before {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: var(--rust);
-  }
-  .v4-eyebrow .num {
-    color: var(--bone-dim);
-    font-weight: 500;
-    letter-spacing: 0.2em;
-  }
-
-  /* Hero — bigger title, framed sub */
-  main > h1:first-of-type {
-    font-size: clamp(40px, 7vw, 68px);
-    line-height: 1.04;
-    margin: 56px 0 22px;
-    max-width: 22ch;
-  }
-  main > p.lede {
-    font-size: clamp(15px, 1.4vw, 17px);
-    line-height: 1.7;
-    color: var(--bone-dim);
-    max-width: 64ch;
-    margin: 0 0 24px;
-  }
-
-  /* Section rhythm + h2 sizing */
-  section { margin-bottom: 96px; position: relative; }
-  section h2 {
-    font-family: 'Bungee', sans-serif;
-    font-size: clamp(26px, 4vw, 36px);
-    line-height: 1.05;
-    margin: 0 0 14px;
-    max-width: 22ch;
-  }
-  section p.body {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--bone-dim);
-    max-width: 64ch;
-    margin: 0 0 24px;
-  }
-
-  /* Capabilities — wired stack instead of generic card grid */
-  .cap-grid {
-    position: relative;
-    display: block !important;
-    margin-top: 24px !important;
-    padding-left: 40px;
-    grid-template-columns: unset !important;
-    gap: 0 !important;
-  }
-  .cap-grid::before {
-    content: '';
-    position: absolute;
-    left: 13px;
-    top: 24px;
-    bottom: 24px;
-    width: 2px;
-    background: linear-gradient(180deg,
-      rgba(212,77,28,0.6) 0%,
-      rgba(212,77,28,0.25) 50%,
-      rgba(212,77,28,0.6) 100%);
-  }
-  .cap-card {
-    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%) !important;
-    border: 1px solid rgba(255,255,255,0.07) !important;
-    border-left: 3px solid rgba(212,77,28,0.55) !important;
-    border-radius: 4px !important;
-    padding: 22px 26px 22px !important;
-    margin-bottom: 14px;
-    position: relative;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.32);
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  .cap-card:hover {
-    transform: translateX(4px);
-    box-shadow: 0 14px 36px rgba(0,0,0,0.42);
-    border-left-color: var(--rust) !important;
-  }
-  .cap-card::before {
-    content: '';
-    position: absolute;
-    left: -40px;
-    top: 28px;
-    width: 30px;
-    height: 2px;
-    background: var(--rust);
-  }
-  .cap-card::after {
-    content: '';
-    position: absolute;
-    left: -27px;
-    top: 22px;
-    width: 14px;
-    height: 14px;
-    border: 2px solid var(--rust);
-    border-radius: 50%;
-    background: var(--iron);
-    box-shadow: 0 0 12px rgba(212,77,28,0.45);
-  }
-  .cap-card h3 {
-    font-family: 'Bungee', sans-serif !important;
-    font-size: 18px !important;
-    color: var(--bone) !important;
-    letter-spacing: 0 !important;
-    margin: 0 0 10px !important;
-  }
-  .cap-card p {
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    color: var(--bone-dim) !important;
-    margin: 0 !important;
-    max-width: 70ch;
-  }
-  @media (max-width: 800px) {
-    .cap-grid { padding-left: 28px; }
-    .cap-card::before { width: 22px; left: -28px; }
-    .cap-card::after { left: -16px; }
-  }
-
-  /* Fit-list — refined surface tier, locked to 4-up at desktop */
-  .fit-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin-top: 20px;
-  }
-  @media (max-width: 980px) {
-    .fit-list { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 540px) {
-    .fit-list { grid-template-columns: 1fr; }
-  }
-  .fit-item {
-    background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
-    border: 1px solid rgba(255,255,255,0.06) !important;
-    border-left: 3px solid var(--rust) !important;
-    padding: 18px 20px !important;
-    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-  }
-  .fit-item:hover {
-    transform: translateY(-1px);
-    border-left-color: var(--rust-bright) !important;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.34);
-  }
-
-  /* Process steps — keep but lift surface */
-  .process-list {
-    margin-top: 22px;
-  }
-  .process-step {
-    background: linear-gradient(180deg, #20202A 0%, #17171E 100%);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 4px;
-    padding: 18px 22px;
-    margin-bottom: 10px;
-  }
-
-  /* CTA block — gradient + grid, like homepage */
-  .cta-section {
-    margin-top: 56px !important;
-    padding: 56px 48px !important;
-    background:
-      linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%) !important;
-    border: 1px solid rgba(212,77,28,0.32) !important;
-    border-top: 1px solid rgba(212,77,28,0.32) !important;
-    border-radius: 4px;
-    text-align: left !important;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 28px 80px rgba(0,0,0,0.5);
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-    align-items: center;
-  }
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-    opacity: 0.55;
-  }
-  .cta-section > * { position: relative; z-index: 2; }
-  .cta-section h2 {
-    margin: 0 0 14px !important;
-    max-width: 24ch !important;
-  }
-  .cta-section p {
-    color: var(--bone-dim) !important;
-    margin: 0 0 12px !important;
-    text-align: left !important;
-    max-width: 50ch !important;
-  }
-  .cta-section .cta-button { padding: 16px 28px; font-size: 14px; }
-  .cta-section .sms-link {
-    margin-top: 8px !important;
-    display: inline-block !important;
-  }
-  @media (max-width: 800px) {
-    .cta-section {
-      grid-template-columns: 1fr !important;
-      padding: 36px 28px !important;
-    }
-  }
-
-  /* Mouse-follow glow v2 — three-layer lerp pattern (matches homepage) */
-  .v4-glow,
-  .v4-glow-core,
-  .v4-glow-trail {
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 2;
-    opacity: 0; transition: opacity 0.6s ease;
-    will-change: opacity, background; mix-blend-mode: screen;
-  }
-  .v4-glow {
-    background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
-      rgba(212,77,28,0.20) 0%,
-      rgba(212,77,28,0.09) 26%,
-      rgba(212,77,28,0.025) 50%,
-      transparent 72%);
-  }
-  .v4-glow-trail {
-    background: radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
-      rgba(212,77,28,0.12) 0%,
-      rgba(212,77,28,0.04) 36%,
-      transparent 62%);
-  }
-  .v4-glow-core {
-    background:
-      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
-        rgba(255,92,37,0.44) 0%,
-        rgba(255,92,37,0.16) 26%,
-        rgba(255,92,37,0.04) 48%,
-        transparent 64%),
-      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
-        rgba(255,200,160,0.30) 0%,
-        rgba(255,200,160,0.05) 60%,
-        transparent 86%);
-  }
-  body.has-mouse .v4-glow,
-  body.has-mouse .v4-glow-trail,
-  body.has-mouse .v4-glow-core { opacity: 1; }
-  @media (hover: none), (prefers-reduced-motion: reduce) {
-    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
-    .cap-card, .fit-item { transition: none; }
-    .cap-card:hover, .fit-item:hover { transform: none; }
+    nav { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .nav-links { flex-direction: column; gap: 10px; }
   }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -636,15 +182,13 @@
 <body>
   <div class="v4-grid-pulse" aria-hidden="true"></div>
   <div class="v4-grid-nodes" aria-hidden="true"></div>
-  <div class="v4-glow"       aria-hidden="true"></div>
-  <div class="v4-glow-trail" aria-hidden="true"></div>
-  <div class="v4-glow-core"  aria-hidden="true"></div>
 
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
       <a href="./index.html">HOME</a>
       <a href="./services.html">SERVICES</a>
+      <a href="./process.html">PROCESS</a>
       <a href="./consulting.html" class="active">CONSULTING</a>
       <a href="./work.html">WORK</a>
       <a href="./blog/index.html">FIELD NOTES</a>
@@ -655,183 +199,92 @@
   </nav>
 
   <main>
-    <div class="v4-eyebrow"><span class="num">↳</span> CONSULTING / SYSTEMS</div>
-    <h1>Custom systems for the work your off-the-shelf tools don't handle.</h1>
-    <p class="lede">Intake, scheduling, follow-up, CRM cleanup, internal tools, and useful AI inside the workflow — not in the pitch.</p>
-    <p style="margin: 8px 0 24px;"><a href="./contact.html" class="cta-button">Walk us through the build</a></p>
+    <section class="hero">
+      <div class="v4-eyebrow"><span class="num">↳</span> CONSULTING</div>
+      <h1>AI consulting and workflow mapping.</h1>
+      <p class="hero-sub">Most operators don't need more software. They need someone to map what runs the business today, surface where time actually gets lost, and call honestly on where AI changes the day &mdash; and where it doesn't. That's the consulting half of Shipside.</p>
+      <div class="hero-cta">
+        <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
+        <a href="./services.html" class="cta-button secondary">See full service list</a>
+      </div>
+      <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
+    </section>
 
-    <section>
-      <div class="v4-eyebrow"><span class="num">01 /</span> CAPABILITIES</div>
-      <h2>What this work is</h2>
-      <p class="body">Most of the businesses we talk to are running fine on referrals and the work itself. What slips is the connective tissue: a missed call no one circles back on, a scheduling tangle that lives in three places, a follow-up that depends on someone remembering. We build the small system that closes those gaps and stays out of the way.</p>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">01 /</span> WHAT IT IS</div>
+      <h2>The AI Workflow Review.</h2>
+      <p class="v4-lede">A scoped engagement that maps your business as it actually runs &mdash; not as a generic SaaS deck imagines it. We sit with the workflows that eat operator time, the tools that don't talk to each other, and the steps that depend on someone remembering. Output is a written map plus a recommendation on what to build, what to leave alone, and what to throw away.</p>
 
-      <div class="cap-grid">
-        <div class="cap-card">
-          <h3>Intake and follow-up</h3>
-          <p>Where leads, calls, quote requests, and replies actually land. One list, one place, with reminders that fire when something hasn't been answered.</p>
+      <div class="review-panel">
+        <div class="review-bar">
+          <span>// AI WORKFLOW REVIEW &middot; SCOPED ENGAGEMENT</span>
+          <span class="live">DELIVERABLE</span>
         </div>
-        <div class="cap-card">
-          <h3>Scheduling</h3>
-          <p>Booking flows, route windows, and confirmation/reminder texts that match how the crew actually works — not a generic calendar widget.</p>
-        </div>
-        <div class="cap-card">
-          <h3>Light CRM</h3>
-          <p>A clean record of who's a lead, who's a customer, what was quoted, what was won, and what needs a check-in. Owner-readable, no consultant required to use it.</p>
-        </div>
-        <div class="cap-card">
-          <h3>Workflow cleanup</h3>
-          <p>The manual stitching between email, texts, spreadsheets, and software. We map it, find what's eating time, and rebuild the part that pays back fastest.</p>
-        </div>
-        <div class="cap-card">
-          <h3>Practical AI</h3>
-          <p>AI where it earns its keep — call summaries, intake triage, draft replies, document parsing, simple internal tools. Not the hype kind. The kind that quietly takes work off the plate.</p>
-        </div>
-        <div class="cap-card">
-          <h3>Internal tools</h3>
-          <p>Custom dashboards, lookups, and small admin apps so the team doesn't paste data between tabs all day.</p>
+        <div class="review-body">
+          <h3>What you get out the other end</h3>
+          <p>A real document &mdash; not a slide deck &mdash; covering the workflows we mapped, the bottlenecks we found, the systems that would actually move the needle, and an honest call on where AI helps and where it doesn't.</p>
+          <ul>
+            <li>Workflow map &middot; what runs the business today</li>
+            <li>Bottleneck list &middot; where time and leads get lost</li>
+            <li>Build path &middot; what to wire and in what order</li>
+            <li>Don't-build list &middot; what AI won't fix</li>
+            <li>Tooling audit &middot; what's already paid for and useful</li>
+            <li>Rough cost ranges if we end up doing the build</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="v4-eyebrow"><span class="num">02 /</span> FIT</div>
-      <h2>When this fits</h2>
-      <div class="fit-list">
-        <div class="fit-item">
-          <strong>The website is one piece of a bigger problem.</strong>
-          <p>The site is fine, or about to be. The drag is somewhere else — leads dropping, scheduling friction, or a workflow held together with notes and good memory.</p>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">02 /</span> HOW WE THINK</div>
+      <h2>Four pillars of how we approach it.</h2>
+      <div class="pillar-grid">
+        <div class="pillar">
+          <h3>Map before you build</h3>
+          <p>Most operators have already paid for tools that solve part of the problem. The map shows what's working, what's stranded, and what's missing &mdash; before anyone proposes new software.</p>
         </div>
-        <div class="fit-item">
-          <strong>Manual work is slowing the team down.</strong>
-          <p>Someone is doing the same task by hand every day, or the day starts with checking three inboxes to see what came in overnight.</p>
+        <div class="pillar">
+          <h3>AI where it earns its keep</h3>
+          <p>AI is great at some things and bad at others. We use it for missed-call follow-up, structured intake parsing, summary writing, classification &mdash; not because the deck says to, but because it actually saves time.</p>
         </div>
-        <div class="fit-item">
-          <strong>The current tools don't fit how you actually operate.</strong>
-          <p>You bought the platform, the team works around it, and the real workflow lives in messages and spreadsheets.</p>
+        <div class="pillar">
+          <h3>Operator-first scope</h3>
+          <p>The system has to fit the way the operator runs the business, not the other way around. If the build forces a new habit, the build fails. We scope around what the operator already does.</p>
         </div>
-        <div class="fit-item">
-          <strong>You need a partner to think it through and build it.</strong>
-          <p>You can feel something is off but turning that into a clear next system is the part that hasn't happened. We help map it, scope it, and build the smallest useful piece first.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="v4-eyebrow"><span class="num">03 /</span> APPROACH</div>
-      <h2>How Shipside approaches it</h2>
-      <div class="process-list">
-        <div class="process-step">
-          <span class="step-num">01</span>
-          <div>
-            <strong>Understand the workflow.</strong>
-            <p>Short conversation, then a closer look at how the work actually moves through the business today — not how the org chart says it does.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-num">02</span>
-          <div>
-            <strong>Find the real constraint.</strong>
-            <p>The thing that, if it stopped breaking, would unblock the most other things. We name it in writing before any build work starts.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-num">03</span>
-          <div>
-            <strong>Design the smallest useful system.</strong>
-            <p>The version that fixes the constraint without adding three more tools to maintain. Plain pieces, owner-readable, hand-off documented.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-num">04</span>
-          <div>
-            <strong>Build and test against real use.</strong>
-            <p>Ship it into the actual workflow with the actual team. Watch where it bends. Adjust until it holds up on a normal week.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-num">05</span>
-          <div>
-            <strong>Improve from there.</strong>
-            <p>Once the first piece is steady, the next constraint becomes obvious. We work the list one piece at a time. No big-bang rollouts.</p>
-          </div>
+        <div class="pillar">
+          <h3>Don't-build is a deliverable</h3>
+          <p>"Don't build that" is a real answer and we say it. The point of consulting is to save operators from spending on things that won't change the day. Sometimes the answer is one workflow tweak, not a system.</p>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="v4-eyebrow"><span class="num">04 /</span> SCOPE BOUNDARY</div>
-      <h2>What this is not</h2>
-      <p class="body">Not a strategy retainer. Not a packaged audit. Not a deck. Shipside is here to build the working piece, hand it off cleanly, and stay out of the way once it runs.</p>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">03 /</span> WHO IT FITS</div>
+      <h2>When consulting alone is the right scope.</h2>
+      <p class="v4-lede">Two patterns: (1) operators who already have decent software but feel time disappearing somewhere they can't name, and (2) operators considering an AI build and want a real check on whether it'll actually help &mdash; before hiring builders.</p>
+      <p class="v4-lede">If consulting leads to a build, Shipside can do the build too. If consulting leads to "don't build that," we say so and you walk with the map. Either is fine.</p>
     </section>
 
-    <div class="cta-section">
-      <div>
-        <h2>Tell us what you're trying to fix.</h2>
-        <p>Short conversation. We listen, ask a few questions about how the work actually moves, and tell you straight whether Shipside is the right partner for the next piece.</p>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">04 /</span> START HERE</div>
+      <div class="v4-cta-block">
+        <div>
+          <h2>Map first. Build later if it's worth it.</h2>
+          <p>Fifteen-minute fit call to see whether an AI Workflow Review is the right scope. Honest call either way.</p>
+        </div>
+        <div class="v4-cta-actions">
+          <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
+          <a href="./pricing.html" class="cta-button secondary">How scoping works</a>
+          <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
+        </div>
       </div>
-      <div>
-        <a href="tel:+15125591741" class="cta-button">Start the conversation</a>
-        <br><a href="sms:+15125591741" class="sms-link">↩ Prefer to text? (512) 559-1741</a>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <script>
-    // Mouse-follow glow v2 — three-layer lerp (matches homepage)
-    (function(){
-      try {
-        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-      } catch (_) {}
-      var w = window.innerWidth || 1440, h = window.innerHeight || 900;
-      var raw = { x: w*0.5, y: h*0.34 };
-      var halo = { x: raw.x, y: raw.y };
-      var core = { x: raw.x, y: raw.y };
-      var trail = { x: raw.x, y: raw.y };
-      var rafId = null, seeded = false;
-      try {
-        if ((window.location.search || '').indexOf('glow_demo=1') !== -1) {
-          var apply = function(){
-            document.body.classList.add('has-mouse');
-            seeded = true;
-            halo.x = core.x = trail.x = raw.x;
-            halo.y = core.y = trail.y = raw.y;
-            flush();
-          };
-          if (document.body) apply(); else document.addEventListener('DOMContentLoaded', apply);
-        }
-      } catch(_){}
-      function flush(){
-        var s = document.documentElement.style;
-        s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
-        s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
-        s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
-      }
-      function tick(){
-        halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
-        core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
-        trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
-        flush();
-        var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
-                      Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
-                      Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
-        rafId = settled ? null : requestAnimationFrame(tick);
-      }
-      document.addEventListener('mousemove', function(e){
-        raw.x = e.clientX; raw.y = e.clientY;
-        if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
-        if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
-        if (!rafId) rafId = requestAnimationFrame(tick);
-      }, { passive: true });
-      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
-      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
-    })();
-  </script>
-
   <footer>
-    <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
-    <p>© 2026 Shipside</p>
-    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> · Clean websites. Useful systems. No platform lock-in.</p>
+    <p><a href="tel:+13502210298">(350) 221-0298</a> &middot; <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
+    <p>&copy; 2026 Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> &middot; AI business systems agency.</p>
   </footer>
 </body>
 </html>

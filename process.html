@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — Shipside</title>
-<meta name="description" content="Seven service groups: website foundation, lead capture, missed-call follow-up, Owner Visibility, calendar and booking, AI consulting and workflow mapping, and custom systems.">
-<link rel="canonical" href="https://shipside.dev/services">
+<title>Process — Shipside</title>
+<meta name="description" content="The Shipside process: fit call, systems map, foundation build, capture and follow-up wiring, visibility handoff, AI and workflow expansion, ongoing improvement.">
+<link rel="canonical" href="https://shipside.dev/process">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Services — Shipside">
-<meta property="og:description" content="AI business systems agency. Seven service groups, scoped after a fit call.">
-<meta property="og:url" content="https://shipside.dev/services">
+<meta property="og:title" content="Process — Shipside">
+<meta property="og:description" content="Seven steps from fit call to ongoing improvement.">
+<meta property="og:url" content="https://shipside.dev/process">
 <meta property="og:site_name" content="Shipside">
 <meta property="og:image" content="https://shipside.dev/brand/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Shipside — Services">
+<meta property="og:image:alt" content="Shipside — Process">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Services — Shipside">
-<meta name="twitter:description" content="AI business systems agency. Seven service groups, scoped after a fit call.">
+<meta name="twitter:title" content="Process — Shipside">
+<meta name="twitter:description" content="Seven steps from fit call to ongoing improvement.">
 <meta name="twitter:image" content="https://shipside.dev/brand/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,37 +107,62 @@
   .sms-link { display: inline-block; font-size: 12px; letter-spacing: 0.06em; color: var(--bone-dim); text-decoration: none; }
   .sms-link:hover { color: var(--rust); }
 
-  .svc-stack { display: grid; gap: 18px; margin-top: 28px; }
-  .svc-row {
+  /* Vertical wired step ladder */
+  .steps {
+    position: relative; margin-top: 36px; padding-left: 40px;
+  }
+  .steps::before {
+    content: ''; position: absolute;
+    left: 13px; top: 24px; bottom: 24px; width: 2px;
+    background: linear-gradient(180deg,
+      rgba(212,77,28,0.6) 0%,
+      rgba(212,77,28,0.25) 30%,
+      rgba(212,77,28,0.25) 70%,
+      rgba(212,77,28,0.6) 100%);
+  }
+  .step-row {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px;
     background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
     border: 1px solid rgba(255,255,255,0.07);
     border-left: 3px solid rgba(212,77,28,0.55);
     border-radius: 4px;
-    padding: 26px 28px;
-    display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px;
+    padding: 24px 28px 26px; margin-bottom: 18px; position: relative;
     box-shadow: 0 10px 28px rgba(0,0,0,0.32);
     transition: transform 0.18s ease, border-color 0.18s ease;
   }
-  .svc-row:hover { transform: translateX(4px); border-left-color: var(--rust); }
-  .svc-num {
+  .step-row:hover { transform: translateX(4px); border-left-color: var(--rust); }
+  .step-row::before {
+    content: ''; position: absolute;
+    left: -40px; top: 32px; width: 30px; height: 2px; background: var(--rust);
+  }
+  .step-row::after {
+    content: ''; position: absolute;
+    left: -27px; top: 26px; width: 14px; height: 14px;
+    border: 2px solid var(--rust); border-radius: 50%;
+    background: var(--iron); box-shadow: 0 0 12px rgba(212,77,28,0.45);
+  }
+  .step-num {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 10px; color: var(--rust);
     letter-spacing: 0.18em; text-transform: uppercase;
     margin-bottom: 6px; font-weight: 700;
   }
-  .svc-title {
-    font-family: 'Bungee', sans-serif; font-size: 22px; color: var(--bone);
-    line-height: 1.05; margin-bottom: 10px;
+  .step-title {
+    font-family: 'Bungee', sans-serif; font-size: 22px;
+    color: var(--bone); line-height: 1.05; margin-bottom: 10px;
   }
-  .svc-body { font-size: 14px; color: var(--bone-dim); line-height: 1.65; max-width: 46ch; }
-  .svc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; align-self: center; }
-  .svc-list li {
+  .step-body { font-size: 14px; color: var(--bone-dim); line-height: 1.65; max-width: 46ch; }
+  .step-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; align-self: center; }
+  .step-list li {
     font-size: 13px; color: var(--bone); line-height: 1.5;
     padding: 7px 11px; background: rgba(255,255,255,0.02);
     border-left: 2px solid rgba(212,77,28,0.45);
   }
   @media (max-width: 800px) {
-    .svc-row { grid-template-columns: 1fr; gap: 14px; }
+    .steps { padding-left: 28px; }
+    .step-row { grid-template-columns: 1fr; gap: 14px; }
+    .step-row::before { width: 22px; left: -28px; }
+    .step-row::after { left: -16px; }
   }
 
   .v4-cta-block {
@@ -184,8 +209,8 @@
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
       <a href="./index.html">HOME</a>
-      <a href="./services.html" class="active">SERVICES</a>
-      <a href="./process.html">PROCESS</a>
+      <a href="./services.html">SERVICES</a>
+      <a href="./process.html" class="active">PROCESS</a>
       <a href="./consulting.html">CONSULTING</a>
       <a href="./work.html">WORK</a>
       <a href="./blog/index.html">FIELD NOTES</a>
@@ -197,141 +222,126 @@
 
   <main>
     <section class="hero">
-      <div class="v4-eyebrow"><span class="num">↳</span> SERVICES</div>
-      <h1>Seven service groups. Wired together when it makes sense.</h1>
-      <p class="hero-sub">Shipside is an AI business systems agency. We start with a clean website wedge and wire the systems behind it — capture, follow-up, Owner Visibility, booking, and practical AI where it earns its keep. Pick the layers that fit the business. Scope is set after a fit call, not before.</p>
+      <div class="v4-eyebrow"><span class="num">↳</span> PROCESS</div>
+      <h1>Seven steps from fit call to ongoing improvement.</h1>
+      <p class="hero-sub">Every Shipside engagement runs through the same path. Scope is set after the fit call and the systems map — never before. Plain language, written before any work starts, no pitch decks.</p>
       <div class="hero-cta">
         <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
-        <a href="./process.html" class="cta-button secondary">See the process</a>
+        <a href="./services.html" class="cta-button secondary">See what we build</a>
       </div>
       <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
     </section>
 
     <section class="v4-section">
-      <div class="v4-eyebrow"><span class="num">01 /</span> WHAT WE BUILD</div>
-      <h2>Service groups, plain names.</h2>
-      <p class="v4-lede">Doctrine names where they apply: Call Catcher, Owner Inbox, Quote Intake, Booking Handoff, Owner Summary, AI Workflow Review, Custom Business Systems. Every group can stand alone or wire into the others.</p>
+      <div class="v4-eyebrow"><span class="num">01 /</span> THE PATH</div>
+      <h2>How we work, top to bottom.</h2>
+      <p class="v4-lede">Seven steps. Each one has a clear handoff. You get a written scope before any deposit and a real owner-facing system at the end — not a dashboard you'll never log into.</p>
 
-      <div class="svc-stack" role="list">
-        <article class="svc-row" role="listitem">
+      <div class="steps" role="list">
+        <article class="step-row" role="listitem">
           <div>
-            <div class="svc-num">Group 01 &middot; Foundation</div>
-            <h3 class="svc-title">Website Foundation</h3>
-            <p class="svc-body">A clean, owned website on your domain — the wedge most engagements start with. Plain files, fast load, phone-friendly. Boutique higher-end builds where the business calls for them.</p>
+            <div class="step-num">Step 01</div>
+            <h3 class="step-title">Fit call</h3>
+            <p class="step-body">Fifteen minutes. We ask what the business does, where leads come from, where time gets lost. Straight call on whether Shipside fits — no pitch deck, no hard sell.</p>
           </div>
-          <ul class="svc-list">
-            <li>Owned domain, owned files, no platform lock-in</li>
-            <li>Phone-friendly, fast, ages well</li>
+          <ul class="step-list">
+            <li>Honest call either way</li>
+            <li>No commitments asked of you</li>
+            <li>Output: yes, no, or "talk to us in three months"</li>
+          </ul>
+        </article>
+
+        <article class="step-row" role="listitem">
+          <div>
+            <div class="step-num">Step 02</div>
+            <h3 class="step-title">Systems map</h3>
+            <p class="step-body">If there's a fit, we sketch what runs the business today, where it bottlenecks, and which systems would actually move the needle. AI Workflow Review where it applies.</p>
+          </div>
+          <ul class="step-list">
+            <li>What's already wired &amp; working</li>
+            <li>Where time or leads get lost</li>
+            <li>Output: written scope &amp; sequence</li>
+          </ul>
+        </article>
+
+        <article class="step-row" role="listitem">
+          <div>
+            <div class="step-num">Step 03</div>
+            <h3 class="step-title">Foundation build</h3>
+            <p class="step-body">Website wedge if needed. Domain, structure, copy that fits the business. Plain files, fast, owned. Boutique higher-end builds when the scope warrants.</p>
+          </div>
+          <ul class="step-list">
+            <li>Owned files, owned domain</li>
+            <li>Phone-friendly, ages well</li>
             <li>Holds up to a real search-and-check</li>
-            <li>Boutique builds when scope warrants</li>
           </ul>
         </article>
 
-        <article class="svc-row" role="listitem">
+        <article class="step-row" role="listitem">
           <div>
-            <div class="svc-num">Group 02 &middot; Capture</div>
-            <h3 class="svc-title">Lead Capture Systems</h3>
-            <p class="svc-body">Quote Intake and the wiring around it. Structured request capture so leads land in one place — not three inboxes, not a spreadsheet someone has to remember to check.</p>
+            <div class="step-num">Step 04</div>
+            <h3 class="step-title">Capture &amp; follow-up wiring</h3>
+            <p class="step-body">Quote Intake, Call Catcher, follow-up sequences wired in. Plain wiring where AI doesn't help, AI where it does. Tested with real numbers and real flows before handoff.</p>
           </div>
-          <ul class="svc-list">
-            <li>Quote Intake &middot; structured request forms</li>
-            <li>Routing into Owner Inbox</li>
-            <li>After-hours capture handled the same way</li>
-            <li>Field validation that fits the trade</li>
-          </ul>
-        </article>
-
-        <article class="svc-row" role="listitem">
-          <div>
-            <div class="svc-num">Group 03 &middot; Follow-up</div>
-            <h3 class="svc-title">Missed-Call &amp; Follow-Up Workflows</h3>
-            <p class="svc-body">Call Catcher fires a text-back when a call gets missed. Follow-up sequences keep the thread warm without anyone babysitting them. Plain wiring where AI doesn't help; AI where it does.</p>
-          </div>
-          <ul class="svc-list">
-            <li>Call Catcher &middot; missed-call text-back</li>
+          <ul class="step-list">
+            <li>Call Catcher fires within seconds</li>
+            <li>Quote Intake routes into Owner Inbox</li>
             <li>Follow-up sequences scoped to the trade</li>
-            <li>Reply threading next to the lead</li>
-            <li>Reminders the owner sees, not a dashboard</li>
           </ul>
         </article>
 
-        <article class="svc-row" role="listitem">
+        <article class="step-row" role="listitem">
           <div>
-            <div class="svc-num">Group 04 &middot; Visibility</div>
-            <h3 class="svc-title">Owner Visibility</h3>
-            <p class="svc-body">Owner Inbox and Owner Summary. One owner-facing view of every lead, status, note, and reminder — wired to the phone. The week or month digested into something readable in two minutes. Owner Inbox + Owner Summary ship as a thin owner-facing layer; full CRM setup, integrations, and custom internal systems are scoped separately.</p>
+            <div class="step-num">Step 05</div>
+            <h3 class="step-title">Visibility handoff</h3>
+            <p class="step-body">Owner Inbox and Owner Summary turned on. We walk you through it on your phone. Push alerts, status, notes, reminders — the things you'll actually check.</p>
           </div>
-          <ul class="svc-list">
+          <ul class="step-list">
             <li>Owner Inbox &middot; the single owner-facing view</li>
             <li>Owner Summary &middot; weekly or monthly digest</li>
-            <li>Full CRM setup, integrations, and custom internal systems are scoped separately</li>
-            <li>Push alerts when something actually matters</li>
+            <li>Owner training in plain language</li>
           </ul>
         </article>
 
-        <article class="svc-row" role="listitem">
+        <article class="step-row" role="listitem">
           <div>
-            <div class="svc-num">Group 05 &middot; Booking</div>
-            <h3 class="svc-title">Calendar &amp; Booking Workflows</h3>
-            <p class="svc-body">Booking Handoff to the calendar already in use. Confirmations, reminders, owner alerts wired around it. No vendor lock-in — the calendar stays yours.</p>
+            <div class="step-num">Step 06</div>
+            <h3 class="step-title">AI &amp; workflow expansion</h3>
+            <p class="step-body">Where AI earns its keep, we wire it in next. Custom Business Systems, internal tools, integrations across the stack you already pay for. Scoped to actual leverage points.</p>
           </div>
-          <ul class="svc-list">
-            <li>Booking Handoff &middot; clean calendar drop</li>
-            <li>Confirmation &amp; reminder flows</li>
-            <li>Owner alert on new bookings</li>
-            <li>Reschedule &amp; cancel handled cleanly</li>
+          <ul class="step-list">
+            <li>AI Workflow Review &rarr; concrete builds</li>
+            <li>Internal tools &amp; integrations</li>
+            <li>Honest about where AI doesn't help</li>
           </ul>
         </article>
 
-        <article class="svc-row" role="listitem">
+        <article class="step-row" role="listitem">
           <div>
-            <div class="svc-num">Group 06 &middot; Consulting</div>
-            <h3 class="svc-title">AI Consulting &amp; Workflow Mapping</h3>
-            <p class="svc-body">AI Workflow Review. We map what runs the business today, where time gets lost, and which systems would actually move the needle. Honest call on where AI helps and where it doesn't.</p>
+            <div class="step-num">Step 07</div>
+            <h3 class="step-title">Ongoing improvement</h3>
+            <p class="step-body">Hosting handled. Basic checks running. Small updates and tuning on a cadence the business sets. The site, the systems, and the files stay yours — leave any time, the build keeps running.</p>
           </div>
-          <ul class="svc-list">
-            <li>AI Workflow Review &middot; mapped &amp; documented</li>
-            <li>Bottleneck surfacing, not generic advice</li>
-            <li>Scoped recommendations &middot; written</li>
-            <li>Build path or "don't build that" — both honest</li>
-          </ul>
-        </article>
-
-        <article class="svc-row" role="listitem">
-          <div>
-            <div class="svc-num">Group 07 &middot; Custom</div>
-            <h3 class="svc-title">Custom Systems &amp; Boutique Builds</h3>
-            <p class="svc-body">Custom Business Systems. Where the standard stack stops fitting — internal tools, integrations across the tools you already pay for, and higher-end web/system builds that need real work, not a template.</p>
-          </div>
-          <ul class="svc-list">
-            <li>Custom Business Systems</li>
-            <li>Bespoke CRM builds &middot; existing CRM integrations</li>
-            <li>Internal tools &amp; admin views</li>
-            <li>Integrations across existing stack</li>
-            <li>Boutique web builds when scope calls for them</li>
+          <ul class="step-list">
+            <li>Hosting + monitoring</li>
+            <li>Tuning &amp; small updates on cadence</li>
+            <li>You own the files &middot; no hostage retainer</li>
           </ul>
         </article>
       </div>
     </section>
 
     <section class="v4-section">
-      <div class="v4-eyebrow"><span class="num">02 /</span> SCOPING</div>
-      <h2>Why we scope after the fit call, not before.</h2>
-      <p class="v4-lede">The right scope depends on what runs the business and where the leverage is. Two shops with the same tagline often need different builds. Public price lists pretend that's not true. We don't.</p>
-      <p class="v4-lede">Fifteen-minute fit call. Systems map if there's a fit. Written scope before any work starts. <a href="./pricing.html" style="color:var(--rust);">More on how scoping works →</a></p>
-    </section>
-
-    <section class="v4-section">
-      <div class="v4-eyebrow"><span class="num">03 /</span> IS THIS A FIT</div>
+      <div class="v4-eyebrow"><span class="num">02 /</span> START HERE</div>
       <div class="v4-cta-block">
         <div>
-          <h2>Stronger systems. Less time hunting leads.</h2>
-          <p>If you have a website that's not pulling its weight, a follow-up flow that drops leads, or a workflow eating an hour a day — and you want a partner who'll scope before they sell — that's the fit.</p>
-          <p>No pitch deck. No hard sell. Honest call either way.</p>
+          <h2>The fit call is the fastest way in.</h2>
+          <p>Fifteen minutes. We tell you straight whether Shipside is the right partner, and put scope in writing before any work starts.</p>
+          <p>If we're not the right fit, we say that on the call so nobody wastes a week.</p>
         </div>
         <div class="v4-cta-actions">
           <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
-          <a href="./process.html" class="cta-button secondary">See the process</a>
+          <a href="./services.html" class="cta-button secondary">See what we build</a>
           <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
         </div>
       </div>

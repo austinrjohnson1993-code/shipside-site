@@ -3,471 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work With Shipside — Sales Role</title>
-<meta name="description" content="Shipside is hiring 1099 commission sales reps. Talk to local business owners, book qualified calls, close clients. Leads, scripts, CRM, and onboarding provided.">
-<meta name="robots" content="noindex,follow">
+<title>Work With Us — Shipside</title>
+<meta name="description" content="What it looks like to engage Shipside as a partner. Fit call, systems map, written scope, build, ongoing improvement. The real workflow, plain language.">
 <link rel="canonical" href="https://shipside.dev/work-with-us">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Work With Shipside — Sales Role">
-<meta property="og:description" content="Shipside is hiring 1099 commission sales reps. Talk to local business owners, book qualified calls, close clients. Leads, scripts, CRM, and onboarding provided.">
+<meta property="og:title" content="Work With Us — Shipside">
+<meta property="og:description" content="The real workflow of engaging Shipside as a partner.">
 <meta property="og:url" content="https://shipside.dev/work-with-us">
 <meta property="og:site_name" content="Shipside">
 <meta property="og:image" content="https://shipside.dev/brand/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Shipside — Websites and business systems for working businesses.">
+<meta property="og:image:alt" content="Shipside — Work With Us">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Work With Shipside — Sales Role">
-<meta name="twitter:description" content="Shipside is hiring 1099 commission sales reps. Talk to local business owners, book qualified calls, close clients. Leads, scripts, CRM, and onboarding provided.">
+<meta name="twitter:title" content="Work With Us — Shipside">
+<meta name="twitter:description" content="The real workflow of engaging Shipside as a partner.">
 <meta name="twitter:image" content="https://shipside.dev/brand/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css">
 <style>
-  :root {
-    --gutter: clamp(20px, 4vw, 48px);
-  }
-
+  :root { --gutter: clamp(20px, 4vw, 48px); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html, body {
     background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    font-size: 15px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    font-size: 15px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
-
   body {
     background-image:
       linear-gradient(var(--grid) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: -1px -1px;
+    background-size: 48px 48px; background-position: -1px -1px;
   }
-
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
+    content: ''; position: fixed; inset: 0;
     background:
       radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
       radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.015;
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: overlay;
+    pointer-events: none; z-index: 0;
   }
 
   nav {
-    position: relative;
-    z-index: 10;
+    position: relative; z-index: 10;
     padding: 24px var(--gutter);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     border-bottom: 1px solid var(--steel);
   }
-
-  .brand {
-    font-family: 'Bungee', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.02em;
-    color: var(--bone);
-    text-decoration: none;
-  }
-
+  .brand { font-family: 'Bungee', sans-serif; font-size: 20px; letter-spacing: 0.02em; color: var(--bone); text-decoration: none; }
   .brand span { color: var(--rust); }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .nav-links a {
-    color: var(--bone-dim);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
+  .nav-links { display: flex; gap: 28px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; flex-wrap: wrap; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--rust); }
   .nav-links a.active { color: var(--rust); }
 
-  main {
-    position: relative;
-    z-index: 5;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: var(--gutter);
-  }
+  main { position: relative; z-index: 5; max-width: 960px; margin: 0 auto; padding: 24px var(--gutter) 0; }
 
+  .v4-section { margin-bottom: 96px; }
+  .v4-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 14px; font-weight: 600;
+  }
+  .v4-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
+  .v4-eyebrow .num { color: var(--bone-dim); font-weight: 500; letter-spacing: 0.2em; }
   h1 {
     font-family: 'Bungee', sans-serif;
-    font-size: clamp(40px, 7vw, 72px);
-    line-height: 1;
-    letter-spacing: -0.01em;
-    color: var(--bone);
-    margin: 60px 0 24px;
-    max-width: 18ch;
+    font-size: clamp(36px, 6vw, 64px); line-height: 1.05;
+    letter-spacing: -0.01em; color: var(--bone);
+    margin-bottom: 22px; max-width: 22ch;
   }
-
-  h2 {
+  .v4-section h2 {
     font-family: 'Bungee', sans-serif;
-    font-size: clamp(24px, 5vw, 40px);
-    color: var(--bone);
-    margin: 56px 0 24px;
-    letter-spacing: -0.01em;
+    font-size: clamp(26px, 4.4vw, 40px); line-height: 1.05;
+    letter-spacing: -0.01em; color: var(--bone);
+    margin-bottom: 18px; max-width: 24ch;
   }
+  p.body { font-size: 16px; line-height: 1.75; color: var(--bone); margin-bottom: 18px; max-width: 64ch; }
+  p.body.dim { color: var(--bone-dim); }
 
-  h3 {
-    font-family: 'Bungee', sans-serif;
-    font-size: 20px;
-    color: var(--bone);
-    margin-bottom: 12px;
-    letter-spacing: 0;
-  }
+  .hero { padding: clamp(48px, 8vw, 80px) 0 clamp(32px, 5vw, 56px); }
+  .hero-sub { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.7; color: var(--bone-dim); margin-bottom: 28px; max-width: 64ch; }
 
-  section {
-    margin-bottom: 72px;
-  }
-
-  .lede {
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--bone-dim);
-    max-width: 70ch;
-    margin-bottom: 16px;
-  }
-
-  p.body {
-    font-size: 15px;
-    line-height: 1.75;
-    color: var(--bone-dim);
-    max-width: 70ch;
-    margin-bottom: 16px;
-  }
-
-  .stamp-row {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
-  }
-
-  .stamp {
-    display: inline-block;
-    border: 2px solid var(--red-stamp);
-    color: var(--red-stamp);
-    padding: 6px 14px;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 700;
-    transform: rotate(-2deg);
-  }
-
-  .stamp.caution {
-    border-color: var(--caution);
-    color: var(--caution);
-    transform: rotate(1deg);
-  }
-
-  /* role summary */
-  .role-card {
-    background: var(--iron-light);
-    border: 1px solid var(--steel);
-    border-left: 4px solid var(--rust);
-    padding: 28px 32px;
-    margin-top: 24px;
-  }
-
-  .role-card dl {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 12px 24px;
-    font-size: 14px;
-  }
-
-  .role-card dt {
-    color: var(--rust);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 11px;
-    padding-top: 4px;
-    font-weight: 600;
-  }
-
-  .role-card dd {
-    color: var(--bone);
-    margin: 0;
-  }
-
-  /* two-col fit grid */
-  .fit-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 28px;
-  }
-
-  .fit-col {
-    background: var(--iron-light);
-    border: 1px solid var(--grid);
-    padding: 24px 28px;
-  }
-
-  .fit-col.good { border-left: 4px solid var(--rust); }
-  .fit-col.bad  { border-left: 4px solid var(--caution); }
-
-  .fit-col h3 {
-    font-size: 18px;
-    margin-bottom: 14px;
-  }
-
-  .fit-col ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .fit-col li {
-    font-size: 14px;
-    color: var(--bone-dim);
-    padding: 6px 0 6px 22px;
-    position: relative;
-    line-height: 1.55;
-  }
-
-  .fit-col.good li::before {
-    content: '→';
-    color: var(--rust);
-    position: absolute;
-    left: 0;
-    font-weight: 700;
-  }
-
-  .fit-col.bad li::before {
-    content: '×';
-    color: var(--caution);
-    position: absolute;
-    left: 2px;
-    font-weight: 700;
-  }
-
-  /* what we provide / what you do — simple two-list block */
-  .duo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    margin-top: 28px;
-  }
-
-  .duo-col h3 {
-    font-size: 18px;
-    margin-bottom: 14px;
-  }
-
-  .duo-col ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .duo-col li {
-    font-size: 14px;
-    color: var(--bone-dim);
-    padding: 6px 0 6px 22px;
-    position: relative;
-    line-height: 1.55;
-  }
-
-  .duo-col li::before {
-    content: '→';
-    color: var(--rust);
-    position: absolute;
-    left: 0;
-    font-weight: 700;
-  }
-
-  /* process steps */
-  .process-list {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    margin-top: 28px;
-  }
-
-  .process-step {
-    display: flex;
-    gap: 22px;
-    align-items: flex-start;
-  }
-
-  .step-num {
-    font-family: 'Bungee', sans-serif;
-    font-size: 28px;
-    color: var(--rust);
-    flex-shrink: 0;
-    line-height: 1;
-    min-width: 44px;
-  }
-
-  .process-step strong {
-    display: block;
-    font-size: 15px;
-    color: var(--bone);
-    margin-bottom: 6px;
-  }
-
-  .process-step p {
-    font-size: 14px;
-    color: var(--bone-dim);
-    line-height: 1.6;
-    margin: 0;
-    max-width: 60ch;
-  }
-
-  /* CTA */
   .cta-button {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--rust);
-    color: var(--bone);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    display: inline-block; padding: 14px 28px;
+    background: var(--rust); color: var(--bone);
+    text-decoration: none; font-weight: 600;
+    font-size: 13px; line-height: 1.4; letter-spacing: 0.1em;
+    text-transform: uppercase; transition: all 0.2s;
     border: 2px solid var(--rust);
-    transition: all 0.2s ease;
   }
-
-  .cta-button:hover {
-    background: transparent;
-    color: var(--rust-bright);
-    border-color: var(--rust-bright);
-  }
-
-  .sms-link {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: var(--bone-dim);
-    text-decoration: none;
-    margin-top: 14px;
-    transition: color 0.2s;
-  }
-
+  .cta-button:hover { background: transparent; color: var(--rust-bright); border-color: var(--rust-bright); }
+  .cta-button.secondary { background: transparent; color: var(--bone-dim); border-color: var(--steel); }
+  .cta-button.secondary:hover { color: var(--rust); border-color: var(--rust); }
+  .hero-cta { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+  .sms-link { display: inline-block; font-size: 12px; letter-spacing: 0.06em; color: var(--bone-dim); text-decoration: none; }
   .sms-link:hover { color: var(--rust); }
 
-  .cta-section {
-    text-align: center;
-    padding: 60px var(--gutter);
-    margin-top: 80px;
-    border-top: 1px solid var(--grid);
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+  .panel {
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(212,77,28,0.55);
+    border-radius: 4px; padding: 24px 26px;
   }
+  .panel h3 { font-family: 'Bungee', sans-serif; font-size: 18px; color: var(--bone); margin-bottom: 10px; }
+  .panel p { font-size: 14px; color: var(--bone-dim); line-height: 1.65; margin: 0 0 8px; }
+  .panel p:last-child { margin-bottom: 0; }
+  @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
 
-  .cta-section h2 { margin-top: 0; }
-
-  .cta-section p {
-    color: var(--bone-dim);
-    font-size: 16px;
-    margin-bottom: 28px;
-    max-width: 60ch;
-    margin-left: auto;
-    margin-right: auto;
+  .v4-cta-block {
+    margin-top: 48px; padding: 48px 40px;
+    background: linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%);
+    border: 1px solid rgba(212,77,28,0.32); border-radius: 4px;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.5);
   }
-
-  .resume-note {
-    margin-top: 18px;
-    font-size: 12px;
-    color: var(--bone-dim);
-    letter-spacing: 0.04em;
+  .v4-cta-block h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(24px, 3.5vw, 36px); color: var(--bone);
+    margin-bottom: 14px; line-height: 1.05; max-width: none;
   }
-
-  /* compensation language block */
-  .comp-block {
-    background: var(--iron-light);
-    border: 1px dashed var(--grid);
-    padding: 24px 28px;
-    margin-top: 24px;
-    max-width: 70ch;
-  }
-
-  .comp-block p {
-    font-size: 14px;
-    color: var(--bone-dim);
-    margin: 0 0 10px 0;
-    line-height: 1.7;
-  }
-
-  .comp-block p:last-child { margin: 0; }
-
-  .seats-line {
-    font-size: 13px;
-    color: var(--rust-bright);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-top: 12px;
-    font-weight: 600;
-  }
+  .v4-cta-block p { font-size: 15px; color: var(--bone-dim); line-height: 1.65; margin: 0 0 8px; max-width: 52ch; }
+  .v4-cta-actions { display: flex; flex-direction: column; gap: 12px; }
+  @media (max-width: 800px) { .v4-cta-block { grid-template-columns: 1fr; padding: 32px 24px; } }
 
   footer {
     background: rgba(20, 20, 24, 0.8);
     border-top: 1px solid var(--grid);
-    padding: 40px var(--gutter);
-    text-align: center;
-    position: relative;
-    z-index: 5;
+    padding: 40px var(--gutter); text-align: center;
+    position: relative; z-index: 5;
   }
-
-  footer a {
-    color: var(--rust);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
+  footer a { color: var(--rust); text-decoration: none; font-weight: 500; }
   footer a:hover { color: var(--rust-bright); }
-
-  footer p {
-    font-size: 13px;
-    color: var(--bone-dim);
-    margin: 8px 0;
-  }
+  footer p { font-size: 13px; color: var(--bone-dim); margin: 8px 0; }
 
   @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .nav-links {
-      flex-wrap: wrap;
-      gap: 12px 20px;
-    }
-    .role-card dl {
-      grid-template-columns: 1fr;
-      gap: 4px;
-    }
-    .role-card dt { padding-top: 12px; }
-    .fit-grid, .duo-grid { grid-template-columns: 1fr; }
-    .cta-section { padding: 40px var(--gutter); }
+    nav { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .nav-links { flex-direction: column; gap: 10px; }
   }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -476,11 +154,15 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
       <a href="./index.html">HOME</a>
       <a href="./services.html">SERVICES</a>
+      <a href="./process.html">PROCESS</a>
       <a href="./consulting.html">CONSULTING</a>
       <a href="./work.html">WORK</a>
       <a href="./blog/index.html">FIELD NOTES</a>
@@ -491,168 +173,84 @@
   </nav>
 
   <main>
-    <div class="stamp-row">
-      <span class="stamp">Now Hiring</span>
-      <span class="stamp caution">1099 · Commission</span>
-    </div>
-
-    <h1>Work With Shipside.</h1>
-    <p class="lede">We sell websites and simple AI-assisted tools to small business owners. We need sales people who can talk to those owners, book qualified calls, and close.</p>
-    <p class="lede">Leads, offer, scripts, CRM, onboarding, and follow-up are already built. You bring the conversations.</p>
-
-    <section>
-      <h2>The role</h2>
-      <div class="role-card">
-        <dl>
-          <dt>Type</dt>
-          <dd>Full-time, 1099 commission sales</dd>
-          <dt>Who you talk to</dt>
-          <dd>Local business owners — auto repair, roofing, HVAC, landscaping, contractors, trades</dd>
-          <dt>What you do</dt>
-          <dd>Outbound outreach, qualifying conversations, booking fit calls, closing clients, clean CRM notes</dd>
-          <dt>Where</dt>
-          <dd>Remote. Phone, text, email, and in-app workflow</dd>
-          <dt>Reports to</dt>
-          <dd>The Shipside team</dd>
-        </dl>
+    <section class="hero">
+      <div class="v4-eyebrow"><span class="num">↳</span> WORK WITH US</div>
+      <h1>What it looks like to bring Shipside in.</h1>
+      <p class="hero-sub">Plain workflow, no theater. Fit call to start, systems map if there's a fit, written scope before any commitment, build with one team accountable end-to-end, ongoing improvement on a cadence the business sets. You own what we build.</p>
+      <div class="hero-cta">
+        <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
+        <a href="./process.html" class="cta-button secondary">See the full process</a>
       </div>
+      <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
     </section>
 
-    <section>
-      <h2>What you'll actually do</h2>
-      <p class="body">Talk to business owners about their website and how they capture leads. Book qualified calls. Close clients. Keep your CRM clean. Run the process the way it's written.</p>
-      <ul style="list-style:none;padding:0;margin:24px 0 0;max-width:70ch;">
-        <li style="font-size:14px;color:var(--bone-dim);padding:6px 0 6px 22px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--rust);font-weight:700;">→</span> Outreach to business owners daily — call, text, in-person if you're built for it</li>
-        <li style="font-size:14px;color:var(--bone-dim);padding:6px 0 6px 22px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--rust);font-weight:700;">→</span> Qualify on the spot and book fit calls that actually show up</li>
-        <li style="font-size:14px;color:var(--bone-dim);padding:6px 0 6px 22px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--rust);font-weight:700;">→</span> Close clients on a real, written scope — not a hyped promise</li>
-        <li style="font-size:14px;color:var(--bone-dim);padding:6px 0 6px 22px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--rust);font-weight:700;">→</span> Log notes, statuses, and follow-up reminders in the CRM</li>
-        <li style="font-size:14px;color:var(--bone-dim);padding:6px 0 6px 22px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--rust);font-weight:700;">→</span> Run the follow-up cadence that's already built</li>
-        <li style="font-size:14px;color:var(--bone-dim);padding:6px 0 6px 22px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;color:var(--rust);font-weight:700;">→</span> Hand off the close cleanly so build can ship</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>What we hand you on day one</h2>
-      <p class="body">You're not hunting cold without a map. You're running a process that's already been put together.</p>
-      <div class="duo-grid">
-        <div class="duo-col">
-          <h3>Provided</h3>
-          <ul>
-            <li>Leads</li>
-            <li>The offer and what's in scope</li>
-            <li>Scripts, voicemails, and follow-up templates</li>
-            <li>CRM with statuses, notes, and reminders</li>
-            <li>Onboarding and ride-alongs</li>
-            <li>Sales training on the offer and the process</li>
-            <li>Follow-up cadence already wired up</li>
-            <li>Backend support — fulfillment, scheduling, paperwork</li>
-          </ul>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">01 /</span> WHO IT FITS</div>
+      <h2>Who Shipside is built for.</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Owner-operators</h3>
+          <p>Service businesses, trades, professional services, boutique product businesses. One person or a small crew running it. The operator is who we'll be wiring the system around.</p>
         </div>
-        <div class="duo-col">
-          <h3>You bring</h3>
-          <ul>
-            <li>Daily outreach reps</li>
-            <li>Real conversations with owners</li>
-            <li>Honest qualifying — not promise-stacking</li>
-            <li>Coachability when the script needs to flex</li>
-            <li>Clean notes after every touch</li>
-            <li>Your phone, your laptop, a quiet place to call from</li>
-          </ul>
+        <div class="panel">
+          <h3>Word-of-mouth driven</h3>
+          <p>Most of the work comes from referrals or repeat. The website is a wedge that has to hold up to a real search-and-check, not a marketing-led top of funnel.</p>
+        </div>
+        <div class="panel">
+          <h3>Workflow pain</h3>
+          <p>You can name the part of the day or week that's eating time. Missed calls, scattered intake, manual booking back-and-forth, a CRM nobody opens. That's where most of our leverage shows up.</p>
+        </div>
+        <div class="panel">
+          <h3>Ready to own it</h3>
+          <p>Files yours, domain yours, logins yours. You want a partner, not a vendor that holds work hostage. If we ever need to walk away from each other, the build keeps running.</p>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>Who fits — and who doesn't</h2>
-      <div class="fit-grid">
-        <div class="fit-col good">
-          <h3>Good fit</h3>
-          <ul>
-            <li>Sales experience is a plus</li>
-            <li>Customer service, outreach, cold-call, or door-knock background</li>
-            <li>Comfortable with daily outbound</li>
-            <li>Coachable and reliable</li>
-            <li>Can handle rejection without flinching</li>
-            <li>Interest in AI tooling is a plus</li>
-            <li>Understands commission-only work</li>
-          </ul>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">02 /</span> WHAT THE WORKFLOW LOOKS LIKE</div>
+      <h2>Fit call &middot; map &middot; scope &middot; build &middot; care.</h2>
+      <p class="body">Start: a fifteen-minute fit call. We tell you straight whether Shipside fits. If yes, we sketch a systems map &mdash; what runs the business now, where time gets lost, which service groups apply. Then a written scope and cost before any deposit.</p>
+      <p class="body dim">Build: one team accountable end-to-end. The fit call is with the founder, the build is run by the founder, the handoff is with the founder. No baton passes.</p>
+      <p class="body dim">Care: hosting handled, basic checks running, small updates and tuning on a cadence the business sets. Cancel any month &mdash; the build keeps running. You own the files.</p>
+      <p class="body"><a href="./process.html" style="color:var(--rust);">See the full seven-step process →</a></p>
+    </section>
+
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">03 /</span> WHEN WE PASS</div>
+      <h2>The honest cases where we say no.</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Marketing-only scope</h3>
+          <p>If the actual ask is paid ads, SEO, or top-of-funnel marketing, that's not Shipside. We build the systems behind the marketing layer. We can recommend operators we trust if that's the real need.</p>
         </div>
-        <div class="fit-col bad">
-          <h3>Not a fit</h3>
-          <ul>
-            <li>Needs a guaranteed hourly paycheck</li>
-            <li>Hates outreach</li>
-            <li>Wants to wing it instead of running the process</li>
-            <li>Will promise anything to book a meeting</li>
-            <li>Looking for a get-rich-quick play</li>
-          </ul>
+        <div class="panel">
+          <h3>The leverage isn't there</h3>
+          <p>Sometimes the right answer is one workflow tweak, not a system. We say so on the call instead of writing a proposal that won't change the day.</p>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>How the comp works</h2>
-      <div class="comp-block">
-        <p>This is a 1099 commission seat. There is no hourly pay and no guaranteed income. Commission isn't capped.</p>
-        <p>Qualified conversations, follow-ups, booked calls, and closed clients stack over time. The reps who run the process daily build a real book; the ones who don't, don't.</p>
-        <p>Exact commission structure is walked through on the interview so you can decide whether the math works for you before signing anything.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Hiring process</h2>
-      <div class="process-list">
-        <div class="process-step">
-          <span class="step-num">01</span>
-          <div>
-            <strong>Send your resume.</strong>
-            <p>Email it with a couple of sentences on why this seat fits. No cover letter required.</p>
-          </div>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">04 /</span> START HERE</div>
+      <div class="v4-cta-block">
+        <div>
+          <h2>The fit call is the door.</h2>
+          <p>Fifteen minutes. Honest call either way. No pitch deck. Written scope before any work starts.</p>
         </div>
-        <div class="process-step">
-          <span class="step-num">02</span>
-          <div>
-            <strong>Screening.</strong>
-            <p>Quick read on the resume and a short reply. If the seat looks like a fit, we move you to the interview.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-num">03</span>
-          <div>
-            <strong>Interview with the Shipside team.</strong>
-            <p>Short conversation. We walk through the role, the offer, the comp, and what your week actually looks like. You get to ask anything.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-num">04</span>
-          <div>
-            <strong>CRM onboarding.</strong>
-            <p>You get logins, scripts, the offer breakdown, and a walk-through of the workflow. You learn how the process runs before you make a single dial.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <span class="step-num">05</span>
-          <div>
-            <strong>First controlled sales block.</strong>
-            <p>You run a structured first block of outreach with support on the line. We watch how you work the script, the objections, and the follow-up. Adjustments happen here, before you're loose on a full day.</p>
-          </div>
+        <div class="v4-cta-actions">
+          <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
+          <a href="./contact.html" class="cta-button secondary">All ways to reach us</a>
+          <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
         </div>
       </div>
-      <p class="seats-line">Filling 10 seats. First 5 selected first.</p>
     </section>
-
-    <div class="cta-section">
-      <h2>Send your resume.</h2>
-      <p>If you read this and thought "that's a seat I can run" — send it over. We move quickly on people who clearly fit.</p>
-      <a href="mailto:shipside.labs@gmail.com?subject=Shipside%20Sales%20Role" class="cta-button">Email your resume</a>
-      <p class="resume-note">shipside.labs@gmail.com · subject line: Shipside Sales Role</p>
-    </div>
   </main>
 
   <footer>
-    <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
-    <p>© 2026 Shipside</p>
-    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> · Clean websites. Useful systems. No platform lock-in.</p>
+    <p><a href="tel:+13502210298">(350) 221-0298</a> &middot; <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
+    <p>&copy; 2026 Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;"><a href="./index.html" style="color: var(--bone-dim);">Home</a> &middot; AI business systems agency.</p>
   </footer>
 </body>
 </html>

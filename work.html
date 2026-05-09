@@ -3,501 +3,193 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How It Gets Built — Shipside</title>
-<meta name="description" content="How the Shipside build works: clean pages, clear services, work photos, easy next step, and customer ownership at the end.">
+<title>Work — Shipside</title>
+<meta name="description" content="Shipside build patterns. Real systems we install — website wedge, capture, follow-up, Owner Visibility, booking, AI workflows. Patterns over fake case studies.">
 <link rel="canonical" href="https://shipside.dev/work">
 <meta property="og:type" content="website">
-<meta property="og:title" content="How It Gets Built — Shipside">
-<meta property="og:description" content="How the Shipside build works: clean pages, clear services, work photos, easy next step, and customer ownership at the end.">
+<meta property="og:title" content="Work — Shipside">
+<meta property="og:description" content="Build patterns over fake case studies. The systems we install.">
 <meta property="og:url" content="https://shipside.dev/work">
 <meta property="og:site_name" content="Shipside">
 <meta property="og:image" content="https://shipside.dev/brand/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Shipside — Websites and business systems for working businesses.">
+<meta property="og:image:alt" content="Shipside — Work">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How It Gets Built — Shipside">
-<meta name="twitter:description" content="How the Shipside build works: clean pages, clear services, work photos, easy next step, and customer ownership at the end.">
+<meta name="twitter:title" content="Work — Shipside">
+<meta name="twitter:description" content="Build patterns over fake case studies. The systems we install.">
 <meta name="twitter:image" content="https://shipside.dev/brand/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/tokens.css">
 <style>
-  :root {
-    --gutter: clamp(20px, 4vw, 48px);
-  }
-
+  :root { --gutter: clamp(20px, 4vw, 48px); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html, body {
     background: linear-gradient(180deg, #17171D 0%, #121217 100%);
     color: var(--bone);
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    font-size: 15px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    font-size: 15px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
-
   body {
     background-image:
       linear-gradient(var(--grid) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: -1px -1px;
+    background-size: 48px 48px; background-position: -1px -1px;
   }
-
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
+    content: ''; position: fixed; inset: 0;
     background:
       radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
       radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.015;
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: overlay;
+    pointer-events: none; z-index: 0;
   }
 
   nav {
-    position: relative;
-    z-index: 10;
+    position: relative; z-index: 10;
     padding: 24px var(--gutter);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     border-bottom: 1px solid var(--steel);
   }
-
-  .brand {
-    font-family: 'Bungee', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.02em;
-    color: var(--bone);
-    text-decoration: none;
-  }
-
+  .brand { font-family: 'Bungee', sans-serif; font-size: 20px; letter-spacing: 0.02em; color: var(--bone); text-decoration: none; }
   .brand span { color: var(--rust); }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .nav-links a {
-    color: var(--bone-dim);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
+  .nav-links { display: flex; gap: 28px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; flex-wrap: wrap; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--rust); }
   .nav-links a.active { color: var(--rust); }
 
-  main {
-    position: relative;
-    z-index: 5;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--gutter);
-  }
+  main { position: relative; z-index: 5; max-width: 1200px; margin: 0 auto; padding: 24px var(--gutter) 0; }
 
+  .v4-section { margin-bottom: 96px; }
+  .v4-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 14px; font-weight: 600;
+  }
+  .v4-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
+  .v4-eyebrow .num { color: var(--bone-dim); font-weight: 500; letter-spacing: 0.2em; }
   h1 {
     font-family: 'Bungee', sans-serif;
-    font-size: clamp(40px, 7vw, 72px);
-    line-height: 1;
-    letter-spacing: -0.01em;
-    color: var(--bone);
-    margin: 60px 0 24px;
+    font-size: clamp(36px, 6vw, 64px); line-height: 1.05;
+    letter-spacing: -0.01em; color: var(--bone);
+    margin-bottom: 22px; max-width: 22ch;
   }
-
-  .subtitle {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--bone-dim);
-    max-width: 70ch;
-    margin-bottom: 40px;
+  .v4-section h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(26px, 4.4vw, 40px); line-height: 1.05;
+    letter-spacing: -0.01em; color: var(--bone);
+    margin-bottom: 18px; max-width: 24ch;
   }
-
-  .portfolio-note {
-    background: var(--iron-light);
-    border: 1px dashed var(--grid);
-    padding: 40px;
-    text-align: center;
-    margin: 60px 0;
-  }
-
-  .portfolio-note p {
-    font-size: 15px;
-    color: var(--bone);
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  .portfolio-note strong {
-    color: var(--rust);
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  .cta-section {
-    text-align: center;
-    padding: 60px var(--gutter);
-    margin-top: 80px;
-    border-top: 1px solid var(--grid);
-  }
-
-  .cta-section p {
-    font-size: 16px;
-    color: var(--bone-dim);
+  .v4-lede {
+    font-size: 16px; line-height: 1.65;
+    color: var(--bone-dim); max-width: 64ch;
     margin-bottom: 32px;
   }
-
-  .cta-link {
-    color: var(--rust);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .cta-link:hover {
-    color: var(--rust-bright);
-  }
+  .hero { padding: clamp(48px, 8vw, 80px) 0 clamp(32px, 5vw, 56px); }
+  .hero-sub { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.7; color: var(--bone-dim); margin-bottom: 28px; max-width: 60ch; }
 
   .cta-button {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--rust);
-    color: var(--bone);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
+    display: inline-block; padding: 14px 28px;
+    background: var(--rust); color: var(--bone);
+    text-decoration: none; font-weight: 600;
+    font-size: 13px; line-height: 1.4; letter-spacing: 0.1em;
+    text-transform: uppercase; transition: all 0.2s;
     border: 2px solid var(--rust);
   }
+  .cta-button:hover { background: transparent; color: var(--rust-bright); border-color: var(--rust-bright); }
+  .cta-button.secondary { background: transparent; color: var(--bone-dim); border-color: var(--steel); }
+  .cta-button.secondary:hover { color: var(--rust); border-color: var(--rust); }
+  .hero-cta { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+  .sms-link { display: inline-block; font-size: 12px; letter-spacing: 0.06em; color: var(--bone-dim); text-decoration: none; }
+  .sms-link:hover { color: var(--rust); }
 
-  .cta-button:hover {
-    background: transparent;
-    color: var(--rust-bright);
-    border-color: var(--rust-bright);
+  /* Pattern panel — polished UI surface, not a placeholder */
+  .pattern-stack { display: grid; gap: 22px; margin-top: 28px; }
+  .pattern-card {
+    background: linear-gradient(180deg, #20202A 0%, #17171E 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.36);
+    overflow: hidden;
   }
+  .pattern-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--bone-dim);
+  }
+  .pattern-bar .live { color: var(--rust); }
+  .pattern-body {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px;
+    padding: 26px 28px 28px;
+  }
+  .pattern-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--rust);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 8px; font-weight: 700;
+  }
+  .pattern-title {
+    font-family: 'Bungee', sans-serif; font-size: 22px;
+    color: var(--bone); line-height: 1.05; margin-bottom: 12px;
+  }
+  .pattern-desc { font-size: 14px; color: var(--bone-dim); line-height: 1.65; max-width: 50ch; margin-bottom: 12px; }
+  .pattern-stack-sub { font-size: 12px; color: var(--rust); letter-spacing: 0.06em; }
+  .pattern-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+  .pattern-list li {
+    font-size: 13px; color: var(--bone); line-height: 1.5;
+    padding: 7px 11px; background: rgba(255,255,255,0.02);
+    border-left: 2px solid rgba(212,77,28,0.45);
+  }
+  @media (max-width: 800px) {
+    .pattern-body { grid-template-columns: 1fr; gap: 14px; }
+  }
+
+  .honest-note {
+    border: 1px dashed rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.02);
+    padding: 22px 26px; border-radius: 4px;
+    margin-top: 24px;
+  }
+  .honest-note p { font-size: 14px; color: var(--bone-dim); line-height: 1.65; max-width: 64ch; margin: 0 0 10px; }
+  .honest-note p:last-child { margin-bottom: 0; }
+
+  .v4-cta-block {
+    margin-top: 48px; padding: 48px 40px;
+    background: linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%);
+    border: 1px solid rgba(212,77,28,0.32); border-radius: 4px;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.5);
+  }
+  .v4-cta-block h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(24px, 3.5vw, 36px); color: var(--bone);
+    margin-bottom: 14px; line-height: 1.05; max-width: none;
+  }
+  .v4-cta-block p { font-size: 15px; color: var(--bone-dim); line-height: 1.65; margin: 0 0 8px; max-width: 52ch; }
+  .v4-cta-actions { display: flex; flex-direction: column; gap: 12px; }
+  @media (max-width: 800px) { .v4-cta-block { grid-template-columns: 1fr; padding: 32px 24px; } }
 
   footer {
     background: rgba(20, 20, 24, 0.8);
     border-top: 1px solid var(--grid);
-    padding: 40px var(--gutter);
-    text-align: center;
-    position: relative;
-    z-index: 5;
+    padding: 40px var(--gutter); text-align: center;
+    position: relative; z-index: 5;
   }
-
-  footer a {
-    color: var(--rust);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  footer a:hover {
-    color: var(--rust-bright);
-  }
-
-  footer p {
-    font-size: 13px;
-    color: var(--bone-dim);
-    margin: 8px 0;
-  }
+  footer a { color: var(--rust); text-decoration: none; font-weight: 500; }
+  footer a:hover { color: var(--rust-bright); }
+  footer p { font-size: 13px; color: var(--bone-dim); margin: 8px 0; }
 
   @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .nav-links {
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .portfolio-note {
-      padding: 32px 24px;
-    }
-
-    .cta-section {
-      padding: 40px var(--gutter);
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════
-     WORK v4 (2026-05-02) — proof-of-build patterns + glow.
-     ═══════════════════════════════════════════════════════════════════ */
-  .v4-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin: 56px 0 14px;
-    font-weight: 600;
-  }
-  .v4-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
-  .v4-eyebrow .num { color: var(--bone-dim); font-weight: 500; letter-spacing: 0.2em; }
-
-  main > h1:first-of-type {
-    margin: 0 0 22px !important;
-    font-size: clamp(40px, 7vw, 68px);
-    line-height: 1.04;
-    max-width: 22ch;
-  }
-  .subtitle {
-    font-size: clamp(15px, 1.4vw, 17px) !important;
-    line-height: 1.7 !important;
-    color: var(--bone-dim);
-    max-width: 64ch !important;
-    margin: 0 0 28px !important;
-  }
-
-  /* Section rhythm */
-  main section { margin-bottom: 80px !important; position: relative; }
-  main section h2 {
-    font-family: 'Bungee', sans-serif !important;
-    font-size: clamp(26px, 4vw, 36px) !important;
-    line-height: 1.05 !important;
-    color: var(--bone) !important;
-    letter-spacing: -0.01em !important;
-    margin: 0 0 14px !important;
-    max-width: 22ch;
-  }
-  main section p {
-    font-size: 15px !important;
-    line-height: 1.7 !important;
-    color: var(--bone-dim) !important;
-    max-width: 64ch !important;
-    margin: 0 0 14px !important;
-  }
-
-  /* Artifact stack — wired vertical rows showing what owner gets per layer */
-  .v4-artifact-stack {
-    position: relative;
-    margin-top: 28px;
-    padding-left: 40px;
-  }
-  .v4-artifact-stack::before {
-    content: '';
-    position: absolute;
-    left: 13px; top: 24px; bottom: 24px;
-    width: 2px;
-    background: linear-gradient(180deg,
-      rgba(212,77,28,0.6) 0%, rgba(212,77,28,0.25) 50%, rgba(212,77,28,0.6) 100%);
-  }
-  .v4-artifact-row {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 24px;
-    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-left: 3px solid rgba(212,77,28,0.55);
-    border-radius: 4px;
-    padding: 22px 26px 24px;
-    margin-bottom: 16px;
-    position: relative;
-    box-shadow: 0 10px 28px rgba(0,0,0,0.32);
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-  }
-  .v4-artifact-row:hover {
-    transform: translateX(4px);
-    box-shadow: 0 14px 36px rgba(0,0,0,0.42);
-    border-left-color: var(--rust);
-  }
-  .v4-artifact-row::before {
-    content: ''; position: absolute;
-    left: -40px; top: 30px; width: 30px; height: 2px; background: var(--rust);
-  }
-  .v4-artifact-row::after {
-    content: ''; position: absolute;
-    left: -27px; top: 24px; width: 14px; height: 14px;
-    border: 2px solid var(--rust); border-radius: 50%;
-    background: var(--iron); box-shadow: 0 0 12px rgba(212,77,28,0.45);
-  }
-  .v4-artifact-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--rust);
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .v4-artifact-title {
-    font-family: 'Bungee', sans-serif !important;
-    font-size: 22px !important;
-    color: var(--bone) !important;
-    letter-spacing: 0;
-    margin: 0 0 10px !important;
-    line-height: 1.05;
-  }
-  .v4-artifact-body {
-    font-size: 14px !important;
-    color: var(--bone-dim) !important;
-    line-height: 1.65 !important;
-    margin: 0 0 8px !important;
-    max-width: 50ch;
-  }
-  .v4-artifact-meta {
-    display: flex; flex-wrap: wrap; gap: 6px 10px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--rust);
-    letter-spacing: 0.06em;
-    margin-top: 4px;
-  }
-  .v4-artifact-meta span::before {
-    content: '· '; color: var(--bone-dim); margin-right: 2px;
-  }
-  .v4-artifact-meta span:first-child::before { content: ''; margin: 0; }
-  .v4-artifact-list {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-direction: column; gap: 7px; align-self: center;
-  }
-  .v4-artifact-list li {
-    font-size: 12.5px;
-    color: var(--bone);
-    line-height: 1.5;
-    padding: 7px 11px;
-    background: rgba(255,255,255,0.025);
-    border-left: 2px solid rgba(212,77,28,0.45);
-  }
-  @media (max-width: 800px) {
-    .v4-artifact-stack { padding-left: 28px; }
-    .v4-artifact-row { grid-template-columns: 1fr; gap: 14px; }
-    .v4-artifact-row::before { width: 22px; left: -28px; }
-    .v4-artifact-row::after { left: -16px; }
-  }
-
-  /* "What we don't do" — lifted card list */
-  .v4-skip-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 12px;
-    margin-top: 18px;
-  }
-  .v4-skip-cell {
-    background: linear-gradient(180deg, #22222A 0%, #18181E 100%);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-left: 3px solid var(--red-stamp);
-    border-radius: 4px;
-    padding: 16px 20px;
-  }
-  .v4-skip-cell strong {
-    display: block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    color: var(--red-stamp);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
-  .v4-skip-cell p {
-    font-size: 13.5px !important;
-    color: var(--bone) !important;
-    line-height: 1.55 !important;
-    margin: 0 !important;
-    max-width: none !important;
-  }
-
-  /* CTA panel — gradient like other v4 pages */
-  main > .cta-section {
-    margin-top: 40px !important;
-    padding: 48px 44px !important;
-    background:
-      linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%) !important;
-    border: 1px solid rgba(212,77,28,0.32) !important;
-    border-top: 1px solid rgba(212,77,28,0.32) !important;
-    border-radius: 4px;
-    text-align: left !important;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.46);
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 36px;
-    align-items: center;
-  }
-  main > .cta-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none; opacity: 0.55;
-  }
-  main > .cta-section > * { position: relative; z-index: 2; }
-  main > .cta-section h2 {
-    margin: 0 0 14px !important;
-    max-width: 24ch !important;
-  }
-  main > .cta-section p {
-    color: var(--bone-dim) !important;
-    margin: 0 0 14px !important;
-    max-width: 52ch !important;
-    text-align: left !important;
-  }
-  main > .cta-section .cta-button { padding: 16px 28px; font-size: 14px; }
-  @media (max-width: 800px) {
-    main > .cta-section { grid-template-columns: 1fr !important; padding: 36px 28px !important; }
-  }
-
-  /* Mouse-follow glow v2 */
-  .v4-glow,
-  .v4-glow-core,
-  .v4-glow-trail {
-    position: fixed; inset: 0; pointer-events: none; z-index: 2;
-    opacity: 0; transition: opacity 0.6s ease;
-    will-change: opacity, background; mix-blend-mode: screen;
-  }
-  .v4-glow {
-    background: radial-gradient(620px circle at var(--mx, 50%) var(--my, 30%),
-      rgba(212,77,28,0.20) 0%, rgba(212,77,28,0.09) 26%, rgba(212,77,28,0.025) 50%, transparent 72%);
-  }
-  .v4-glow-trail {
-    background: radial-gradient(380px circle at var(--tx, 50%) var(--ty, 30%),
-      rgba(212,77,28,0.12) 0%, rgba(212,77,28,0.04) 36%, transparent 62%);
-  }
-  .v4-glow-core {
-    background:
-      radial-gradient(160px circle at var(--cx, 50%) var(--cy, 30%),
-        rgba(255,92,37,0.44) 0%, rgba(255,92,37,0.16) 26%, rgba(255,92,37,0.04) 48%, transparent 64%),
-      radial-gradient(34px circle at var(--cx, 50%) var(--cy, 30%),
-        rgba(255,200,160,0.30) 0%, rgba(255,200,160,0.05) 60%, transparent 86%);
-  }
-  body.has-mouse .v4-glow,
-  body.has-mouse .v4-glow-trail,
-  body.has-mouse .v4-glow-core { opacity: 1; }
-  @media (hover: none), (prefers-reduced-motion: reduce) {
-    .v4-glow, .v4-glow-trail, .v4-glow-core { display: none !important; }
-    .v4-artifact-row { transition: none; }
-    .v4-artifact-row:hover { transform: none; }
+    nav { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .nav-links { flex-direction: column; gap: 10px; }
   }
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -508,15 +200,13 @@
 <body>
   <div class="v4-grid-pulse" aria-hidden="true"></div>
   <div class="v4-grid-nodes" aria-hidden="true"></div>
-  <div class="v4-glow"       aria-hidden="true"></div>
-  <div class="v4-glow-trail" aria-hidden="true"></div>
-  <div class="v4-glow-core"  aria-hidden="true"></div>
 
   <nav>
     <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
     <div class="nav-links">
       <a href="./index.html">HOME</a>
       <a href="./services.html">SERVICES</a>
+      <a href="./process.html">PROCESS</a>
       <a href="./consulting.html">CONSULTING</a>
       <a href="./work.html" class="active">WORK</a>
       <a href="./blog/index.html">FIELD NOTES</a>
@@ -527,198 +217,144 @@
   </nav>
 
   <main>
-    <div class="v4-eyebrow"><span class="num">↳</span> WORK / HOW IT GETS BUILT</div>
-    <h1>What gets shipped, what gets handed off, what gets owned.</h1>
-    <p class="subtitle">Plain files, trade-fit layouts, no mystery. The work below is what every Shipside build produces — the artifacts an owner walks away with at hand-off, and the build patterns we use to get there.</p>
+    <section class="hero">
+      <div class="v4-eyebrow"><span class="num">↳</span> WORK</div>
+      <h1>Build patterns. Not invented case studies.</h1>
+      <p class="hero-sub">Shipside is founder-led and small on purpose. Instead of fake logos, fake testimonials, or invented revenue numbers, we publish the actual systems we install — the patterns that show up across engagements, what gets wired together, and what the owner ends up with.</p>
+      <div class="hero-cta">
+        <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
+        <a href="./services.html" class="cta-button secondary">See what we build</a>
+      </div>
+      <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
+    </section>
 
-    <section>
-      <div class="v4-eyebrow"><span class="num">01 /</span> ARTIFACTS PER LAYER</div>
-      <h2>What the owner gets, layer by layer.</h2>
-      <p>Each layer of the build produces a real artifact — a working website, a wired capture path, an owner inbox you can open on your phone. We can show all of these on a fit call. No fake portfolio carousel.</p>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">01 /</span> PATTERNS</div>
+      <h2>Common shapes the build takes.</h2>
+      <p class="v4-lede">Every engagement is scoped after a fit call, but most map to one of these shapes — or a combination of two. We share the patterns so you can recognize where a Shipside build would land for the way your business actually runs.</p>
 
-      <div class="v4-artifact-stack" role="list">
-        <article class="v4-artifact-row" role="listitem">
-          <div>
-            <div class="v4-artifact-num">Layer 01 · Foundation</div>
-            <h3 class="v4-artifact-title">A live owned site</h3>
-            <p class="v4-artifact-body">Five plain HTML pages on your domain — Home, About, Services, Work, Contact. Built around your trade and your photos. No WordPress, no page builders, no plugin chain to babysit.</p>
-            <div class="v4-artifact-meta">
-              <span>Hand-off: files + domain + login</span>
-              <span>Phone-friendly</span>
-              <span>You own it</span>
-            </div>
+      <div class="pattern-stack">
+
+        <article class="pattern-card">
+          <div class="pattern-bar">
+            <span>// PATTERN A &middot; LOCAL TRADE WEDGE</span>
+            <span class="live">EXAMPLE SYSTEM</span>
           </div>
-          <ul class="v4-artifact-list">
-            <li>Static HTML/CSS — no DB, no admin panel</li>
-            <li>Hosting transferable to any provider</li>
-            <li>Trade-fit layout, your photos and copy</li>
-            <li>Files handed off, no platform lock-in</li>
-          </ul>
+          <div class="pattern-body">
+            <div>
+              <div class="pattern-num">Foundation + Capture + Visibility</div>
+              <h3 class="pattern-title">Trade business, website wedge + Call Catcher</h3>
+              <p class="pattern-desc">A one- or two-crew local service business. Stale or absent website. Most leads come from referrals. Calls drop while jobs run, quote requests get buried in personal email.</p>
+              <p class="pattern-desc">Shipside replaces the website with a clean owned build, wires Call Catcher and Quote Intake to a single Owner Inbox, and turns on Owner Summary so the operator reads the week in two minutes.</p>
+              <span class="pattern-stack-sub">Stack: Website Foundation &middot; Call Catcher &middot; Quote Intake &middot; Owner Inbox &middot; Owner Summary</span>
+            </div>
+            <ul class="pattern-list">
+              <li>Owned site replaces stale page</li>
+              <li>Call Catcher fires text-back in seconds</li>
+              <li>Quote Intake routes into Owner Inbox</li>
+              <li>Weekly Owner Summary in plain language</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="v4-artifact-row" role="listitem">
-          <div>
-            <div class="v4-artifact-num">Layer 02 · Capture</div>
-            <h3 class="v4-artifact-title">Calls and forms wired in</h3>
-            <p class="v4-artifact-body">Tap-to-call paths on every page. Missed-call text-back firing within seconds. Quote-request form landing in one inbox. The path from "someone reached out" to "you have a record of it" — wired.</p>
-            <div class="v4-artifact-meta">
-              <span>Hand-off: phone number + auto text-back rules</span>
-              <span>Owner-readable</span>
-              <span>Cancel any month</span>
-            </div>
+        <article class="pattern-card">
+          <div class="pattern-bar">
+            <span>// PATTERN B &middot; BOOKING-LED SERVICE</span>
+            <span class="live">EXAMPLE SYSTEM</span>
           </div>
-          <ul class="v4-artifact-list">
-            <li>Tap-to-call CTA on every page</li>
-            <li>Auto missed-call SMS reply</li>
-            <li>Quote form posts to one inbox</li>
-            <li>Domain configured + verified</li>
-          </ul>
+          <div class="pattern-body">
+            <div>
+              <div class="pattern-num">Foundation + Booking + Visibility</div>
+              <h3 class="pattern-title">Service business, Booking Handoff + Owner Summary</h3>
+              <p class="pattern-desc">A service business where most of the day's friction is scheduling. The calendar is already in use; what's missing is a clean handoff from website to calendar plus visibility on what booked, what cancelled, and what got rescheduled.</p>
+              <p class="pattern-desc">Shipside wires Booking Handoff into the existing calendar, layers confirmation and reminder flows, and ships an Owner Summary digest so the operator stops checking five tabs.</p>
+              <span class="pattern-stack-sub">Stack: Website Foundation &middot; Booking Handoff &middot; Owner Inbox &middot; Owner Summary</span>
+            </div>
+            <ul class="pattern-list">
+              <li>Booking Handoff &middot; clean calendar drop</li>
+              <li>Confirmation &amp; reminder flows wired in</li>
+              <li>Owner alert on new bookings</li>
+              <li>Weekly digest of bookings, cancels, reschedules</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="v4-artifact-row" role="listitem">
-          <div>
-            <div class="v4-artifact-num">Layer 03 · Visibility</div>
-            <h3 class="v4-artifact-title">An owner-only inbox of leads</h3>
-            <p class="v4-artifact-body">One list of every lead, reply, and reminder on your phone. Push when something new shows up. Notes and follow-up reminders next to the lead. Monthly summary so you see the month, not babysit a dashboard.</p>
-            <div class="v4-artifact-meta">
-              <span>Hand-off: owner-only login</span>
-              <span>Push alerts</span>
-              <span>Monthly summary</span>
-            </div>
+        <article class="pattern-card">
+          <div class="pattern-bar">
+            <span>// PATTERN C &middot; OPERATOR-LED CUSTOM</span>
+            <span class="live">EXAMPLE SYSTEM</span>
           </div>
-          <ul class="v4-artifact-list">
-            <li>One inbox: missed calls + forms + replies</li>
-            <li>Push to your phone on new lead</li>
-            <li>Notes, status, follow-up reminders</li>
-            <li>Monthly lead summary delivered</li>
-          </ul>
+          <div class="pattern-body">
+            <div>
+              <div class="pattern-num">Workflow Review + Custom Systems</div>
+              <h3 class="pattern-title">Operator-led shop, AI Workflow Review + custom build</h3>
+              <p class="pattern-desc">An operator who already has a website and CRM but is losing time inside the workflow — manual data entry across tools, status that has to be updated by hand, follow-up that depends on remembering.</p>
+              <p class="pattern-desc">Shipside runs an AI Workflow Review, surfaces the actual bottleneck, and installs a Custom Business System or AI workflow at the leverage point. Sometimes the answer is "don't build that" — and we say so.</p>
+              <span class="pattern-stack-sub">Stack: AI Workflow Review &middot; Custom Business Systems</span>
+            </div>
+            <ul class="pattern-list">
+              <li>Workflow mapped, bottleneck named</li>
+              <li>Custom internal tool or AI flow scoped</li>
+              <li>Built to fit the actual operator's day</li>
+              <li>Honest call where AI doesn't help</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="v4-artifact-row" role="listitem">
-          <div>
-            <div class="v4-artifact-num">Layer 04 · Care</div>
-            <h3 class="v4-artifact-title">A site that stays current</h3>
-            <p class="v4-artifact-body">Hosting handled, basic checks running, quick text-or-photo updates when hours, services, crew photos, or a new offering change. Cancel any month — Layer 01 stays yours, live, on your domain.</p>
-            <div class="v4-artifact-meta">
-              <span>Hand-off: site + content stay current</span>
-              <span>Hosting + checks</span>
-              <span>Update help</span>
-            </div>
+        <article class="pattern-card">
+          <div class="pattern-bar">
+            <span>// PATTERN D &middot; HIGHER-END WEB BUILD</span>
+            <span class="live">EXAMPLE SYSTEM</span>
           </div>
-          <ul class="v4-artifact-list">
-            <li>Hosting + uptime + SSL handled</li>
-            <li>Update help when business changes</li>
-            <li>Cancel any month, site stays live</li>
-            <li>No hostage retainer, no platform lock-in</li>
-          </ul>
+          <div class="pattern-body">
+            <div>
+              <div class="pattern-num">Boutique Foundation + Capture</div>
+              <h3 class="pattern-title">Boutique higher-end build, scoped right</h3>
+              <p class="pattern-desc">A business where the website is the product face and needs to look like the product is worth what it costs. Not a templated trade page. Real design, real photography, real copy, wired to the same capture stack underneath.</p>
+              <p class="pattern-desc">Shipside scopes a boutique build with its own art direction, then wires Quote Intake / Owner Inbox / follow-up under it so the front end and the operator end stay coherent.</p>
+              <span class="pattern-stack-sub">Stack: Website Foundation (boutique) &middot; Quote Intake &middot; Owner Inbox</span>
+            </div>
+            <ul class="pattern-list">
+              <li>Custom art direction, not a template</li>
+              <li>Real copy and photography wired in</li>
+              <li>Capture stack underneath stays standard</li>
+              <li>Files yours, no platform lock-in</li>
+            </ul>
+          </div>
         </article>
+
       </div>
     </section>
 
-    <section>
+    <section class="v4-section">
       <div class="v4-eyebrow"><span class="num">02 /</span> WHAT WE DON'T DO</div>
-      <h2>Things you won't get from Shipside.</h2>
-      <p>Plain promises about what's not on the menu. Each one is a thing other shops do that we choose not to.</p>
-      <div class="v4-skip-grid">
-        <div class="v4-skip-cell">
-          <strong>No mystery strategy sessions</strong>
-          <p>We talk on a fit call. Fifteen minutes, real questions, straight answer.</p>
-        </div>
-        <div class="v4-skip-cell">
-          <strong>No drawn-out discovery</strong>
-          <p>Scope and cost land in writing before any build work starts. No hidden meter.</p>
-        </div>
-        <div class="v4-skip-cell">
-          <strong>No retainer lock-in</strong>
-          <p>Layers 02–04 are optional and cancellable any month. Layer 01 stays yours regardless.</p>
-        </div>
-        <div class="v4-skip-cell">
-          <strong>No bait-and-switch add-ons</strong>
-          <p>Whatever's in the written scope is what gets built. New asks become a separate scope.</p>
-        </div>
-        <div class="v4-skip-cell">
-          <strong>No platform lock-in</strong>
-          <p>Plain HTML, plain hosting. Transfer the files to any provider any time.</p>
-        </div>
-        <div class="v4-skip-cell">
-          <strong>No fake portfolio</strong>
-          <p>We show real artifacts on a fit call. No staged screenshots, no borrowed logos.</p>
-        </div>
+      <h2>No fake proof.</h2>
+      <div class="honest-note">
+        <p>We don't post invented client logos, made-up testimonials, made-up revenue numbers, or stock-photo "case studies" with traffic charts that don't belong to anyone we've worked with.</p>
+        <p>Shipside is small and founder-led. The proof is the systems we publish, the way we scope, and what you find when you actually do the fit call. If you want to dig deeper into how a specific engagement played out, ask on the fit call — we'll walk through what got built, what didn't, and what was scoped, within what's already been published.</p>
       </div>
     </section>
 
-    <section>
-      <div class="v4-eyebrow"><span class="num">03 /</span> CADENCE</div>
-      <h2>How fast it gets shipped.</h2>
-      <p>From kickoff to live, the job stays tight. Most builds finish in a few days; we give ourselves up to seven so nobody gets surprised. Layer 02 wiring usually lights up the same week. Layer 03 onboarding lands at the hand-off call.</p>
-      <p>No phase that exists just to bill. Every step has an artifact you can point at — a draft, a domain, a working text-back, an owner login.</p>
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">03 /</span> START HERE</div>
+      <div class="v4-cta-block">
+        <div>
+          <h2>The pattern that fits your shop is the one we'll scope.</h2>
+          <p>Fifteen-minute fit call. We tell you which pattern fits, which doesn't, or whether we should pass on the engagement entirely. Written scope before any work starts.</p>
+        </div>
+        <div class="v4-cta-actions">
+          <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
+          <a href="./process.html" class="cta-button secondary">See the process</a>
+          <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
+        </div>
+      </div>
     </section>
-
-    <div class="cta-section">
-      <div>
-        <h2 style="margin-top: 0;">Want to see it on a call?</h2>
-        <p>Book a 15-minute fit call. We can show every layer working — owned site, missed-call text-back, owner inbox — without screenshots.</p>
-      </div>
-      <div>
-        <a href="tel:+15125591741" class="cta-button">Book a 15-minute fit call</a>
-      </div>
-    </div>
   </main>
 
-  <script>
-    // Mouse-follow glow v2 — three-layer lerp (matches homepage)
-    (function(){
-      try {
-        if (window.matchMedia && window.matchMedia('(hover:none)').matches) return;
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-      } catch (_) {}
-      var w = window.innerWidth || 1440, h = window.innerHeight || 900;
-      var raw = { x: w*0.5, y: h*0.34 };
-      var halo = { x: raw.x, y: raw.y };
-      var core = { x: raw.x, y: raw.y };
-      var trail = { x: raw.x, y: raw.y };
-      var rafId = null, seeded = false;
-      try {
-        if ((window.location.search || '').indexOf('glow_demo=1') !== -1) {
-          var apply = function(){
-            document.body.classList.add('has-mouse'); seeded = true;
-            halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y;
-            flush();
-          };
-          if (document.body) apply(); else document.addEventListener('DOMContentLoaded', apply);
-        }
-      } catch(_){}
-      function flush(){
-        var s = document.documentElement.style;
-        s.setProperty('--mx', Math.round(halo.x)+'px'); s.setProperty('--my', Math.round(halo.y)+'px');
-        s.setProperty('--cx', Math.round(core.x)+'px'); s.setProperty('--cy', Math.round(core.y)+'px');
-        s.setProperty('--tx', Math.round(trail.x)+'px'); s.setProperty('--ty', Math.round(trail.y)+'px');
-      }
-      function tick(){
-        halo.x += (raw.x - halo.x)*0.18; halo.y += (raw.y - halo.y)*0.18;
-        core.x += (raw.x - core.x)*0.42; core.y += (raw.y - core.y)*0.42;
-        trail.x += (raw.x - trail.x)*0.08; trail.y += (raw.y - trail.y)*0.08;
-        flush();
-        var settled = Math.abs(raw.x-halo.x)<0.4 && Math.abs(raw.y-halo.y)<0.4 &&
-                      Math.abs(raw.x-core.x)<0.4 && Math.abs(raw.y-core.y)<0.4 &&
-                      Math.abs(raw.x-trail.x)<0.4 && Math.abs(raw.y-trail.y)<0.4;
-        rafId = settled ? null : requestAnimationFrame(tick);
-      }
-      document.addEventListener('mousemove', function(e){
-        raw.x = e.clientX; raw.y = e.clientY;
-        if (!seeded) { halo.x = core.x = trail.x = raw.x; halo.y = core.y = trail.y = raw.y; seeded = true; }
-        if (!document.body.classList.contains('has-mouse')) document.body.classList.add('has-mouse');
-        if (!rafId) rafId = requestAnimationFrame(tick);
-      }, { passive: true });
-      document.addEventListener('mouseleave', function(){ document.body.classList.remove('has-mouse'); });
-      document.addEventListener('mouseenter', function(){ document.body.classList.add('has-mouse'); });
-    })();
-  </script>
-
   <footer>
-    <p><a href="tel:+15125591741">(512) 559-1741</a> · <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
-    <p>© 2026 Shipside</p>
-    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> · Clean websites. Useful systems. No platform lock-in.</p>
+    <p><a href="tel:+13502210298">(350) 221-0298</a> &middot; <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
+    <p>&copy; 2026 Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> &middot; AI business systems agency.</p>
   </footer>
 </body>
 </html>

@@ -2,13 +2,281 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=/services">
-<meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="/services">
-<title>Services — Shipside</title>
-<script>window.location.replace('/services');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Shipside</title>
+<meta name="description" content="Why Shipside scopes after a fit call instead of publishing a price list. The fit call, the systems map, and how a written scope gets put together.">
+<link rel="canonical" href="https://shipside.dev/pricing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pricing — Shipside">
+<meta property="og:description" content="Scoped, not listed. Fit call, systems map, written scope before any work starts.">
+<meta property="og:url" content="https://shipside.dev/pricing">
+<meta property="og:site_name" content="Shipside">
+<meta property="og:image" content="https://shipside.dev/brand/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Shipside — Pricing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pricing — Shipside">
+<meta name="twitter:description" content="Scoped, not listed. Fit call, systems map, written scope before any work starts.">
+<meta name="twitter:image" content="https://shipside.dev/brand/og-card.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
+<style>
+  :root { --gutter: clamp(20px, 4vw, 48px); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: linear-gradient(180deg, #17171D 0%, #121217 100%);
+    color: var(--bone);
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 15px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  body {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px; background-position: -1px -1px;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 77, 28, 0.04), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(184, 50, 26, 0.03), transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+
+  nav {
+    position: relative; z-index: 10;
+    padding: 24px var(--gutter);
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--steel);
+  }
+  .brand { font-family: 'Bungee', sans-serif; font-size: 20px; letter-spacing: 0.02em; color: var(--bone); text-decoration: none; }
+  .brand span { color: var(--rust); }
+  .nav-links { display: flex; gap: 28px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; flex-wrap: wrap; }
+  .nav-links a { color: var(--bone-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-links a.active { color: var(--rust); }
+
+  main { position: relative; z-index: 5; max-width: 960px; margin: 0 auto; padding: 24px var(--gutter) 0; }
+
+  .v4-section { margin-bottom: 96px; }
+  .v4-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 14px; font-weight: 600;
+  }
+  .v4-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
+  .v4-eyebrow .num { color: var(--bone-dim); font-weight: 500; letter-spacing: 0.2em; }
+  h1 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(36px, 6vw, 64px); line-height: 1.05;
+    letter-spacing: -0.01em; color: var(--bone);
+    margin-bottom: 22px; max-width: 22ch;
+  }
+  .v4-section h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(26px, 4.4vw, 40px); line-height: 1.05;
+    letter-spacing: -0.01em; color: var(--bone);
+    margin-bottom: 18px; max-width: 24ch;
+  }
+  p.body { font-size: 16px; line-height: 1.75; color: var(--bone); margin-bottom: 18px; max-width: 64ch; }
+  p.body.dim { color: var(--bone-dim); }
+
+  .hero { padding: clamp(48px, 8vw, 80px) 0 clamp(32px, 5vw, 56px); }
+  .hero-sub { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.7; color: var(--bone-dim); margin-bottom: 28px; max-width: 64ch; }
+
+  .cta-button {
+    display: inline-block; padding: 14px 28px;
+    background: var(--rust); color: var(--bone);
+    text-decoration: none; font-weight: 600;
+    font-size: 13px; line-height: 1.4; letter-spacing: 0.1em;
+    text-transform: uppercase; transition: all 0.2s;
+    border: 2px solid var(--rust);
+  }
+  .cta-button:hover { background: transparent; color: var(--rust-bright); border-color: var(--rust-bright); }
+  .cta-button.secondary { background: transparent; color: var(--bone-dim); border-color: var(--steel); }
+  .cta-button.secondary:hover { color: var(--rust); border-color: var(--rust); }
+  .hero-cta { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+  .sms-link { display: inline-block; font-size: 12px; letter-spacing: 0.06em; color: var(--bone-dim); text-decoration: none; }
+  .sms-link:hover { color: var(--rust); }
+
+  /* Step ladder shared with process.html */
+  .steps { position: relative; margin-top: 36px; padding-left: 40px; }
+  .steps::before {
+    content: ''; position: absolute;
+    left: 13px; top: 24px; bottom: 24px; width: 2px;
+    background: linear-gradient(180deg,
+      rgba(212,77,28,0.6) 0%, rgba(212,77,28,0.25) 30%,
+      rgba(212,77,28,0.25) 70%, rgba(212,77,28,0.6) 100%);
+  }
+  .step-row {
+    display: grid; grid-template-columns: 1fr; gap: 14px;
+    background: linear-gradient(180deg, #27272F 0%, #1C1C24 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(212,77,28,0.55);
+    border-radius: 4px;
+    padding: 24px 28px 26px; margin-bottom: 18px; position: relative;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .step-row:hover { transform: translateX(4px); border-left-color: var(--rust); }
+  .step-row::before {
+    content: ''; position: absolute;
+    left: -40px; top: 32px; width: 30px; height: 2px; background: var(--rust);
+  }
+  .step-row::after {
+    content: ''; position: absolute;
+    left: -27px; top: 26px; width: 14px; height: 14px;
+    border: 2px solid var(--rust); border-radius: 50%;
+    background: var(--iron); box-shadow: 0 0 12px rgba(212,77,28,0.45);
+  }
+  .step-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--rust);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 6px; font-weight: 700;
+  }
+  .step-title {
+    font-family: 'Bungee', sans-serif; font-size: 22px;
+    color: var(--bone); line-height: 1.05; margin-bottom: 10px;
+  }
+  .step-body { font-size: 14px; color: var(--bone-dim); line-height: 1.65; max-width: 64ch; margin: 0; }
+  @media (max-width: 800px) {
+    .steps { padding-left: 28px; }
+    .step-row::before { width: 22px; left: -28px; }
+    .step-row::after { left: -16px; }
+  }
+
+  .v4-cta-block {
+    margin-top: 48px; padding: 48px 40px;
+    background: linear-gradient(135deg, rgba(212,77,28,0.18) 0%, rgba(31,31,38,0.95) 55%, rgba(20,20,24,0.95) 100%);
+    border: 1px solid rgba(212,77,28,0.32); border-radius: 4px;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.5);
+  }
+  .v4-cta-block h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(24px, 3.5vw, 36px); color: var(--bone);
+    margin-bottom: 14px; line-height: 1.05; max-width: none;
+  }
+  .v4-cta-block p { font-size: 15px; color: var(--bone-dim); line-height: 1.65; margin: 0 0 8px; max-width: 52ch; }
+  .v4-cta-actions { display: flex; flex-direction: column; gap: 12px; }
+  @media (max-width: 800px) { .v4-cta-block { grid-template-columns: 1fr; padding: 32px 24px; } }
+
+  footer {
+    background: rgba(20, 20, 24, 0.8);
+    border-top: 1px solid var(--grid);
+    padding: 40px var(--gutter); text-align: center;
+    position: relative; z-index: 5;
+  }
+  footer a { color: var(--rust); text-decoration: none; font-weight: 500; }
+  footer a:hover { color: var(--rust-bright); }
+  footer p { font-size: 13px; color: var(--bone-dim); margin: 8px 0; }
+
+  @media (max-width: 768px) {
+    nav { flex-direction: column; gap: 18px; align-items: flex-start; }
+    .nav-links { flex-direction: column; gap: 10px; }
+  }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
-<p>Redirecting to <a href="/services">/services</a>...</p>
+  <div class="v4-grid-pulse" aria-hidden="true"></div>
+  <div class="v4-grid-nodes" aria-hidden="true"></div>
+
+  <nav>
+    <a href="./index.html" class="brand">SHIP<span>SIDE</span></a>
+    <div class="nav-links">
+      <a href="./index.html">HOME</a>
+      <a href="./services.html">SERVICES</a>
+      <a href="./process.html">PROCESS</a>
+      <a href="./consulting.html">CONSULTING</a>
+      <a href="./work.html">WORK</a>
+      <a href="./blog/index.html">FIELD NOTES</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="./about.html">ABOUT</a>
+      <a href="./contact.html">CONTACT</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="v4-eyebrow"><span class="num">↳</span> PRICING</div>
+      <h1>Scoped, not listed.</h1>
+      <p class="hero-sub">Shipside doesn't publish a price list. The right scope &mdash; and the right cost &mdash; depends on what runs the business and where the leverage is. Two shops with the same trade often need different builds. A public price list pretends that's not true. We don't.</p>
+      <div class="hero-cta">
+        <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
+        <a href="./services.html" class="cta-button secondary">See what we build</a>
+      </div>
+      <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
+    </section>
+
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">01 /</span> WHY SCOPED</div>
+      <h2>Why scope after the fit call.</h2>
+      <p class="body">A website is a wedge. A capture system is a different scope. A CRM with Owner Inbox and Owner Summary is different again. A custom workflow built around an AI Workflow Review is different again. Some businesses need one of those. Some need a few wired together. Some need none of them and we say so.</p>
+      <p class="body dim">Shipside scopes engagement-by-engagement so the proposal reflects the actual systems being built &mdash; not a templated bundle that under-delivers for one shop and over-delivers for another.</p>
+    </section>
+
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">02 /</span> HOW SCOPING WORKS</div>
+      <h2>Three steps from "interested" to "written scope."</h2>
+
+      <div class="steps" role="list">
+        <article class="step-row" role="listitem">
+          <div class="step-num">Step 01</div>
+          <h3 class="step-title">Fit call &middot; 15 minutes</h3>
+          <p class="step-body">Direct call with Ryan. We ask what the business does, where leads come from, where time gets lost, what is already in place. Honest call on whether Shipside fits &mdash; no commitment asked of you.</p>
+        </article>
+        <article class="step-row" role="listitem">
+          <div class="step-num">Step 02</div>
+          <h3 class="step-title">Systems map</h3>
+          <p class="step-body">If there's a fit, we sketch what runs the business today, where it bottlenecks, and which service groups would actually move the needle. AI Workflow Review where it applies. Output: a written sequence with the work named.</p>
+        </article>
+        <article class="step-row" role="listitem">
+          <div class="step-num">Step 03</div>
+          <h3 class="step-title">Written scope &amp; cost</h3>
+          <p class="step-body">A written scope and cost &mdash; what gets built, in what order, what you'll own when it's done, what ongoing care looks like. You see all of it before any deposit. If the scope changes mid-build, that conversation happens in writing, not in invoices.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">03 /</span> WHAT TO EXPECT</div>
+      <h2>What scope conversations sound like.</h2>
+      <p class="body">A scope is built around the layers that actually fit: Website Foundation, Lead Capture, Missed-Call Follow-Up, Owner Visibility, Calendar and Booking, AI Consulting and Workflow Mapping, or Custom Systems. Most engagements use two or three. A few use one. A few use most of them.</p>
+      <p class="body dim">Cost depends on which layers, how custom the build, and how integrated the workflow needs to be. We say so on the call &mdash; with rough ranges &mdash; before anyone signs anything.</p>
+      <p class="body dim">If the work isn't worth the scope, we say that too. Sometimes the right answer is "use the system you already have, fix this one thing." That's a five-minute call, not a proposal.</p>
+    </section>
+
+    <section class="v4-section">
+      <div class="v4-eyebrow"><span class="num">04 /</span> START HERE</div>
+      <div class="v4-cta-block">
+        <div>
+          <h2>The fit call is where scope conversations start.</h2>
+          <p>Fifteen minutes. Honest call either way. Written scope before any commitment.</p>
+        </div>
+        <div class="v4-cta-actions">
+          <a href="tel:+13502210298" class="cta-button">Book a 15-minute fit call</a>
+          <a href="./services.html" class="cta-button secondary">See what we build</a>
+          <a href="sms:+13502210298" class="sms-link">↩ Prefer to text? (350) 221-0298</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="tel:+13502210298">(350) 221-0298</a> &middot; <a href="mailto:shipside.labs@gmail.com">shipside.labs@gmail.com</a></p>
+    <p>&copy; 2026 Shipside</p>
+    <p style="margin-top: 12px; font-size: 12px;"><a href="./work-with-us.html" style="color: var(--bone-dim);">Work With Us</a> &middot; AI business systems agency.</p>
+  </footer>
 </body>
 </html>
