@@ -18,16 +18,6 @@
   ],
   "redirects": [
     {
-      "source": "/pricing",
-      "destination": "/services",
-      "permanent": true
-    },
-    {
-      "source": "/pricing.html",
-      "destination": "/services",
-      "permanent": true
-    },
-    {
       "source": "/blog/posts/2025-08-12-law-firm-contact-form-leaks.html",
       "destination": "/blog/posts/2025-08-12-law-firm-contact-form.html",
       "permanent": true
